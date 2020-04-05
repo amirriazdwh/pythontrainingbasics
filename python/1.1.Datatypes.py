@@ -29,6 +29,10 @@ List    defined by [],  used List() for conversion to list all sequence.  List a
 Tuple   defined by ()   used Tuple() for converstion,  Tuples are order sequence ,immutable and contains iterators. so they have index
 Dictionary   defined by {} with elements as key:value  used dict() for covnersion.
                     dic ={i:f"item{i}" for i in range(1,10)}.  with f you can using {}
+                    Note:  a json file is a dictionary saved in a file
+                    Note:  a dictionary is a ziping of two sequence stud by stud.  thats why zip function is using to
+                    create a dictionary from two sequences. just like a zip can be unzipped.  we can use unzip funtion to
+                    get key and values in two difference sequences.  keys are unique and immutable in dictionary
 None    is an object defined to represent null values.   its type is <class 'NoneType'>.  when a variable is
          not assigned any value its None.  in if expresion is evaluated as  if varis is None:  print("None")
 range    is data type with iterator its called generator its type is <class 'range'>
@@ -38,7 +42,8 @@ in python set are unorder seqeuence. list, tuples, string, range are order seque
 since both order sequence and unorder sequence are derived for sequence therefore a set con be converts to list, tuple or stirng
 ###########################################################################
 in dictionary key must be unique.  while values can be repeated.  thats why its being represent by {} since in sets the
-values are not repeated. in same way in diction the keys are not repeated.
+values are not repeated. in same way in diction the keys are not repeated.  dictionary was created since it was not possible to
+access an individual element in a set without scanning the whole set.
 to get the keys we use.  d.keys and for values d.values and to get both keys and values as tuple we use d.items
 --------------------------------------------------------------------
 class dict(**kwarg)
@@ -75,7 +80,7 @@ print("convert ord to character ",chr(99))
 
 
 # -1 reverses the tuple and gives output
-print("the number is  ", xx[1::-1])
+#print("the number is  ", xx[1::-1])
 
 print("------keys then value------")
 tupleNum = tuple((x for x in (('x', 'y', 'z'),(1, 2, 3))))
@@ -92,11 +97,13 @@ b=(1, 2, 3)
 
 for i,x in enumerate((a,b)):
     print(i,x)
-
+"""
 print('_____________________________________')
 dic = dict((i, x) for tupEle in (xx,yy) for (i, x) in enumerate(tupEle))
 print(dic)
 print('_____________________________________')
+
+"""
 
 
 #def solve(lis, n):
@@ -176,8 +183,10 @@ print('The encoded version (with ignore) is:', string.encode("ascii", "ignore"))
 print('The encoded version (with replace) is:', string.encode("ascii", "replace"))
 #####################################################
 
-import json
-txt = b'{"test":"\u0022"}'
-json.loads(txt.decode())
+#import json
+#txt = b'{"test":"\u0022"}'
+#json.loads(txt.decode())
+
+
 
 

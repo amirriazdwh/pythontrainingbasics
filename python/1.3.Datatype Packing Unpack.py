@@ -1,9 +1,3 @@
-# A Python program to demonstrate need
-# of packing and unpacking
-
-# A sample function that takes 4 arguments
-# and prints them.
-
 # theory,  *args converts to args[0], args[1]..
 # the indexes values is taken from list, tuple and set run time. in short * is
 #for i in list :
@@ -18,7 +12,6 @@ def fun(a, b, c, d):
 
 # Driver Code
 my_list = [1, 2, 3, 4]
-
 # here at run time the actual values passed are :
 # fun(args[0], args[1],args[3],args[4])
 # *my_list is means tuples or sequence is passed as arguments,  **my_list means dictory is passed

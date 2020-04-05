@@ -1,4 +1,10 @@
 """
+There are three types of sequence.
+1. ITERATOR
+2. Generator
+3. Enumerator ( a special type of iterator)
+"""
+"""
 WHAT IS ITERATOR
 -----------------
 iterable  --  is a object in which either contains __iter__() or __getitem__() object is defined.  we can get iterator object by running them
@@ -22,6 +28,16 @@ iternation --  iteration is any for loop which takes iterator and triversed over
          --   xrange is a generator function.  
          --  a generator generates the values on the fly and therefore values can be traversed only once.
 """
+
+"""
+WHAT ARE ENUMERATOR
+an enumberator is an object of a class which takes a sequence and retruns the an iterator.  its an iterator as it contains _iter_()
+and _next_() function
+Enumerate() method adds a counter to an iterable and returns it in a form of enumerate object. This enumerate object can then be 
+used directly in for loops or be converted into a list of tuples using list() method.
+
+"""
+
 nums = [x * x for x in [1, 2, 3, 4, 5, 6, 7, 8]]
 print(nums)
 
@@ -251,3 +267,22 @@ multi_obj = multi_yield()
 print(next(multi_obj))
 print(next(multi_obj))
 print(next(multi_obj))
+
+
+
+# Python program to illustrate
+# enumerate object adds an index to sequence by position
+l1 = ["eat", "sleep", "repeat"]
+s1 = "geek"
+
+# creating enumerate objects
+obj1 = enumerate(l1)
+obj2 = enumerate(s1)
+
+#here object type is enumberator which is an iterator.
+# therefore this object can be converted to tuple,list, dictionary etc
+print("Return type:", type(obj1))
+print(list(enumerate(l1)))
+
+# changing start index to 2 from 0
+print(list(enumerate(s1, 2)))

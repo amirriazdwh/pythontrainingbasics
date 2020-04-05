@@ -18,8 +18,8 @@ x in s	1 if an item of s is equal to x, else 0
 x not in s	0 if an item of s is equal to x, else 1
 s + t	the concatenation of s and t
 s * n , n * s	n copies of s concatenated	(1)
-s[i]	i'th item of s, origin 0	(2)
-s[i:j]	slice of s from i to j	(2), (3)
+s[i]	i'th item of s, origin 0	(2)           all sequence can be accessed by s[k] where k is index
+s[i:j]	slice of s from i to j	(2), (3)          all sequence can be accessed as slice,  the same behave is present in range function
 len(s)	length of s
 min(s)	smallest item of s
 max(s)	largest item of s
@@ -167,3 +167,4 @@ d = collections.OrderedDict()
 [d.setdefault(chr(k), k) for k in range(ord('a'), ord('g'))]
 for k, v in d.items():
     print(k, v)
+

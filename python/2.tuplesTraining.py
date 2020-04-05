@@ -38,15 +38,16 @@ print(t)
 #
 # string to tuple
 print("**** string to tuple *****")
-str="lupins"
-print(str)
-tt = tuple(str)
+str1="lupins"
+print(str1)
+tt = tuple(str1)
 print(tt)
 
 print("**** tuple to string *****")
 #tupel to string
 print(tt)
 str01=''.join(tt)
+str01=str().join(tt)
 print(str01)
 #
 print("*************** convert tuple to list *****************")
