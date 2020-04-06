@@ -8,7 +8,11 @@ Unpacking means create multiple objects from one object.
 2. a object contains method _new_ , _iter_ _init_  these methods are called from inside the functions,  for example _iter_ is called
 from iter function.   _init_ is called when object is being created.
 
-3.
+3.  *arg means,  the object has a single iterator so it can be a list, tuple, array or set.   **karg means the object has two iterators
+     so it is a dictionary.  please note that arg and karg are iternator so they can be used in streaming and in for loop.  a dictionary is
+     being created by zip function with two sequences lets say s1 and s2.  so dic =zip(s1,s2).  zip function stitch sequence by index
+     means {s1[1]:s2[1], s1[2]:s2[2]}
+4.  def
 """
 ################################
 # Examples
@@ -33,7 +37,12 @@ fun(*my_list)
 # the below call is translated as :
 # def mySum(args[0], args[1],args[2],args[4]) of tuple types
 # since mySum(1,2,3,4,5) the tuple is (1,2,3,4,5)
+v_list =[1,2,3,4,5]
+
+print("Packing elements:")
 def mySum(*args):
+    print(type(args))
+    print(args)
     sum = 0
     for i in range(0, len(args)):
         sum = sum + args[i]
@@ -42,7 +51,25 @@ def mySum(*args):
 # Driver code
 print(mySum(1, 2, 3, 4, 5))
 print(mySum(10, 20))
+print(mySum(*v_list))
 
+fruits =("apple","orange","mango")
+def invar(*v1):
+    print(type(v1))
+    print(v1)
+
+invar(*fruits, fruits)
+
+print("############ Unpacking Testing #############")
+v0=*fruits, fruits
+p =*v2,=*fruits, fruits
+v3=fruits, fruits
+print("P:",p)
+print("v0:",v0)
+print("v2:",v2)
+
+print("v3:",v3)
+print("(*v3,):",*v3,)
 
 # A Python program to demonstrate both packing and
 # unpacking.
