@@ -5,13 +5,18 @@ packing means create an object from multiple objects.  from many attributes one 
  creation of one new object.  By composing mutliple object into one.
 Unpacking means create multiple objects from one object.
 
+2. a object contains method _new_ , _iter_ _init_  these methods are called from inside the functions,  for example _iter_ is called
+from iter function.   _init_ is called when object is being created.
+
+3.
 """
 ################################
 # Examples
 ###############################
+
 def fun(a, b, c, d):
     print(a, b, c, d)
-tuple
+
 # Driver Code
 my_list = [1, 2, 3, 4]
 # here at run time the actual values passed are :
