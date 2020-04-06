@@ -159,22 +159,6 @@ record = ('Dave', 'dave@example.com', '773-555-1212', '847-555-1212')
 name, email, *phone_numbers = record
 print(phone_numbers)
 
-#from collections import deque
-#def search(lines, pattern, history=5):
-#    previous_lines = deque(maxlen=history)
-#    for line in lines:
-#        if pattern in line:
-#            yield line, previous_lines
-#        previous_lines.append(line)
-
-# Example use on a file
-#if __name__ == '__main__':
-#    with open('somefile.txt') as f:
-#        for line, prevlines in search(f, 'python', 5):
-#            for pline in prevlines:
-#                print(pline, end='')
-#        print(line, end='')
-#        print('-'*20)
 
 import heapq
 nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
@@ -203,3 +187,21 @@ rows_by_fname = sorted(rows, key=itemgetter('fname'))
 rows_by_uid = sorted(rows, key=itemgetter('uid'))
 print(rows_by_fname)
 print(rows_by_uid)
+
+
+#from collections import deque
+#def search(lines, pattern, history=5):
+#    previous_lines = deque(maxlen=history)
+#    for line in lines:
+#        if pattern in line:
+#            yield line, previous_lines
+#        previous_lines.append(line)
+
+# Example use on a file
+#if __name__ == '__main__':
+#    with open('somefile.txt') as f:
+#        for line, prevlines in search(f, 'python', 5):
+#            for pline in prevlines:
+#                print(pline, end='')
+#        print(line, end='')
+#        print('-'*20)
