@@ -1,7 +1,11 @@
-# theory,  *args converts to args[0], args[1]..
-# the indexes values is taken from list, tuple and set run time. in short * is
-#for i in list :
-#    args[i] =list[i]
+# theory
+"""
+1. Packing and Unpacking
+packing means create an object from multiple objects.  from many attributes one object is created.  this is being handled by
+ creation of one new object.  By composing mutliple object into one.
+Unpacking means create multiple objects from one object.
+
+"""
 ################################
 # Examples
 ###############################
