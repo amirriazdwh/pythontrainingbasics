@@ -65,6 +65,7 @@ print(tt)
 
 print("*************** + is concatination operator ***************")
 rr=(1,2,3)
+rr._1
 xx=(1,2,3)
 yy=(4,5,6)
 

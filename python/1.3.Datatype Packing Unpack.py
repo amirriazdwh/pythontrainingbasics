@@ -12,34 +12,47 @@ from iter function.   _init_ is called when object is being created.
      so it is a dictionary.  please note that arg and karg are iternator so they can be used in streaming and in for loop.  a dictionary is
      being created by zip function with two sequences lets say s1 and s2.  so dic =zip(s1,s2).  zip function stitch sequence by index
      means {s1[1]:s2[1], s1[2]:s2[2]}
-4.  def
+4.  a statement *arg, =1,2,3  is called packing and a statement a,b,c,d =arg
 """
 ################################
 # Examples
 ###############################
+# normal packing and unpacking
 
-def fun(a, b, c, d):
-    print(a, b, c, d)
+# packing object of string to tuple and assigning it to pack
+p0 = ("apple","mango","orange")
 
-# Driver Code
-my_list = [1, 2, 3, 4]
-# here at run time the actual values passed are :
-# fun(args[0], args[1],args[3],args[4])
-# *my_list is means tuples or sequence is passed as arguments,  **my_list means dictory is passed
-fun(*my_list)
+# unpacking here objects of pack are assigned to p1,p2,p3 by position
+p1,p2,p3 =p0
 
-# A Python program to demonstrate use
-# of packing
+# note a sequence is an iterator,  therefore (),[] and {} are all have iterators
+# we can embed another iterators inside these iterator.  by *arg,  here outer iterator come for sequence and
+# inner iterator comes from *arg. if a *arg iterator receive elements,  it perform packing,  it *arg gives values it unpack
 
-# This function uses packing to sum
-# unknown number of arguments
-# the same things is being done by parameter level.
-# the below call is translated as :
-# def mySum(args[0], args[1],args[2],args[4]) of tuple types
-# since mySum(1,2,3,4,5) the tuple is (1,2,3,4,5)
+# this is packing,  the object tuple packs object of type string to p4
+p4 = ("apple","mango","orange", "banana", "fig")
+
+#here outer iterator assign values to p5 and for p6 both out and inner iterator works to assign values and in end p7 is assigned a value
+# if *arg, is assigned a tuple and its a part of tuple, it will unpack the element of tuples by iterator and then pack elements using
+# iterator of arg.  *arg is used to pack unlimited element at function level. when *arg is function parameter
+# here unpacking is happening but pack is happening for p6.
+p5,*p6,p7 =p4
+print("P5:",p5)
+print("P6:",p6)
+print("P7:",p7)
+
+# *arg is used to pack a sequence of elements.
+print("\n Packing values in a function")
+
 v_list =[1,2,3,4,5]
 
-print("Packing elements:")
+print("\nPacking elements:")
+
+# there is only one parameter, note in a function,  the arguments are passed by position , so if the defination is
+#  def mySum(args):  we can only pass one parameter.  which can be either one variable or one sequence
+#  in order to pass multiple parameter we have to pack those element using iterator and get a tuple
+#  that is mySum(1,2,3,4) will be like  *args, =(1,2,3,4)
+
 def mySum(*args):
     print(type(args))
     print(args)
@@ -49,19 +62,39 @@ def mySum(*args):
     return sum
 
 # Driver code
-print(mySum(1, 2, 3, 4, 5))
-print(mySum(10, 20))
-print(mySum(*v_list))
+print("Sum 1 to 5:",mySum(1, 2, 3, 4, 5))
+print("sum 10 and 20:",mySum(10, 20))
+
+#here *v_list will unpack and create elements 1,2,3,4, 5 which is being packed again by argument
+# here iterator *v_list is producing values so its unpacking the list
+print("sum a tuple passed unpack:",mySum(*v_list))
+
+def dummy(*args):
+    print(type(args))
+    return args
+
+# here iterator will add elements to tuple by position which are two lists.
+print("This will add lists to tuple in args:",dummy(v_list, v_list))
+print("This will add list to tuple and unpack elements to args:",dummy(v_list, *v_list))
+
+print("\nUnpacking example")
+my_list = [1, 2, 3, 4]
+
+def fun(a, b, c, d):
+    print(a, b, c, d)
+
+# here *my_list will unpack [1,2,3,4] to 1,2,3,4  since *arg is always a tuple therefore 1,2,3,4 will beocme (1,2,3,4)
+fun(*my_list)
+
+print("############ Testing #############")
 
 fruits =("apple","orange","mango")
-def invar(*v1):
-    print(type(v1))
-    print(v1)
 
-invar(*fruits, fruits)
-
-print("############ Unpacking Testing #############")
+# (*fruit, fruit) is a tuple first since value is being assigned it will unpack and give elements for first argument
 v0=*fruits, fruits
+
+#(*fruit, fruit) is translated to ('apple', 'orange', 'mango', ('apple', 'orange', 'mango'))
+
 p =*v2,=*fruits, fruits
 v3=fruits, fruits
 print("P:",p)
@@ -88,36 +121,37 @@ def fun2(*args):
     print(type(args))
     # Convert args tuple to a list so we can modify it
     args = list(args)
-
     # Modifying args
     args[0] = 'Geeksforgeeks'
     args[1] = 'awesome'
-
 # UNPACKING args and calling fun1()
     fun1(*args)
 
 # Driver code
 fun2('Hello', 'beautiful', 'world!')
 
-
+print("\n############## Swaping in Python ###########")
 ##################
 # swap values
 ##################
 a=2
 b=3
 
+#swapping the a with b
 a,b =b, a
 
-print(a)
-print(b)
+print("A:",a)
+print("B:",b)
 
-#########
+################################################
 # use of _ in unpacking,  its similar to scala
-##########
+###############################################
 
+print("\n using _ in python similar to scala")
 test =(1,2000,3)
 _, x, _ =test
-print(x)
+print("x:",x)
+
 ##########################################
 # unpacking arbiltary number of tuples
 ###########################################
