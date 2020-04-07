@@ -74,6 +74,7 @@ def my_gen():
 
 print("___________________________________")
 genObj = my_gen()
+print(type(genObj))
 print(next(genObj))
 
 
