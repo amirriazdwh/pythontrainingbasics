@@ -159,6 +159,32 @@ record = ('Dave', 'dave@example.com', '773-555-1212', '847-555-1212')
 name, email, *phone_numbers = record
 print(phone_numbers)
 
+##############################
+#  some package practice
+###############################
+import heapq
+nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
+print(heapq.nlargest(3, nums)) # Prints [42, 37, 23]
+print(heapq.nsmallest(3, nums)) # Prints [-4, 1, 2]
+
+
+#from collections import deque
+#def search(lines, pattern, history=5):
+#    previous_lines = deque(maxlen=history)
+#    for line in lines:
+#        if pattern in line:
+#            yield line, previous_lines
+#        previous_lines.append(line)
+
+# Example use on a file
+#if __name__ == '__main__':
+#    with open('somefile.txt') as f:
+#        for line, prevlines in search(f, 'python', 5):
+#            for pline in prevlines:
+#                print(pline, end='')
+#        print(line, end='')
+#        print('-'*20)
+
 ##################################
 #  Working with dictionaries
 ###################################
@@ -167,6 +193,25 @@ row1= {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003}
 row2= {'fname': 'David', 'lname': 'Beazley', 'uid': 1002}
 row3 ={'fname': 'John', 'lname': 'Cleese', 'uid': 1001}
 row4 ={'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
+
+print("\n############## Get both iterator ############")
+for key, value in row1.items():
+    print(key, value)
+
+print("\n############## Get items ############")
+for item in row1.items():
+    print(item)
+    print(type(item))
+
+print("\n############## Get Key ############")
+for key in row1.keys():
+    print(key)
+
+print("\n############## Get both value ############")
+for value in row1.values():
+    print(value)
+
+
 
 def showRecord (**arg):
     # packs the argument passed into dictionary
@@ -192,10 +237,6 @@ def showRecord2 (fname, lname, uid):
 showRecord2(**row1)
 
 
-import heapq
-nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
-print(heapq.nlargest(3, nums)) # Prints [42, 37, 23]
-print(heapq.nsmallest(3, nums)) # Prints [-4, 1, 2]
 
 d = {
 'a' : [1, 2, 3],
@@ -217,23 +258,6 @@ rows= [
 from operator import itemgetter
 rows_by_fname = sorted(rows, key=itemgetter('fname'))
 rows_by_uid = sorted(rows, key=itemgetter('uid'))
-print(rows_by_fname)
-print(rows_by_uid)
+print("Row Sorted by First Name:\n",rows_by_fname)
+print("Row Sorted by uid:\n",rows_by_uid)
 
-
-#from collections import deque
-#def search(lines, pattern, history=5):
-#    previous_lines = deque(maxlen=history)
-#    for line in lines:
-#        if pattern in line:
-#            yield line, previous_lines
-#        previous_lines.append(line)
-
-# Example use on a file
-#if __name__ == '__main__':
-#    with open('somefile.txt') as f:
-#        for line, prevlines in search(f, 'python', 5):
-#            for pline in prevlines:
-#                print(pline, end='')
-#        print(line, end='')
-#        print('-'*20)
