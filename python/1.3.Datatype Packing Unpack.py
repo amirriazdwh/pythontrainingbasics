@@ -159,6 +159,38 @@ record = ('Dave', 'dave@example.com', '773-555-1212', '847-555-1212')
 name, email, *phone_numbers = record
 print(phone_numbers)
 
+##################################
+#  Working with dictionaries
+###################################
+
+row1= {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003}
+row2= {'fname': 'David', 'lname': 'Beazley', 'uid': 1002}
+row3 ={'fname': 'John', 'lname': 'Cleese', 'uid': 1001}
+row4 ={'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
+
+def showRecord (**arg):
+    # packs the argument passed into dictionary
+    print(type(arg))
+    # the arguments have been packed into a dictionary
+    print(arg)
+    print("First name:", arg['fname'])
+    print("Last name:", arg['lname'])
+    print("uid:", arg['uid'])
+    print("\n")
+
+
+showRecord(fname="amir", lname="Riaz", uid=1000)
+showRecord(**row1)
+
+print("\nUpacking rows contain dictionary")
+def showRecord2 (fname, lname, uid):
+    print("First name:", fname)
+    print("Last name:", lname)
+    print("uid:", uid)
+    print("\n")
+
+showRecord2(**row1)
+
 
 import heapq
 nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
