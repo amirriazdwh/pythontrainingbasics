@@ -211,8 +211,6 @@ print("\n############## Get both value ############")
 for value in row1.values():
     print(value)
 
-
-
 def showRecord (**arg):
     # packs the argument passed into dictionary
     print(type(arg))
@@ -260,4 +258,28 @@ rows_by_fname = sorted(rows, key=itemgetter('fname'))
 rows_by_uid = sorted(rows, key=itemgetter('uid'))
 print("Row Sorted by First Name:\n",rows_by_fname)
 print("Row Sorted by uid:\n",rows_by_uid)
+
+# in a function if an argument, *arg and **karg is define,  there must be a order
+
+def foo(requried, *args, **kwargs):
+    print(requried)
+    if args:
+        print(args)
+    if kwargs:
+        print(kwargs)
+
+# * and ** say,  0 or more than one arguments.
+foo("hello")
+foo("hello",1,2,3,4)
+foo("hello", 1,2,3,4, key1='values', key2=999)
+foo("hello", 1,2,3,4, key1='values', key2=999)
+
+# args and kargs are using to modify arguments and then call a new function.  here print(new_args) is called
+def foo1(x, *args, **kwargs):
+    kwargs['name']='Alice'
+    new_args = args+ ('Extra',)
+    print (new_args)
+
+foo1("hello", 1,2,3,4, key1='values', key2=999)
+
 

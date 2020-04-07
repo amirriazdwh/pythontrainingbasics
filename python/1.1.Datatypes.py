@@ -27,7 +27,8 @@ where x = i + n*k, n >= 0 and i <= x < j.
 set     defined as {}.  since sets are unorders they dont have an index. we use set() function to convert all sequence to set
 List    defined by [],  used List() for conversion to list all sequence.  List are order sequence , mutable and contain iterators, so they have index
 Tuple   defined by ()   used Tuple() for converstion,  Tuples are order sequence ,immutable and contains iterators. so they have index
-Dictionary   defined by {} with elements as key:value  used dict() for covnersion.
+Dictionary   defined by {} with items as key:value  used dict() for covnersion.
+                    note: that item inside {} are written as key:value or key=value but without {} its been represented as key=value
                     dic ={i:f"item{i}" for i in range(1,10)}.  with f you can using {}
                     Note:  a json file is a dictionary saved in a file
                     Note:  a dictionary is a ziping of two sequence stud by stud.  thats why zip function is using to

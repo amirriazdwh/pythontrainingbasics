@@ -12,7 +12,7 @@ here : links one construct with another. its connects function name with body
 a=(1,2,3,4)
 a=[1:2]   here : tell compile take index from 1 to 2 with step 1
 
-dic ={1:"one", 2:"two"}
+dic ={1:"one", 2:"two"}  dictionary items inside {} can be key:value or key=value but without {} items are represented by key=value
 here : associate key with value in dictionary
 ######################################################
 # difference between () and []
@@ -67,3 +67,16 @@ slice()
 name ="YouTube"
 name.
 """
+
+def apply_discount(product, discount):
+    price = int(product['price']* (1.0 - discount))
+    assert 0 <= price <= product['price'], " The Given Discount is invalid ..."
+    return price
+
+shoe ={'name' :'Fancy Shoes', 'price':14900}
+print("Price as discount is: %i" %apply_discount(shoe, 0.25))
+
+# assert implement _DEBUG_ if -O option is not given in compiler.  the option is used for testing
+# and used for debugging
+# asset is used for debugging the programing.
+print("Price as discount is: %i" %apply_discount(shoe, 2.0))
