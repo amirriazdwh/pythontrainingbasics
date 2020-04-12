@@ -1,13 +1,13 @@
 # pip is buildin package manager for python.  it install packages which are not part of standard library
 """
 in python are variables are objects and can be deleted by del function
--------------------------
+-------------------------------------------------------------------------
 Numbers  types are Int, float, bool and complex
 int      defines integraters. its an object of type <class 'Int'> an integer has derived types String so integer can be converted to string
 float    defines  object of types <class 'float'>
 bool     a boolean data types contains three values,  None, True and False and its of type <class 'bool'>
 complex  number like 6+4j if of type <class 'complex'>
----------------------------
+---------------------------============================================
 character  define by a single character and convert from digit to characer by chr and from chr to digital by ord.  each character has
            an ordinal number associated with it.  to convert a ord to character use chr(num) and a character can be convert to ord by ord() func
            a sequence of characters list or tuples can be converted to string by "".join(sequence). we can represent string by ' or ".  we dont
