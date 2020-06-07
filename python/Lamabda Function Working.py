@@ -2,7 +2,7 @@ from functools import reduce
 
 # iterator and generators are two ways to get the objects
 
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11]
 
 # Use lambda function with `filter()`_ under score are throw away
 # variables
