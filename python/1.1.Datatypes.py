@@ -83,63 +83,6 @@ print(vChar)
 ############ charater to Asci and asci to charater ########
 print("convert Character to ord",ord('c'))
 print("convert ord to character ",chr(99))
-
-vSstr ='This is a static String'
-
-vdStry="this is a dynamic string"
-
-######### tuple ####
-vtuple = tuple(1,2)
-print(vtuple)
-# -1 reverses the tuple and gives output
-#print("the number is  ", xx[1::-1])
-
-print("------keys then value------")
-tupleNum = tuple((x for x in (('x', 'y', 'z'),(1, 2, 3))))
-print(tupleNum)
-
-flatuple = tuple(x for ele in tupleNum for x in ele )
-print(flatuple)
-print("---- create diction -----")
-tupleZipNum = tuple(zip(('x', 'y', 'z'), (1, 2, 3)))
-print(tupleZipNum)
-
-a=('x', 'y', 'z')
-b=(1, 2, 3)
-
-for i,x in enumerate((a,b)):
-    print(i,x)
-"""
-print('_____________________________________')
-dic = dict((i, x) for tupEle in (xx,yy) for (i, x) in enumerate(tupEle))
-print(dic)
-print('_____________________________________')
-
-"""
-
-
-#def solve(lis, n):
-#    it = iter(lis)
-#    return [list(islice(it, n)) for _ in range(len(lis)/n)]
-
-#solve(range(1,9),4)
-
-###################################################
-
-# keyword argument is not passed
-numbers1 = dict([('x', 5), ('y', -5)])
-print('numbers1 =',numbers1)
-
-# keyword argument is also passed
-numbers2 = dict([('x', 5), ('y', -5)], z=8)
-print('numbers2 =',numbers2)
-
-# zip() creates an iterable in Python 3
-number0=zip(['x', 'y', 'z'], [1, 2, 3])
-print(number0)
-numbers3 = dict(zip(['x', 'y', 'z'], [1, 2, 3]))
-print('numbers3 =',numbers3)
-#####################################################
 print(chr(97))
 print(chr(65))
 print(chr(1200))
@@ -193,12 +136,67 @@ print('The encoded version (with ignore) is:', string.encode("ascii", "ignore"))
 
 # replace error
 print('The encoded version (with replace) is:', string.encode("ascii", "replace"))
-#####################################################
-
-#import json
-#txt = b'{"test":"\u0022"}'
-#json.loads(txt.decode())
 
 
+######### tuple ####
+
+# -1 reverses the tuple and gives output
+#print("the number is  ", xx[1::-1])
+
+print("------keys then value------")
+tupleNum = tuple((x for x in (('x', 'y', 'z'),(1, 2, 3))))
+print(tupleNum)
+
+# first tuple added to tuple and then second tuple added
+
+print("------create flat tuple------")
+
+flatuple = tuple(x for ele in tupleNum for x in ele )
+print(flatuple)
+
+# a for loop need a sequence to run. left loop creates a sequence being used by the second loop
+
+print("---- create diction -----")
+tupleZipNum = tuple(zip(('x', 'y', 'z'), (1, 2, 3)))
+print(tupleZipNum)
+
+###########################
+print("---- create enumeration -----")
+
+a=('x', 'y', 'z')
+b=(1, 2, 3)
+
+for i,x in enumerate((a,b)):
+    print(i,x)
+"""
+print('_____________________________________')
+dic = dict((i, x) for tupEle in (xx,yy) for (i, x) in enumerate(tupEle))
+print(dic)
+print('_____________________________________')
+
+"""
 
 
+#def solve(lis, n):
+#    it = iter(lis)
+#    return [list(islice(it, n)) for _ in range(len(lis)/n)]
+
+#solve(range(1,9),4)
+
+##############################################
+# list to dict conversion
+###############################################
+numbers1 = dict([('x', 5), ('y', -5)])
+print('numbers1 =',numbers1)
+
+# keyword argument is also passed a tuple is part of dictionary which can be represented as z=9
+numbers2 = dict([('x', 5), ('y', -5)], z=8)
+print('numbers2 =',numbers2)
+
+###############################################
+# zip() the list creates an iterable in Python 3
+################################################
+number0=zip(['x', 'y', 'z'], [1, 2, 3])
+print(number0)
+numbers3 = dict(zip(['x', 'y', 'z'], [1, 2, 3]))
+print('numbers3 =',numbers3)
