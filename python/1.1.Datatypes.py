@@ -55,14 +55,18 @@ There are three standard sequence operations (+, *, []) ==, >,< >= , <=
  that can be performed with tuples as well as lists and strings.
 ------------------------------------------------------------------------------------------------------------------------------
 """
+########### complex data types ####
 compNum = 6+4j   # instead of i j is being used in python
+print(compNum)
 
+
+############# boolean ########
 vTrue =True
 vTnum = int(vTrue) # gives 1
 vTrue =False
-vTnum =int(vTrue) # gives 0
+vTnum =int(vTrue) # gives 0   false if null or empty
 
-print(compNum)
+############# Integer ########
 vChar ="23"  # define string
 # convert Str to integer
 vInt = int(vChar)
@@ -75,9 +79,14 @@ print(vInt)
 # convert Integer to String.  since string is basic datatypes and integer is derived from it. string can be convert to int
 vChar = str(vInt)
 print(vChar)
+
+############ charater to Asci and asci to charater ########
 print("convert Character to ord",ord('c'))
 print("convert ord to character ",chr(99))
 
+vSstr ='This is a static String'
+
+vdStry="this is a dynamic string"
 
 
 # -1 reverses the tuple and gives output
