@@ -88,7 +88,9 @@ vSstr ='This is a static String'
 
 vdStry="this is a dynamic string"
 
-
+######### tuple ####
+vtuple = tuple(1,2)
+print(vtuple)
 # -1 reverses the tuple and gives output
 #print("the number is  ", xx[1::-1])
 
