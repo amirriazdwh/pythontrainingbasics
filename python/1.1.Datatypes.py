@@ -101,6 +101,11 @@ print(arr)
 
 string.encode(encoding='UTF-8',errors='strict')
 print(string)
+
+':'.join(['toto','12','pswd'])
+
+"words with spaces".split()
+
 #####################################################
 size = 5
 arr = bytes(size)
