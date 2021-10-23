@@ -10,3 +10,4 @@ f = csv.writer(open('file.csv', 'wb+'))
 for item in data:
     values = [ x.encode('utf8') for x in item['fields'].values() ]
     f.writerow([item['pk'], item['model']] + values)
+

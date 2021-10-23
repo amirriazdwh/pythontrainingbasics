@@ -168,3 +168,6 @@ d = collections.OrderedDict()
 for k, v in d.items():
     print(k, v)
 
+#############################
+#   Map is not a datatype in python. It applies a function to a series of values and returns the result.
+#############################

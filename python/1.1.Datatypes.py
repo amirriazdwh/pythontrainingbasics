@@ -15,7 +15,7 @@ character  define by a single character and convert from digit to characer by ch
 String  defined by "" or ''  the char is defined by ''.  Multi-line strings can be denoted using triple quotes, a
         string is a sequence so they can be accessed by index.  a string is basic data types of integer so string can be converted to int
         using int.  a string can be converted to list and tuples by list() and tuples()
---------------------------------------------------------------
+----------------------------------------------------------------------
 - list , tuples, string, set and range are sequence.
 
 Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression,

@@ -1,4 +1,4 @@
-import os
+szimport os
 
 # you can give the file path with \\ or with \, python will automatically convert it to
 # \\
