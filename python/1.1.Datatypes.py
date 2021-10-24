@@ -1,5 +1,8 @@
 """
 in python are variables are objects and can be deleted by del function
+
+collections are abstract class of  sequences which contains  __getitem__, __len__ methods for iteration.  sequences are further divided into ordered and unordered
+sequences
 -------------------------------------------------------------------------
 1.  Numbers  types are Int, float, bool and complex
 -------------------------------------------------------------------------
@@ -41,34 +44,46 @@ where x = i + n*k, n >= 0 and i <= x < j.
 -------------------------------------------------------------
 A set object is an unordered collection of distinct hashable objects. Common uses include membership testing, removing duplicates from a sequence,
 and computing mathematical operations such as intersection, union, difference, and symmetric difference. (For other containers see the built in dict, list,
-and tuple classes, and the collections module.)
-
+and tuple classes, and the collections module.).   sets are immutable and have a iterator for iteration.
 set     defined as {}.  since sets are unorders they dont have an index. we use set() function to convert all sequence to set
+
 Dictionary   defined by {} with items as key:value  used dict() for covnersion.
-                    note: that item inside {} are written as key:value or key=value but without {} its been represented as key=value
-                    dic ={i:f"item{i}" for i in range(1,10)}.  with f you can using {}
-                    Note:  a json file is a dictionary saved in a file
-                    Note:  a dictionary is a ziping of two sequence stud by stud.  thats why zip function is using to
-                    create a dictionary from two sequences. just like a zip can be unzipped.  we can use unzip funtion to
-                    get key and values in two difference sequences.  keys are unique and immutable in dictionary
+These represent finite sets of objects indexed by nearly arbitrary values. The only types of values not acceptable as keys are values containing lists
+or dictionaries or other mutable types that are compared by value rather than by object identity, the reason being that the efficient implementation of
+ dictionaries requires a key’s hash value to remain constant. Numeric types used for keys obey the normal rules for numeric comparison: if two numbers
+  compare equal (e.g., 1 and 1.0) then they can be used interchangeably to index the same dictionary entry.
+
+note: that item inside {} are written as key:value or key=value but without {} its been represented as key=value
+dic ={i:f"item{i}" for i in range(1,10)}.  with f you can using {}
+Note:  a json file is a dictionary saved in a file
+Note:  a dictionary is a ziping of two sequence stud by stud.  thats why zip function is using to
+create a dictionary from two sequences. just like a zip can be unzipped.  we can use unzip funtion to
+get key and values in two difference sequences.  keys are unique and immutable in dictionary
+------------------------------------------------------------------------------------------------------------------------------------
 None    is an object defined to represent null values.   its type is <class 'NoneType'>.  when a variable is
          not assigned any value its None.  in if expresion is evaluated as  if varis is None:  print("None")
+------------------------------------------------------------------------------------------------------------------------------------
 range    is data type with iterator its called generator its type is <class 'range'>
 ###########################################################################
 in python string, list and tuples are order sequences so they can be type casted
 in python set are unorder seqeuence. list, tuples, string, range are order sequence
-since both order sequence and unorder sequence are derived for sequence therefore a set con be converts to list, tuple or stirng
+since both order sequence and unorder sequence are derived for sequence therefore a set can be converts to list, tuple or stirng
 ###########################################################################
 in dictionary key must be unique.  while values can be repeated.  thats why its being represent by {} since in sets the
 values are not repeated. in same way in diction the keys are not repeated.  dictionary was created since it was not possible to
 access an individual element in a set without scanning the whole set.
 to get the keys we use.  d.keys and for values d.values and to get both keys and values as tuple we use d.items
 --------------------------------------------------------------------
+--  list,  tuples, string iterators, set  are represented by *  while dictionary iterators are represented by **
+--------------------------------------------------------------------
 class dict(**kwarg)
 class dict(mapping, **kwarg)
 class dict(iterable, **kwarg)
 
-There are three standard sequence operations (+, *, []) ==, >,< >= , <=
+-------------------------------
+--  standard operation allowed on sequences.
+----------------------------------------------
+There are three standard arithmatic operation sequence operations   (  +   ,  *   , [  ]  )     while comparison operations are :  ==, >,< >= , <=
  that can be performed with tuples as well as lists and strings.
 ------------------------------------------------------------------------------------------------------------------------------
 """
