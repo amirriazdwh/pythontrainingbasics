@@ -8,18 +8,23 @@ float           defines  object of types <class 'float'>
 bool           a boolean data types contains three values,  None, True and False and its of type <class 'bool'>
 complex     number like 6+4j if of type <class 'complex'>
 -------------------------------------------------------------------------
-2.  String types are character and string
+2.  String types are string
 -------------------------------------------------------------------------
 character  define by a single character and convert from digit to characer by chr and from chr to digital by ord.  each character has
 an ordinal number associated with it.  to convert a ord to character use chr(num) and a character can be convert to ord by ord() func
 a sequence of characters list or tuples can be converted to string by "".join(sequence). we can represent string by ' or ".  we dont
-have chr in python,  we have string.  character is of type String of class <class String>
+have chr  datatype in python,  we have string.  character is of type String of class <class String>
+
 String  defined by "" or ''  the char is defined by ''.  Multi-line strings can be denoted using triple quotes, a
 string is a sequence so they can be accessed by index.  a string is basic data types of integer so string can be converted to int
 using int.  a string can be converted to list and tuples by list() and tuples()
 --------------------------------------------------------------------------
 - list , tuples, string, set and range are sequence.
 --------------------------------------------------------------------------
+In Python programming, sequences are a generic term for an ordered set which means that the order in which we input the items
+ will be the same when we access them. Python supports six different types of sequences. These are strings, lists, tuples, byte sequences
+ , byte arrays, and range objects. We will discuss each of them.
+
 Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression,
 a slice is a sequence of the same type. This implies that the index set is renumbered so that it starts at 0.
 

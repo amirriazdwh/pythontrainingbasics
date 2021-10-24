@@ -1,6 +1,3 @@
-
-
-
 """
 # what is :
 : is the language construct which connects one language element with another. for example : connect function definition with body.

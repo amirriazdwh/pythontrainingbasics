@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# pip is buildin package manager for python.  it install packages which are not part of standard library
 
 """
 Stanford CS106A Command Line Example
