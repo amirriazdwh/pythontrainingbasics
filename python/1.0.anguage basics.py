@@ -76,4 +76,12 @@ print("Price as discount is: %i" %apply_discount(shoe, 0.25))
 # assert implement _DEBUG_ if -O option is not given in compiler.  the option is used for testing
 # and used for debugging
 # asset is used for debugging the programing.
-print("Price as discount is: %i" %apply_discount(shoe, 2.0))
+#print("Price as discount is: %i" %apply_discount(shoe, 2.0))
+
+a = [1,2,3,4,5,6,7,8]
+
+y =   tuple(x*x  for x in a)
+print(y)
+
+y= list(x*x  for x in a)
+print (y)

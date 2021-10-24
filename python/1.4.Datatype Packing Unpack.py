@@ -13,6 +13,9 @@ from iter function.   _init_ is called when object is being created.
      being created by zip function with two sequences lets say s1 and s2.  so dic =zip(s1,s2).  zip function stitch sequence by index
      means {s1[1]:s2[1], s1[2]:s2[2]}
 4.  a statement *arg, =1,2,3  is called packing and a statement a,b,c,d =arg
+
+5.  * a means  (x for x in a)   where  x for x in  is represented by *
+        this means   def  sum( * arg):     once
 """
 ################################
 # Examples
@@ -44,14 +47,14 @@ print("P7:",p7)
 # *arg is used to pack a sequence of elements.
 print("\n Packing values in a function")
 
-v_list =[1,2,3,4,5]
-
+#v_list =[1,2,3,4,5]  #works output tuple
+#v_list ={1,2,3,4,5}   # works output tuple
+v_list =(1,2,3,4,5)
 print("\nPacking elements:")
 
-# there is only one parameter, note in a function,  the arguments are passed by position , so if the defination is
-#  def mySum(args):  we can only pass one parameter.  which can be either one variable or one sequence
-#  in order to pass multiple parameter we have to pack those element using iterator and get a tuple
-#  that is mySum(1,2,3,4) will be like  *args, =(1,2,3,4)
+#  *args  means  (x for x in args)  where args =(1,2,3,4,5)  this creates a generator
+#  once in function  mySum(*args)   (*args)  due to bracket create converts generator into tuple  due to tuple class constructor  tuple(**args)
+#  so  when mySum(1,2,3,4,5) is called.   it become *(1,2,3,4,5)  which create a generator and due to (*(1,2,3,4,5)  a tuple is created which is passed to function
 
 def mySum(*args):
     print(type(args))
@@ -62,11 +65,13 @@ def mySum(*args):
     return sum
 
 # Driver code
+# this is equivalent to  v_list = (*(1,2,3,4,5))  which become v_list=(1,2,3,4,5)
 print("Sum 1 to 5:",mySum(1, 2, 3, 4, 5))
 print("sum 10 and 20:",mySum(10, 20))
 
-#here *v_list will unpack and create elements 1,2,3,4, 5 which is being packed again by argument
-# here iterator *v_list is producing values so its unpacking the list
+print ("---take packed sequence ,  pass it unpacked and pack again during call----")
+#  this is equivalent to  v_list=(*(*(1,2,3,4,,5))).   become v_list =(*(1,2,3,4,5)).   v_list=(1,2,3,4,5)
+#
 print("sum a tuple passed unpack:",mySum(*v_list))
 
 def dummy(*args):
@@ -88,7 +93,7 @@ my_list = "1234"
 def fun(a, b, c, d):
     print(a, b, c, d)
 
-# here *my_list will unpack [1,2,3,4] to 1,2,3,4  since *arg is always a tuple therefore 1,2,3,4 will beocme (1,2,3,4)
+# this is equivalent to  a,b,c,d =(*(1,2,3,4))  which gives  a,b,c,d =(1,2,3,4)  means a =1, b=2, c=3 and d=4
 fun(*my_list)
 
 print("############ Testing #############")
@@ -98,14 +103,14 @@ fruits =("apple","orange","mango")
 # (*fruit, fruit) is a tuple first since value is being assigned it will unpack and give elements for first argument
 v0=*fruits, fruits
 
-#(*fruit, fruit) is translated to ('apple', 'orange', 'mango', ('apple', 'orange', 'mango'))
+#(*fruit, fruit) is translated to ('apple', 'orange', 'mango', ('apple', 'orange', 'mango')) by same logic as described above
 
+print("##############################")
 p =*v2,=*fruits, fruits
 v3=fruits, fruits
 print("P:",p)
 print("v0:",v0)
 print("v2:",v2)
-
 print("v3:",v3)
 print("(*v3,):",*v3,)
 

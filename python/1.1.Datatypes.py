@@ -90,32 +90,32 @@ There are three standard arithmatic operation sequence operations   (  +   ,  * 
 ------------------------------------------------------------------------------------------------------------------------------
 """
 ########### complex data types ####
-compNum = 6+4j   # instead of i j is being used in python
+compNum = 6 + 4j  # instead of i j is being used in python
 print(compNum)
 
 ############# boolean ########
-vTrue =True
-vTnum = int(vTrue) # gives 1
-vTrue =False
-vTnum =int(vTrue) # gives 0   false if null or empty
+vTrue = True
+vTnum = int(vTrue)  # gives 1
+vTrue = False
+vTnum = int(vTrue)  # gives 0   false if null or empty
 
 ############# Integer ########
-vChar ="23"  # define string
+vChar = "23"  # define string
 # convert Str to integer
 vInt = int(vChar)
 print(vInt)
 
-# del will remove the memory allocation of vInt and therefore it will not be accessable in str(vInt).
-#del vInt
-#print(vInt)
+# del will remove the memory allocation of vInt and therefore it will not be accessable in str(vInt).  all variables in python are objects therefore can be deleted by del
+# del vInt
+# print(vInt)
 
 # convert Integer to String.  since string is basic datatypes and integer is derived from it. string can be convert to int
 vChar = str(vInt)
 print(vChar)
 
 ############ charater to Asci and asci to charater ########
-print("convert Character to ord",ord('c'))
-print("convert ord to character ",chr(99))
+print("convert Character to ord", ord('c'))
+print("convert ord to character ", chr(99))
 print(chr(97))
 print(chr(65))
 print(chr(1200))
@@ -124,7 +124,7 @@ print(chr(1200))
 print(ord('A'))
 
 #####################################################
-#bytes([source[, encoding[, errors]]])
+# bytes([source[, encoding[, errors]]])
 #####################################################
 string = "Python is interesting."
 
@@ -132,10 +132,10 @@ string = "Python is interesting."
 arr = bytes(string, 'utf-8')
 print(arr)
 
-string.encode(encoding='UTF-8',errors='strict')
+string.encode(encoding='UTF-8', errors='strict')
 print(string)
 
-':'.join(['toto','12','pswd'])
+':'.join(['toto', '12', 'pswd'])
 
 "words with spaces".split()
 
@@ -175,21 +175,20 @@ print('The encoded version (with ignore) is:', string.encode("ascii", "ignore"))
 # replace error
 print('The encoded version (with replace) is:', string.encode("ascii", "replace"))
 
-
 ######### tuple ####
 
 # -1 reverses the tuple and gives output
-#print("the number is  ", xx[1::-1])
+# print("the number is  ", xx[1::-1])
 
 print("------keys then value------")
-tupleNum = tuple((x for x in (('x', 'y', 'z'),(1, 2, 3))))
+tupleNum = tuple((x for x in (('x', 'y', 'z'), (1, 2, 3))))
 print(tupleNum)
 
 # first tuple added to tuple and then second tuple added
 
 print("------create flat tuple------")
 
-flatuple = tuple(x for ele in tupleNum for x in ele )
+flatuple = tuple(x for ele in tupleNum for x in ele)
 print(flatuple)
 
 # a for loop need a sequence to run. left loop creates a sequence being used by the second loop
@@ -201,11 +200,11 @@ print(tupleZipNum)
 ###########################
 print("---- create enumeration -----")
 
-a=('x', 'y', 'z')
-b=(1, 2, 3)
+a = ('x', 'y', 'z')
+b = (1, 2, 3)
 
-for i,x in enumerate((a,b)):
-    print(i,x)
+for i, x in enumerate((a, b)):
+    print(i, x)
 """
 print('_____________________________________')
 dic = dict((i, x) for tupEle in (xx,yy) for (i, x) in enumerate(tupEle))
@@ -214,27 +213,26 @@ print('_____________________________________')
 
 """
 
-
-#def solve(lis, n):
+# def solve(lis, n):
 #    it = iter(lis)
 #    return [list(islice(it, n)) for _ in range(len(lis)/n)]
 
-#solve(range(1,9),4)
+# solve(range(1,9),4)
 
 ##############################################
 # list to dict conversion
 ###############################################
 numbers1 = dict([('x', 5), ('y', -5)])
-print('numbers1 =',numbers1)
+print('numbers1 =', numbers1)
 
 # keyword argument is also passed a tuple is part of dictionary which can be represented as z=9
 numbers2 = dict([('x', 5), ('y', -5)], z=8)
-print('numbers2 =',numbers2)
+print('numbers2 =', numbers2)
 
 ###############################################
 # zip() the list creates an iterable in Python 3
 ################################################
-number0=zip(['x', 'y', 'z'], [1, 2, 3])
+number0 = zip(['x', 'y', 'z'], [1, 2, 3])
 print(number0)
 numbers3 = dict(zip(['x', 'y', 'z'], [1, 2, 3]))
-print('numbers3 =',numbers3)
+print('numbers3 =', numbers3)
