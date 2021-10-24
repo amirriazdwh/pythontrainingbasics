@@ -3,27 +3,32 @@ in python are variables are objects and can be deleted by del function
 -------------------------------------------------------------------------
 1.  Numbers  types are Int, float, bool and complex
 -------------------------------------------------------------------------
-int              defines integraters. its an object of type <class 'Int'> an integer has derived types String so integer can be converted to string
+int              defines integer. its an object of type <class 'Int'> an integer has derived types String so integer can be converted to string
 float           defines  object of types <class 'float'>
 bool           a boolean data types contains three values,  None, True and False and its of type <class 'bool'>
 complex     number like 6+4j if of type <class 'complex'>
 -------------------------------------------------------------------------
 2.  String types are string
 -------------------------------------------------------------------------
-character  define by a single character and convert from digit to characer by chr and from chr to digital by ord.  each character has
+character  define by a single character and convert from digit to character by chr  function and from chr to ASCI digital by ord.  each character has
 an ordinal number associated with it.  to convert a ord to character use chr(num) and a character can be convert to ord by ord() func
 a sequence of characters list or tuples can be converted to string by "".join(sequence). we can represent string by ' or ".  we dont
 have chr  datatype in python,  we have string.  character is of type String of class <class String>
 
-String  defined by "" or ''  the char is defined by ''.  Multi-line strings can be denoted using triple quotes, a
+String  defined by ""  double qoutte or ''  single quote.  The char is defined by ''. single or ""  double quote.  Multi-line strings can be denoted using triple quotes, a
 string is a sequence so they can be accessed by index.  a string is basic data types of integer so string can be converted to int
-using int.  a string can be converted to list and tuples by list() and tuples()
+using int. function.  a string can be converted to list and tuples by list() and tuples()
 --------------------------------------------------------------------------
-- list , tuples, string, set and range are sequence.
+-There are seven sequence types: strings, Unicode strings, lists, tuples, bytearrays, buffers, and xrange objects.  sequences also called ordered collection
 --------------------------------------------------------------------------
 In Python programming, sequences are a generic term for an ordered set which means that the order in which we input the items
  will be the same when we access them. Python supports six different types of sequences. These are strings, lists, tuples, byte sequences
- , byte arrays, and range objects. We will discuss each of them.
+ , byte arrays, and range objects.
+
+ () tuple is immutable.   so it can be used in place where variable should not change like  function parameters.   tuples..
+ tuple are order sequence, immutable and since they are a sequence they contain an iterator
+ List    defined by [],  used List() for conversion to list all sequence.  List are order sequence , mutable and contain iterators, so they have index
+
 
 Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression,
 a slice is a sequence of the same type. This implies that the index set is renumbered so that it starts at 0.
@@ -32,8 +37,6 @@ Some sequences also support “extended slicing” with a third “step” param
 where x = i + n*k, n >= 0 and i <= x < j.
 -------------------------------------------------------------
 set     defined as {}.  since sets are unorders they dont have an index. we use set() function to convert all sequence to set
-List    defined by [],  used List() for conversion to list all sequence.  List are order sequence , mutable and contain iterators, so they have index
-Tuple   defined by ()   used Tuple() for converstion,  Tuples are order sequence ,immutable and contains iterators. so they have index
 Dictionary   defined by {} with items as key:value  used dict() for covnersion.
                     note: that item inside {} are written as key:value or key=value but without {} its been represented as key=value
                     dic ={i:f"item{i}" for i in range(1,10)}.  with f you can using {}

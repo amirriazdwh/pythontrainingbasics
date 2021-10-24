@@ -267,7 +267,7 @@ def multi_yield():
 multi_obj = multi_yield()
 print(next(multi_obj))
 print(next(multi_obj))
-print(next(multi_obj))
+#print(next(multi_obj))
 
 
 
@@ -287,3 +287,25 @@ print(list(enumerate(l1)))
 
 # changing start index to 2 from 0
 print(list(enumerate(s1, 2)))
+
+##########################################
+sample_list = [1, 2, 3, 4]
+generator = (i for i in sample_list)
+tuple_ = (1, 2, 3, 4)
+
+print( type(generator))
+#<type 'generator'>
+
+print (type(tuple_))
+#<type 'tuple'>
+
+"""
+A generator is a special kind of iterator, which stores the instructions for how to generate each of its members, in order, along with its current state of iterations. 
+It generates each member, one at a time, only as it is requested via iteration.
+
+You can imagine tuples as being created when you hardcode the values, while generators are created where you provide a way to create the objects.
+This works since there is no way (1,2,3,4) could be a generator. There is nothing to generate there, you just specified all the elements, not a rule to obtain them.
+In order for your generator to be a tuple, the expression (i for i in sample_list) would have to be a tuple comprehension. There is no way to have tuple comprehensions,
+ since comprehensions require a mutable data type.
+Thus, the syntax for what should have been a tuple comprehension has been reused for generators.
+"""
