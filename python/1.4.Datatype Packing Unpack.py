@@ -78,7 +78,10 @@ print("This will add lists to tuple in args:",dummy(v_list, v_list))
 print("This will add list to tuple and unpack elements to args:",dummy(v_list, *v_list))
 
 print("\nUnpacking example")
-my_list = [1, 2, 3, 4]
+#my_list = [1, 2, 3, 4]   #works
+#my_list = (1, 2, 3, 4)    #works
+my_list = {1, 2, 3, 4}     #works
+
 
 def fun(a, b, c, d):
     print(a, b, c, d)

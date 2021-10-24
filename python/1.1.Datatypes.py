@@ -19,7 +19,7 @@ String  defined by ""  double qoutte or ''  single quote.  The char is defined b
 string is a sequence so they can be accessed by index.  a string is basic data types of integer so string can be converted to int
 using int. function.  a string can be converted to list and tuples by list() and tuples()
 --------------------------------------------------------------------------
--There are seven sequence types: strings, Unicode strings, lists, tuples, bytearrays, buffers, and xrange objects.  sequences also called ordered collection
+3.  There are seven sequence types: strings, Unicode strings, lists, tuples, bytearrays, buffers, and xrange objects.  sequences also called ordered collection
 --------------------------------------------------------------------------
 In Python programming, sequences are a generic term for an ordered set which means that the order in which we input the items
  will be the same when we access them. Python supports six different types of sequences. These are strings, lists, tuples, byte sequences
@@ -29,6 +29,7 @@ In Python programming, sequences are a generic term for an ordered set which mea
  tuple are order sequence, immutable and since they are a sequence they contain an iterator
  List    defined by [],  used List() for conversion to list all sequence.  List are order sequence , mutable and contain iterators, so they have index
 
+all sequence create iterator if the values are hardcoded.   however,  once these values pass through some rules a generator is  created.
 
 Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression,
 a slice is a sequence of the same type. This implies that the index set is renumbered so that it starts at 0.
@@ -36,6 +37,12 @@ a slice is a sequence of the same type. This implies that the index set is renum
 Some sequences also support “extended slicing” with a third “step” parameter: a[i:j:k] selects all items of a with index x
 where x = i + n*k, n >= 0 and i <= x < j.
 -------------------------------------------------------------
+-   4.   Set and Dictionary  are unordered collection
+-------------------------------------------------------------
+A set object is an unordered collection of distinct hashable objects. Common uses include membership testing, removing duplicates from a sequence,
+and computing mathematical operations such as intersection, union, difference, and symmetric difference. (For other containers see the built in dict, list,
+and tuple classes, and the collections module.)
+
 set     defined as {}.  since sets are unorders they dont have an index. we use set() function to convert all sequence to set
 Dictionary   defined by {} with items as key:value  used dict() for covnersion.
                     note: that item inside {} are written as key:value or key=value but without {} its been represented as key=value
