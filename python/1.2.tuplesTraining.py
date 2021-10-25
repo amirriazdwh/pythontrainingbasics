@@ -1,20 +1,22 @@
-############################
-# Tuples are immutable
-############################
-# x,y =(2,3) unpacking a tuple.  dictionary return tuples
-# a tuple is immutable while list is mutable
-#all sequence in python are inter-changable, sequence are list, tuple, xrange,string
-# all sequences have iterators through which they can be iterated
-## * and ** function argument unpacking.  * will unpack sequence and ** will unpack dictionary by same key names
-# if * is on variable side,  it will pack sequence list, string for example def foo(*ll) will pack foo(1,2,3,4)
-# if * is on argument side it will unpack for example def foo(x, y, z)  ll=(1,2,3)  foo(*ll)
-#There are three standard sequence operations (+, *, []) ==, >,< >= , <=
-# that can be performed with tuples as well as lists and
-# a list has a key and values you can get the key values pairs by list.items
-# * in function, or in tuple will unpack any struct of types seq that is list or tuple
-# in python list and tuples are type of sequence and can be unpacked in a similar way
-# strings.
-from itertools import islice
+
+"""
+-------------------------------------------
+ Tuples are immutable
+------------------------------------------
+x,y =(2,3) unpacking a tuple.  dictionary return tuples
+ a tuple is immutable while list is mutable
+all sequence in python are inter-changable, sequence are list, tuple, xrange,string
+ all sequences have iterators through which they can be iterated
+ * and ** function argument unpacking.  * will unpack sequence and ** will unpack dictionary by same key names
+if * is on variable side,  it will pack sequence list, string for example def foo(*ll) will pack foo(1,2,3,4)
+ if * is on argument side it will unpack for example def foo(x, y, z)  ll=(1,2,3)  foo(*ll)
+There are three standard sequence operations (+, *, []) ==, >,< >= , <=
+ that can be performed with tuples as well as lists and
+ a list has a key and values you can get the key values pairs by list.items
+* in function, or in tuple will unpack any struct of types seq that is list or tuple
+ in python list and tuples are type of sequence and can be unpacked in a similar way
+
+"""
 
 # define any empty tuple
 tup =()
@@ -44,7 +46,9 @@ tt = tuple(str1)
 print(tt)
 
 print("**** tuple to string *****")
+#--------------------------------
 #tupel to string
+#---------------------------------
 print(tt)
 str01=''.join(tt)
 str01=str().join(tt)
