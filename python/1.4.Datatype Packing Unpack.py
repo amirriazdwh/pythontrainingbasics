@@ -1,21 +1,27 @@
-# theory
 """
+--------------------------------------------------
 1. Packing and Unpacking
+--------------------------------------------------
 packing means create an object from multiple objects.  from many attributes one object is created.  this is being handled by
  creation of one new object.  By composing mutliple object into one.
 Unpacking means create multiple objects from one object.
 
+--------------------------------------------------------------------------------------------
 2. a object contains method _new_ , _iter_ _init_  these methods are called from inside the functions,  for example _iter_ is called
 from iter function.   _init_ is called when object is being created.
-
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 3.  *arg means,  the object has a single iterator so it can be a list, tuple, array or set.   **karg means the object has two iterators
      so it is a dictionary.  please note that arg and karg are iternator so they can be used in streaming and in for loop.  a dictionary is
      being created by zip function with two sequences lets say s1 and s2.  so dic =zip(s1,s2).  zip function stitch sequence by index
      means {s1[1]:s2[1], s1[2]:s2[2]}
-4.  a statement *arg, =1,2,3  is called packing and a statement a,b,c,d =arg
+----------------------------------------------------------------------------------------------
+4.  a statement *arg, =1,2,3  is called packing and a statement a,b,c,d =arg is called unpacking.  object inside arg is being unpacked by *
 
+--------------------------------------------------------------------------------------------
 5.  * a means  (x for x in a)   where  x for x in  is represented by *
         this means   def  sum( * arg):     once
+--------------------------------------------------------------------------------------------
 """
 ################################
 # Examples
@@ -39,6 +45,9 @@ p4 = ("apple","mango","orange", "banana", "fig")
 # if *arg, is assigned a tuple and its a part of tuple, it will unpack the element of tuples by iterator and then pack elements using
 # iterator of arg.  *arg is used to pack unlimited element at function level. when *arg is function parameter
 # here unpacking is happening but pack is happening for p6.
+
+print("This will only pack p6")
+
 p5,*p6,p7 =p4
 print("P5:",p5)
 print("P6:",p6)
@@ -105,7 +114,17 @@ v0=*fruits, fruits
 
 #(*fruit, fruit) is translated to ('apple', 'orange', 'mango', ('apple', 'orange', 'mango')) by same logic as described above
 
-print("##############################")
+print("############### Testing Fruit Tuples ###############")
+
+# *v2 = (*("apple","orange","mango"), ("apple","orange","mango"))
+#  *v2 = ("apple","orange","mango", ("apple","orange","mango"))
+
+fr = ("apple","orange","mango", ("apple","orange","mango"))
+fru =tuple(x for x in fr)
+
+print("gives the same output as *v2")
+print(fru)
+
 p =*v2,=*fruits, fruits
 v3=fruits, fruits
 print("P:",p)
