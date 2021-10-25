@@ -6,4 +6,20 @@ Double Trailing Underscore __var__: Indicates special methods defined by Python 
 Underscore _: Used as a name for temporary variables.
 Python Features
 
+_ is a somewhat special variable name. In the shell, it contains the value of the previously evaluated expression:
+
+>>> 1+2
+3
+>>> _+4
+7
+
 """
+
+x =(11,12,1,3)
+_, _, _, c =x
+(*b, _)=x
+print(b, c )
+
+# a loop require iterator or generator after in clause
+for _ in range(len(x)):
+    print("looping")
