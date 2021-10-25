@@ -82,6 +82,8 @@ class dict(**kwarg)
 class dict(mapping, **kwarg)
 class dict(iterable, **kwarg)
 
+*list   means   tuple(x for x in list)
+**dic   menas   dict(k,x for k,x in dic)
 -------------------------------
 -- 9.   standard operation allowed on sequences.
 ----------------------------------------------
