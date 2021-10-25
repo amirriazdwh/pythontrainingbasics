@@ -22,6 +22,9 @@ from iter function.   _init_ is called when object is being created.
 5.  * a means  (x for x in a)   where  x for x in  is represented by *
         this means   def  sum( * arg):     once
 --------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+6.    _  means aynamous variable.   so (_, y)=(1,2)  where y=2
+---------------------------------------------------------------------------------------------
 """
 ################################
 # Examples
@@ -31,11 +34,11 @@ from iter function.   _init_ is called when object is being created.
 # packing object of string to tuple and assigning it to pack
 p0 = ("apple","mango","orange")
 
-# unpacking here objects of pack are assigned to p1,p2,p3 by position
+# unpacking here objects of pack are assigned to p1,p2,p3 by position  in reality its like  p1, p2, p3=*p0  so iterator spreads the values
 p1,p2,p3 =p0
 
 # note a sequence is an iterator,  therefore (),[] and {} are all have iterators
-# we can embed another iterators inside these iterator.  by *arg,  here outer iterator come for sequence and
+# we can embed another iterators inside these iterator.  by *arg,  here inner iterator comes from sequence and outer one creates a generator
 # inner iterator comes from *arg. if a *arg iterator receive elements,  it perform packing,  it *arg gives values it unpack
 
 # this is packing,  the object tuple packs object of type string to p4
@@ -119,6 +122,7 @@ print("############### Testing Fruit Tuples ###############")
 # *v2 = (*("apple","orange","mango"), ("apple","orange","mango"))
 #  *v2 = ("apple","orange","mango", ("apple","orange","mango"))
 
+# how compiler interprets it.
 fr = ("apple","orange","mango", ("apple","orange","mango"))
 fru =tuple(x for x in fr)
 
