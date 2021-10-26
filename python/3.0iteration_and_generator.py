@@ -5,8 +5,8 @@ There are three types of sequence.
 3. Enumerator ( a special type of iterator)
 """
 """
-WHAT IS ITERATOR
------------------
+WHAT IS ITERATOR -  an iterator iterate over a object derived from sequences or collection.  
+------------------------------
 iterable  --  is a object in which either contains __iter__() or __getitem__() object is defined.  we can get iterator object by running them
           --  you can get iterator by running iter or getitem method also.  __iter__() always return self
 iterator  --  is an object in which __next__ method is defined.  they can be called by __next__() or by next function. at the end of each iterator
@@ -17,7 +17,9 @@ iteration -- ability to iterate is called iteration.   for example for loop. a f
           -- in case Stopiteration exception is not raised,  the loop will continue and give None as values
 """
 """
-WHAT ARE GNERATORS
+WHAT ARE GNERATORS  -  a generator generates its value from a set of rule or formula when its been given a collection or sequence.  so
+                                               all generators start with some iterators. 
+------------------------------------
 Yield      --  yield is called from a function,  it converts the values into a object and return an generator.  when the yield function is 
            -- being called on a values,  that value is stored in stack or heap as object and function processing stops and control is switched 
            -- caller function or loop
