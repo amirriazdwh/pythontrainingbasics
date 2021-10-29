@@ -1,5 +1,12 @@
 """
 in functions the values of argument is immutable.  the logic inside the fuction cannot change it
+
+1.     lambda arguments: expression
+2.     filter(<f>, <iterable>)  ,  map(<f>, <iterable>) ,
+3.   from functools import reduce        reduce(<f>, <iterable>)
+
+
+
 ---------------------------------------
 1.  First-Class Functions
 ---------------------------------------
@@ -8,7 +15,17 @@ in functions the values of argument is immutable.  the logic inside the fuction 
      function  can return functions
      functions can be used as expression.
      function can be defined and run inside function
+
+
 """
+
+# Program to show the use of lambda functions
+double = lambda x: x * 2
+
+print(double(5))
+
+
+
 import functools
 
 items =[1,2,3,4,5,6,7,8,9]
