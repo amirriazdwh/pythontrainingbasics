@@ -35,14 +35,16 @@ print(totallist)
 
 list(filter(lambda x: x > 100, [1, 111, 2, 222, 3, 333]))
 
-
+"""
+Decorates in python with tag and without tag
+"""
 def add_num(message):
     def add_inc(increment, numbers):
         message()
         incremented_nums = []
         for n in numbers:
             incremented_nums.append(n + increment)
-        return incremented_nums
+        return incremented_nums      # this retruns a function ,  functions only execute if we add ( )
 
     return add_inc
 
