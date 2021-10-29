@@ -56,3 +56,7 @@ def message1():
 #message1 = add_num(message1)
 print(message1(5, [28, 93]))
 
+even_square_numbers = [x**2 for x in range(5)
+    if x%2 == 0]
+even_square_numbers # [0, 4, 16]
+
