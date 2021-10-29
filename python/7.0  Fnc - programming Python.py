@@ -3,7 +3,7 @@ in functions the values of argument is immutable.  the logic inside the fuction 
 
 1.     lambda arguments: expression
 2.     filter(<f>, <iterable>)  ,  map(<f>, <iterable>) ,
-3.   from functools import reduce        reduce(<f>, <iterable>)
+3.   from functools import reduce        reduce(<f>, <iterable>),   partial
 
 
 
