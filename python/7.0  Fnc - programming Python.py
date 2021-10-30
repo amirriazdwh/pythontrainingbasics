@@ -36,6 +36,7 @@ in functions the values of argument is immutable.  the logic inside the fuction 
 2.     map(<f>, <iterable>) ,
 3.    from functools import reduce        reduce(<f>, <iterable>),   partial
 """
+
 my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 # Use lambda function with `filter()`_ under score are throw away
@@ -59,7 +60,7 @@ print(mapped_list)
 
 #  use lambda with reduce function.   it comes from functools
 
-from  functools import *
+from functools import *
 
 items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 total = reduce(lambda a, b: a + b, items)
@@ -69,10 +70,16 @@ print(total)
 ----------------------------
 Partical Functions 
 ----------------------------
+Partial functions can be used to derive specialized functions from general functions and therefore help us to reuse our code.
+this is more like a method oops in sub class which has been specialized with one value but not being privided with second values 
+the second value needs to be privided by sub-class method
 """
+
+
 # A normal function
 def add(a, b, c):
     return 100 * a + 10 * b + c
+
 
 # A partial function with b = 1 and c = 2
 add_part = partial(add, c=2, b=1)
@@ -81,24 +88,93 @@ add_part = partial(add, c=2, b=1)
 print(add_part(3))
 
 """
+--------------------------
+currying function
+--------------------------
+We define the composition h of two functions f and g
+h(x)= f(g(x))
+in the following Python example.
+The composition of two functions is a chaining process in which the output of the inner function becomes the input of the outer function.
+
+def compose(g, f):
+    def h(x):
+        return g(f(x))
+    return h
+"""
+from compose import compose
+
+def celsius2fahrenheit(t):
+    return 1.8 * t + 32
+
+def readjust(t):
+    return 0.9 * t - 0.5
+
+convert = compose(celsius2fahrenheit, readjust)
+
+measurement_of_thermometer = 10
+print("Temperature is :", convert(measurement_of_thermometer))
+
+"""
+----------------------------
+ recursive function
+ -----------------------------
+ in procedural language we used loops to compute iterative values.   in functional programming recursive function do the same
+ reasons are,  some formula are being represented in a simple way,  so recursive function make code easy.    also since pure functions 
+ are being used for computation so calculation is less error pron.   for example factorial is being represented as 
+ 
+ factorial(x)  =  {  1                          }     if x=0
+                         {   x* factorial(x)    }  for all value of x other than x=1
+"""
+def factorial(x):
+    """This is a recursive function
+    to find the factorial of an integer"""
+
+    if x == 1:
+        return 1
+    else:
+        return (x * factorial(x-1))
 
 
-
-
-
-
+num = 3
+print("The factorial of", num, "is", factorial(num))
 
 
 """
+-------------------
+closure
+-----------------
+This technique by which some data ("Hello in this case) gets attached to the code is called closure in Python.
 
-# Program to show the use of lambda functions
-double = lambda x: x * 2
-
-print(double(5))
-
+Closures can avoid the use of global values and provides some form of data hiding. It can also provide an object oriented solution to the problem.
+When there are few methods (one method in most cases) to be implemented in a class, closures can provide an alternate and 
+more elegant solution. But when the number of attributes and methods get larger, it's better to implement a class.
+Here is a simple example where a closure might be more preferable than defining a class and making objects. But the preference is all yours.
 
 """
+def make_multiplier_of(n):
+    def multiplier(x):
+        return x * n
+    return multiplier
+
+
+# Multiplier of 3
+times3 = make_multiplier_of(3)
+
+# Multiplier of 5
+times5 = make_multiplier_of(5)
+
+# Output: 27
+print(times3(9))
+
+# Output: 15
+print(times5(3))
+
+# Output: 30
+print(times5(times3(2)))
+"""
+------------------------------------------------------------------------
 Decorates in python with tag and without tag
+------------------------------------------------------------------------
 """
 
 
