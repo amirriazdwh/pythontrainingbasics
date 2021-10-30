@@ -176,6 +176,9 @@ print(times5(times3(2)))
 """
 ------------------------------------------------------------------------
 Decorates in python with tag and without tag
+-----------------------------------------------------------------------
+this is more like extend function in object oriented programming.  
+we override a method ,  call the method from super class and then add our logic
 ------------------------------------------------------------------------
 """
 def add_num(message):
@@ -184,15 +187,14 @@ def add_num(message):
         incremented_nums = []
         for n in numbers:
             incremented_nums.append(n + increment)
-        return incremented_nums  # this retruns a function ,  functions only execute if we add ( )
+        return incremented_nums
+    return add_inc    # this retruns a function ,  functions only execute if we add ( )
 
-    return add_inc
-
+# message1 = add_num(message1)     can be called
 
 @add_num
 def message1():
     print("Doing something...")
 
 
-# message1 = add_num(message1)
 print(message1(5, [28, 93]))
