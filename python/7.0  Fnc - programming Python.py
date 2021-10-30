@@ -33,8 +33,8 @@ lambda arguments: expression
 in functions the values of argument is immutable.  the logic inside the fuction cannot change it
 
 1.     filter(<f>, <iterable>)  ,
-2.       map(<f>, <iterable>) ,
-3.   from functools import reduce        reduce(<f>, <iterable>),   partial
+2.     map(<f>, <iterable>) ,
+3.    from functools import reduce        reduce(<f>, <iterable>),   partial
 """
 my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
@@ -52,8 +52,33 @@ mapped_list = list(map(lambda x: x * 2, my_list))
 
 print('.... this is list ...')
 genobj = map(lambda x: x * 2, my_list)
+
+# genobj can be used in for loop
 mapped_list = [x for x in genobj]
 print(mapped_list)
+
+#  use lambda with reduce function.   it comes from functools
+
+from  functools import *
+
+items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+total = reduce(lambda a, b: a + b, items)
+print(total)
+
+"""
+----------------------------
+Partical Functions 
+----------------------------
+"""
+# A normal function
+def add(a, b, c):
+    return 100 * a + 10 * b + c
+
+# A partial function with b = 1 and c = 2
+add_part = partial(add, c=2, b=1)
+
+# Calling partial function
+print(add_part(3))
 
 """
 
@@ -71,16 +96,6 @@ double = lambda x: x * 2
 
 print(double(5))
 
-import functools
-
-items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-total = functools.reduce(lambda a, b: a + b, items)
-print(total)
-
-totallist = list(map(lambda b: b * 2, items))
-print(totallist)
-
-list(filter(lambda x: x > 100, [1, 111, 2, 222, 3, 333]))
 
 """
 Decorates in python with tag and without tag
