@@ -143,12 +143,14 @@ print("The factorial of", num, "is", factorial(num))
 -------------------
 closure
 -----------------
-This technique by which some data ("Hello in this case) gets attached to the code is called closure in Python.
+This technique by which some data  say ("Hello in this case) gets attached to the code is called closure in Python.
 
 Closures can avoid the use of global values and provides some form of data hiding. It can also provide an object oriented solution to the problem.
 When there are few methods (one method in most cases) to be implemented in a class, closures can provide an alternate and 
 more elegant solution. But when the number of attributes and methods get larger, it's better to implement a class.
 Here is a simple example where a closure might be more preferable than defining a class and making objects. But the preference is all yours.
+
+Python Decorators make an extensive use of closures as well.
 
 """
 def make_multiplier_of(n):
@@ -176,8 +178,6 @@ print(times5(times3(2)))
 Decorates in python with tag and without tag
 ------------------------------------------------------------------------
 """
-
-
 def add_num(message):
     def add_inc(increment, numbers):
         message()
@@ -196,7 +196,3 @@ def message1():
 
 # message1 = add_num(message1)
 print(message1(5, [28, 93]))
-
-even_square_numbers = [x ** 2 for x in range(5)
-                       if x % 2 == 0]
-even_square_numbers  # [0, 4, 16]
