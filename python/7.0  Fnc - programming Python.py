@@ -28,6 +28,13 @@ in order to build to make a functions as first class citizen following things ar
 ----------------------------
 these are anonymous functions are called lambda functions because  they are nameless and can be returned, passed to functions
 or assigned to a variable.
+
+lambda arguments: expression
+in functions the values of argument is immutable.  the logic inside the fuction cannot change it
+
+1.     filter(<f>, <iterable>)  ,
+2.       map(<f>, <iterable>) ,
+3.   from functools import reduce        reduce(<f>, <iterable>),   partial
 """
 my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
@@ -42,6 +49,7 @@ print(filtered_list)
 
 # Use lambda function with `map()`
 mapped_list = list(map(lambda x: x * 2, my_list))
+
 print('.... this is list ...')
 genobj = map(lambda x: x * 2, my_list)
 mapped_list = [x for x in genobj]
@@ -52,11 +60,6 @@ print(mapped_list)
 
 
 
-in functions the values of argument is immutable.  the logic inside the fuction cannot change it
-
-1.     lambda arguments: expression
-2.     filter(<f>, <iterable>)  ,  map(<f>, <iterable>) ,
-3.   from functools import reduce        reduce(<f>, <iterable>),   partial
 
 
 
