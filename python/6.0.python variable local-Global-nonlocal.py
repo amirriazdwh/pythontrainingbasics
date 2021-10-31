@@ -89,6 +89,18 @@ numsref = assign_new_list(nums)
 
 print (f"nums = {id(nums)  }       numsref ={id(numsref)}")
 
+"""
+empty list in function arguments
+"""
+
+# wrong implementation
+def add_two_to_list(my_list=[]):
+    my_list.append(2)
+    return my_list
+
+firstcall =add_two_to_list()
+secondcall = add_two_to_list()
+print(secondcall)
 
 
 """
