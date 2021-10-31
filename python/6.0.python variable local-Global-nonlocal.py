@@ -98,4 +98,37 @@ foo()
 print("global x:", x)
 
 
+"""
+In the above code, we used the same name x for both global variable and local variable. We get a different result 
+when we print the same variable because the variable is declared in both scopes, i.e. the local scope inside foo() and global scope outside foo().
+When we print the variable inside foo() it outputs local x: 10. This is called the local scope of the variable.
+Similarly, when we print the variable outside the foo(), it outputs global x: 5. This is called the global scope of the variable.
+"""
 
+"""
+Nonlocal Variables
+Nonlocal variables are used in nested functions whose local scope is not defined. 
+This means that the variable can be neither in the local nor the global scope.
+Let's see an example of how a nonlocal variable is used in Python.
+We use nonlocal keywords to create nonlocal variables.
+Example 6: Create a nonlocal variable
+"""
+
+def outer():
+    x = "local"
+
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+        print("inner:", x)
+
+    inner()
+    print("outer:", x)
+
+
+outer()
+
+"""
+In the above code, there is a nested inner() function. We use nonlocal keywords to create a nonlocal variable. 
+The inner() function is defined in the scope of another function outer().
+"""
