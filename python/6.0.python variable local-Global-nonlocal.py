@@ -23,6 +23,60 @@ print ("refrence id X",id(x))
 print ("refrence id y",id(y))
 
 
+"""
+for sequence (all sequences can create iterators)  the object is pyvarobject. with type as list.   it has a pointer in value field to list of reference varaibles which 
+each variable holding its own object.   pyvarobject has the size field which hold the size of array. 
+why an array reference memory gets full,  python creates a memory area twice that size and moves the refrence of list objects to it
+
+"""
+xl = {1,2,3,4,5}
+yl = xl
+yl.add(6)
+
+# xl and yl are pointing to same object.  adding an value to list is visiable to both places.
+print (f"xl = {xl  }       yl ={yl }")
+
+"""
+Now lets what happens when you use None object.    None is also an object in python.   
+"""
+yn =None
+xn=None
+
+if (yn ==xn ):
+    print ("both variables are equal")
+
+if (yn is xn):
+    print ("both variables are equal")
+else:
+    print ("both variables are not equal")
+
+"""
+in python there are two equal operator == and is   == check the equality variable by variable.  while is checks weather the refrence object address is equal
+or not
+"""
+xll = [1,2,3,4,5]
+yll = [1,2,3,4,5]
+
+if (xll ==  yll):
+    print ("both variables are equal")
+else:
+    print ("both variables are not equal")
+
+# this is because xll and yll are pointing to different objects
+if (xll is  yll):
+    print ("both variables are equal by is")
+else:
+    print ("both variables are not equal by is")
+
+yll = xll
+
+#here both objects are pointing to same reference variable so they should be equal
+if (xll is  yll):
+    print ("both variables are equal by is")
+else:
+    print ("both variables are not equal by is")
+
+
 
 
 
