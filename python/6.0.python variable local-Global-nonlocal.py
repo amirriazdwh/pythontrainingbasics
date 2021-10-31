@@ -1,6 +1,38 @@
 """
+---------------------------
+python variables.
+-------------------------
+in python everything  is  object in python,   when you create a new varaible in python an object is being created in heap memory and reference to that object
+is stored in that variable.   variable are being assigned in python by reference.   when a object variable is assigned to a variable its reference count field
+becomes 1.   when the variable is being delete  with  del x  command it refrence count become 0.   when the refrence count of the object variable become
+0. python garbadage collector remove this variable from the heap.    please note that object type is not stored in variable but its stored in object
+due to which same variable name can be used to host string, int,  float etc.   that is why python is called dynamic type language.   in dynamic type language
+variable types are not static and not bound to variables
+
+object is the base object of all the objects in python.
+
+when a new variable is assigned to reference variable already created no new object is created.  instead the reference object of same object is being
+assigned to new variables and its reference count incremented to 2
+
+"""
+x =543
+y=x
+
+# memory address of both the objects are same it means both variable are pointing to same reference object
+print ("refrence id X",id(x))
+print ("refrence id y",id(y))
+
+
+
+
+
+"""
 Global Variables
-In Python, a variable declared outside of the function or in global scope is known as a global variable. This means that a global variable can be accessed inside or outside of the function.
+In Python, a variable declared outside of the function or in global scope is known as a global variable.
+This means that a global variable can be accessed inside or outside of the function.
+
+when a function has global  variable with same name as it has in function.   the compiler look for that variable first in function
+and then in its global region
 
 Let's see an example of how a global variable is created in Python.
 
@@ -29,7 +61,7 @@ def foo():
     x = x * 2
     print(x)
 
-foo()
+#foo()
 
 """
 The output shows an error because Python treats x as a local variable and x is also not defined inside foo().
