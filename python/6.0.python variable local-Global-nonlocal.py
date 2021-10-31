@@ -76,7 +76,18 @@ if (xll is  yll):
 else:
     print ("both variables are not equal by is")
 
+"""
+how variable are assigned to functions.   in python variables are passed by reference.   
+"""
+# refrence id of nums is being assigned to my_list and then reference object id returned which is being assign to numref
+def assign_new_list (my_list):
+    print(f"my_list = {id(my_list)} ")
+    return my_list
 
+nums = [50, 51,52]
+numsref = assign_new_list(nums)
+
+print (f"nums = {id(nums)  }       numsref ={id(numsref)}")
 
 
 
