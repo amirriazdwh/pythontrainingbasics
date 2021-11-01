@@ -103,6 +103,8 @@ secondcall = add_two_to_list()
 print(secondcall)
 
 
+
+
 """
 Global Variables
 In Python, a variable declared outside of the function or in global scope is known as a global variable.
