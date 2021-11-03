@@ -2,17 +2,18 @@
 ---------------------------
 python variables.
 -------------------------
-in python everything  is  object in python,   when you create a new varaible in python an object is being created in heap memory and reference to that object
-is stored in that variable.   variable are being assigned in python by reference.   when a object variable is assigned to a variable its reference count field
-becomes 1.   when the variable is being delete  with  del x  command it refrence count become 0.   when the refrence count of the object variable become
-0. python garbadage collector remove this variable from the heap.    please note that object type is not stored in variable but its stored in object
-due to which same variable name can be used to host string, int,  float etc.   that is why python is called dynamic type language.   in dynamic type language
-variable types are not static and not bound to variables
+in python everything  is  object in python,   when you create a new varaible in python an object is being created in heap memory and
+reference to that object is stored in that variable.   variable are being assigned in python by reference.   when a object variable
+is assigned to a variable its reference count field becomes 1.   when the variable is being delete  with  del x  command it refrence
+ count become 0.   when the refrence count of the object variable become0. python garbadage collector remove this variable from the heap.
+please note that object type is not stored in variable but its stored in object
+due to which same variable name can be used to host string, int,  float etc.   that is why python is called dynamic type language.
+in dynamic type language variable types are not static and not bound to variables
 
 object is the base object of all the objects in python.
 
-when a new variable is assigned to reference variable already created no new object is created.  instead the reference object of same object is being
-assigned to new variables and its reference count incremented to 2
+when a new variable is assigned to reference variable already created and initialized with a value. no new object is created.
+instead the reference object of same object is being assigned to new variables and its reference count incremented to 2
 
 """
 x =543
@@ -42,16 +43,19 @@ Now lets what happens when you use None object.    None is also an object in pyt
 yn =None
 xn=None
 
+# compares the object by value
 if (yn ==xn ):
     print ("both variables are equal")
 
+#compare the object by refrence pointer. S
 if (yn is xn):
     print ("both variables are equal")
 else:
     print ("both variables are not equal")
 
 """
-in python there are two equal operator == and is   == check the equality variable by variable.  while is checks weather the refrence object address is equal
+in python there are two equal operator == and is.    "==" check the equality variable by variable.  
+while "is" checks weather the refrence object address is equal
 or not
 """
 xll = [1,2,3,4,5]
@@ -62,7 +66,8 @@ if (xll ==  yll):
 else:
     print ("both variables are not equal")
 
-# this is because xll and yll are pointing to different objects
+# here objects by value are same but they are two object with two difference refrence point
+# there is give not equal. this is because xll and yll are pointing to different objects by reference
 if (xll is  yll):
     print ("both variables are equal by is")
 else:
@@ -77,8 +82,10 @@ else:
     print ("both variables are not equal by is")
 
 """
-how variable are assigned to functions.   in python variables are passed by reference.   
+how variable are assigned to functions arguments.   in python variables are passed by reference. 
+in python functions are also object and function objects are created when compiler find def keyword  
 """
+
 # refrence id of nums is being assigned to my_list and then reference object id returned which is being assign to numref
 def assign_new_list (my_list):
     print(f"my_list = {id(my_list)} ")
