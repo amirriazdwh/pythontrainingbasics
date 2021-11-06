@@ -1,16 +1,31 @@
 """
-Single Leading Underscore _var: Naming convention indicating name is meant for internal use. A hint for programmers and not enforced by programmers.
-Double Leading Underscore __var: Triggers name mangling when used in class context. Enforced by the Python interpreter.
+Remember:  in python there are not public, protected and private clauses.  these are being implemented as hints through
+           _.   var is a public variable,  _var is protected variable and __var is private variable.
+           __ double underscore is called dunder.
+
+Single Leading Underscore _var: Naming convention indicating name is meant for internal use.
+this means variable/method is protected. A hint for programmers and not enforced by programmers.
+
+Double Leading Underscore __var: Triggers name mangling when used in class context. Enforced by the Python interpreter
+this means variable/method is private.  in class if class name is Test then due to automatic name mangling the method
+will be available as _Test__var. this is to enforce private nature of variable/method.
+.
 Single Trailing Underscore var_: Used by convention to avoid naming conflicts with Python keywords.
-Double Trailing Underscore __var__: Indicates special methods defined by Python language.
+
+Double Trailing Underscore __var__: Indicates special methods defined by Python language.  they are used in python
+for object initialization and operators in class and in operator overloading.  most dunder methods are called by python
+for example in case + then mathod __add__ is called.  in case of iteration __iter__ and __next__ is being called.  in case
+of class __init__ is used for object initialization.  in same way some method like next and iter call __next__ and __iter__
+method explicitly
+
 Underscore _: Used as a name for temporary variables.
 Python Features
 
 _ is a somewhat special variable name. In the shell, it contains the value of the previously evaluated expression:
 
->>> 1+2
+#>>> 1+2
 3
->>> _+4
+#>>> _+4
 7
 
 """
@@ -58,7 +73,7 @@ print(p._Person__id)
 Single trailing underscore naming convention is used to avoid conflicts with Python keywords.
 """
 
-
+# here the method argument name is class which will conflict with python keywords so its been changed to class_
 def method(name, class_='Classname'):
     pass
 
@@ -75,6 +90,25 @@ class Person01:
         self.__name__ = 'Sarah'    # its a method private in class __init__ is the constructor
 
 Person01().__name__
+
+
+#here the __call__ function make the object callable just like a function.  it works by creating an object and them
+# implicitly calling the object method __call__.   so s1=print("Hello").__call__ will take place once developer used
+# below code
+class Printer:
+
+    def __init__(self, s):
+        self.str01 = s
+
+    def __call__(self):
+         return self.str01.upper()
+
+
+s1 = Printer('hello') # Defining object of class Printer
+# Calling object s1
+s2=s1()   # Hello
+print(s2)
+
 
 
 """
