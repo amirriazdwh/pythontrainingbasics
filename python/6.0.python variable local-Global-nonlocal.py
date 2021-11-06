@@ -2,6 +2,11 @@
 ---------------------------
 python variables.
 -------------------------
+a variable in python must be initialized before any operation can be performed over it. during the variable initialization
+phase compile check the variable type and creates an object and then assigned the reference to that object to variable. since a variable
+is an object we can call its destructor by call del x to destroy that object.   calling del on any object in python calls
+python object destructor __del__  here object memory is deallocated.
+
 in python everything  is  object in python,   when you create a new varaible in python an object is being created in heap memory and
 reference to that object is stored in that variable.   variable are being assigned in python by reference.   when a object variable
 is assigned to a variable its reference count field becomes 1.   when the variable is being delete  with  del x  command it refrence
@@ -16,6 +21,20 @@ when a new variable is assigned to reference variable already created and initia
 instead the reference object of same object is being assigned to new variables and its reference count incremented to 2
 
 """
+
+# python compiler finds the assigned variable type and call the respect object constructor method to build object and assign
+# it to variable.  below explicitly object int with argument 10 creates an object and assigned it variable aa.  compiler does
+#this automatically.  compiler did this type searching only at variable initialization time thats why we can write x=[] a=0 etc
+#  0, 0.0 , [] and {} etc helps compiler finds its variable types and is this type search is not done anywhere else thats why
+#  we cannot specify these symbols anywhere else.  thats why to create list from generator we have to use list object like
+#  ll = list(x*x for x in range(0,10))
+
+aa = int(10)   # which is actually  aa=10
+ll = list()    # which is ll=[]
+dd = dict()    # which is dd={}
+
+
+# variable are assigned by reference.
 x =543
 y=x
 
