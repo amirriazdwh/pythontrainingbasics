@@ -4,11 +4,20 @@ Remember:  in python there are not public, protected and private clauses.  these
            __ double underscore is called dunder.
 
 1, Single Leading Underscore _var: Naming convention indicating name is meant for internal use.
-this means variable/method is protected. A hint for programmers and not enforced by programmers.
+this means variable/method is protected. A hint for programmers and not enforced by programmers. _method name can be
+called without any problem
+
+leading _methods are not import from module if the import statement is from foo import *.  however,  importing as
+import foo will import the method.
+
+from underscore_module import *   #file created for example a file is a module and a module is an object
+
+_internal_fnc()  will not be imported as its considered a protect function which cannot be accessed outside the module
 
 2, Double Leading Underscore __var: Triggers name mangling when used in class context. Enforced by the Python interpreter
 this means variable/method is private.  in class if class name is Test then due to automatic name mangling the method
-will be available as _Test__var. this is to enforce private nature of variable/method.
+will be available as _Test__var. this is to enforce private nature of variable/method.  in same way, method names are
+also mangled with class name.
 .
 3. Single Trailing Underscore var_: Used by convention to avoid naming conflicts with Python keywords.
 
@@ -68,6 +77,56 @@ dir(Person) will give all methods
 """
 print(p._Person__id)
 
+class Test:
+    def __init__(self, foo, bar, baz):
+        self.foo =foo
+        self._bar=bar
+        self.__baz=baz
+
+
+class ExtendedTest(Test):
+    def __init__(self):
+        super.__init__(self, 11,23, 42)
+        self.foo="overridden"
+        self._bar="overridden"
+        self.__baz="overridden"
+
+t2=ExtendedTest()
+
+print("public variable",t2.foo)
+print("protected variable",t2._bar)
+
+# retrun error as no __baz variable exists
+#print("public variable",t2.__baz)
+
+"""
+you can see that __bar got truned int _Ex-tendedTest__baz to prevent accidently modify private value of __baz in Test class
+therefore Test has a method _Test__baz
+
+__ name mangling does effect the methods names 
+"""
+
+class MangledMethod ():
+    def __method(self):
+        return 42
+
+    def call_it(self):
+        return self.__method()
+
+# this will give error
+#    MangledMethod.__method()
+
+# here is another good example of name mangling.
+
+_MangledGlobal__mangled=23
+
+class MangledGlobal:
+    def test(self):
+        return __mangled
+
+    MangledGlobal().test()
+    # return 23
+
 """
 3. Single Trailing Underscore: var_
 Single trailing underscore naming convention is used to avoid conflicts with Python keywords.
@@ -112,7 +171,7 @@ print(s2)
 
 
 """
-6.   as lambda function 
+7.   as lambda function 
 def __init__ (self, *args, **kwargs):  list constructor.   takes lambda function and generator  
 lambda function contains anomous variables 
 """
@@ -122,7 +181,33 @@ new_list = list(filter(lambda _: (_%2 == 0) , my_list))
 print(new_list)
 
 """
+-------------------
 7.   default value 
+--------------------
+
+Linked to, but not explicitly mentioned here, is exactly when __all__ is used. It is a list of strings defining what symbols 
+in a module will be exported when from <module> import * is used on the module.
+
+For example, the following code in a foo.py explicitly exports the symbols bar and baz:
+
+__all__ = ['bar', 'baz']
+
+waz = 5
+bar = 10
+def baz(): return 'baz'
+These symbols can then be imported like so:
+
+from foo import *
+
+print(bar)
+print(baz)
+
+# The following will trigger an exception, as "waz" is not exported by the module
+print(waz)
+
+NOTE: __all__ affects the from <module> import * behavior only. Members that are not mentioned in __all__ are still 
+accessible from outside the module and can be imported with from <module> import <member>.
+
+
+
 """
-default_variable =_
-print (default_variable)
