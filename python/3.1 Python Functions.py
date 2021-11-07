@@ -28,6 +28,7 @@ important points
 x = 10
 def increment():
    # x=x+1  and x+=1 will not compile as x is in global scope and cannot be mutated in local scope. however we can read and print it
+   # for x to be modified,  it must be declared in scope where its been modified.
     print(x)
 
 increment()
