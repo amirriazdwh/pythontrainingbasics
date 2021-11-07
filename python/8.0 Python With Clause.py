@@ -76,3 +76,8 @@ def managed_context_file(name):
 
 with managed_context_file("D:\python_data\hello_file.txt") as f:
     f.write("writing via context tag")
+
+
+"""
+ to udnerstand the above example a knowledge of decorator and generators is required. 
+"""
