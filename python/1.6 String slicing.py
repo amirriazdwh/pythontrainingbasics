@@ -22,7 +22,7 @@ in case index k is from 6 to 0 (k) and n =-2   a[6:0:2]
 
 6    6<=6<7     G    k-n  6-2=k
 4    4<=4<5     E         4-2=k
-2    2<=2<3     C         2-2=k
+2    2<=2<3     C         2-2=k =0   when k=<j stop
 0    0<=0<1     A
 -----------------------------------
 in case the k is from -1 to -6
@@ -35,7 +35,9 @@ print(S[2:7])	   #CDEFG
 print(S[0:7:2])	   #ACEG
 print(S[0:6:2])	   #ACEG
 print(S[6:0:-2])   #GEC
-print(S[-7:-2:2])  # CEG
+print(S[6::-2])   #GECA
+print(S[-7:-1:2])  # CEG    -5 -3 -2 0   k>j stop
+print(S[-7::2])  # CEG    -5 -3 -2 0   k>j stop
 print(S[0:7])	# ABCDEFG
 
 
