@@ -33,10 +33,10 @@ in case the k is from -1 to -6
 S = 'ABCDEFGHI'
 print(S[2:7])	   #CDEFG
 print(S[0:7:2])	   #ACEG
+print(S[0:6:2])	   #ACEG
 print(S[6:0:-2])   #GEC
 print(S[-7:-2:2])  # CEG
-
-print(S[0:7])	# CDEFG
+print(S[0:7])	# ABCDEFG
 
 
 print(S[0:1])	# CDEFG  0=<0<1
