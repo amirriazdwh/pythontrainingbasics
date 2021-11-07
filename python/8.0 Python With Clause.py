@@ -15,17 +15,14 @@ with open('D:\python_data\hello_file.txt', 'w') as f:
     f.write("hello world")
 
 """
-with clause creates an object and when the object is initialized,  in __init__ method which takes function 
-with then calls __enter__ method and return the handle
- 
+with clause creates an With object and open function is passed to With object therefore creating a decorator 
+with clause has standard call to __enter__ and __exit__ and all the code after "as f :" comes inside the body of decorator
+to create a wraper or extended function "write"
 
-f = with(open('D:\python_data\hello_file.txt', 'w') )
-f.write ("hello world")
-
-# it does not find further calls of f.  it considers that context of f is over and call
-del f 
-
-which call destructor and call the __exit__ method which closes the file handlers. 
+def With (open('D:\python_data\hello_file.txt', 'w'): 
+    f = fnc.__enter()__
+    f.write ("hello world")
+    f.__exit__()
 
 """
 
@@ -77,6 +74,15 @@ class ManagedFile:
 
 with ManagedFile('D:\python_data\hello_file.txt') as f:
     f.write("hello from objects")
+
+
+#here is how it execute with in With clause object.  With has standard calls to __enter()__ and __exit__ in decorator
+# def with ( f) :
+f =  ManagedFile('D:\python_data\hello_file.txt').__enter__()
+f.write("hello from object decoding")   # as a decorator extension,  this code is being add in decorator method.
+f.__exit__()                            # when all the extended functions are being executed __exit()__ is add
+
+
 
 """
 writing class is not the only way to support context managers. python provides a buildin package to do it.
