@@ -144,7 +144,7 @@ print(secondcall)
 
 
 
-# wrong implementation
+# right implementation
 def add_two_to_list_none(my_list=None):
     if not my_list:
         my_list=[]
