@@ -144,6 +144,19 @@ print(secondcall)
 
 
 
+# wrong implementation
+def add_two_to_list_none(my_list=None):
+    if not my_list:
+        my_list=[]
+    # append to list 2
+    my_list.append(2)
+    return my_list
+
+firstcall1 =add_two_to_list_none()
+secondcall1 = add_two_to_list_none()
+print(secondcall1)
+
+
 
 """
 Global Variables
