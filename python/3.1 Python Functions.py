@@ -1,6 +1,6 @@
 """
 types of functions in python
-1. dunder functions.     also call magic functions.
+1.  dunder functions.     also call magic functions.
 2.  function
 3.  lambda functions
 4.  object functions
