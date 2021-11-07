@@ -32,9 +32,11 @@ def increment():
     print(x)
 
 increment()
+# when we add () to increment object compiler will call it as increment.__call__().  it means all the logic of a function
+# written in __call__ function.
 
 """
-objects can behave like functions
+objects function behaviour can be describe in a better way with this example.
 """
 class Printer:
 
@@ -42,6 +44,7 @@ class Printer:
         self.str01 = s
 
     def __call__(self):
+        # all the function logic will be in call function
          return self.str01.upper()
 
 
