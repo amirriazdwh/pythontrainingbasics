@@ -2,6 +2,9 @@
 ---------------------------
 python variables.
 -------------------------
+how to access globals scope dictionary :  print(globals())
+function local scope dictionary can be accessed as :function.__dict__
+
 a variable in python must be initialized before any operation can be performed over it. during the variable initialization
 phase compile check the variable type and creates an object and then assigned the reference to that object to variable. since a variable
 is an object we can call its destructor by call del x to destroy that object.   calling del on any object in python calls
@@ -138,11 +141,10 @@ def add_two_to_list(my_list=[]):
     my_list.append(2)
     return my_list
 
+print(globals())
 firstcall =add_two_to_list()
 secondcall = add_two_to_list()
 print(secondcall)
-
-
 
 # right implementation
 def add_two_to_list_none(my_list=None):
@@ -155,8 +157,6 @@ def add_two_to_list_none(my_list=None):
 firstcall1 =add_two_to_list_none()
 secondcall1 = add_two_to_list_none()
 print(secondcall1)
-
-
 
 """
 Global Variables
@@ -252,7 +252,6 @@ After that, we print the value of local variable y i.e local
 """
 
 x = 5
-
 def foo():
     x = 10
     print("local x:", x)
