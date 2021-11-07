@@ -22,12 +22,26 @@ instead the reference object of same object is being assigned to new variables a
 
 """
 
-# python compiler finds the assigned variable type and call the respect object constructor method to build object and assign
-# it to variable.  below explicitly object int with argument 10 creates an object and assigned it variable aa.  compiler does
-#this automatically.  compiler did this type searching only at variable initialization time thats why we can write x=[] a=0 etc
-#  0, 0.0 , [] and {} etc helps compiler finds its variable types and is this type search is not done anywhere else thats why
-#  we cannot specify these symbols anywhere else.  thats why to create list from generator we have to use list object like
-#  ll = list(x*x for x in range(0,10))
+"""
+there are two types of languages.   1. static type reference languages  2.  Dynamic type reference language.  in static type reference 
+you declare variable like 
+
+va  a:int =10
+
+in dynamic type reference we delare variable as 
+
+val a =10  --scala language the result is 
+val a: Int = 1
+
+In python, compiler finds the assigned variable type and call the respect object constructor method to build object and assign
+the reference of that object to variable.  below explicitly object int with argument 10 creates an object and assigned its reference to
+variable aa.  compiler does this automatically.  compiler did this type searching only at variable initialization time 
+thats why we can write x=[] a=0 etc.  0, 0.0 , [] and {} symbols helps compiler finds its variable types and this type search is not done 
+anywhere else thats why we cannot specify these symbols anywhere else.  thats why to create list from generator we have to use list object like
+ll = list(x*x for x in range(0,10)),  we cannot use  ll= [x*x for x in range(0,10)]
+
+in case of function,  this type reference comes from calling methods.
+"""
 
 aa = int(10)   # which is actually  aa=10
 ll = list()    # which is ll=[]
