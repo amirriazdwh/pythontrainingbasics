@@ -60,6 +60,8 @@ def add_two_to_list(my_list=[]):
 
 
 print(add_two_to_list.__defaults__)    # ([],)
+add_two_to_list()
+print(add_two_to_list.__defaults__)    # ([2],)
 
 
 def default_fn ( a=2, b=3):
