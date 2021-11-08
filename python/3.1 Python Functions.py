@@ -52,3 +52,17 @@ s1 = Printer('hello') # Defining object of class Printer
 # Calling object s1
 s2=s1()   # Hello
 print(s2)
+
+## wrong implementations.
+def add_two_to_list(my_list=[]):
+    my_list.append(2)
+    return my_list
+
+
+print(add_two_to_list.__defaults__)    # ([],)
+
+
+def default_fn ( a=2, b=3):
+    print(a,b)
+
+print(default_fn.__defaults__)
