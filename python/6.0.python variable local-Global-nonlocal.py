@@ -142,7 +142,6 @@ def add_two_to_list(my_list=[]):
     return my_list
 
 
-add_two_to_list.__defaults__
 print(globals())
 firstcall =add_two_to_list()
 secondcall = add_two_to_list()

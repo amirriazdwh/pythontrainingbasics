@@ -25,6 +25,16 @@ important points
 
 """
 
+"""
+functions are objects with a dunder function __default__ this is when the default arguments are being declared. 
+and the calling function does not give any values.  in this case when def statement is reached.  the function object
+is created and __default__ function is executed.   the default variables are created in static scope of the function and
+__default__ function is also static.  this means variables are bring shared across multiple objects.   
+
+therefore , default variable  in __defalut__ functions must be immutable. 
+"""
+
+
 x = 10
 def increment():
    # x=x+1  and x+=1 will not compile as x is in global scope and cannot be mutated in local scope. however we can read and print it
@@ -54,14 +64,22 @@ s2=s1()   # Hello
 print(s2)
 
 ## wrong implementations.
+"""
+functions are objects with a dunder function __default__ this is when the default arguments are being declared. 
+and the calling function does not give any values.  in this case when def statement is reached.  the function object
+is created and __default__ function is executed.   the default variables are created in static scope of the function and
+__default__ function is also static.  this means variables are bring shared across multiple objects.   
+
+therefore , default variable  in __defalut__ functions must be immutable. 
+"""
 def add_two_to_list(my_list=[]):
     my_list.append(2)
     return my_list
 
-
 print(add_two_to_list.__defaults__)    # ([],)
 add_two_to_list()
 print(add_two_to_list.__defaults__)    # ([2],)
+print(globals())
 
 
 def default_fn ( a=2, b=3):
