@@ -134,6 +134,10 @@ print (f"nums = {id(nums)  }       numsref ={id(numsref)}")
 
 """
 empty list in function arguments
+in a function the default argument are being created by __default__ method in function object in static scope. 
+therefore default variables are same across all the objects.   this also means the default objects must be 
+immutable.  as the side effect show below can noticed if method arguments are not immutable.  if we have use immutable
+default arguments in method.  you can see the right implementation.
 """
 
 # wrong implementation

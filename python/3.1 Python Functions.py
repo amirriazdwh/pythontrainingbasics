@@ -13,19 +13,23 @@ important points
 3.  a function has its own dictionary so a function has its own scope.  in same way global and buildin has their own
     scope and own dictionary.    python compiler first looks for an variable in function in its own scope/dictionary if
     not found,  looks in global dictionary/scope
-4.  function default variables are created in global scope
-5.  since a function is an object,  it can be passed to another function
-6.  since a function is a variable   its can be assigned to a variable.
+4.  function default variables are created in static scope
+5.  since a function is an object,  it can be passed to another function which is another object
+6.  since a function is an object   its object reference can be assigned to a variable.
 7.  a function when assigned to a variable has reference to function object and this function variable to function object
-    reference maping is store in dictionary.  since function is a object it can be delete as del function
+    has a mapping is store in high scope dictionary.  since function is a object it can be delete as del function_variable
 8.  in python all the variable must be initialized before any operation like addition or subtraction should be done.
-    if the variable initialization is global scope and addition operation is function local scope then function will not
-    able to mutate the global variable as variable as immutable variable are not modifiable across scope.  however, you
-    can read the variable from global scope.
+    if the variable initialization is global scope and addition operation in function has local scope then function will not
+    able to mutate the global variable. for a variable to be modified in funcitons's local scope,  the function must be declared
+    in local scope,  for a variable to be modified in global scope the variable must be define global scope.
+9.  if we have a function lets say  fnc_sort.  it will only execute once we add () means fnc_sort().  doing so call the
+    fnc_sort.__call__()  function behind the scenes
 
 """
 
 """
+NOTE:
+
 functions are objects with a dunder function __default__ this is when the default arguments are being declared. 
 and the calling function does not give any values.  in this case when def statement is reached.  the function object
 is created and __default__ function is executed.   the default variables are created in static scope of the function and
