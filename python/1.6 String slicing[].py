@@ -55,15 +55,11 @@ S = 'ABCDEFGHI'
 print(S[2:7])	   #CDEFG
 print(S[0:7:2])	   #ACEG
 print(S[0:6:2])	   #ACEG
-print(S[6:0:-2])   #GEC
+print(S[6:0:-2])   #GEC   -ive means start is either a bigger +ive value or bigger -ive values.
 print(S[6::-2])   #GECA
 print(S[-7:-1:2])  # CEG    -5 -3 -2 0   k>j stop
 print(S[-7::2])  # CEG    -5 -3 -2 0   k>j stop
 print(S[0:7])	# ABCDEFG
 
-print(S[-8:])	# ABCDEFG
-
-
-print(S[0:1])	# CDEFG  0=<0<1
-
-print(S[1])
+print("################")
+print(S[-5::-1])	# EDCBA
