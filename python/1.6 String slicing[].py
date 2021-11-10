@@ -77,6 +77,6 @@ print("")
 print(S[-7:-1:2])  # CEG     between i and j   -7 =< [-7 -5. -3. ] <-1
 print(S[-7::2])  # CEG    -5 -3 -2 0   k>j stop
 
-print("################")
+print("###### -k + leng(s)##########")
 print(S[-5::-1])	# EDCBA
 print(S[4::-1])	    # EDCBA
