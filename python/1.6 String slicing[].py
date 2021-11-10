@@ -16,6 +16,7 @@ Rules  -- Above definitiion sets the following rules for slice[Start(i): End(j) 
 5.    an slice notation will give output as a list , tuple or sequence  etc.   for example. S[0:1]=[]
 6.    please note that start is not the lower bound and end is not always the upper bound.  they are just values whose direction
       is controlled by step.
+7.    i<=k <j means step values must be between i and j otherwise not result will be shown
 
 
 the indexes are arranged as under:
@@ -33,23 +34,49 @@ Step value.
 
 """
 
-
-S = 'ABCDEFGHI'
-print(len(S))
-print(S[2:7])	   #CDEFG
-print(S[0:7:2])	   #ACEG
-print(S[0:6:2])	   #ACEG
-print(S[6:0:-2])   #GEC   -ive means start is either a bigger +ive value or bigger -ive values.
-print(S[6::-2])   #GECA
-print(S[-7:-1:2])  # CEG    -5 -3 -2 0   k>j stop
-print(S[-7::2])  # CEG    -5 -3 -2 0   k>j stop
-print(S[0:7])	# ABCDEFG
-
-print("################")
-print(S[-5::-1])	# EDCBA
-print(S[4::-1])	    # EDCBA
-
 # Example of list,  how index and slice change the output.
 num =[10, 20, 30]
 print(num[0:1])
 print(num[0])
+
+
+##################
+S = 'ABCDEFGHI'
+
+print("############  default Start value is start of sequence ############")
+print(S[0:7:2])	   #ACEG
+print(S[:7:2])	   #ACEG
+
+print("############  default end value is end of sequence ############")
+print(S[0::2])
+
+print("############  default step value is 1 of sequence ############")
+print(S[0:6:])
+
+print("############  default start & end value with step 2 of sequence ############")
+# default start value ,  default end value but step is 2
+print(S[::2])
+
+print("############  default start & end value with step -2 of sequence ############")
+print(S[::-2])
+
+print("############  default start value is not lower bound and End value is not upper bound ############")
+
+# here 6 to 0 is internal with step -2   means     6, 4, 2  0   since 0 is stop so 6 4 2
+print(S[6:0:-2])
+
+print("###########   right implementation        #########")
+
+# stop is -2 so -1 means
+print(S[6:-10:-2])  #GECA
+
+# instead use default start of string notation
+print(S[6::-2])     #GECA
+
+print("")
+print(S[-7:-1:2])  # CEG     between i and j   -7 =< [-7 -5. -3. ] <-1
+print(S[-7::2])  # CEG    -5 -3 -2 0   k>j stop
+
+print("################")
+print(S[-5::-1])	# EDCBA
+print(S[4::-1])	    # EDCBA
