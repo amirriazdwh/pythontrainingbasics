@@ -130,8 +130,8 @@ yes_expr = ('yes' for _ in range(stop))
 
 # They can all be used in the same way:
 
-for i, y1, y2, y3 in zip(range(stop), Yes(stop), yes(stop), ('yes' for _ in range(stop))):
-print('{0}: {1} == {2} == {3}'.format(i, y1, y2, y3))
+#for i, y1, y2, y3 in zip(range(stop), Yes(stop), yes(stop), ('yes' for _ in range(stop))):
+#print('{0}: {1} == {2} == {3}'.format(i, y1, y2, y3))
 
 
 # 0: yes == yes == yes
