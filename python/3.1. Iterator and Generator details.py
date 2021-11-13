@@ -141,6 +141,8 @@ yes_expr = ('yes' for _ in range(stop))
 # Conclusion
 # You can use the Iterator protocol directly when you need to extend a Python object as an object that can be iterated over.
 #
-# However, in the vast majority of cases, you are best suited to use yield to define a function that returns a Generator Iterator or consider Generator Expressions.
+# However, in the vast majority of cases, you are best suited to use yield to define a function that returns a Generator Iterator or
+# consider Generator Expressions.
 #
-# Finally, note that generators provide even more functionality as coroutines. I explain Generators, along with the yield statement, in depth on my answer to "What does the “yield” keyword do?".
+# Finally, note that generators provide even more functionality as coroutines. I explain Generators, along with the yield statement,
+# in depth on my answer to "What does the “yield” keyword do?".
