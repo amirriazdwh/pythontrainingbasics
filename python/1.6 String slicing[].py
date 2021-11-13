@@ -71,6 +71,7 @@ print("###########   right implementation        #########")
 print(S[6:-10:-2])  #GECA
 
 # instead use default start of string notation
+# here -2 is converted to 7
 print(S[6::-2])     #GECA
 
 print("")
