@@ -1,4 +1,3 @@
-
 """
  In summary: Iterators are objects that have an __iter__ and a __next__ (next in Python 2) method.
  Generators provide an easy, built-in way to create instances of Iterators.
@@ -6,9 +5,11 @@
 
 """
 
+
 def a_function():
     "when called, returns generator object"
     yield
+
 
 # A generator expression also returns a generator:
 a_generator = (i for i in range(0))
@@ -19,23 +20,26 @@ Specifically, generator is a subtype of iterator.
 """
 
 import collections, types
+
 issubclass(types.GeneratorType, collections.Iterator)
-#True
+# True
 
 """
  We can create a generator several ways. A very common and simple way to do so is with a function.
  Specifically, a function with yield in it is a function, that, when called, returns a generator:
 """
 
+
 def a_function():
-        "just a function definition with yield in it"
-        yield
+    "just a function definition with yield in it"
+    yield
+
 
 type(a_function)
 
 # <class 'function'>
 a_generator = a_function()  # when called
-type(a_generator)           # returns a generator
+type(a_generator)  # returns a generator
 
 """
  <class 'generator'>
@@ -62,7 +66,7 @@ collections.Iterable()
 """
 
 all(isinstance(element, collections.Iterable) for element in (
-        (), [], {}, set(), frozenset(), '', b'', bytearray(), range(0), memoryview(b'')))
+    (), [], {}, set(), frozenset(), '', b'', bytearray(), range(0), memoryview(b'')))
 # True
 
 """
@@ -86,7 +90,7 @@ collections.Iterator()
 
 # We can get the iterators from the built-in objects (or custom objects) with the iter function:
 all(isinstance(iter(element), collections.Iterator) for element in (
-        (), [], {}, set(), frozenset(), '', b'', bytearray(), range(0), memoryview(b'')))
+    (), [], {}, set(), frozenset(), '', b'', bytearray(), range(0), memoryview(b'')))
 # True
 
 """
@@ -110,6 +114,7 @@ all(isinstance(iter(element), collections.Iterator) for element in (
  You might create object that implements the Iterator protocol by creating or extending your own object.
 """
 
+
 class Yes(collections.Iterator):
 
     def __init__(self, stop):
@@ -127,11 +132,14 @@ class Yes(collections.Iterator):
             # Iterators must raise when done, else considered broken
             raise StopIteration
 
-    __next__ = next # Python 3 compatibility
+    __next__ = next  # Python 3 compatibility
+
 
 """
  But it's easier to simply use a Generator to do this:
 """
+
+
 def yes(stop):
     for _ in range(stop):
         yield 'yes'
@@ -143,8 +151,8 @@ yes_expr = ('yes' for _ in range(stop))
 
 # They can all be used in the same way:
 
-#for i, y1, y2, y3 in zip(range(stop), Yes(stop), yes(stop), ('yes' for _ in range(stop))):
-#print('{0}: {1} == {2} == {3}'.format(i, y1, y2, y3))
+# for i, y1, y2, y3 in zip(range(stop), Yes(stop), yes(stop), ('yes' for _ in range(stop))):
+# print('{0}: {1} == {2} == {3}'.format(i, y1, y2, y3))
 
 
 # 0: yes == yes == yes

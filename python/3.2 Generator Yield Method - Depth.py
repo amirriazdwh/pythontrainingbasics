@@ -18,28 +18,28 @@ from the collections module.
 """
 
 
-
 def func():
     yield 'I am'
     yield 'a generator!'
 
 
-type(func)                 # A function with yield is still a function
+type(func)  # A function with yield is still a function
 # <type 'function'>
 
 gen = func()
-type(gen)                  # but it returns a generator
+type(gen)  # but it returns a generator
 
 # <type 'generator'>
-hasattr(gen, '__iter__')   # that's an iterable
+hasattr(gen, '__iter__')  # that's an iterable
 # True
 
-hasattr(gen, 'next')       # and with .next (.__next__ in Python 3)
+hasattr(gen, 'next')  # and with .next (.__next__ in Python 3)
 # True                           # implements the iterator protocol.
 
 # The generator type is a sub-type of iterator:
 
 import collections, types
+
 issubclass(types.GeneratorType, collections.Iterator)
 # True
 # And if necessary, we can type-check like this:
@@ -58,16 +58,22 @@ list(gen)
 # You'll have to make another if you want to use its functionality again (see footnote 2):
 
 list(func())
+
+
 # ['I am', 'a generator!']
 # One can yield data programmatically, for example:
 
 def func(an_iterable):
     for item in an_iterable:
         yield item
+
+
 # The above simple generator is also equivalent to the below - as of Python 3.3 (and not available in Python 2), you can use yield from:
 
 def func(an_iterable):
     yield from an_iterable
+
+
 # However, yield from also allows for delegation to subgenerators, which will be explained in the following section
 # on cooperative delegation with sub-coroutines.
 
@@ -78,7 +84,7 @@ def func(an_iterable):
 
 def bank_account(deposited, interest_rate):
     while True:
-        calculated_interest = interest_rate * deposited 
+        calculated_interest = interest_rate * deposited
         received = yield calculated_interest
         if received:
             deposited += received
@@ -93,6 +99,8 @@ first_year_interest = next(my_account)
 # And now we can send data into the generator. (Sending None is the same as calling next.) :
 
 next_year_interest = my_account.send(first_year_interest + 1000)
+
+
 # next_year_interest
 # 102.5
 # Cooperative Delegation to Sub-Coroutine with yield from
@@ -101,10 +109,10 @@ next_year_interest = my_account.send(first_year_interest + 1000)
 
 def money_manager(expected_rate):
     # must receive deposited value from .send():
-    under_management = yield                   # yield None to start.
+    under_management = yield  # yield None to start.
     while True:
         try:
-            additional_investment = yield expected_rate * under_management 
+            additional_investment = yield expected_rate * under_management
             if additional_investment:
                 under_management += additional_investment
         except GeneratorExit:
@@ -112,12 +120,12 @@ def money_manager(expected_rate):
             raise
         finally:
             '''TODO: write function to mail tax info to client'''
-        
+
 
 def investment_account(deposited, manager):
     '''very simple model of an investment account that delegates to a manager'''
     # must queue up manager:
-    next(manager)      # <- same as manager.send(None)
+    next(manager)  # <- same as manager.send(None)
     # This is where we send the initial deposit to the manager:
     manager.send(deposited)
     try:
@@ -125,11 +133,12 @@ def investment_account(deposited, manager):
     except GeneratorExit:
         return manager.close()  # delegate?
 
+
 # And now we can delegate functionality to a sub-generator and it can be used by a generator just as above:
 
 my_manager = money_manager(.06)
 my_account = investment_account(1000, my_manager)
-first_year_return = next(my_account) # -> 60.0
+first_year_return = next(my_account)  # -> 60.0
 # Now simulate adding another 1,000 to the account plus the return on the account (60.0):
 
 next_year_return = my_account.send(first_year_return + 1000)
@@ -137,12 +146,14 @@ next_year_return = my_account.send(first_year_return + 1000)
 # You can read more about the precise semantics of yield from in PEP 380.
 
 # Other Methods: close and throw
-# The close method raises GeneratorExit at the point the function execution was frozen. This will also be called by __del__ so you can put any cleanup code where you handle the GeneratorExit:
+# The close method raises GeneratorExit at the point the function execution was frozen. This will also be called by __del__
+# so you can put any cleanup code where you handle the GeneratorExit:
 
 my_account.close()
 # You can also throw an exception which can be handled in the generator or propagated back to the user:
 
 import sys
+
 try:
     raise ValueError
 except:
@@ -163,4 +174,3 @@ It turns out that yield does a lot. I'm sure I could add even more thorough exam
 have some constructive criticism, let me know by commenting below.
 
 """
-

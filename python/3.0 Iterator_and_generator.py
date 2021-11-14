@@ -269,8 +269,7 @@ def multi_yield():
 multi_obj = multi_yield()
 print(next(multi_obj))
 print(next(multi_obj))
-#print(next(multi_obj))
-
+# print(next(multi_obj))
 
 
 # Python program to illustrate
@@ -282,7 +281,7 @@ s1 = "geek"
 obj1 = enumerate(l1)
 obj2 = enumerate(s1)
 
-#here object type is enumberator which is an iterator.
+# here object type is enumberator which is an iterator.
 # therefore this object can be converted to tuple,list, dictionary etc
 print("Return type:", type(obj1))
 print(list(enumerate(l1)))
@@ -295,11 +294,11 @@ sample_list = [1, 2, 3, 4]
 generator = (i for i in sample_list)
 tuple_ = (1, 2, 3, 4)
 
-print( type(generator))
-#<type 'generator'>
+print(type(generator))
+# <type 'generator'>
 
-print (type(tuple_))
-#<type 'tuple'>
+print(type(tuple_))
+# <type 'tuple'>
 
 """
 A generator is a special kind of iterator, which stores the instructions for how to generate each of its members, in order, along with its current state of iterations. 
