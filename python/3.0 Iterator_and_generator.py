@@ -7,36 +7,46 @@ There are three types of sequence.
 """
 WHAT IS ITERATOR -  an iterator iterate over a object derived from sequences or collection.  
 ------------------------------
-iterable  --  is a object in which either contains __iter__() or __getitem__() object is defined.  we can get iterator object by running them
+iterable  --  is a object in which either contains __iter__() or __getitem__() object is defined.  we can get iterator 
+              object by running them
           --  you can get iterator by running iter or getitem method also.  __iter__() always return self
-iterator  --  is an object in which __next__ method is defined.  they can be called by __next__() or by next function. at the end of each iterator
-          -- # when the function terminates, StopIteration exception is raised. __next__(self) take self as object and return values of object
-iteration -- ability to iterate is called iteration.   for example for loop. a for loop get iterator by running iter method and then run next
-          -- method to get the next values.  the loop terminates when the StopIteration exception is being raised in iterator next method
-          -- in iteratoble objects all the values are generated in memory.  therefore iterable objects consume a lot of memory
+iterator  --  is an object in which __next__ method is defined.  they can be called by __next__() or by next function. 
+              at the end of each iterator
+          --  when the function terminates, StopIteration exception is raised. __next__(self) take self as object and 
+              return values of object
+iteration --  ability to iterate is called iteration.   for example for loop. a for loop get iterator by running iter 
+              method and then run next
+          -- method to get the next values.  the loop terminates when the StopIteration exception is being raised 
+             in iterator next method
+          -- in iteratoble objects all the values are generated in memory.  therefore iterable objects consume a
+             lot of memory
           -- in case Stopiteration exception is not raised,  the loop will continue and give None as values
 """
+
 """
-WHAT ARE GNERATORS  -  a generator generates its value from a set of rule or formula when its been given a collection or sequence.  so
-                                               all generators start with some iterators. 
+WHAT ARE GNERATORS  -  a generator generates its value from a set of rule or formula when its been given a collection or
+                       sequence.  so all generators start with some iterators. 
 ------------------------------------
-Yield      --  yield is called from a function,  it converts the values into a object and return an generator.  when the yield function is 
-           -- being called on a values,  that value is stored in stack or heap as object and function processing stops and control is switched 
-           -- caller function or loop
+Yield      --  yield is called from a function,  it converts the values into a object and return an generator.  when the
+               yield function is 
+           -- being called on a values,  that value is stored in stack or heap as object and function processing stops
+              and control is switched caller function or loop
 Generators -- are iterators are objects which contains __next_ method. the values of which are returned by next objects.  
-iternation --  iteration is any for loop which takes iterator and triversed over a loop.  it end when StopIteration exception is being raised
+iternation --  iteration is any for loop which takes iterator and triversed over a loop.  it end when StopIteration 
+               exception is being raised
          --    Once the function yields, the function is paused and the control is transferred to the caller.
-          --  # Local variables and their states are remembered between successive calls.
-         --   xrange is a generator function.  
-         --  a generator generates the values on the fly and therefore values can be traversed only once.
+         --    Local variables and their states are remembered between successive calls.
+         --    xrange is a generator function.  
+         --    a generator generates the values on the fly and therefore values can be traversed only once.
 """
 
 """
 WHAT ARE ENUMERATOR
-an enumberator is an object of a class which takes a sequence and retruns the an iterator.  its an iterator as it contains _iter_()
-and _next_() function
-Enumerate() method adds a counter to an iterable and returns it in a form of enumerate object. This enumerate object can then be 
-used directly in for loops or be converted into a list of tuples using list() method.
+an enumerator is an object of a class which takes a sequence and retruns the an iterator.  its an iterator as it contains 
+_iter_() and _next_() function
+
+Enumerate() method adds a counter to an iterable and returns it in a form of enumerate object. This enumerate object can
+then be used directly in for loops or be converted into a list of tuples using list() method.
 
 """
 
