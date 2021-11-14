@@ -36,6 +36,7 @@ hasattr(gen, '__iter__')   # that's an iterable
 
 hasattr(gen, 'next')       # and with .next (.__next__ in Python 3)
 # True                           # implements the iterator protocol.
+
 # The generator type is a sub-type of iterator:
 
 import collections, types
@@ -47,6 +48,7 @@ isinstance(gen, types.GeneratorType)
 # True
 isinstance(gen, collections.Iterator)
 # True
+
 # A feature of an Iterator is that once exhausted, you can't reuse or reset it:
 
 list(gen)
@@ -66,7 +68,8 @@ def func(an_iterable):
 
 def func(an_iterable):
     yield from an_iterable
-# However, yield from also allows for delegation to subgenerators, which will be explained in the following section on cooperative delegation with sub-coroutines.
+# However, yield from also allows for delegation to subgenerators, which will be explained in the following section
+# on cooperative delegation with sub-coroutines.
 
 # Coroutines:
 # yield forms an expression that allows data to be sent into the generator (see footnote 3)
