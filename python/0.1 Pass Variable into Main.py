@@ -6,6 +6,8 @@ Stanford CS106A Command Line Example
 Nick Parlante
 See the problem description in main()
 to write code there.
+
+https://github.com/bitnami/bitnami-docker-spark/blob/master/docker-compose.yml
 """
 
 import sys
