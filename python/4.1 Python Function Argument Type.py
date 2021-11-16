@@ -59,3 +59,13 @@ person_dict2(fname="scott", lname="tiger")
 
 person(**dname)
 
+"""
+please note that *name is translated by compiler 
+list(x for x in name)
+then this tuple  is passed to function
+
+in case fnc(*arg) and call is fnc(1,2,3,4)
+a generator is being create from (1,2,3,4) tuple and
+then that generator is being passed.
+"""
+
