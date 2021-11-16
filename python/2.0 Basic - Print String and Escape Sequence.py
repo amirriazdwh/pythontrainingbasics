@@ -6,6 +6,7 @@ String formatting method in python.
    you can use "Hello Mr %s with %s "%(Firstname, LastName).  s means string.  other formats are specified below.
 2. New Style:.   "Hello, {}".format(name)
    Hello {name},  there is a 0x{errorno:x} error!. format(name=name, errorno=errno)
+   in case you decided to give position  like {0}, {1} it should always start from 0
 3. Literal String interpolation:   f'Hello {name}'.  this is actually a sugar coat version of 'Hello {name}'.format(name)
    here f is equivalent to format function and variable is inside {name}
 4. Function Style:  "Hello"+name+"!"
@@ -86,7 +87,7 @@ print("% 10.3E"% (356.08977))
 Method #2
 ----------------------------------------
 """
-
+# note here the first argument will always start from 0
 print("First argument: {0}, second one: {1}".format(47,11))
 # 0 is first position and 1 is the second position and : gives precision,  you can specify position  position:flag:type.
 print("Second argument: {1:3d}, first one: {0:7d}".format(47,11))
