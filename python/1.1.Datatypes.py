@@ -1,6 +1,8 @@
 """
 in python are variables are objects and can be deleted by del function
+"""
 
+"""
 collections are abstract class of  sequences which contains  __getitem__, __len__ methods for iteration.  sequences are further divided into ordered and unordered
 sequences
 -------------------------------------------------------------------------
@@ -10,6 +12,9 @@ int              defines integer. its an object of type <class 'Int'> an integer
 float           defines  object of types <class 'float'>
 bool           a boolean data types contains three values,  None, True and False and its of type <class 'bool'>
 complex     number like 6+4j if of type <class 'complex'>
+"""
+
+"""
 -------------------------------------------------------------------------
 --2.  String types are string
 -------------------------------------------------------------------------
@@ -21,6 +26,9 @@ have chr  datatype in python,  we have string.  character is of type String of c
 String  defined by ""  double qoutte or ''  single quote.  The char is defined by ''. single or ""  double quote.  Multi-line strings can be denoted using triple quotes, a
 string is a sequence so they can be accessed by index.  a string is basic data types of integer so string can be converted to int
 using int. function.  a string can be converted to list and tuples by list() and tuples()
+"""
+
+"""
 --------------------------------------------------------------------------
 --3.  There are seven sequence types: strings, Unicode strings, lists, tuples, bytearrays, buffers, and xrange objects.  sequences also called ordered collection
 --------------------------------------------------------------------------
@@ -39,6 +47,10 @@ a slice is a sequence of the same type. This implies that the index set is renum
 
 Some sequences also support “extended slicing” with a third “step” parameter: a[i:j:k] selects all items of a with index x
 where x = i + n*k, n >= 0 and i <= x < j.
+
+"""
+
+"""
 -------------------------------------------------------------
 -   4.   Set and Dictionary  are unordered collection
 -------------------------------------------------------------
@@ -59,11 +71,24 @@ Note:  a json file is a dictionary saved in a file
 Note:  a dictionary is a ziping of two sequence stud by stud.  thats why zip function is using to
 create a dictionary from two sequences. just like a zip can be unzipped.  we can use unzip funtion to
 get key and values in two difference sequences.  keys are unique and immutable in dictionary
-------------------------------------------------------------------------------------------------------------------------------------
--  5     None    is an object defined to represent null values.   its type is <class 'NoneType'>.  when a variable is
+"""
+
+"""
+-------------------------
+-  5     None    
+-------------------------
+         is an object defined to represent null values.   its type is <class 'NoneType'>.  when a variable is
          not assigned any value its None.  in if expresion is evaluated as  if varis is None:  print("None")
-------------------------------------------------------------------------------------------------------------------------------------
--  6.    range    is data type with iterator its called generator its type is <class 'range'>
+"""
+
+"""
+-------------------------
+-  6.    range    
+-------------------------
+        is data type with iterator its called generator its type is <class 'range'>
+"""
+
+"""
 ------------------------------------------------------------------------------------------------------------------------------------
 -  7.   sequence Casting
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -75,6 +100,11 @@ in dictionary key must be unique.  while values can be repeated.  thats why its 
 values are not repeated. in same way in diction the keys are not repeated.  dictionary was created since it was not possible to
 access an individual element in a set without scanning the whole set.
 to get the keys we use.  d.keys and for values d.values and to get both keys and values as tuple we use d.items
+
+"""
+
+"""
+
 --------------------------------------------------------------------
 -- 8.   list,  tuples, string iterators, set  are represented by *  while dictionary iterators are represented by **
 --------------------------------------------------------------------
@@ -91,6 +121,8 @@ There are three standard arithmatic operation sequence operations   (  +   ,  * 
  that can be performed with tuples as well as lists and strings.
 ------------------------------------------------------------------------------------------------------------------------------
 """
+
+
 ########### complex data types ####
 compNum = 6 + 4j  # instead of i j is being used in python
 print(compNum)
