@@ -1,8 +1,8 @@
 # there are two types of docker commands.
 1.  Managment commands
-2.  operational commands. 
+2.  operational commands.
 
-# managment commands perform. building docker image,  network, configuration, 
+# managment commands perform. building docker image,  network, configuration,
 # nodes query,  service managment volume creation , image compose
 
 builder     Manage builds
@@ -24,7 +24,7 @@ builder     Manage builds
   system      Manage Docker
   trust       Manage trust on Docker images
   volume      Manage volumes
-  
+
 Commands:
   attach      Attach local standard input, output, and error streams to a running container
   build       Build an image from a Dockerfile
@@ -70,8 +70,8 @@ Commands:
 
 
 
-# find stopped containers 
-docker ps -a 
+# find stopped containers
+docker ps -a
 docker ps -f "status=exited"
 docker container ls -f 'status=exited' -f 'status=dead' -f 'status=created'
 
@@ -79,13 +79,13 @@ docker container ls -f 'status=exited' -f 'status=dead' -f 'status=created'
 # docker rm container
 docker container rm $(docker container ls -q -f 'status=exited' -f 'exited=0')
 
-#start a container 
+#start a container
 docker container start ORCLCBD
 
 #container stats
 docker container stats ORCLCBD
 
-#stop container 
+#stop container
 docker container stop ORCLCBD
 
 
@@ -94,6 +94,38 @@ docker run -d -it --name ORCLCBD store/oracle/database-enterprise:12.2.0.1
 
 docker run -d -it --name ORCLCBD -p 1521:1521 --network Oracle_Network  store/oracle/database-enterprise:12.2.0.1
 docker run -d -it --name ORCLCBD -p 1521:1521 --network Oracle_Network  store/oracle/database-enterprise:12.2.0.1
+
+docker run -d -it --name Kafka_broker --network app-tier  bitnami/kafka:2.8.1
+docker run -d -it --name Kafka_zookeeper --network app-tier bitnami/zookeeper:3.7
+
+docker pull bitnami/kafka:2.8.1
+
+
+docker run -d --name zookeeper-server \
+    -p 2181:2181 \
+    --network app-tier \
+    -e ALLOW_ANONYMOUS_LOGIN=yes \
+    bitnami/zookeeper:latest
+
+
+docker run -d --name kafka-server \
+   -p 9092:9092 \
+    --network app-tier \
+    -e ALLOW_PLAINTEXT_LISTENER=yes \
+    -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181 \
+    bitnami/kafka:2.8.1
+
+
+docker run -it --rm \
+    --network app-tier \
+    -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181 \
+    bitnami/kafka:2.8.1 kafka-topics.sh --list  --bootstrap-server kafka-server:9092
+
+> bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+
+
+
+bitnami/zookeeper                  3.7        11699dedaccc   15 hours ago   468MB
 
 docker run -d -it --name ORCL --network host  store/oracle/database-enterprise:12.2.0.1
 
@@ -105,7 +137,7 @@ docker pull bitnami/kafka:2.8.1
 docker exec -u -it ORCL
 docker exec --interactive --tty --user root  bash
 
-#login in root 
+#login in root
 docker exec --interactive --tty --user root --workdir / ORCLCBD bash
 
 # login as default user
@@ -128,3 +160,17 @@ dcaecf3335f9142e8c70a2ae05a386395b49d610be345b3a12d2961fccab1478
 $ docker attach busybox
 / # echo hello world
 hello world
+
+
+kafka-topics.bat --create --bootstrap-server 127.0.1.1:9092 --replication-factor 1 --partitions 1 --topic test
+
+#########################################################
+docker exec -u root -t -i zookeeper-server /bin/bash
+apt-get update
+apt-get install -y iputils-ping
+docker exec -u root -t -i kafka-server /bin/bash
+
+
+kafka-topics.bat --create --zookeeper 127.0.1.1:2181 --replication-factor 1 --partitions 1 --topic first_topic
+kafka-console-producer.bat --topic first_topic --bootstrap-server 127.0.1.1:9092
+kafka-console-consumer.bat --topic first_topic --bootstrap-server 127.0.1.1:9092 --from-beginning --property print.key=true  --property key.separator="-"
