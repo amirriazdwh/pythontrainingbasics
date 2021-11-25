@@ -172,5 +172,28 @@ docker exec -u root -t -i kafka-server /bin/bash
 
 
 kafka-topics.bat --create --zookeeper 127.0.1.1:2181 --replication-factor 1 --partitions 1 --topic first_topic
-kafka-console-producer.bat --topic first_topic --bootstrap-server 127.0.1.1:9092
-kafka-console-consumer.bat --topic first_topic --bootstrap-server 127.0.1.1:9092 --from-beginning --property print.key=true  --property key.separator="-"
+kafka-topics.bat --create --zookeeper 127.0.1.1:2181 --replication-factor 1 --partitions 1 --topic S-AR-KafkaDemo
+kafka-topics.bat --delete --zookeeper 127.0.1.1:2181  --topic first_topic
+kafka-topics.bat --delete --zookeeper 127.0.1.1:2181  --topic S-AR-KafkaDemo
+kafka-topics.bat --zookeeper 127.0.1.1:2181 --list
+
+
+./zookeeper-shell.bat 127.0.1.1:2181
+rmr /brokers/topics/first_topic
+rmr /brokers/topics/S-AR-KafkaDemo
+
+./zookeeper-shell.bat 127.0.1.1:2181
+
+rmr /admin/delete_topics/mytopic
+
+
+
+kafka-console-producer.bat --topic first_topic --bootstrap-server 192.168.1.185:9092
+kafka-console-consumer.bat --topic first_topic --bootstrap-server 127.0.1.1:9092 --from-beginning --property key.separator=","
+
+
+192.168.1.185
+
+kafka-console-consumer.bat --topic first_topic --bootstrap-server 127.0.1.1:9092 --from-beginning --property key.separator=","
+kafka-console-consumer.bat --topic S-AR-KafkaDemo --bootstrap-server 127.0.1.1:9092 S-AR-KafkaDemo --from-beginning
+
