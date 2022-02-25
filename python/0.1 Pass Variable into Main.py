@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 # pip is buildin package manager for python.  it install packages which are not part of standard library
-
-"""
-Stanford CS106A Command Line Example
-Nick Parlante
-See the problem description in main()
-to write code there.
-
-https://github.com/bitnami/bitnami-docker-spark/blob/master/docker-compose.yml
-"""
+#pypi is a python index repository from where you can install packages
 
 import sys
 import random
@@ -22,7 +14,6 @@ AFFIRMATIONS = [
     'A big round of applause for',
     'Everything is coming up',
 ]
-
 
 def print_affirm(name):
     """
@@ -48,19 +39,13 @@ def print_n_copies(n, name):
 def main():
     """
     This program takes 3 command line arg forms:
-
-    1.
-    -affirm *name*
-
-    2.
-    -hello *name*
-
-    3.
-    -n *number* *name*
+    1.-affirm *name*
+    2. -hello *name*
+    3. -n *number* *name*
     """
     # standard - load "args" list with cmd-line-args
     args = sys.argv[1:]
-
+    print(args)
     # args is a list of the command line argument strings that follow
     # the program.py file.
     # So if the command is: python3 affirm.py aaa bbb ccc

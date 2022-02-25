@@ -6,7 +6,8 @@ a slice is a sequence of the same type. This implies that the index set is renum
 to k+1.
 
 Rules  -- Above definitiion sets the following rules for slice[Start(i): End(j) : Step]
--------
+-------.
+
 1.  "Start" describes the start value from where string has to be slice.  default is from begining.
 2.  "Stop"  describes the value where we have to stop. the result will not include the stopping value.  to include the
       stop values you have to move next index thats why we mathematically represent it as   i<=k<j
