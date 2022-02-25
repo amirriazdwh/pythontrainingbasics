@@ -42,8 +42,11 @@ if __name__ == '__main__':
     functionA()
     functionB()
 print("after __name__ guard")
-
+# foo.py end here
 """
+----------------
+Note
+----------------
 Special Variables
 When the Python interpreter reads a source file, it first defines a few special variables. In this case, 
 we care about the __name__ variable.
@@ -53,28 +56,24 @@ When Your Module Is the Main Program
 If you are running your module (the source file) as the main program, e.g.
 
 python foo.py
+
 the interpreter will assign the hard-coded string "__main__" to the __name__ variable, i.e.
 """
 
-# It's as if the interpreter inserts this at the top
-# of your module when run as the main program.
+# as the interpreter inserts this at the top of your module when run as the main program.
 __name__ = "__main__"
+"""
+suppose some other module is the main program and it imports your module. This means  that  __name__ code part defined in foo.py is still there
+ and it should not execute.  only the main of other module importing foo module should execute
 
-# When Your Module Is Imported By Another
-# On the other hand, suppose some other module is the main program and it imports your module.
-# This means there's a statement like this in the main program, or in some other module the main program imports:
-# Suppose this is in some other main program.
+ import foo   the foo is imported in some other module
 
-# import foo
-
-# The interpreter will search for your foo.py file (along with searching for a few other variants), and prior to
+The interpreter will search for your foo.py file (along with searching for a few other variants), and prior to
 # executing that module, it will assign the name "foo" from the import statement to the __name__ variable, i.e.
 
-# It's as if the interpreter inserts this at the top
-# of your module when it's imported from another module.
-
+ It's as if the interpreter inserts this at the top of your module when it's imported from another module.
+"""
 __name__ = "foo"
-
 """
 Executing the Module's Code
 After the special variables are set up, the interpreter executes all the code in the module, one statement at a time. 
@@ -190,7 +189,10 @@ __name__ = "__main__"
 
 def bar():
     print("bar")
-    
+
+"""
+# all the objects in python has name guards to protect themselves from running in module.   for example 
+"""
 print("before __name__ guard")
 if __name__ == "__main__":
     bar()
