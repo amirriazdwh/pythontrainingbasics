@@ -22,13 +22,11 @@ def print_affirm(name):
     affirmation = random.choice(AFFIRMATIONS)
     print(affirmation, name)
 
-
 def print_hello(name):
     """
     Given name, print 'Hello' with that name.
     """
     print('Hello', name)
-
 
 def print_n_copies(n, name):
     """
@@ -44,7 +42,10 @@ def main():
     3. -n *number* *name*
     """
     # standard - load "args" list with cmd-line-args
+    print(sys.argv)
+    #['C:/Users/amirr/PycharmProjects/pythontraining/python/0.2Pass Variable into Main.py', '-affirm', "'name'"]
     args = sys.argv[1:]
+    #['-affirm', "'name'"]
     print(args)
     # args is a list of the command line argument strings that follow
     # the program.py file.
@@ -77,7 +78,6 @@ def main():
     # Note: the command line arg is a string, convert to int
 
     pass
-
 
 # Python boilerplate.
 if __name__ == '__main__':
