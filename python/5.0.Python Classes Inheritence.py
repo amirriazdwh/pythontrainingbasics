@@ -1,5 +1,4 @@
 class Person:
-
     def __init__(self, first, last):
         self.firstname = first
         self.lastname = last
@@ -8,7 +7,6 @@ class Person:
         return self.firstname + " " + self.lastname
 
 class Employee(Person):
-
     def __init__(self, first, last, staffnum):
         super().__init__(first, last)
         self.staffnumber = staffnum

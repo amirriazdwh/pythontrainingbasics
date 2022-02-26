@@ -114,6 +114,10 @@ class dict(iterable, **kwarg)
 
 *list   means   tuple(x for x in list)
 **dic   menas   dict(k,x for k,x in dic)
+
+chars = ['g', 'b', 'e', 'b', 'g']
+result = list(map(lambda s: str(s).upper(), chars))
+print(set(result))
 -------------------------------
 -- 9.   standard operation allowed on sequences.
 ----------------------------------------------
