@@ -39,12 +39,14 @@
 12   a function has its own dictionary so a function has its own scope.  in same way global and buildin has their own
         scope and own dictionary.    python compiler first looks for an variable in function in its own scope/dictionary if
         not found,  looks in global dictionary/scope
-13.      function default variables are created in static scope and its been created by __default__ dunder method when the function is loaded into memory and its local dictionary is
-         being created.
+13.      function default variables are created in static scope as function is a class and its  object being created by __new__ function which is being called from __call__.,   which is equal to () in python.
+           however when the function is created its get loaded into memory at this time __default__ function is created during loading.   which creates the default value in static memory..
 14   since a function is an object,  it can be passed to another function which is also an  object function and can be returned as function.   this means a  function object can be assigned to a variable also.
 15.  all objects in python are objects,   its means,   int, float, number,  string ,  functions and classes can be deleted by del.   which calls objects __del__ dunder function which acts like destructor.
 16.  a function when assigned to a variable has reference to object function  and its reference counter is incremented by 1.   when two variables are being assigned to same object,   object memory refrence 2 two.   when no
         variable is refrencing any object the object reference counter is 0 and virtual machine garbadage collection system will remove this variable from memory.
         has a mapping is store in high scope dictionary.  since function is a object it can be delete as del function_variable
-17.
+17. Please note that in object we have dunder function like __repr__  ,  __getitem__,   if you try to call these function with   object.__repr__ you may get error.   the best way to call them is to
+      use function like repr(object).   inside the function they are being called as object.__repr__
+18.
  '''
