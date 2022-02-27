@@ -41,4 +41,10 @@
         not found,  looks in global dictionary/scope
 13.      function default variables are created in static scope and its been created by __default__ dunder method when the function is loaded into memory and its local dictionary is
          being created.
+14   since a function is an object,  it can be passed to another function which is also an  object function and can be returned as function.   this means a  function object can be assigned to a variable also.
+15.  all objects in python are objects,   its means,   int, float, number,  string ,  functions and classes can be deleted by del.   which calls objects __del__ dunder function which acts like destructor.
+16.  a function when assigned to a variable has reference to object function  and its reference counter is incremented by 1.   when two variables are being assigned to same object,   object memory refrence 2 two.   when no
+        variable is refrencing any object the object reference counter is 0 and virtual machine garbadage collection system will remove this variable from memory.
+        has a mapping is store in high scope dictionary.  since function is a object it can be delete as del function_variable
+17.
  '''
