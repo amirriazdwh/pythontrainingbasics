@@ -71,6 +71,9 @@ Note:  a json file is a dictionary saved in a file
 Note:  a dictionary is a ziping of two sequence stud by stud.  thats why zip function is using to
 create a dictionary from two sequences. just like a zip can be unzipped.  we can use unzip funtion to
 get key and values in two difference sequences.  keys are unique and immutable in dictionary
+
+as dictionary are set of  key: value pairs,  they are being defined as   s={'a':1, 'b':2}  or s={(a,1), (b, 2)}
+key values pairs with {} are represented as a=1 and b=2.    note a & b are string otherwise compiler looks for their values and data type
 """
 
 """

@@ -9,8 +9,8 @@
             value2.,
     Note:   ":"  is used to separate Key from values.
 
-5.   The philosophy is same as its in other code generating system  for example  cloud formation or terraform.   Programmer wirites Yaml like code
-        which Python virtual machine convert to code and run that coe.
+5.   The philosophy is same as its in other code generating system  like loud formation or terraform.   Programmer wirites Yaml  code
+        which Python virtual machine convert to code and runs.
 
 6.   when the python interpretor run a python file,   it looks for keywords and its matching pair keys.   for example,   in case of   if statement  compiler looks for else key pairs and thats
       how it confirms that language sytax is correct.   after confirmation that sytax is correct,   it generates the c core.
@@ -75,6 +75,15 @@
        the global variable object refrence to local variable and then perform the variable modifications.
 
 18.   on same pattern,   if we have nested functions and outer function contains a X variable which needs to be modified in inner local function,  we have to use nonlocal key word.
+
+19.   python function arguments are of following types.   a.  positional argument   b.  keyword   c.  default d.  variable length.   in case of posional arguments parameters are
+        assigned by position ( first poistion parameter to first position argument),   in case of keyword assignment,   parameters keys are matched with argument keys and then
+        values are assigned.   default arguments are those which have default values assigned and they are optional.  * args are variable length arguments /parameters which
+        a optional.  as * means 0 or more values in regular expression
+
+19.   in python *args means slice values args by postions which be determine from any sequence (tuple or list)
+
+20.
 
 17.  Please note that in object we have dunder function like __repr__  ,  __getitem__,   if you try to call these function with   object.__repr__ you may get error.   the best way to call them is to
        use function like repr(object).   inside the function they are being called as object.__repr__
