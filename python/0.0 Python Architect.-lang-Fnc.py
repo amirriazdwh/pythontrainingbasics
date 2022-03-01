@@ -99,14 +99,9 @@
         Closure is used in a replacement of encapsulation.   means closure is used in place of class which may have only one funciton.
 
 23.  A closure function which increases the functionality of a already build function is called decorator.
-
-17.  Please note that in object we have dunder function like __repr__  ,  __getitem__,   if you try to call these function with   object.__repr__ you may get error.   the best way to call
-        them is to use function like repr(object).   inside the function they are being called as object.__repr__
-18.  please note that __getitem__ =[]  and __call__  = ()
-19.
  '''
 
-def divide_by_zero(  func ):
+def divide_by_zero( func ):
     def inner (a, b):
         print(" i am going to divide {} by {}".format(a,b))
         if b==0 :
