@@ -31,7 +31,7 @@
          As an implementation detail, most modules have the name __builtins__ made available as part of their globals. The value of __builtins__
          is normally either this module or the value of this module’s __dict__ attribute. Since this is an implementation detail, it may not be used by alternate
           implementations of Python.  The means are builtin modules are automatically imported into all the global scopes.
-          >>> globals()
+          #>>> globals()
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
@@ -79,14 +79,45 @@
 19.   python function arguments are of following types.   a.  positional argument   b.  keyword   c.  default d.  variable length.   in case of posional arguments parameters are
         assigned by position ( first poistion parameter to first position argument),   in case of keyword assignment,   parameters keys are matched with argument keys and then
         values are assigned.   default arguments are those which have default values assigned and they are optional.  * args are variable length arguments /parameters which
-        a optional.  as * means 0 or more values in regular expression
+        are optional.  as * means 0 or more values in regular expression
 
 19.   in python *args means slice values of args by postions which can be determined from any sequence (tuple or list)
 
-20.
+20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be assigned by position
+       till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)    not d is a dictionary element which is being
+       represented by d=7 outside the {} braces.  here b and c are optional parameters
+
+21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to void in java.
+
+22.  in python ,  we can define inner function,   the technique is called closure.   a closure is a function which has a free variable.    so what is a free variable.   suppose you define a
+       function outer  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.
+       when you call the statement    fn = outer().    python assign inner function to fn.    however,  before assigning inner function to fn,   it creates outer function local scoppe ,  create
+        x variable and this variable is being accessed in inner.   once outer function finishes it local scope dies and variable x does not dies as its been accessed from inner function.
+        this x varaible is called free variable.
+        Closure is used in a replacement of encapsulation.   means closure is used in place of class which may have only one funciton.
+
+23.  A closure function which increases the functionality of a already build function is called decorator.
 
 17.  Please note that in object we have dunder function like __repr__  ,  __getitem__,   if you try to call these function with   object.__repr__ you may get error.   the best way to call them is to
        use function like repr(object).   inside the function they are being called as object.__repr__
 18.  please note that __getitem__ =[]  and __call__  = ()
 19.
  '''
+
+def divide_by_zero(  func ):
+    def inner (a, b):
+        print(" i am going to divide {} by {}".format(a,b))
+        if b==0 :
+            print(" Divide by Zero")
+            return None
+        else:
+            return func(a,b)
+    return inner
+
+#   divide= divide_by_zero(divide)    note the divide as function and as a parameter for this python property
+@divide_by_zero
+def  divide (a, b):
+    return a/b
+
+c=divide(5, 0)
+print(c)
