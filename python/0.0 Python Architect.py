@@ -81,7 +81,7 @@
         values are assigned.   default arguments are those which have default values assigned and they are optional.  * args are variable length arguments /parameters which
         a optional.  as * means 0 or more values in regular expression
 
-19.   in python *args means slice values args by postions which be determine from any sequence (tuple or list)
+19.   in python *args means slice values of args by postions which can be determined from any sequence (tuple or list)
 
 20.
 
