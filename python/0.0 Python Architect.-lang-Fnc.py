@@ -119,5 +119,8 @@ def divide_by_zero(  func ):
 def  divide (a, b):
     return a/b
 
-c=divide(5, 0)
-print(c)
+#c=divide(5, 0)
+#print(c)
+
+divide = divide_by_zero(divide)
+print(divide(10,2))
