@@ -63,16 +63,18 @@
 14   since a function is an object,  it can be passed to another function which is also an  object function and can be returned as function.
       this means a  function object can be assigned to a variable also and can be delete by del.   which call object destructor
 
-15.  all objects in python are objects,   its means,   int, float, number,  string ,  functions and classes can be deleted by del.   which calls objects __del__ dunder function which acts like destructor.
+15.  all objects in python are objects,   its means,   int, float, number,  string ,  functions and classes can be deleted by del.   which calls objects __del__ dunder function which acts
+       like destructor.
 
 16.  a function when assigned to a variable has reference to object function  and its reference counter is incremented by 1.   when two variables are being assigned to same object,
        object memory refrence 2 two.   when no variable is refrencing any function object the object reference counter in memory become i0 and
        virtual machine garbadage collection system will remove this variable from memory.
 
-17,  A function which has a varaible in local scope (dictionary)  can access a variable in global scope.   however it cannot modify global variable in local scope.   this is because any function
+17,  A function which has a varaible in local scope (dictionary)  can access a variable in global scope.   however it cannot modify global variable in local scope.   this is because any
+        function
        if it has a variable say  A in global scope and same variable in local scope ( which we require to modify) and we have to modify it.   python always looks into its local scope
-       for variable reference and modify the local A variable  while the global A variable remain unchanged.   to change global A  variable we have to use global key work in function,  which copy
-       the global variable object refrence to local variable and then perform the variable modifications.
+       for variable reference and modify the local A variable  while the global A variable remain unchanged.   to change global A  variable we have to use global key work in function,
+       which copy the global variable object refrence to local variable and then perform the variable modifications.
 
 18.   on same pattern,   if we have nested functions and outer function contains a X variable which needs to be modified in inner local function,  we have to use nonlocal key word.
 
@@ -98,8 +100,8 @@
 
 23.  A closure function which increases the functionality of a already build function is called decorator.
 
-17.  Please note that in object we have dunder function like __repr__  ,  __getitem__,   if you try to call these function with   object.__repr__ you may get error.   the best way to call them is to
-       use function like repr(object).   inside the function they are being called as object.__repr__
+17.  Please note that in object we have dunder function like __repr__  ,  __getitem__,   if you try to call these function with   object.__repr__ you may get error.   the best way to call
+        them is to use function like repr(object).   inside the function they are being called as object.__repr__
 18.  please note that __getitem__ =[]  and __call__  = ()
 19.
  '''
