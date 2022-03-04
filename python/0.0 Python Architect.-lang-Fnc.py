@@ -1,7 +1,8 @@
 '''
 1. Python language is made on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
 2. on left side reserve words most acts like key which may contains conditions.  like if statement.   if statement is a key which must have
-3.  on right side values acts and  define scope,  which can be global,  builtin or local.   in reality value section is store in a dictionary which can be global, builtin or local
+3.  on right side values acts and  define scope,  which can be global,  builtin or local.   in reality value section is store in a dictionary which
+     can be global, builtin or local
 4.  just like Yaml ,  its a (key : value) language,   and if value has more than one field.  its store in next line after indentation.   exmaple
 
         key :
@@ -9,29 +10,36 @@
             value2.,
     Note:   ":"  is used to separate Key from values.
 
-5.   The philosophy is same as its in other code generating system  like loud formation or terraform.   Programmer wirites Yaml  code
-        which Python virtual machine convert to code and runs.
+5.   The philosophy is same as its in other code generating system  like cloud formation or terraform.   Programmer wirites Yaml  code
+        which Python virtual machine convert to code and runs.  this is why python is slow.   it interprete code line by and then generates
+        code.  compare to scala which compile code directly to bytecode which JVM run
 
-6.   when the python interpretor run a python file,   it looks for keywords and its matching pair keys.   for example,   in case of   if statement  compiler looks for else key pairs and thats
-      how it confirms that language sytax is correct.   after confirmation that sytax is correct,   it generates the c core.
+6.   when the python interpretor run a python file,   it looks for keywords and its matching pair keys.   for example,   in case of   if statement  compiler
+       looks for else key pairs and thats  how it confirms that language sytax is correct.   after confirmation that sytax is correct,   it generates the c code.
 
-7.   in python ()  is mendatory at some places and at some place its not.    it mandatory  on place where variable should be immutable and ordering has be preserved..
-      python accomplish this by hiding the entries of these variables in dictionary.    so that they cannot be modified.   for exmaple   def  test( a, b) :  a+b  the a and b variables
-      will not be in local dictionary.   in same way,   for class the parent class based entry will be in child class but it will not be visiable.     also  it means that you can inhert class
-      as     class child ( partent) :
+7.   in python ()  is mendatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
+      preserved.   python accomplish this by hiding the entries of these variables in local dictionary(name space).    so that they cannot be modified.
+      for exmaple   def  test( a, b) :  a+b  the a and b variables will not be in local dictionary.
 
-8.   Python has different by of dictionary which contain different attributes.   these dictionaries define the scope of the object.   as everything in python is an object..  these scopes are:
+       in same way,   for class the parent class based entry
+      will be in child class but it will not be visiable.     also  it means that you can inhert class as     class child ( partent) :
+
+8.   Python has different by of dictionary(name space) which contain different attributes.   these dictionaries define the scope of the object.
+      as everything in python is an object..  these scopes are:
         1.1   Builin scope
         1.2   Global scope
         1.3   local scope.
 
-        builltin scope is python kernal,   kernal interpretes the yaml like code.   it contains builtin functions and system module (sys)  to manage
-         virtual machine.  the builtin functions are part of python kernal and therefore available to all programs.  these builtin fuctions has dictionary where they store data.
-         https://docs.python.org/3/library/functions.html.   all the builtin functions,   types , keywords are inside interpretor
-         As an implementation detail, most modules have the name __builtins__ made available as part of their globals. The value of __builtins__
-         is normally either this module or the value of this module’s __dict__ attribute. Since this is an implementation detail, it may not be used by alternate
-          implementations of Python.  The means are builtin modules are automatically imported into all the global scopes.
-          #>>> globals()
+        builltin scope is python kernal,   kernal interpretes the yaml like code into C code.   it contains builtin functions and system module (sys)  to manage
+        virtual machine.  the builtin functions are part of python kernal and therefore available to all programs.  these builtin fuctions has dictionary( bultin name space)
+        where they store data for example( https://docs.python.org/3/library/functions.html) all the builtin functions,   types , keywords, exceptions,  constants
+        Note that most modules have the name __builtins__  which make builtin type, keywords, exceptions and function available to these modules.
+
+        The value of __builtins__
+        is normally either this module or the value of this module’s __dict__ attribute. Since this is an implementation detail, it may not be used by alternate
+        implementations of Python.  The means are builtin modules are automatically imported into all the global scopes.
+
+        #>>> globals()
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
@@ -51,9 +59,9 @@
 
 11.   python objects can be associated with alias.   as keyword is used for that purposes.
 
-12   a function has its own dictionary so a function has its own scope.  in same way global and buildin has their own
-        scope and own dictionary.    python compiler first looks for an variable in function in its own local scope/dictionary if
-        not found,  looks in global dictionary/scope else finally looks into builtin scope
+12   a function has its own dictionary(name space) so a function has its own scope.  in same way global and buildin has their own
+        scope and own dictionary(name space).    python compiler first looks for an variable in function in its own local scope/dictionary if
+        not found,  looks in global dictionary/scope and then finally looks into builtin scope
 
 13.   function default variables are created in static scope as function or function class being loaded into memory.   this is accomplish by __default__ method execution
        python function object being created by __new__ function.   which is being call by interpreter automatically.  for a function to execute in python it must has () along with his name
@@ -121,3 +129,8 @@ def  divide (a, b):
 
 divide = divide_by_zero(divide)
 print(divide(10,2))
+
+'''
+24.   in Python we have special methods,   which are called magic method or dunder methods.   __str__.  
+
+'''
