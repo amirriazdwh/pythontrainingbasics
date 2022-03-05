@@ -134,3 +134,7 @@ print(divide(10,2))
 24.   in Python we have special methods,   which are called magic method or dunder methods.   __str__.  
 
 '''
+
+import types
+
+types.FunctionType
