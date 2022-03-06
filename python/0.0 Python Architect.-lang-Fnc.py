@@ -1,8 +1,9 @@
 '''
 1. Python language is made on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
-2. on left side reserve words most acts like key which may contains conditions.  like if statement.   if statement is a key which must have
-3.  on right side values acts and  define scope,  which can be global,  builtin or local.   in reality value section is store in a dictionary which
-     can be global, builtin or local
+2. on left side reserve words most acts like key which may contain conditions.  like if statement.   if statement is a key which must have values.
+3.  The format is as under    key: value.    key can be any function name,  class name,  variable name,  special method name module while value can be
+      memory address to that variable,  function address,   record of special methods, etc.    these key: value pairs are stored in 3 layers called name space which
+      define the scope of these key value pairs.  these names space are  builtin name space,  global namespace,  local name space.
 4.  just like Yaml ,  its a (key : value) language,   and if value has more than one field.  its store in next line after indentation.   exmaple
 
         key :
@@ -14,12 +15,37 @@
         which Python virtual machine convert to code and runs.  this is why python is slow.   it interprete code line by and then generates
         code.  compare to scala which compile code directly to bytecode which JVM run
 
-6.   when the python interpretor run a python file,   it looks for keywords and its matching pair keys.   for example,   in case of   if statement  compiler
-       looks for else key pairs and thats  how it confirms that language sytax is correct.   after confirmation that sytax is correct,   it generates the c code.
+ 5a.  when the python program starts.  which is python command like "python calc.py".   python runtime environment create a thread or process which
+        has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs).    Python then an object of type Global
+        which has builtin modules link passed to it.   global name space is actaully the file along which the python command is being run.   therefore python passes
+        it the __name__ =__main__.   when the global object is being created it also import all the modules and packages defined into the file and save them in
+        global name space as key value pair.
 
-7.   in python ()  is mendatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
-      preserved.   python accomplish this by hiding the entries of these variables in local dictionary(name space).    so that they cannot be modified.
-      for exmaple   def  test( a, b) :  a+b  the a and b variables will not be in local dictionary.
+5b.   Note that everything is an object in python including the module imported automatically or with import statement
+        with builtin package imported automatically  to global scope,  you can view the classes, functions,  constants and exception of builtin in package
+        by command   dir(__builtin__)  which gives all the functions, methods,  variable defined in current context (files)  as well as the function, method,
+        variable defined in parent class.   Note:  globals (__builtin__) will only give you contents defined in file (which define the global scope).
+        To know the keywords of python type  help('keywords').
+
+5c.   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
+        and methods in that name space.   you can view the values of these variables by calling local() functions in function or class method.   if you use
+        __dict__ for function,   you will get empty dictionary {}.   the reason is in  __dict__ scope function variable dont exists.   when a function executes
+        local variables are created in local diction and when the function finishes along them the local scope and variables.  so __dict__ should not be used
+        for funcitons as functions are not objects.   they are function objects at runtime and then die.   you can use dir(fun)  which will give you the special
+        methods of types.FunctionType from which most functions are being created.
+
+5d.   all function contains special methods like __call__,  __default__ etc.   a function can be called by either fun()  or by __call__().  no matter its a class
+       function or stand alone function
+
+6.    when the python interpretor run a python file it checks the syntax first,   it looks for keywords and its matching pair keys.   for example,
+       in case of   if statement  compiler looks for else key pairs and thats  how it confirms that  sytax is correct.  after the syntax is correct.  it generate python
+       virtual machine code which in turns call c code in python virtual machine.
+
+7.   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
+      preserved( as parameters are passed by position)  please note the immutablity is ensured by ().  because () is tuple which is immutable
+      for example   def  test( a, b) :  a+b  the a and b variables will be in local dictionary.   variable a and b are immutable.
+
+7a.  if  element of () are mutable like list etc.    they should not be define in arguements.   instead the list must be define in function body.
 
        in same way,   for class the parent class based entry
       will be in child class but it will not be visiable.     also  it means that you can inhert class as     class child ( partent) :
@@ -134,7 +160,3 @@ print(divide(10,2))
 24.   in Python we have special methods,   which are called magic method or dunder methods.   __str__.  
 
 '''
-
-import types
-
-types.FunctionType
