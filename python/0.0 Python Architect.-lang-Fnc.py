@@ -168,23 +168,53 @@
 
  13d.  __init__  function is called after __new__ constructor ,   its objective is to initialize the self object
 
-14     since a function is an object,  it can be passed to another function which is also an  object function and can be returned as function.
-         this means a  function object can be assigned to a variable also and can be delete by del.   which call object destructor
+14     since a function is an object,  it can be passed to another function as parameter and can be returned as function.   This is called clouser.
+         once return the outter function returns the inner function and its scope is terminated.  but the variable in outter function are still accessable by inner functions.
+         these variable are called free variable and the inner function is call closure.   this is equivalent to object oriented programming encapsulation.
 
-15.  all objects in python are objects,   its means,   int, float, number,  string ,  functions and classes can be deleted by del.   which calls objects __del__ dunder function which acts
-       like destructor.
+15.   all objects in python are objects,   its means,   int, float, number,  string,  functions and classes can be deleted by del.   which calls objects __del__
+        dunder function which acts like destructor.
 
-16.  a function when assigned to a variable has reference to object function  and its reference counter is incremented by 1.   when two variables are being assigned to same object,
-       object memory refrence 2 two.   when no variable is refrencing any function object the object reference counter in memory become i0 and
-       virtual machine garbadage collection system will remove this variable from memory.
+16.  a function object or variable object  when assigned to a variable has reference to that object and its reference counter is incremented by 1.   when another
+        variables accesses the same object memory reference increases by 2.   when no variable is reference any object the object reference counter in memory
+        become i0 and virtual machine garbadage collection system will remove that variable from memory.
 
-17,  A function which has a varaible in local scope (dictionary)  can access a variable in global scope.   however it cannot modify global variable in local scope.   this is because any
-        function
-       if it has a variable say  A in global scope and same variable in local scope ( which we require to modify) and we have to modify it.   python always looks into its local scope
-       for variable reference and modify the local A variable  while the global A variable remain unchanged.   to change global A  variable we have to use global key work in function,
-       which copy the global variable object refrence to local variable and then perform the variable modifications.
+17,  A function which has a varaible in local scope can access a variable in global scope.   however it cannot modify global variable in local scope.   this is because any
+        function  which has a variable with same name in global scope as well as in local scope.   the python takes precedence to local varaible first.   this is call masking
+         if it has a variable say  A in global scope and same variable in local scope and we have to modify it.   python always looks into its local scope
+        for variable reference and modify the local A variable  while the global A variable remain unchanged.   to change global A  variable we have to use global
+         keyword  in function,  the syntax is
 
-18.   on same pattern,   if we have nested functions and outer function contains a X variable which needs to be modified in inner local function,  we have to use nonlocal key word.
+            c=25
+                def fun (a, b):
+                    global c
+                    c=10
+                    return 0
+
+        here global c is translated to global()['c']=10
+
+            aa =10
+            def  test():
+                globals()['aa']=20
+
+        test()
+        print(aa)
+
+18.   on same pattern,   if we have nested functions and outer function contains  "X" variable which needs to be modified in inner local function scope,
+        we have to use nonlocal key word with the variable X of inner function.   the nonlocal keyword says,  variable is not in global scope and variable is not
+        in local scope of this function.  its in outer function local scope.
+
+        g =10
+        def outer():
+            lo=25
+            def inner():
+                nonlocal lo
+                lo=35
+                return lo
+            return inner
+
+        x = outer()
+        print(x())   // 35
 
 19.   python function arguments are of following types.   a.  positional argument   b.  keyword   c.  default d.  variable length.   in case of posional arguments parameters are
         assigned by position ( first poistion parameter to first position argument),   in case of keyword assignment,   parameters keys are matched with argument keys and then
