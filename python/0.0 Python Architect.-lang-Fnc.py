@@ -234,9 +234,9 @@
 
         fun( a, b, *args,  **kargs)  or  fun(a,b,*c, d) and pass parameters as (1,2, 3,4,5, d=6).
 
-20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be assigned by position
-       till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)    not d is a dictionary element which is being
-       represented by d=7 outside the {} braces.  here b and c are optional parameters
+20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be
+        assigned by position till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)
+        not d is a dictionary element which is being represented by d=7 outside the {} braces.  here b and c are optional parameters
 
 21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
 
@@ -246,6 +246,7 @@
         x variable and this variable is being accessed in inner.   once outer function finishes it local scope dies and variable x does not dies as its been accessed from inner function.
         this x varaible is called free variable.
         Closure is used in a replacement of encapsulation.   means closure is used in place of class which may have only one funciton.
+
 
 23.   A closure function which increases the functionality of a already build function is called decorator.
  '''
@@ -264,13 +265,27 @@ def divide_by_zero( func ):
 def  divide (a, b):
     return a/b
 
-c=divide(5, 0)
+c=divide(5, 2)
 print(c)
 
 #  above is equivalent to
 # divide = divide_by_zero(divide)
 # print(divide(10,2))
+'''
+24.   clousure example.  __closure__
+'''
+# this is a nested function
+def gfg(raise_power_to):
+    def power(number):
+        return number ** raise_power_to
+    return power
 
-'''
-24.   in Python we have special methods,   which are called magic method or dunder methods.   __str__.  
-'''
+raise_power_to_3 = gfg(3)
+print(raise_power_to_3.__closure__)
+print(raise_power_to_3.__closure__[0].cell_contents)
+
+"""
+which returns
+(<cell at 0x0000025F0BA4A828: int object at 0x00007FFE64857C80>,)
+3
+"""
