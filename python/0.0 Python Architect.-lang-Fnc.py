@@ -378,6 +378,25 @@ a.func2 = types.MethodType(func2,a)
 # or types.MethodType(func, a, A) for PY2
 a.func2()
 
+"""
+30 :   a module (python file)  is also an object.  so once a module or package is being created.  you can access its functions,
+         variable or constant through object name.   
+         
+         import math as m
+         m.exp()
+         
+         loading a module to python is two way, process.  1.  find and load module   2.  compile and run
+         
+         importer is module we create to demonstrated how modules works.   detailed in another section
+"""
+import importer
+import sys
+
+mod = importer.import_('mody','mody.py', '.')
+print("sys says:", sys.modules.get('mody','modules not found '))
+
+mod.test_func()
+
 
 
 
