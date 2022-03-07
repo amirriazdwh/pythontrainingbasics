@@ -55,8 +55,5 @@ to get any futher help types ,   glob which is a module we got by type help(modu
 
 dir(__builtin__)
 
-
-func is an object with a __call__ method. You can check this by calling dir(func). It doesn't know anything about its body until it's called.
-
-https: // stackoverflow.com / questions / 63501070 / why - is -the - dict - attribute - of - this - function - an - empty - dictionary
-
+# to clear python interprete screen type
+print("\033[H\033[J", end="")

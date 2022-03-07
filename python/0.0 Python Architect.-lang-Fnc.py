@@ -19,7 +19,7 @@
         code or json like code which is interpreted into byte code.  in same way, Python virtual machine convert yaml like code byte code and runs.  this is
         why python is slow.   it interpretor code line by and then generates code.  compare to scala which compile code directly to bytecode which JVM run
 
- 5a.  when the python program starts.  which is python command like "python calc.py".   python runtime environment create a thread or process which
+ 6 .  when the python program starts.  which is python command like "python calc.py".   python runtime environment create a thread or process which
         has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs).    Python then create an object of type
         Global which has builtin modules link passed to it.   global name space is actually a file along which is being run through  python command. Python
         passes the file __name__ =__main__.   when the global object is being created it also import all the modules and packages defined into the file and
@@ -29,7 +29,7 @@
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
-5b.   Note that everything is an object in python including the builtin module imported automatically and imported modules.
+7 .   Note that everything is an object in python including the builtin module imported automatically and imported modules.
         builtin module/package are  imported automatically to global scope,  you can view the builtin classes, functions,  constants and exception of builtin in package
         by command   dir(__builtins__)  which gives all the functions, methods, variable defined in your current scope.  Note:  dir() gives you builtin scope and with
         dir(__builtins__) you can view the available contents.   globals() function does not take any parameter and it return you global namespace attributes list.
@@ -37,25 +37,62 @@
         methods and constants of math class.  note dir uses global namespace to ensure that math module is imported or not and if imported retruns its contents.
         To know the keywords of python type  help('keywords').
 
-5c.   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
-        and methods in that name space.   you can view the values of these variables by calling local() functions in function or class method.   if you use
+8 .   dir take an class, object, funciton or module and returns the attribute.    for example  dir(math) return all the math class function.
+        dir(math.exp) return the math funciton exp information
+
+9 .   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
+        and methods in local name space.   you can view the values of these variables by calling local() functions in function or class method.   if you use
         __dict__ for function,   you will get empty dictionary {}.   the reason is in  __dict__ scope function variable dont exists.   when a function executes
-        local variables are created in local diction and when the function finishes along them the local scope and variables.  so __dict__ should not be used
-        for funcitons as functions are not objects.   they are function objects at runtime and then die.   you can use dir(fun)  which will give you the special
-        methods of types.FunctionType from which most functions are being created.
+        local variables are created in local namespace and when the function finishes along then  the local scope and variables become out of scope and
+        are clear by garbadage collector.  so __dict__ should not be used for funcitons as functions are not objects.   they are function objects at runtime and then die.
+        you can use dir(fun)  which will give you the special methods of types.FunctionType from which most functions are being created.  __dict__ should only be
+        used with classes and objects but not with funcitons
 
-5d.   all function contains special methods like __call__,  __default__ etc.   a function can be called by either fun()  or by __call__().  no matter its a class
-       function or stand alone function
+10.   all function contains special methods like __call__,  __default__ etc.   a function can be called  either by fun()  or by __call__().  no matter its a class
+        function or stand alone function
 
-6.    when the python interpretor run a python file it checks the syntax first,   it looks for keywords and its matching pair keys.   for example,
-       in case of   if statement  compiler looks for else key pairs and thats  how it confirms that  sytax is correct.  after the syntax is correct.  it generate python
-       virtual machine code which in turns call c code in python virtual machine.
+11   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
+      preserved( as parameters are passed by position)  please note the immutablity is ensured because () is a classType of tuple and tuples are immutable
+      for example   def  test( a, b) : a=5  a+b  the a and b variables will be in local dictionary.   variable a and b are immutable in method.   This is to maintain the
+      functional aspect of a function and to avoid side effect.   this means that when  x=5, y=1 and test(x, y) values of x and y does not changes,  however value of
+      these object inside method changes.   when python assigns a new value to a,  it creates a new memory refrence and then assign that memory refrence to a.
+      this way,  x and y dont changes while a can be changed inside the function
 
-7.   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
-      preserved( as parameters are passed by position)  please note the immutablity is ensured by ().  because () is tuple which is immutable
-      for example   def  test( a, b) :  a+b  the a and b variables will be in local dictionary.   variable a and b are immutable.
+     in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are initialized
+     in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable object the refrence memory
+     address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b in one function call changes,  it will also change in another call and also the pass
+     value will change.  therefore,  it recommended to initialize   mutable objects  in arguments,   instead,   create a list inside a function (as local variable)  to avoid this problem
 
-7a.  if  element of () are mutable like list etc.    they should not be define in arguements.   instead the list must be define in function body.
+
+11a  Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and lambda
+        functions can be treated as the same thing.   explain later...
+
+12.  everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.   object class has
+       some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns the same attributes but in list.
+       these functions are available in all the classes.   in same way,   python FunctionType class has been dervied from object class and contains some extra methods besides object
+       methods.
+
+      import types
+      types.FunctionType.__dict__
+
+       mappingproxy({'__repr__': <slot wrapper '__repr__' of 'function' objects>,
+              '__call__': <slot wrapper '__call__' of 'function' objects>,                                    # call is Funciton method and not an object method.
+              '__get__': <slot wrapper '__get__' of 'function' objects>,
+              '__new__': <function function.__new__(*args, **kwargs)>,
+              '__closure__': <member '__closure__' of 'function' objects>,                             # is Funciton method and not an object method.
+              '__doc__': <member '__doc__' of 'function' objects>,
+              '__globals__': <member '__globals__' of 'function' objects>,
+              '__module__': <member '__module__' of 'function' objects>,
+              '__code__': <attribute '__code__' of 'function' objects>,
+              '__defaults__': <attribute '__defaults__' of 'function' objects>,                              #  is Funciton method and not an object method.
+              '__kwdefaults__': <attribute '__kwdefaults__' of 'function' objects>,
+              '__annotations__': <attribute '__annotations__' of 'function' objects>,
+              '__dict__': <attribute '__dict__' of 'function' objects>,
+              '__name__': <attribute '__name__' of 'function' objects>,
+              '__qualname__': <attribute '__qualname__' of 'function' objects>})
+
+       object.__subclasses__()
+       this will return all the sub classes of object class.
 
        in same way,   for class the parent class based entry
       will be in child class but it will not be visiable.     also  it means that you can inhert class as     class child ( partent) :
