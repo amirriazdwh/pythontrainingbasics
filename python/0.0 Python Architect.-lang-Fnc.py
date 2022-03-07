@@ -29,6 +29,20 @@
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
+6a.   Python keywords like class,  var, def, if  defines different types of namespace according to their purpose.   for example ,   runing the program
+         creates builtin namespace and global global name space.    class keywork creates a ClassType and stores its global dictionary.   def creates a
+         local dictionary/namespace.  if create local dictionary ,  for creates a local dictionary etc.  each dictionary/name space contains different attributes
+         as they are being created from different objects.    for example,   FunctionType create function when it finds  def or lambda keyword.  ClassType
+         creates a class and loaded it into memory.   moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
+         attributes
+
+6b.   python objects can be associated with alias.   "as" keyword is used for that purposes.  "as" is translated as = in python.   for exampel
+        import math as m
+        which means
+
+        m = importer (math)
+        m. exp   # calls the funciton.
+
 7 .   Note that everything is an object in python including the builtin module imported automatically and imported modules.
         builtin module/package are  imported automatically to global scope,  you can view the builtin classes, functions,  constants and exception of builtin in package
         by command   dir(__builtins__)  which gives all the functions, methods, variable defined in your current scope.  Note:  dir() gives you builtin scope and with
@@ -58,19 +72,20 @@
       these object inside method changes.   when python assigns a new value to a,  it creates a new memory refrence and then assign that memory refrence to a.
       this way,  x and y dont changes while a can be changed inside the function
 
-     in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are initialized
-     in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable object the refrence memory
-     address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b in one function call changes,  it will also change in another call and also the pass
-     value will change.  therefore,  it recommended to initialize   mutable objects  in arguments,   instead,   create a list inside a function (as local variable)  to avoid this problem
+     in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are
+     initialized in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable
+     object the refrence memory address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b in one function call changes,  it will also
+     change in another call and also the pass value will change.  therefore,  it recommended to initialize   mutable objects  in arguments,   instead,   create a list inside
+     a function (as local variable)  to avoid this problem
 
 
-11a  Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and lambda
-        functions can be treated as the same thing.   explain later...
+11a  Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and
+        lambda functions can be treated as the same thing.   explain later...
 
-12.  everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.   object class has
-       some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns the same attributes but in list.
-       these functions are available in all the classes.   in same way,   python FunctionType class has been dervied from object class and contains some extra methods besides object
-       methods.
+12.  everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.
+       object class has some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns
+        the same attributes but in list. these functions are available in all the classes.   in same way,   python FunctionType class has been dervied from object class
+        and contains some extra methods besides object methods.
 
       import types
       types.FunctionType.__dict__
@@ -91,14 +106,14 @@
               '__name__': <attribute '__name__' of 'function' objects>,
               '__qualname__': <attribute '__qualname__' of 'function' objects>})
 
-       object.__subclasses__()
-       this will return all the sub classes of object class.
+       object.__subclasses__().
+       this will return all the subclasses of object class.  A subclass will contains all the functions of a base class
 
-       in same way,   for class the parent class based entry
-      will be in child class but it will not be visiable.     also  it means that you can inhert class as     class child ( partent) :
+       to get the base class of a class use the following function.
+       str.__base__
+       <class 'object'>
 
-8.   Python has different by of dictionary(name space) which contain different attributes.   these dictionaries define the scope of the object.
-      as everything in python is an object..  these scopes are:
+13.     note that namespace are dictionaries which stores variable, function,  objects name in a key value pairs.
         1.1   Builin scope
         1.2   Global scope
         1.3   local scope.
@@ -126,23 +141,35 @@
         as any variable inside class is stored in its class dictionary and is different from object instance dictionary which is being created which the object is being
         create with __New__ function
 
-9. .    Everything in python is an object.   class,  data types,  functions,  import ,  modules,
-10.    keywords like class,  var, def at the start of class variable, function defination define the type of dictionary which that object creates.
-        thats why class dictionary is a bit different  from variable and a variable dictionary is a bit different from function.
-
-11.   python objects can be associated with alias.   as keyword is used for that purposes.
-
-12   a function has its own dictionary(name space) so a function has its own scope.  in same way global and buildin has their own
-        scope and own dictionary(name space).    python compiler first looks for an variable in function in its own local scope/dictionary if
+14   a function has its own dictionary(name space) so a function has its own scope.  in same way global and buildin has their own
+        scope and own dictionary(name space).    python compiler first looks for a local variable in function in its own local scope/dictionary if
         not found,  looks in global dictionary/scope and then finally looks into builtin scope
 
-13.   function default variables are created in static scope as function or function class being loaded into memory.   this is accomplish by __default__ method execution
-       python function object being created by __new__ function.   which is being call by interpreter automatically.  for a function to execute in python it must has () along with his name
+13.   python object instance being created by __new__ function.   which is being call by interpreter automatically.
+            class A(object):
+                def __new__(cls):
+                    print("Creating instance")
+                    return super(A, cls).__new__(cls)
 
- 13a.  an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
+                def __init__(self):
+                    print("Init is called")
 
-14   since a function is an object,  it can be passed to another function which is also an  object function and can be returned as function.
-      this means a  function object can be assigned to a variable also and can be delete by del.   which call object destructor
+            a = A()
+
+            __new__ is not bounded to object  as not object has been created so far,  so no self in its arguments.   __new__ creates an instance and assigns it
+            refrence address to "self"
+
+13a     for a function to execute in python it must have __call__  method.   which is translated when it encourter ().    so fun.__call__() is a result of translation
+           of fun()
+
+ 13b.  an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
+
+ 13c.   __del__ function is called on instance objects when del  a  is being called.   a is the variable
+
+ 13d.  __init__  function is called after __new__ constructor ,   its objective is to initialize the self object
+
+14     since a function is an object,  it can be passed to another function which is also an  object function and can be returned as function.
+         this means a  function object can be assigned to a variable also and can be delete by del.   which call object destructor
 
 15.  all objects in python are objects,   its means,   int, float, number,  string ,  functions and classes can be deleted by del.   which calls objects __del__ dunder function which acts
        like destructor.
