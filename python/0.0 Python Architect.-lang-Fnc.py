@@ -66,29 +66,29 @@
         function or stand alone function
 
 11   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
-      preserved( as parameters are passed by position)  please note the immutablity is ensured because () is a classType of tuple and tuples are immutable
-      for example   def  test( a, b) : a=5  a+b  the a and b variables will be in local dictionary.   variable a and b are immutable in method.   This is to maintain the
-      functional aspect of a function and to avoid side effect.   this means that when  x=5, y=1 and test(x, y) values of x and y does not changes,  however value of
-      these object inside method changes.   when python assigns a new value to a,  it creates a new memory refrence and then assign that memory refrence to a.
-      this way,  x and y dont changes while a can be changed inside the function
+       preserved( as parameters are passed by position)  please note the immutablity is ensured because () is a classType of tuple and tuples are immutable
+       for example   def  test( a, b) : a=5  a+b  the a and b variables will be in local dictionary.   variable a and b are immutable in method.   This is to maintain the
+       functional aspect of a function and to avoid side effect.   this means that when  x=5, y=1 and test(x, y) values of x and y does not changes,  however value of
+       these object inside method changes.   when python assigns a new value to a,  it creates a new memory refrence and then assign that memory refrence to a.
+       this way,  x and y dont changes while a can be changed inside the function
 
-     in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are
-     initialized in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable
-     object the refrence memory address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b in one function call changes,  it will also
-     change in another call and also the pass value will change.  therefore,  it recommended to initialize   mutable objects  in arguments,   instead,   create a list inside
-     a function (as local variable)  to avoid this problem
+       in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are
+       initialized in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable
+       object the refrence memory address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b in one function call changes,  it will also
+       change in another call and also the pass value will change.  therefore,  it recommended to initialize   mutable objects  in arguments,   instead,   create a list inside
+       a function (as local variable)  to avoid this problem
 
 
-11a  Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and
-        lambda functions can be treated as the same thing.   explain later...
+11a   Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and
+         lambda functions can be treated as the same thing.   explain later...
 
-12.  everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.
-       object class has some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns
+12.   everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.
+        object class has some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns
         the same attributes but in list. these functions are available in all the classes.   in same way,   python FunctionType class has been dervied from object class
         and contains some extra methods besides object methods.
 
-      import types
-      types.FunctionType.__dict__
+       import types
+       types.FunctionType.__dict__
 
        mappingproxy({'__repr__': <slot wrapper '__repr__' of 'function' objects>,
               '__call__': <slot wrapper '__call__' of 'function' objects>,                                    # call is Funciton method and not an object method.
@@ -131,17 +131,17 @@
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
-        Global scope is your python file,  a  file is first  loaded into memory and then its dictionary is created. please note that modules in python file are first loaded into memory
+         Global scope is your python file,  a  file is first  loaded into memory and then its dictionary is created. please note that modules in python file are first loaded into memory
          and then run.   During the load phase,  the python file is being search and  then its dictionary is being created in memory which is called global dictionary.  A global dictionary
          contains all the imports builtin or custom,   which are stored in dictionary as key values.   the modules , variables, functions which are in global scope are available to all
          the object and function in file.   each object and function in a file then have a local scope.
 
          local scope,   is created once function, classs or any object are loaded into memory.    please note objects are first loaded into memory and then executed.   during the
-        class loading phase a class create its own local dictionary this dictionary is different from object diction,   class dictionary icreated is a way to create static variables,
-        as any variable inside class is stored in its class dictionary and is different from object instance dictionary which is being created which the object is being
-        create with __New__ function
+         class loading phase a class create its own local dictionary this dictionary is different from object diction,   class dictionary icreated is a way to create static variables,
+         as any variable inside class is stored in its class dictionary and is different from object instance dictionary which is being created which the object is being
+         create with __New__ function
 
-14   a function has its own dictionary(name space) so a function has its own scope.  in same way global and buildin has their own
+14    a function has its own dictionary(name space) so a function has its own scope.  in same way global and buildin has their own
         scope and own dictionary(name space).    python compiler first looks for a local variable in function in its own local scope/dictionary if
         not found,  looks in global dictionary/scope and then finally looks into builtin scope
 
@@ -265,13 +265,13 @@ def divide_by_zero( func ):
 def  divide (a, b):
     return a/b
 
-#c=divide(5, 0)
-#print(c)
+c=divide(5, 0)
+print(c)
 
-divide = divide_by_zero(divide)
-print(divide(10,2))
+#  above is equivalent to
+# divide = divide_by_zero(divide)
+# print(divide(10,2))
 
 '''
 24.   in Python we have special methods,   which are called magic method or dunder methods.   __str__.  
-
 '''
