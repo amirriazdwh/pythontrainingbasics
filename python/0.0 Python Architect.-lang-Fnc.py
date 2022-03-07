@@ -249,7 +249,6 @@
 
 23.   A closure function which increases the functionality of a already build function is called decorator.
  '''
-
 def divide_by_zero( func ):
     def inner (a, b):
         print(" i am going to divide {} by {}".format(a,b))
