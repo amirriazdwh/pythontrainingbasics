@@ -216,27 +216,38 @@
         x = outer()
         print(x())   // 35
 
-19.   python function arguments are of following types.   a.  positional argument   b.  keyword   c.  default d.  variable length.   in case of posional arguments parameters are
-        assigned by position ( first poistion parameter to first position argument),   in case of keyword assignment,   parameters keys are matched with argument keys and then
-        values are assigned.   default arguments are those which have default values assigned and they are optional.  * args are variable length arguments /parameters which
-        are optional.  as * means 0 or more values in regular expression
+19.   python function arguments are of following types.   a.  positional argument   b.  keyword  arguments c.  default argument   d.  variable length.
+        in case of posional arguments parameters are assigned by position ( first poistion parameter to first position in argument),   in case of keyword
+         assignment,   parameters keys are matched with argument keys and then values are assigned.   default arguments are those which have default
+        values assigned and they are optional.  * args are variable length arguments /parameters which are optional.  "*" means 0 or more values.in regular
+        expression.   the same is true in python
 
-19.   in python *args means slice values of args by postions which can be determined from any sequence (tuple or list)
+19.   in python *args means slice values of args by position which can be determined from any sequence (tuple or list).   the process is as under:
+
+        a, *b, c  = (1,2,3,4,5,6).    here * is at index 1 from start and -1 from end.   so our slice is :
+        b= d[1: -1]   where d =(1,2,3,4,5,6).
+
+        which returns    (1,(2,3,4,5),6)
+
+        however,  in case of functions arguments,   the end index is not possible.  so  all the positional variable ends after *arg.   if you want to add more variables
+        after positional variables you have to use keyword
+
+        fun( a, b, *args,  **kargs)  or  fun(a,b,*c, d) and pass parameters as (1,2, 3,4,5, d=6).
 
 20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be assigned by position
        till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)    not d is a dictionary element which is being
        represented by d=7 outside the {} braces.  here b and c are optional parameters
 
-21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to void in java.
+21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
 
-22.  in python ,  we can define inner function,   the technique is called closure.   a closure is a function which has a free variable.    so what is a free variable.   suppose you define a
-       function outer  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.
-       when you call the statement    fn = outer().    python assign inner function to fn.    however,  before assigning inner function to fn,   it creates outer function local scoppe ,  create
+22.   in python ,  we can define inner function,   the technique is called closure.   a closure is a function which has a free variable.    so what is a free variable.   suppose you define a
+        function outer  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.
+        when you call the statement    fn = outer().    python assign inner function to fn.    however,  before assigning inner function to fn,   it creates outer function local scoppe ,  create
         x variable and this variable is being accessed in inner.   once outer function finishes it local scope dies and variable x does not dies as its been accessed from inner function.
         this x varaible is called free variable.
         Closure is used in a replacement of encapsulation.   means closure is used in place of class which may have only one funciton.
 
-23.  A closure function which increases the functionality of a already build function is called decorator.
+23.   A closure function which increases the functionality of a already build function is called decorator.
  '''
 
 def divide_by_zero( func ):
