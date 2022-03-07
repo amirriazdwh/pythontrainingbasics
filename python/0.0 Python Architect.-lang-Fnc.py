@@ -289,3 +289,100 @@ which returns
 (<cell at 0x0000025F0BA4A828: int object at 0x00007FFE64857C80>,)
 3
 """
+
+"""
+25.   python standard function.  the compiler compile the code in def structure 
+        put it to a temporary file and then compiles and save into a temporary location.   
+        the compiled code can be instanciated as Function object and called. 
+"""
+print("----code__ function")
+def csum(a=10, b=5):
+    return a+b
+
+print(csum())
+
+print(csum.__code__)
+
+"""
+<code object csum at 0x00000222BA6846F0, file "C:/Users/amirr/PycharmProjects/pythontraining/python/0.0 Python Architect.-lang-Fnc.py", line 299>
+code at line 299 is compiled and then called as function 
+"""
+
+"""
+26.    A function is an instance of FunctionType. 
+"""
+import types
+print("This is a  function {0}".format(isinstance(csum , types.FunctionType)))
+
+"""
+26.   A lambda function is an instance of LambdaType
+"""
+lam = lambda a,b : a+b
+print("This is a Lambda function {0}".format(isinstance(lam, types.FunctionType)))
+
+"""
+27.   since everything is an object.   this section demonstrated now a function object is being 
+        created. 
+"""
+dynfl = types.FunctionType(compile('2/3', 'dyn.py','eval'), {})
+print("The function object is {0}".format(dynfl()))
+
+print("Dynfi is a instance of function and is being "
+      "created from FunctionType (y/N): {0}".format(isinstance(dynfl, types.FunctionType)))
+
+print(type(dynfl))
+
+"""
+28.   A lambda function is also a function object. 
+"""
+
+dynflam01 = types.LambdaType(compile( '2/3', '','eval'), {})
+print("This is a Dynamic Lambda function {0}".format(dynflam01()))
+
+
+print("dynflam01 is a instance of function and is being "
+      "created from LambdaType (y/N): {0}".format(isinstance(dynflam01, types.LambdaType)))
+
+"""
+29.   function defined in classes are called method and they are joined to classes through self method.  
+        function containing self argument cannot be called without instanciating the object as no function is bind
+        to class
+"""
+
+# class created with one method
+class A:
+    def func(self):
+        print('I am called from', self)
+
+# object create for A and named a
+a=A()
+
+# this method is not binded to class.  but it can be binded to object
+def func2(self):
+    print('I am func2')
+
+##
+#func2()
+
+''''
+called func2 without binding to object creates the following exception
+Traceback (most recent call last):
+  File "C:/Users/amirr/PycharmProjects/pythontraining/python/0.0 Python Architect.-lang-Fnc.py", line 364, in <module>
+    func2()
+TypeError: func2() missing 1 required positional argument: 'self'
+'''
+
+# function func2 is being binded to object a.
+a.func2 = types.MethodType(func2,a)
+
+# or types.MethodType(func, a, A) for PY2
+a.func2()
+
+
+
+
+
+
+
+
+
