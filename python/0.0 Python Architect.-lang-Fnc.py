@@ -393,8 +393,14 @@ import importer
 import sys
 
 mod = importer.import_('mody','mody.py', '.')
+
+# when a package is found and loaded ,  it is loaded into sys.modules cache
+# and later an entry is being added to the global directory with key mod.
+#  when the module is deleted  by del m.   the entry from the global directory
+#  is being remove but the module remains cached in sys.
 print("sys says:", sys.modules.get('mody','modules not found '))
 
+# this is module object and it acts similar to a class object
 mod.test_func()
 
 
