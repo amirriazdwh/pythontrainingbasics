@@ -1,7 +1,7 @@
 '''
 Module Name : sessionutils.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : Amir Riaz
 Purpose : This module caters with defining session level settings of each batch run
 '''
 

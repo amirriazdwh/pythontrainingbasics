@@ -1,7 +1,7 @@
 '''
 Module Name : batchint.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : amir riaz
 Purpose : This module is the main entry module for a batch execution in Ingestion Framework
 '''
 

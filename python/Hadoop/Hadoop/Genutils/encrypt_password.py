@@ -1,7 +1,7 @@
 '''
 Module Name : encryt_password.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : amir riaz
 Purpose : This module encrypts the password 
 '''
 

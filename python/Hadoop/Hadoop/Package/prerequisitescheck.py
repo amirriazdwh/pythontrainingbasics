@@ -1,7 +1,7 @@
 '''
 Module Name : prerequisites.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : Amir Riaz
 Purpose : This module caters with checking all batch pre-resuites tests which helps in avoiding any unexpected errors 
           at the time of batch runs
 '''

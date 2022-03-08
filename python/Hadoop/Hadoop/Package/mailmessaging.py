@@ -1,7 +1,7 @@
 '''
 Module Name : mailmessaging.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : amir riaz
 Purpose : This module is for mail messaging functionalities related functions called at certain stages
 '''
 

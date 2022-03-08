@@ -1,18 +1,18 @@
 '''
 Module Name : configurations.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : amir riaz
 Purpose : This module is for specifying all the configurations values to be used in the package
 '''
 
 
 #Metadata db configurations
-metadb_server = '172.24.19.81' #(in case of IP and Port both, enter as IP,Port with no space)
+metadb_server = '192,168,56,102' #(in case of IP and Port both, enter as IP,Port with no space)
 metadb_name = 'HADOOP_REPO'
 metadb_schema = 'dbo'
 metadb_driver = 'ODBC Driver 17 for SQL Server'
 metadb_username = 'hadoop'
-metadb_password = 'HADOOP123'
+metadb_password = 'hadoop'
 metadb_schema = 'DLINGESTIONUAT'
 
 
@@ -23,9 +23,9 @@ logging_file_format = '.txt'
 
 #SMTP configurations
 smtp_server = '172.24.81.89'
-from_mail = 'dl_ingestion@mashreq.com'
-to_mail = ['nehago@mashreq.com','adityaka@mashreq.com']
-cc_mail = ['nehago@mashreq.com','rajeshs@mashreq.com','SonalSR@mashreq.com','SHIVAMKUMARK@mashreq.com','adityakumart@mashreq.com']
+from_mail = 'amir.riaz@test.com'
+to_mail = ['xyz@test.com','abc@test.com']
+cc_mail = ['cdf@test.com','abc@test1.com']
 
 #Sqoop Configurations
 sqplogdir = '/home/hdpadmin/DataLakeIngestionUAT/sqooplogs/'

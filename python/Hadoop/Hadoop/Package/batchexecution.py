@@ -1,7 +1,7 @@
 '''
 Module Name : batchexecution.py
 Created On : 10th Nov 2019
-Created By : Neha Goel
+Created By : Amir Riaz
 Purpose : This module caters with running the requested batch execution
 '''
 
