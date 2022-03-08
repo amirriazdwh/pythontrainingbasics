@@ -54,6 +54,9 @@
 8 .   dir take an class, object, funciton or module and returns the attribute.    for example  dir(math) return all the math class function.
         dir(math.exp) return the math funciton exp information
 
+8a.  dir()  function gives the current attributes and all the attributes the funciton, class or object has inherited.  __dict__ only gives current context and does
+       considers the base class attributes.
+
 9 .   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
         and methods in local name space.   you can view the values of these variables by calling local() functions in function or class method.   if you use
         __dict__ for function,   you will get empty dictionary {}.   the reason is in  __dict__ scope function variable dont exists.   when a function executes
