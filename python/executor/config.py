@@ -1,5 +1,4 @@
 class gsproperty:
-
     server = "192.168.56.102"
     server_port = 1433
     database = "HADOOP_REPO"
