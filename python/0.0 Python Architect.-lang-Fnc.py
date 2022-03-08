@@ -403,33 +403,33 @@ print("sys says:", sys.modules.get('mody','modules not found '))
 # this is module object and it acts similar to a class object
 mod.test_func()
 
+#The __dict__ attribute of a function object stores attributes assigned to the function object.
 
+def foo():
+    a = 2
+    return a
 
-The __dict__ attribute of a function object stores attributes assigned to the function object.
+foo.bar = 12
+print(foo.bar)
+foo.__dict__
 
->>> def foo():
-...     a = 2
-...     return a
-...
->>> foo.bar = 12
->>> foo.__dict__
-{'bar': 12}
-Attributes of the function object are not related to the local variables that exist during the function call. The former is unique
-(there is one __dict__ per function object) the latter are not (a function may be called multiple times with separate local variables).
+#{'bar': 12}
+#Attributes of the function object are not related to the local variables that exist during the function call. The former is unique
+#there is one __dict__ per function object) the latter are not (a function may be called multiple times with separate local variables).
 
->>> def nfoo(n: int):
-...     print(f'level {n} before:', locals())
-...     if n > 0:
-...        nfoo(n - 1)
-...     print(f'level {n} after: ', locals())
-...
->>> nfoo(2)
-level 2 before: {'n': 2}
-level 1 before: {'n': 1}
-level 0 before: {'n': 0}
-level 0 after:  {'n': 0}
-level 1 after:  {'n': 1}
-level 2 after:  {'n': 2}
+def nfoo(n: int):
+    print(f'level {n} before:', locals())
+    if n > 0:
+        nfoo(n - 1)
+    print(f'level {n} after: ', locals())
+
+nfoo(2)
+#level 2 before: {'n': 2}
+#level 1 before: {'n': 1}
+#level 0 before: {'n': 0}
+#level 0 after:  {'n': 0}
+#level 1 after:  {'n': 1}
+#level 2 after:  {'n': 2}
 
 
 
