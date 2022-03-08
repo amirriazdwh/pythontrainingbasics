@@ -1,10 +1,10 @@
 class gsproperty:
 
-    server = "172.24.19.81"
+    server = "192.168.56.102"
     server_port = 1433
     database = "HADOOP_REPO"
     sql_user = "HADOOP"
-    sql_password = "HADOOP123"
+    sql_password = "HADOOP"
     driver = '{ODBC Driver 17 for SQL Server}'
     sql_url = 'jdbc:sqlserver://%s:%s;databaseName=%s;user=%s;password=%s' % (
         server, server_port, database, sql_user, sql_password)

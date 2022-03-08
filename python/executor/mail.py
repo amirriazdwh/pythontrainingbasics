@@ -9,14 +9,14 @@ from datetime import datetime
 
 def mail(to,cc,message,filename,subject):
   
-	s = smtplib.SMTP(host='172.24.81.89')
+	s = smtplib.SMTP(host='192.168.56.102')
 	s.starttls()
 
 	msg = MIMEMultipart()
 	recipients = to.split(",")+cc.split(",")
 	print recipients
 
-	msg['From'] = 'noreply@mashreq.com'
+	msg['From'] = 'noreply@test.com'
 	msg['To'] = to
 	msg['Cc'] = cc
 	msg['Subject'] = subject.replace("_"," ")
@@ -33,7 +33,7 @@ def mail(to,cc,message,filename,subject):
 	s.quit()
 
 def send_mail(logpath):
-  v_to= 'ayanc@mashreq.com,RayavarapuH@mashreq.com'
+  v_to= 'amir@test.com,riaz@test.com'
   v_sub = 'Hadoop Job Success Mail' 
   v_from = 'HADOOP-JOB-ALERTS'
   v_msg = """Hello Team,
@@ -48,15 +48,15 @@ Regards,
 Hadoop Team
       """.format(job_name='Query Executor Job',script_name='executor.py',v_error=sys.exc_info()[1],func_name=sys._getframe(1).f_code.co_name)
   if logpath:
-     v_to = 'ayanc@mashreq.com,RayavarapuH@mashreq.com'
-     v_sub = 'OBTF: Ingestion Quality Log'
+     v_to = 'amir@test.com,riaz@test.com'
+     v_sub = 'Ingestion Quality Log'
      v_msg = """Hello Team,
 
-Please refer the attached file for Ingestion Quality in OBTF.
+Please refer the attached file for Ingestion Quality in tables
 
 Error In Execution Of DQ Config File: None
 
-For any assistance please reach out to ayanc@mashreq.com;
+For any assistance please reach out to amir riaz;
 
 Note: This is an auto generated email alert, please do not reply.
 
@@ -71,15 +71,15 @@ Hadoop Team
 def send_Failuremail(logpath):  # failure alert sending module
 
   if logpath:
-     v_to = 'ayanc@mashreq.com,RayavarapuH@mashreq.com'
-     v_sub = 'OBTF: Qc Failed'
+     v_to = 'amir@test.com,riaz@test.com'
+     v_sub = 'Qc Failed'
      v_msg = """Hello Team,
 
 Please refer the attached file .
 
 QC Failed: Expected count is different than the output.
 
-For any assistance please reach out to ayanc@mashreq.com;
+For any assistance please reach out to amir riaz;
 
 Note: This is an auto generated email alert, please do not reply.
 
