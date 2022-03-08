@@ -3,7 +3,7 @@ from os.path import basename
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
-from email import Encoders
+from email import encoders
 import sys
 from datetime import datetime
 
@@ -14,7 +14,7 @@ def mail(to, cc, message, filename, subject):
 
     msg = MIMEMultipart()
     recipients = to.split(",") + cc.split(",")
-    print recipients
+    #print recipients
 
     msg['From'] = 'noreply@test.com'
     msg['To'] = to
@@ -25,7 +25,7 @@ def mail(to, cc, message, filename, subject):
         attach_file = open(filename, 'rb')
         part = MIMEBase('application', "octet-stream")
         part.set_payload(open(filename, 'rb').read())
-        Encoders.encode_base64(part)
+        encoders.encode_base64(part)
         part.add_header('Content-Disposition', 'attachment', filename=basename(filename))
         msg.attach(part)
     s.sendmail('noreply@test.com', recipients, msg.as_string())
@@ -39,7 +39,7 @@ def send_mail(logpath):
     v_from = 'HADOOP-JOB-ALERTS'
     v_msg = """Hello Team,
 
-Hadoop OBTF QC job has succeeded for job : {job_name} .
+Hadoop test QC job has succeeded for job : {job_name} .
 
 Please find attached log.
 
@@ -65,7 +65,7 @@ Note: This is an auto generated email alert, please do not reply.
 Regards,
 Hadoop Team
 """
-    v_log_path = '/home/cibg_uat_user/obtf/qc_framework/output/executor_result_{}.csv'.format(
+    v_log_path = '/home/cibg_uat_user/test/qc_framework/output/executor_result_{}.csv'.format(
         datetime.now().strftime('%Y%m%d'))
 
     mail(v_to, '', v_msg, logpath, v_sub)
@@ -89,7 +89,7 @@ Note: This is an auto generated email alert, please do not reply.
 Regards,
 Hadoop Team
 """
-    v_log_path = '/home/cibg_uat_user/DigiCollect/obtf/qc_framework/output/executor_result_{}.csv'.format(
+    v_log_path = '/home/cibg_uat_user/DigiCollect/test/qc_framework/output/executor_result_{}.csv'.format(
         datetime.now().strftime('%Y%m%d'))
 
     mail(v_to, '', v_msg, logpath, v_sub)
