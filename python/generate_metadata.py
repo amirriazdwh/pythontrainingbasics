@@ -1,23 +1,17 @@
-from sqldbms import MssqlDB, qr_clob_blob
+from sqldbms import MssqlDB, qr_clob_blob, qr_table
 from config import gsproperty as conf
-
-
-def genMetaData(inputfile, outputfile, tab):
-    with open(inputfile, "r") as infile:
-        with open(outputfile, "w") as outfile:
-            lines = infile.readline()
-            while lines:
-                print(tab[lines.strip()])
-                outfile.write("{0}\n".format(tab[lines.strip()]))
-                lines = infile.readline()
-
 
 __name__ = "__main__"
 
-inputfile = 'C:\\Users\\amirr\\PycharmProjects\\pythontraining\\python\\hello_file.txt'
-outputfile = 'C:\\Users\\amirr\\PycharmProjects\\pythontraining\\python\\hello_file1.txt'
+genfile = 'C:\\Users\\amirr\\PycharmProjects\\pythontraining\\python\\hello_file1.txt'
 
-with MssqlDB(conf.driver, conf.server, conf.database, conf.sql_user, conf.sql_password) as db:
-    rs_table = db.get_clob_blob_table(qr_clob_blob,'D')
-    for x, y in rs_table.items():
-        print(x, y )
+with open(genfile, "w") as outputfile:
+    with MssqlDB(conf.driver, conf.server, conf.database, conf.sql_user, conf.sql_password) as db:
+        rs_lookup_table = db.load_data_by_query(qr_clob_blob, 'D')
+        rs_load_table = db.load_data_by_query(qr_table, 'T')
+
+        for tab_key in rs_load_table:
+            if tab_key in rs_lookup_table:
+                outputfile.write("insert into {0} values ({1})".format(tab_key, rs_load_table[tab_key]))
+            else:
+                outputfile.write("insert into {0} values ({1})".format(tab_key, "null"))

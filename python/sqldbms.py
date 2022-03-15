@@ -1,5 +1,6 @@
 import pyodbc
 
+#retrive data types needs conversion
 qr_clob_blob = """
 	with TablDataType as(
 	select
@@ -27,9 +28,11 @@ qr_clob_blob = """
 	ORDER BY tab.table_name;
 	"""
 
+# retrive tables to be loaded 
 qr_table = """
-
-"""
+	select table_name  from INFORMATION_SCHEMA.tables t
+	where t.TABLE_TYPE = 'BASE TABLE' 
+	and t.TABLE_CATALOG='ELCM' and t.TABLE_TYPE!='VIEW'"""
 
 
 class MssqlDB:
@@ -49,11 +52,10 @@ class MssqlDB:
         self.dbcursor = self.connection.cursor()
         return self
 
-    def __exit__(self):
-        if self.dbcursor:
-            self.dbcursor.close()
+    def __exit__(self,exc_type, exc_value, exc_traceback):
+         self.dbcursor.close()
 
-    def get_clob_blob_table(self, query, rtype):
+    def load_data_by_query(self, query, rtype):
         if rtype == 'D':
             print("creating dictionary from rows...")
             rs_clob_blob = self.dbcursor.execute(query).fetchall()
