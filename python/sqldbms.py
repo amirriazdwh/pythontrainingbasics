@@ -1,0 +1,69 @@
+import pyodbc
+
+qr_clob_blob = """
+	with TablDataType as(
+	select
+		t.table_name  table_name, 
+		c.COLUMN_NAME COLUMN_NAME,
+		c.data_type data_type
+	from information_schema.columns c
+		inner join INFORMATION_SCHEMA.tables t
+			on c.TABLE_SCHEMA = t.TABLE_SCHEMA
+			and c.TABLE_NAME = t.TABLE_NAME
+	where t.TABLE_TYPE = 'BASE TABLE' 
+	and t.TABLE_CATALOG='ELCM' and t.TABLE_TYPE!='VIEW'
+	and ((c.data_type in ('VARCHAR', 'NVARCHAR') and c.character_maximum_length = -1)
+	or c.data_type in ('TEXT', 'NTEXT', 'IMAGE', 'VARBINARY', 'XML', 'FILESTREAM', 'DATETIME', 'DATETIME','SMALL DATETIME'))
+	) 
+	SELECT tab.table_name
+		,''''+ STUFF((
+		SELECT '=String,' + t1.COLUMN_NAME
+			FROM TablDataType t1
+			WHERE tab.table_name = t1.table_name
+			ORDER BY t1.COLUMN_NAME
+			FOR XML PATH('')), 1, LEN('=String,'), '') +'=String' +'''' AS hive_columns
+	FROM TablDataType tab
+	GROUP BY tab.table_name
+	ORDER BY tab.table_name;
+	"""
+
+qr_table = """
+
+"""
+
+
+class MssqlDB:
+    def __init__(self, driver, server, database, sql_user, sql_password):
+        self.connection = None
+        self.dbcursor = None
+        self.driver = driver
+        self.server = server
+        self.database = database
+        self.sql_user = sql_user
+        self.sql_password = sql_password
+
+    def __enter__(self):
+        self.connection = pyodbc.connect('DRIVER=' + self.driver + ';SERVER=' + self.server +
+                                         ';DATABASE=' + self.database + ';UID=' + self.sql_user +
+                                         ';PWD=' + self.sql_password)
+        self.dbcursor = self.connection.cursor()
+        return self
+
+    def __exit__(self):
+        if self.dbcursor:
+            self.dbcursor.close()
+
+    def get_clob_blob_table(self, query, rtype):
+        if rtype == 'D':
+            print("creating dictionary from rows...")
+            rs_clob_blob = self.dbcursor.execute(query).fetchall()
+            rs_table = {getattr(row, 'table_name').replace('\n', ' '): getattr(row, 'hive_columns').replace('\n', ' ')
+                        for
+                        row
+                        in rs_clob_blob}
+            return rs_table
+        else:
+            print("creating list from rows...")
+            rs_tab_list = self.dbcursor.execute(query).fetchall()
+            rs_table = [getattr(row, 'table_name').replace('\n', ' ') for row in rs_tab_list]
+            return rs_table

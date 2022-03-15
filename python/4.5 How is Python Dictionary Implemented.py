@@ -57,3 +57,17 @@ Manuel Selva
 
 
 """
+
+# Dictionary of string and int
+word_freq = {
+    "Hello": 56,
+    "at": 23,
+    "test": 43,
+    "this": 78
+}
+key = 'test'
+# python check if key in dict using "in"
+if key in word_freq:
+    print(f"Yes, key: '{key}' exists in dictionary")
+else:
+    print(f"No, key: '{key}' does not exists in dictionary")
