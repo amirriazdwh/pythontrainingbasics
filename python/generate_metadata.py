@@ -3,8 +3,10 @@ import dbquery
 from config import gsproperty as conf
 
 rs_cursor = dbquery.DBquery(conf.driver, conf.server, conf.database, conf.sql_user, conf.sql_password).connect()
-rs_clob_blob = rs_cursor.execute(dbquery.clob_blob_query)
-print(rs_clob_blob)
+rs_clob_blob = rs_cursor.execute(dbquery.clob_blob_query).fetchall()
+query = {getattr(row, 'table_name').replace('\n', ' '): getattr(row, 'column_name').replace('\n', ' ') for row in
+         rs_clob_blob}
+
 
 def genMetaData(inputfile, outputfile, tab):
     with open(inputfile, "r") as infile:
@@ -21,4 +23,4 @@ __name__ = "__main__"
 inputfile = 'C:\\Users\\amirr\\PycharmProjects\\pythontraining\\python\\hello_file.txt'
 outputfile = 'C:\\Users\\amirr\\PycharmProjects\\pythontraining\\python\\hello_file1.txt'
 # genMetaData(inputfile, outputfile, getClob_and_Blobs())
-#getClob_and_Blobs()
+# getClob_and_Blobs()
