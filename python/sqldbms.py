@@ -34,6 +34,34 @@ qr_table = """
 	where t.TABLE_TYPE = 'BASE TABLE' 
 	and t.TABLE_CATALOG='ELCM' and t.TABLE_TYPE!='VIEW'"""
 
+ins_query = """
+insert  INTO dlingestionuat.tbljobconfig (
+        batch_id,
+        src_schema,
+        src_obj_name,
+        dest_schema,
+        dest_obj_name,
+        primary_key,
+        fetch_size,
+        hive_mapping,
+        java_mapping,
+        select_columns,
+        incremental_key,
+        fields_terminated_by,
+        file_formats,
+        compression_type,
+        mappers,
+        split_by_key,
+        where_clause,
+        query,
+        pre_run_script,
+        post_run_script,
+        load_priority,
+        additional_arguments,
+        import_export
+    )
+    values({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20} );\n"""
+
 
 class MssqlDB:
     def __init__(self, driver, server, database, sql_user, sql_password):
