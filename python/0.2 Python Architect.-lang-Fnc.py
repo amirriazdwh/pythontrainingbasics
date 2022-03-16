@@ -1,4 +1,5 @@
 '''
+
 1.    Python language is made on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
 
 2.    on left side reserve words most acts like key which may contain conditions.  like if statement.   "if statement" is a key which must have values.
@@ -47,19 +48,23 @@
         m = importer (math)
         m. exp   # calls the funciton.
 
+        or with (open()) as :    is same as   m=open().
+
+        as means  alias
+
 7 .   Note that everything is an object in python including the builtin module imported automatically and imported modules.
-        builtin module/package are  imported automatically to global scope,  you can view the builtin classes, functions,  constants and exception of builtin in package
-        by command   dir(__builtins__)  which gives all the functions, methods, variable defined in your current scope.  Note:  dir() gives you builtin scope and with
-        dir(__builtins__) you can view the available contents.   globals() function does not take any parameter and it return you global namespace attributes list.
-        dir()  function works with modules,   so you can view the contents of module by using this function,  for example dir(math) will provide you all the function
-        methods and constants of math class.  note dir uses global namespace to ensure that math module is imported or not and if imported retruns its contents.
-        To know the keywords of python type  help('keywords').
+        builtin module/package are  imported automatically to global scope,  you can view the builtin classes, functions,  constants and exception of
+        builtin in package by command   dir(__builtins__)  which gives all the functions, methods, variable defined in your current scope.  Note:  dir() gives
+        you builtin scope and with dir(__builtins__) you can view the available contents.   globals() function does not take any parameter and it return
+        you global namespace attributes list.  dir()  function works with modules,   so you can view the contents of module by using this function,
+        for example dir(math) will provide you all the function methods and constants of math class.  note dir uses global namespace to ensure
+        that math module is imported or not and if imported retruns its contents. To know the keywords of python type  help('keywords').
 
 8 .   dir take an class, object, funciton or module and returns the attribute.    for example  dir(math) return all the math class function.
         dir(math.exp) return the math funciton exp information
 
-8a.  dir()  function gives the current attributes and all the attributes the funciton, class or object has inherited.  __dict__ only gives current context and does
-       considers the base class attributes.
+8a.  dir()  function gives the current attributes and all the attributes the funciton, class or object from which it has been inherited.  __dict__ only gives
+        current context and does considers the base class attributes.
 
 9 .   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
         and methods in local name space.   you can view the values of these variables by calling local() functions in function or class method.   if you use
@@ -87,7 +92,7 @@
 
 
 11a   Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and
-         lambda functions can be treated as the same thing.   explain later...
+         lambda functions can be treated as the same thing.   They are objects  of type  FunctionType or LambdaType
 
 12.   everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.
         object class has some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns
@@ -171,9 +176,9 @@
 
  13b.  an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
 
- 13c.   __del__ function is called on instance objects when del  a  is being called.   a is the variable
+ 13c.   __del__ function is called on instance objects when del  a  is being called.   a is the variable,  __del__ acts like a destructor
 
- 13d.  __init__  function is called after __new__ constructor ,   its objective is to initialize the self object
+ 13d.  __init__  function is called after __new__ constructor ,   its objective is to initialize the self object,  its called constructor
 
 14     since a function is an object,  it can be passed to another function as parameter and can be returned as function.   This is called clouser.
          once return the outter function returns the inner function and its scope is terminated.  but the variable in outter function are still accessable by inner functions.

@@ -12,6 +12,10 @@ None
 empty string
 empty object
 
+
+0.    NoneType is a singleton object in python with a refrence id in memory.  when any object has null value this reference id is assigned to that
+       object.
+so   noneVar is None  means   id(noneVar) ==id(None)
 """
 
 
