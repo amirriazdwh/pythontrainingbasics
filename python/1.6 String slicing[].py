@@ -1,6 +1,13 @@
 """
-Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression,
+Please note that slicing is only supported on sequence.   this is because for slicing the ordering has to be maintained
+slicing can be defined as : a[i:j] selects all items with index k such that i <= k < j. When used as an expression,
 a slice is a sequence of the same type. This implies that the index set is renumbered so that it starts at 0.
+this is because a sequence is
+S = x0, x1, x2, x3... xn.
+
+for any sequence.   if your slice is   slice[i : k]  where k is any element by i and j   then i<=k<j
+for example,   s =[0, 1,2,3,4,5]   if we want to slice from 0 to 3  the interval will be    [0 : 4]  this can be call left open internal.
+k<j  is needed as this need to maintain the ordering.
 
 (i=k)=<k<=(j=k+1)  where i is the slice starting point and is equal to index k and j is the slice ending point and is equal
 to k+1.
@@ -24,7 +31,7 @@ the indexes are arranged as under:
 
 S[Start: End: Step] so for S
 -----------------------------
-       0    1    2   3   4   5   6   7   8
+       0   1    2   3   4   5   6   7   8
 S = '  A    B    C   D   E   F   G   H   I'
       -9   -8   -7  -6  -5  -4  -3  -2  -1
 
