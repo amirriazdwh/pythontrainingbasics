@@ -1,4 +1,5 @@
 """
+Note:  just like int, float,  string ,   iter is a types.  infact any class defined in python is a type.  enumerate is a class. which return element with index
 There are three types of sequence.
 1. ITERATOR
 2. Generator
@@ -49,6 +50,13 @@ Enumerate() method adds a counter to an iterable and returns it in a form of enu
 then be used directly in for loops or be converted into a list of tuples using list() method.
 
 """
+# iterator object is create and iter object contain __iter__ method
+lst =[1,2,3,4,5,6]
+st = iter(lst)
+print(next(st))
+print(next(st))
+
+
 
 nums = [x * x for x in [1, 2, 3, 4, 5, 6, 7, 8]]
 print(nums)

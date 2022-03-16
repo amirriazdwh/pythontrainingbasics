@@ -8,7 +8,13 @@ on context to release.  its called context manager.
 
 A good way to see this feature used effectively is looking at examples in the python standard library.  The build-in
 open() function provides us with an excellent use case:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Context manager allows specified actions to be performed at the beginning and end of with block. Two methods are responsible for context manager:
 
+__enter__(self) - indicates what should be done at the beginning of with block. Value that returns method is assigned to variable after as.
+__exit__(self, exc_type, exc_value, traceback) - indicates what should be done at the end of with block or when it is interrupted. If there is an exception
+within block, then exc_type, exc_value, traceback will contain exception information, if there is no exception they will be equal to None.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """
 # opens the file for write and writes hello world
 with open('D:\python_data\hello_file.txt', 'w') as f:
