@@ -435,7 +435,19 @@ nfoo(2)
 #level 2 after:  {'n': 2}
 
 
+"""
+Note:   you can use *arg and **kargs to pass one parameter, two parameters or no parameters.   *args and **kargs are optional positional and keyword parameters
 
+"""
+def test_args_kargs(*arg, **karg):
+    if arg:
+        return len(arg)
+    else:
+        return len(karg)
+
+print ("dictionary:{0}".format(test_args_kargs(k=1,l=2,m=3, n=4)))
+print ("tuple:{0}".format(test_args_kargs(1,2,3, 4)))
+print ("None:{0}".format(test_args_kargs()))
 
 
 
