@@ -1,12 +1,16 @@
 '''
 1.    Python language is made on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
 
-2.    on left side reserve words most acts like key which may contain conditions.  like if statement.   if statement is a key which must have values.
+2.    on left side reserve words most acts like key which may contain conditions.  like if statement.   "if statement" is a key which must have values.
 
 3.   The format is as under    key: value.    keys can be any function name,  class name,  variable name,  special method name module while value
       can be memory address to that variable,  function address,   record of special methods, etc.  these key: value pairs are stored in 3 layers called
        name space which define the scope of these key value pairs.  these names space are: 1.  builtin name space, 2.  global namespace, 3. local name
         space.
+
+3a.  these keys acts like a variable, function , class , object  or keyword based on reference values stored in its scope.   the typs of object is stored'
+        in memory with value.
+
 4.   just like Yaml ,  the commands can be on one line as (key : value).  in case if values field is small and if value has to be on more than one line
 
        it can be stored on mulitiple line with indents. exmaple:
@@ -21,9 +25,9 @@
 
  6 .  when the python program starts.  which is python command like "python calc.py".   python runtime environment create a thread or process which
         has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs).    Python then create an object of type
-        Global which has builtin modules link passed to it.   global name space is actually a file along which is being run through  python command. Python
-        passes the file __name__ =__main__.   when the global object is being created it also import all the modules and packages defined into the file and
-        save them in global name space as key value pair.
+        Global which has builtin modules link passed to it.   global name space is actually a file along which is being run through  python command.
+        Python passes the argument file  __name__ =__main__.   when the global object is being created it also import all the modules and packages
+        defined into the file and save them in global name space as key value pair.
 
          #>>> globals()
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
@@ -31,7 +35,7 @@
 
 6a.   Python keywords like class,  var, def, if  defines different types of namespace according to their purpose.   for example ,   runing the program
          creates builtin namespace and global global name space.    class keywork creates a ClassType and stores its global dictionary.   def creates a
-         local dictionary/namespace.  if create local dictionary ,  for creates a local dictionary etc.  each dictionary/name space contains different attributes
+         local dictionary/namespace.  it creates local dictionary ,  for creates a local dictionary etc.  each dictionary/name space contains different attributes
          as they are being created from different objects.    for example,   FunctionType create function when it finds  def or lambda keyword.  ClassType
          creates a class and loaded it into memory.   moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
          attributes
