@@ -1,4 +1,5 @@
 import os
+
 ftrg = open('D:\python\listdir.txt', 'w')
 try:
     mydir = 'D:\python'
