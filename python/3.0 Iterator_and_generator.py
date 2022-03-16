@@ -1,5 +1,9 @@
 """
-Note:  just like int, float,  string ,   iter is a types.  infact any class defined in python is a type.  enumerate is a class. which return element with index
+-----------------------------
+Note:  just like int, float,  string ,   iter is a data types.  infact any class defined in python is a data type.
+          in same way, enumerate is a class. which returns the index with iterator
+----------------------------
+
 There are three types of sequence.
 1. ITERATOR
 2. Generator
