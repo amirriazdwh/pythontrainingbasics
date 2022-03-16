@@ -85,3 +85,17 @@ print(y)
 
 y= list(x*x  for x in a)
 print (y)
+
+"""
+In Python, apart from obvious True and False values, all other objects also have false or true value:
+
+True value:
+any non-zero number
+any non-empty string
+any non-empty object
+False value:
+0
+None
+empty string
+empty object
+"""
