@@ -1,6 +1,6 @@
 import pyodbc
 
-#retrive data types needs conversion
+# retrive data types needs conversion
 qr_clob_blob = """
 	with TablDataType as(
 	select
@@ -59,8 +59,8 @@ class MssqlDB:
         self.dbcursor = self.connection.cursor()
         return self
 
-    def __exit__(self,exc_type, exc_value, exc_traceback):
-         self.dbcursor.close()
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        self.dbcursor.close()
 
     def load_data_by_query(self, query, rtype):
         if rtype == 'D':
