@@ -32,12 +32,12 @@ so  express "type(listobject)  is list "    is return true.   as its equal to  i
 
 
 def testNone ( noneVar ) :
-    # noneVar is not null
-    if noneVar :
-        print ( "variable is present" )
+    # noneVar is null
+    if not noneVar :
+        print ( "variable is present" , noneVar)
 
 
-testNone ( "hello" )
+testNone ( None )
 
 """
 while test for none,   id(var) ==id(NoneType)   is check.   NoneType is a singleton object in python 
@@ -45,9 +45,32 @@ while test for none,   id(var) ==id(NoneType)   is check.   NoneType is a single
 
 
 def testNoneis ( noneVar ) :
+    # check only for None object.
     if noneVar is None :
-        print ( "var is null ".format ( noneVar ) )
+        print ( "var is null {0}".format (len (noneVar ) ))
+
+        # check for none object and length >0
+    if noneVar:
+        print ( "var is null {0}".format (len (noneVar ) ))
+
+a = None
+testNoneis ( "" )
 
 
 a = None
-testNoneis ( a )
+
+if a==None:
+    print("object is None")
+
+
+print(bool(a))   #False
+
+a =10/0
+print(bool(a))
+
+
+Well, Some extends Option, so it inherits everything except get and isEmpty (and some other methods implemented by a case class).
+
+The companion object of Option has a special apply method for dealing with null:
+
+def apply[A](x: A): Option[A] = if (x == null) None else Some(x)
