@@ -43,11 +43,20 @@
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
-6a.   Python keywords like class,  var, def, if  defines different types of dunder method in  namespace according to their purpose.
-        for example ,   running the program creates builtin namespace and global global name space.    class keywork creates a ClassType and stores its global dictionary.   def creates a
-         local dictionary/namespace.  it creates local dictionary ,  for creates a local dictionary etc.  each dictionary/name space contains different attributes
-         as they are being created from different objects.    for example,   FunctionType create function when it finds  def or lambda keyword.  ClassType
-         creates a class and loaded it into memory.   moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
+6a.   Python keywords like class,  var, def, if  defines different types object containing  dunder method in specific namespace according to their purpose.
+        for example ,   running the program creates a builtin namespace and global  name space.   class keywork loads a ClassType class.
+        and stores class method (which are dunder method) in its global dictionary as an attributes.   def loads a class of FunctionType in
+         local dictionary/namespace along with its attributes(dunder method).
+
+         please note a function  creates its own local namespace.
+
+        A modules its own global namespace and an interpretor has its own name space
+        feach dictionary/name space contains different attributes or method as they are being created from different objects.
+        for example,   FunctionType create function when it finds keyword  def or lambda.  ClassType creates a class and a ModuleType creates a modules
+        when it find an import statement.
+
+
+        moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
          attributes
 
 6b.   python objects can be associated with alias.   "as" keyword is used for that purposes.  "as" is translated as = in python.   for exampel
