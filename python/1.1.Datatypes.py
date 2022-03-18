@@ -1,5 +1,5 @@
 """
-in python are variables are objects and can be deleted by del function
+in python all variables are objects and can be deleted by del function
 """
 
 """

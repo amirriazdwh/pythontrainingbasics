@@ -1,41 +1,50 @@
 '''
 
-1.    Python language is made on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
+1.    Python language is designed on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
+       the association between a key and value is established by :
 
-2.    on left side reserve words most acts like key which may contain conditions.  like if statement.   "if statement" is a key which must have values.
+2.    on left side reserve words most acts like keys which may contain conditional statements  like if statement. "if statement" is a key, which
+        must have values after :
 
-3.   The format is as under    key: value.    keys can be any function name,  class name,  variable name,  special method name module while value
-      can be memory address to that variable,  function address,   record of special methods, etc.  these key: value pairs are stored in 3 layers called
-       name space which define the scope of these key value pairs.  these names space are: 1.  builtin name space, 2.  global namespace, 3. local name
-        space.
+3a.    just like Yaml ,  the python statements should be programmed on one line as (key : value) pair.  However,  if statement contains more than one line
+        then second  has to be written after an indent.
 
-3a.  these keys acts like a variable, function , class , object  or keyword based on reference values stored in its scope.   the typs of object is stored'
-        in memory with value.
-
-4.   just like Yaml ,  the commands can be on one line as (key : value).  in case if values field is small and if value has to be on more than one line
-
-       it can be stored on mulitiple line with indents. exmaple:
         key :
             value1
             value2.,
-       Note:   ":"  is used to separate Key from values.
+       Note:   ":"  is used to separate Key from values with an indent.
+
+3b.   the keys acts like a variable, function , class , object  or keyword which points to a reference object stored in a specific scope.
+        the object type is stored along with object in memory and can be determined by type()  functions
+
+3.    The format  of language is as under:    key: value.    keys can be any function name,  class name,  variable name,  special method (called dunder method)  and
+       name module.  the variables are stored in a name space and points to  memory address to their respective module address, function address,
+      special methods addres, etc. The memory address is actually a reference to an object in memory after its been instantiation..
+      these key: value pairs are stored in 3 layers called
+       name space which define the scope of these key value pairs.  these names space are:
+                1.  builtin name space,
+                2.  global namespace,
+                3. local name space.
 
 5.    The python philosophy is same as its in other code generating languages  like cloud formation or terraform or scala.   Programmer wirites Yaml
-        code or json like code which is interpreted into byte code.  in same way, Python virtual machine convert yaml like code byte code and runs.  this is
-        why python is slow.   it interpretor code line by and then generates code.  compare to scala which compile code directly to bytecode which JVM run
+        code or json like code which is interpreted into byte code.  in same way, Python virtual machine convert yaml like code byte code and runs.
+         That is why python is slow.   it interprets code line for check the synatx and then generates code.  compare to scala which compile code
+         directly to bytecode which JVM run
 
- 6 .  when the python program starts.  which is python command like "python calc.py".   python runtime environment create a thread or process which
-        has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs).    Python then create an object of type
-        Global which has builtin modules link passed to it.   global name space is actually a file along which is being run through  python command.
-        Python passes the argument file  __name__ =__main__.   when the global object is being created it also import all the modules and packages
-        defined into the file and save them in global name space as key value pair.
+ 6 .  when the python program starts.  which is python command give like "python calc.py".   python runtime environment create a thread or process
+       (called interprter)   which has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs as interpreter is
+       available to all programs)  this is called builtin namespace.    Python then create an object of type Global and passes builtin modules link to Global object.
+       both builtin and global processes creates builtin and global name space in memory.  builtin name space is available to all programs,  while the global name
+       space is available to modules in a program.  global name space is actually a file along which is being run through  python run command.
+       Python also creates the dunder method  __name__ =__main__ in file (module) which has been passed as an argument to python command
+       when the global object is being created it also import all the modules and packages defined into the file and save them in global name space as key value pair.
 
          #>>> globals()
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
-6a.   Python keywords like class,  var, def, if  defines different types of namespace according to their purpose.   for example ,   runing the program
-         creates builtin namespace and global global name space.    class keywork creates a ClassType and stores its global dictionary.   def creates a
+6a.   Python keywords like class,  var, def, if  defines different types of dunder method in  namespace according to their purpose.
+        for example ,   running the program creates builtin namespace and global global name space.    class keywork creates a ClassType and stores its global dictionary.   def creates a
          local dictionary/namespace.  it creates local dictionary ,  for creates a local dictionary etc.  each dictionary/name space contains different attributes
          as they are being created from different objects.    for example,   FunctionType create function when it finds  def or lambda keyword.  ClassType
          creates a class and loaded it into memory.   moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
@@ -73,9 +82,6 @@
         are clear by garbadage collector.  so __dict__ should not be used for funcitons as functions are not objects.   they are function objects at runtime and then die.
         you can use dir(fun)  which will give you the special methods of types.FunctionType from which most functions are being created.  __dict__ should only be
         used with classes and objects but not with funcitons
-
-10.   all function contains special methods like __call__,  __default__ etc.   a function can be called  either by fun()  or by __call__().  no matter its a class
-        function or stand alone function
 
 11   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
        preserved( as parameters are passed by position)  please note the immutablity is ensured because () is a classType of tuple and tuples are immutable
@@ -172,9 +178,8 @@
             refrence address to "self"
 
 13a     for a function to execute in python it must have __call__  method.   which is translated when it encourter ().    so fun.__call__() is a result of translation
-           of fun()
-
- 13b.  an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
+           of fun() .  all function contains special methods like __call__,  __default__ etc.   a function can be called  either by fun()  or by __call__().  no matter its a class
+        function or stand alone function. an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
 
  13c.   __del__ function is called on instance objects when del  a  is being called.   a is the variable,  __del__ acts like a destructor
 
@@ -445,8 +450,7 @@ nfoo(2)
 
 
 """
-Note:   you can use *arg and **kargs to pass one parameter, two parameters or no parameters.   *args and **kargs are optional positional and keyword parameters
-
+31.  Note:   you can use *arg and **kargs to pass one parameter, two parameters or no parameters.   *args and **kargs are optional positional and keyword parameters
 """
 def test_args_kargs(*arg, **karg):
     if arg:

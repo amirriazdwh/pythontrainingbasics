@@ -40,6 +40,7 @@ print(t1+t2)
 if "Apple" in t1:
     print("Apple is in list t1")
 
+
 # basic sequence functions
 rr=(1,2,3)
 xx=(1,2,3)
