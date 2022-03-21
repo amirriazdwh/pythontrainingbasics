@@ -6,21 +6,21 @@ if __name__ == "__main__" :
     batch_id = 12940
     src_schema = 'ELCM'
     dest_schema = 'elcm_uae'
-    primary_key = 'Null'
+    primary_key ='NULL'
     fetch_size = 500
-    select_columns = 'Null'
-    incremental_key = 'Null'
-    fields_terminated_by = 'Null'
+    select_columns ='NULL'
+    incremental_key ='NULL'
+    fields_terminated_by ='NULL'
     file_formats = 'PARQUET'
     compression_type = 'org.apache.hadoop.io.compress.SnappyCodec'
     mappers = 8
-    split_by_key = 'Null'
-    where_clause = 'Null'
+    split_by_key ='NULL'
+    where_clause ='NULL'
 
-    pre_run_script = 'Null'
-    post_run_script = 'Null'
+    pre_run_script ='NULL'
+    post_run_script ='NULL'
     load_priority = 1
-    additional_arguments = 'Null'
+    additional_arguments = 0
     import_export = 'I'
 
     genfile = '/home/cibg_uat_user/obdx/genfile/meta_catalog.sql'
@@ -40,12 +40,12 @@ if __name__ == "__main__" :
                                            select_columns , incremental_key , fields_terminated_by , file_formats ,
                                            compression_type ,
                                            mappers , split_by_key , where_clause , query , pre_run_script ,
-                                           post_run_script , load_priority , additional_arguments , import_export ) )
+                                           post_run_script , load_priority, additional_arguments , import_export ) )
                 else :
                     outputfile.write (
                         ins_query.format ( batch_id , src_schema , tab_key , dest_schema , tab_key , primary_key ,
                                            fetch_size ,
-                                           'Null' , 'Null' ,
+                                          'NULL' ,'NULL' ,
                                            select_columns , incremental_key , fields_terminated_by , file_formats ,
                                            compression_type ,
                                            mappers , split_by_key , where_clause , query , pre_run_script ,
