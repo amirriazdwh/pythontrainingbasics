@@ -277,3 +277,20 @@ number0 = zip(['x', 'y', 'z'], [1, 2, 3])
 print(number0)
 numbers3 = dict(zip(['x', 'y', 'z'], [1, 2, 3]))
 print('numbers3 =', numbers3)
+
+
+# in diction we have a safe method called get which return None when key does not match
+#  List does not have any such method however,  we can implement get method in list also
+class safelist(list):
+    def get(self, index, default=None):
+        try:
+            return self.__getitem__(index)
+        except IndexError:
+            return default
+
+def _test():
+    l = safelist(range(10))
+    print( l.get(20, "oops"))
+
+if __name__ == "__main__":
+    _test()

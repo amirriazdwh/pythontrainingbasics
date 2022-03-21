@@ -1,4 +1,14 @@
 """
+Variable Equality
+-------------------
+
+To test the variable equality,  there are two ways,
+1.  memory address
+2.  data
+
+to compare memory address we use  special equality operator called  "IS".      the opposite is "IS NOT"
+to compare data values we use  '==",   The opposite is "!="
+
 In Python, apart from obvious True and False values, all other objects also have false or true value:
 
 True value:

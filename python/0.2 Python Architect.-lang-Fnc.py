@@ -28,7 +28,7 @@
 
 5.    The python philosophy is same as its in other code generating languages  like cloud formation or terraform or scala.   Programmer wirites Yaml
         code or json like code which is interpreted into byte code.  in same way, Python virtual machine convert yaml like code byte code and runs.
-         That is why python is slow.   it interprets code line for check the synatx and then generates code.  compare to scala which compile code
+         That is why python is slow.   it interprets code line for checking the syntax and then generates code.  compare to scala which compiles code
          directly to bytecode which JVM run
 
  6 .  when the python program starts.  which is python command give like "python calc.py".   python runtime environment create a thread or process
