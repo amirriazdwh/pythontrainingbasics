@@ -3,8 +3,8 @@
 1.    Python language is designed on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
        the association between a key and value is established by :
 
-2.    on left side reserve words most acts like keys which may contain conditional statements  like if statement. "if statement" is a key, which
-        must have values after :
+2.    on left side reserve words(keywords) must acts like keys which may contain conditional statements  like if statement. "if statement" is a key, which
+        must have associated values after ":"
 
 3a.    just like Yaml ,  the python statements should be programmed on one line as (key : value) pair.  However,  if statement contains more than one line
         then second  has to be written after an indent.
