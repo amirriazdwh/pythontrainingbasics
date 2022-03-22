@@ -340,6 +340,10 @@
 
         fun( a, b, *args,  **kargs)  or  fun(a,b,*c, d) and pass parameters as (1,2, 3,4,5, d=6).
 
+        Note diction values are assigned in arugment as   key=value while they are defined in two way.
+        1.   d ={(key1, value1),(key2, value2),(key3, value3)}
+        2.   d ={key1: value1, key2: value2, key3:value3}
+
 20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be
         assigned by position till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)
         note d is a dictionary element which is being represented by d=7 outside the {} braces.  here b and c are optional parameters.  as default and variable argument
