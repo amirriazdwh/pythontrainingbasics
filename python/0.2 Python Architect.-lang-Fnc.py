@@ -186,6 +186,9 @@
             def __init__(self, name ):
                 print("Init is called")
                 self.name =name
+        # new method calls class object and create a memory slot
+        #  then return a reference to that memory slot and call __init__
+        #  to initlize the object
             def __new__(cls, name):
                 print("Creating instance")
                 ins =object.__new__(cls)
@@ -201,13 +204,51 @@
             __new__ is not bounded to object  as not object has been created so far,  so no self in its arguments.   __new__ creates an instance and assigns it
             refrence address to "self"
 
+
+13c.   __del__ dunder function is called destructor and __new__ is call constructor.  __del__ function is being called when we del the object by calling  "del  ax"
+        __init__  function is called after __new__ constructor ,   __new__ function creates an object in heap and returns its address ,   which is being assinged to self.
+        now to connect object with class further class methods are passed self object.   self object connects class with object. so  to initiize  object. __init__ function is called
+        from inside __new__  with self object as argument.  Since the objective of __init__is to initialize class variable it does not return anything
+        as object will be returned by __new__ function.
+        There are other function __repr__  and  __str__ .   __str__ gives string representation of a class.
+
+            class Rectangle :
+                def __init__ ( self , width , height ) :
+                    self.width = width
+                    self.height = height
+                def area ( self ) :
+                    return self.width * self.height
+                def perimeter ( self ) :
+                    return 2 * (self.width + self.height)
+                def __str__ ( self ) :
+                    return 'Rectangle (width={0}, height={1})'.format ( self.width , self.height )
+                def __repr__ ( self ) :
+                    return 'Rectangle({0}, {1})'.format ( self.width , self.height )
+                def __eq__ ( self , other ) :
+                    print ( 'self={0}, other={1}'.format ( self , other ) )
+                    if isinstance ( other , Rectangle ) :
+                        return (self.width , self.height) == (other.width , other.height)
+                    else :
+                        return False
+
+                r1 = Rectangle(10, 20)
+                r2 = Rectangle(10,20)
+                # done by __str__
+                print(r1)
+
+                # done by __repr__
+                r1
+
+                #done by __eq__
+                r1 ==r2
+
+        What about <, >, <=, etc.?  Again, Python has special methods we can use to provide that functionality. These are methods such as __lt__, __gt__, __le__, etc.
+
 13a     for a function to execute in python it must have __call__  method.   which is translated when it encourter ().    so fun.__call__() is a result of translation
            of fun() .  all function contains special methods like __call__,  __default__ etc.   a function can be called  either by fun()  or by __call__().  no matter its a class
-        function or stand alone function. an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
+           function or stand alone function. an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
 
- 13c.   __del__ function is called on instance objects when del  a  is being called.   a is the variable,  __del__ acts like a destructor
 
- 13d.  __init__  function is called after __new__ constructor ,   its objective is to initialize the self object,  its called constructor
 
 14     since a function is an object,  it can be passed to another function as parameter and can be returned as function.   This is called clouser.
          once return the outter function returns the inner function and its scope is terminated.  but the variable in outter function are still accessable by inner functions.
