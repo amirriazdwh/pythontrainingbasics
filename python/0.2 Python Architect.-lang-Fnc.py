@@ -104,37 +104,29 @@
             help('symbols')
             help('topics')
 
-8a.  dir()  function gives the current attributes and all the attributes the functions, class or object from which it has been inherited.  __dict__ only gives
-        current context and does considers the base class attributes.
+8a.  dir()  function gives the current attributes and all the attributes the functions, variable, scopes, class or object from which it has been inherited.  __dict__ only gives
+        current context and does considers the base class attributes.  when the __dict__ function is called with a class it shows class attributes ( class variable and methods)
+        but when its been called with an object.  it show object variables (note objects dont contain function,  they are attached with class by self ).
 
-9 .   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
-        and methods in local name space.   you can view the values of these variables by calling local() functions in function or class method.   if you use
-        __dict__ for function,   you will get empty dictionary {}.   the reason is in  __dict__ scope function variable dont exists.   when a function executes
+9 .   python also has local name space,  which exists when a function object is created from FunctionType class.   if you can see the function class
+        method and variable by dir(FunctionType).   FunctionType table code defined in def ,  compiles it and create a function object.
+        a function object creates it local name space which stores all the function variable not the methods.   you can view the values of these variables
+        by calling local() functions in function.   if you use __dict__ for function,   you will get empty dictionary {}.   when a function executes
         local variables are created in local namespace and when the function finishes along then  the local scope and variables become out of scope and
-        are clear by garbadage collector.  so __dict__ should not be used for funcitons as functions are not objects.   they are function objects at runtime and then die.
-        you can use dir(fun)  which will give you the special methods of types.FunctionType from which most functions are being created.  __dict__ should only be
-        used with classes and objects but not with funcitons
+        are clear by garbage collector.    since,  the local variable dictionary dies as soon as function call finishes.  you cannot get Function object variable by __dict__
+        or dir().   however,  you can get Function class attributes by dir(fnc).  when you can use dir(fnc)  which will give you the special methods of types.FunctionType
+        from which most functions are being created.  __dict__ should only be used with classes, modules and objects other than function types.  to see function variable
+        you can use locals() function as under:
 
-11   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
-       preserved( as parameters are passed by position)  please note the immutablity is ensured because () is a classType of tuple and tuples are immutable
-       for example   def  test( a, b) : a=5  a+b  the a and b variables will be in local dictionary.   variable a and b are immutable in method.   This is to maintain the
-       functional aspect of a function and to avoid side effect.   this means that when  x=5, y=1 and test(x, y) values of x and y does not changes,  however value of
-       these object inside method changes.   when python assigns a new value to a,  it creates a new memory refrence and then assign that memory refrence to a.
-       this way,  x and y dont changes while a can be changed inside the function
+            def fnc(x=10):
+                x =x+10
+                print(locals())
+                return x+1
+        {'x': 20}
 
-       in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are
-       initialized in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable
-       object the refrence memory address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b in one function call changes,  it will also
-       change in another call and also the pass value will change.  therefore,  it recommended to initialize   mutable objects  in arguments,   instead,   create a list inside
-       a function (as local variable)  to avoid this problem
-
-
-11a   Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object.  functions and
-         lambda functions can be treated as the same thing.   They are objects  of type  FunctionType or LambdaType
-
-12.   everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.
-        object class has some predefined method.   which can be viewed by object.__dict__  (dict means dictionary which returns dictionary)   while run(object) returns
-        the same attributes but in list. these functions are available in all the classes.   in same way,   python FunctionType class has been dervied from object class
+10.   everything python is an object.  all the objects are being inherited from object class.   means all data types ,  function,  class are subclasses of object class.
+        object class has some predefined method.   which can be viewed by object.__dict__  while run(object) returns the same attributes but in list. these functions
+         are available in all the classes.   in same way,   python FunctionType class has been derived from object class
         and contains some extra methods besides object methods.
 
        import types
@@ -157,54 +149,54 @@
               '__qualname__': <attribute '__qualname__' of 'function' objects>})
 
        object.__subclasses__().
-       this will return all the subclasses of object class.  A subclass will contains all the functions of a base class
+       this will return all the subclasses of object class.  A subclass will contain all the functions of a base class
 
        to get the base class of a class use the following function.
        str.__base__
        <class 'object'>
 
-13.     note that namespace are dictionaries which stores variable, function,  objects name in a key value pairs.
-        1.1   Builin scope
-        1.2   Global scope
-        1.3   local scope.
+11   in python "()"  is mandatory at some places and at some place its not.  it mandatory on place  where variable should be immutable and ordering has be
+       preserved( as parameters are passed by position)  please note the immutablity is ensured because () is a classType of tuple and tuples are immutable
+       for example   def  test( a, b) : a=5  a+b  the a and b variables will be in local scope..   variable a and b are immutable in method.   This is to maintain the
+       functional aspect of a function and to avoid side effect.   this means that when  x=5, y=1 and test(x, y) values of x and y does not changes,  however value of
+       variables inside method can change.   when python assigns a new value to a, which is immutable it creates a new memory refrence and then assign that memory
+        reference to a.  This way,  x and y do ote changes while a can be changed inside the function
 
-        builltin scope is python kernal,   kernal interpretes the yaml like code into C code.   it contains builtin functions and system module (sys)  to manage
-        virtual machine.  the builtin functions are part of python kernal and therefore available to all programs.  these builtin fuctions has dictionary( bultin name space)
-        where they store data for example( https://docs.python.org/3/library/functions.html) all the builtin functions,   types , keywords, exceptions,  constants
-        Note that most modules have the name __builtins__  which make builtin type, keywords, exceptions and function available to these modules.
+            () is mandatory when passing base class to subclass
+            (): Tuples, order of operations, generator expressions, function calls.
+            Tuples: (), (1, 2, 3)  Although tuples can be created without parentheses: t = 1, 2 → (1, 2).  its , which creates the tuple not ()
+            Order of operations: (n-1)**2
+            Generator expression: gen = (i**2 for i in range(5)).   gen return generator
+            Function or method calls: print(), int(), range(5), '1 2'.split(' ')
+            with a generator expression: sum(i**2 for i in range(5))
 
-        The value of __builtins__
-        is normally either this module or the value of this module’s __dict__ attribute. Since this is an implementation detail, it may not be used by alternate
-        implementations of Python.  The means are builtin modules are automatically imported into all the global scopes.
+       in function argument default values acts like static variable.  so  a function     def fun(a=10,b=10):a +b  has default values everywhere.   these variables are
+       initialized in FunctionType class as static variables.    this is ok as a and b are immutable however for mutable objects it creates problem as in case of mutable
+       object the reference memory address is not changed so  if we define a function like this   def fun(a=10,  b=[]) when the b changes in one function object.,  it will also
+       change in another function object. therefore,  it recommended not to initialize   mutable objects  in arguments,   instead,   create an empty list inside
+       a function body (as local variable)  to avoid this problem.
 
-        #>>> globals()
-            {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
-            <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
-         Global scope is your python file,  a  file is first  loaded into memory and then its dictionary is created. please note that modules in python file are first loaded into memory
-         and then run.   During the load phase,  the python file is being search and  then its dictionary is being created in memory which is called global dictionary.  A global dictionary
-         contains all the imports builtin or custom,   which are stored in dictionary as key values.   the modules , variables, functions which are in global scope are available to all
-         the object and function in file.   each object and function in a file then have a local scope.
-
-         local scope,   is created once function, classs or any object are loaded into memory.    please note objects are first loaded into memory and then executed.   during the
-         class loading phase a class create its own local dictionary this dictionary is different from object diction,   class dictionary icreated is a way to create static variables,
-         as any variable inside class is stored in its class dictionary and is different from object instance dictionary which is being created which the object is being
-         create with __New__ function
-
-14    a function has its own dictionary(name space) so a function has its own scope.  in same way global and buildin has their own
-        scope and own dictionary(name space).    python compiler first looks for a local variable in function in its own local scope/dictionary if
-        not found,  looks in global dictionary/scope and then finally looks into builtin scope
+12   Python has three types of functions,    1.  methods,    2,  functions,   3.  lambda functions.     methods are binded to classes through self object. functions.
+        Function and Lambda are the same concept, however  They are objects  of type  FunctionType or LambdaType.  see the code example below
 
 13.   python object instance being created by __new__ function.   which is being call by interpreter automatically.
-            class A(object):
-                def __new__(cls):
-                    print("Creating instance")
-                    return super(A, cls).__new__(cls)
 
-                def __init__(self):
-                    print("Init is called")
+        class A(object):
+            def __init__(self, name ):
+                print("Init is called")
+                self.name =name
+            def __new__(cls, name):
+                print("Creating instance")
+                ins =object.__new__(cls)
+                A.__init__(ins, name)
+                return ins
 
-            a = A()
+            def show_name(self):
+                print(self.name)
+
+        ax = A.__new__(A,"Amir")
+        ax.show_name()
 
             __new__ is not bounded to object  as not object has been created so far,  so no self in its arguments.   __new__ creates an instance and assigns it
             refrence address to "self"
