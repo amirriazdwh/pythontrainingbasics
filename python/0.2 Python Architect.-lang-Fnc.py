@@ -15,11 +15,16 @@
        Note:   ":"  is used to separate Key from values with an indent.
 
 3b.   the keys acts like a variable, function , class , object  or keyword which points to a reference object stored in a specific scope.
-        the object type is stored along with object in memory and can be determined by type()  functions
+        the object type(weather its, class , function or variable) is stored along with object in memory and can be determined by type()  functions.  the object reference
+        memory address is stored in a dictionary in a key: object reference  format
 
 3.    The format  of language is as under:    key: value.    keys can be any function name,  class name,  variable name,  special method (called dunder method)  and
        name module.  the variables are stored in a name space and points to  memory address to their respective module address, function address,
-      special methods addres, etc. The memory address is actually a reference to an object in memory after its been instantiation..
+      special methods address, etc. The memory address is actually a reference to an object in memory after its been instantiation.or loaded.  Please note
+      python code is first loaded into memory as a singleton object at a certain memory address.   this means for module,  class , functions types class there will
+      always be a fix memory address for each class type and there will be a single memory address.   however, when the classes, funciton or types are instanciated
+      there can be multiple objects from these classes.
+
       these key: value pairs are stored in 3 layers called
        name space which define the scope of these key value pairs.  these names space are:
                 1.  builtin name space,
@@ -27,9 +32,11 @@
                 3. local name space.
 
 5.    The python philosophy is same as its in other code generating languages  like cloud formation or terraform or scala.   Programmer wirites Yaml
-        code or json like code which is interpreted into byte code.  in same way, Python virtual machine convert yaml like code byte code and runs.
-         That is why python is slow.   it interprets code line for checking the syntax and then generates code.  compare to scala which compiles code
-         directly to bytecode which JVM run
+        code or json like code which is interpreted into byte code.  in same way, Python virtual machine convert byte code and runs.  Python module PY files
+        are first discovered by loaded from paths sys.paths and then loaded into cache into sys.modules.  then the code is compiled and saved a pyc file.
+        python then run the code in module.   please note,  python only compiles the imported modules ,   the __main__ module which is a file passed to
+        python.sh executable is not compiled.  each file in python is called module ,  the file or module passed to python.sh is called __main__ module as it
+        has name __main__ in dunder variable __name__.  the importing module has file name in __name__ variable
 
  6 .  when the python program starts.  which is python command give like "python calc.py".   python runtime environment create a thread or process
        (called interprter)   which has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs as interpreter is
