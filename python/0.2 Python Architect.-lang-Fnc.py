@@ -244,11 +244,27 @@
 
         What about <, >, <=, etc.?  Again, Python has special methods we can use to provide that functionality. These are methods such as __lt__, __gt__, __le__, etc.
 
-13a     for a function to execute in python it must have __call__  method.   which is translated when it encourter ().    so fun.__call__() is a result of translation
-           of fun() .  all function contains special methods like __call__,  __default__ etc.   a function can be called  either by fun()  or by __call__().  no matter its a class
-           function or stand alone function. an object can be as function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
+13a     A callable is an object that can be called (using the () operator), and always returns a value.We can check if an object is callable by using the built-in function
+           callable
 
+                l = [1, 2, 3]
+                callable(l.append)
 
+           for a function to execute in python it must have __call__  method.   which is translated when it encourter ().    so function fnc() translate to fnc.__call__()
+           all function contains callable methods like __call__,  __default__ etc.   a function can be called  either by fun()  or by __call__().
+           a class can be used as  function by adding the __call__.,   which is equal to () in python.   in this case the class acts like a one function.
+
+            class MyClass:
+                def __init__(self):
+                    print('initializing...')
+                    self.counter = 0
+
+                def __call__(self, x=1):
+                    self.counter += x
+                    print(self.counter)
+            my_obj = MyClass()
+            callable(my_obj.__init__)   #  return true
+            callable(my_obj.__call__)   #  return true
 
 14     since a function is an object,  it can be passed to another function as parameter and can be returned as function.   This is called clouser.
          once return the outter function returns the inner function and its scope is terminated.  but the variable in outter function are still accessable by inner functions.
