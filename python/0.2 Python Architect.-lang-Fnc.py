@@ -209,7 +209,8 @@
         __init__  function is called after __new__ constructor ,   __new__ function creates an object in heap and returns its address ,   which is being assinged to self.
         now to connect object with class further class methods are passed self object.   self object connects class with object. so  to initiize  object. __init__ function is called
         from inside __new__  with self object as argument.  Since the objective of __init__is to initialize class variable it does not return anything
-        as object will be returned by __new__ function.
+        as object will be returned by __new__ function.  all objects in python are objects,   its means,   int, float, number,  string,  functions and
+        classes can be deleted by del.   which calls objects __del__ dunder function which acts like destructor.
         There are other function __repr__  and  __str__ .   __str__ gives string representation of a class.
 
             class Rectangle :
@@ -270,20 +271,28 @@
          once return the outter function returns the inner function and its scope is terminated.  but the variable in outter function are still accessable by inner functions.
          these variable are called free variable and the inner function is call closure.   this is equivalent to object oriented programming encapsulation.
 
-15.   all objects in python are objects,   its means,   int, float, number,  string,  functions and classes can be deleted by del.   which calls objects __del__
-        dunder function which acts like destructor.
-
 16.  a function object or variable object  when assigned to a variable has reference to that object and its reference counter is incremented by 1.   when another
-        variables accesses the same object memory reference increases by 2.   when no variable is reference any object the object reference counter in memory
-        become i0 and virtual machine garbadage collection system will remove that variable from memory.
+        variables accesses  the same object memory reference increases by 2.   when no variable is reference any object the object reference counter in memory
+        become i0 and python virtual machine garbadage  collection system will remove that variable from memory.   This is called refrene counter.
 
-17,  A function which has a varaible in local scope can access a variable in global scope.   however it cannot modify global variable in local scope.   this is because any
-        function  which has a variable with same name in global scope as well as in local scope.   the python takes precedence to local varaible first.   this is call masking
+16a.   another concept is "Share reference and Mutability "   in this concept ,   if immutable objects have same value they can share the same memory address.
+         This means two variable are pointing to same memory address.
+
+           a = 10
+            b = 10
+            print(hex(id(a)))
+            print(hex(id(b)))
+            0x7559eaf0
+            0x7559eaf0
+
+17,  A function containing a variable in its local scope can access a variable in global scope.   however it cannot modify global variable in local scope.   this is because any
+        function  which has a variable with same name in global scope as well as in local scope.   the variable in local scope will take precedence.   This is becasue python alway
+         looks into its local scope before looking into global scope.  this is call masking
          if it has a variable say  A in global scope and same variable in local scope and we have to modify it.   python always looks into its local scope
-        for variable reference and modify the local A variable  while the global A variable remain unchanged.   to change global A  variable we have to use global
+        for variable reference and modify the local A variable  thus the global A variable remain unchanged.   to change global A  variable we have to use global
          keyword  in function,  the syntax is
 
-            c=25
+                c=25
                 def fun (a, b):
                     global c
                     c=10
@@ -295,8 +304,8 @@
             def  test():
                 globals()['aa']=20
 
-        test()
-        print(aa)
+            test()
+            print(aa)
 
 18.   on same pattern,   if we have nested functions and outer function contains  "X" variable which needs to be modified in inner local function scope,
         we have to use nonlocal key word with the variable X of inner function.   the nonlocal keyword says,  variable is not in global scope and variable is not
@@ -315,26 +324,26 @@
         print(x())   // 35
 
 19.   python function arguments are of following types.   a.  positional argument   b.  keyword  arguments c.  default argument   d.  variable length.
-        in case of posional arguments parameters are assigned by position ( first poistion parameter to first position in argument),   in case of keyword
-         assignment,   parameters keys are matched with argument keys and then values are assigned.   default arguments are those which have default
-        values assigned and they are optional.  * args are variable length arguments /parameters which are optional.  "*" means 0 or more values.in regular
-        expression.   the same is true in python
+        in case of postional arguments parameters are assigned by position ( first position parameter is assigned  to first position in argument),   in case of keyword
+         assignment,   parameters keys are matched with argument keys and then values are assigned.   default arguments are those arugment which have default
+        values assigned to them and they are optional.  * args are variable length arguments /parameters which are optional.  "*" means 0 or more values.in regular
+        expression.   the same is true in python.  **kargs is key based option arguments.
 
-19.   in python *args means slice values of args by position which can be determined from any sequence (tuple or list).   the process is as under:
+19.   in python *args means slice values of args by position which can be determined from  sequence position(tuple or list).   the process is as under:
 
         a, *b, c  = (1,2,3,4,5,6).    here * is at index 1 from start and -1 from end.   so our slice is :
         b= d[1: -1]   where d =(1,2,3,4,5,6).
-
         which returns    (1,(2,3,4,5),6)
 
-        however,  in case of functions arguments,   the end index is not possible.  so  all the positional variable ends after *arg.   if you want to add more variables
-        after positional variables you have to use keyword
+        however,  in case of positional functions arguments,   after *arg you cannot give more position argument. so  all the positional variable ends after *arg.
+        if you want to add more variables after positional variables you have to use key argument.
 
         fun( a, b, *args,  **kargs)  or  fun(a,b,*c, d) and pass parameters as (1,2, 3,4,5, d=6).
 
 20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be
         assigned by position till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)
-        not d is a dictionary element which is being represented by d=7 outside the {} braces.  here b and c are optional parameters
+        note d is a dictionary element which is being represented by d=7 outside the {} braces.  here b and c are optional parameters.  as default and variable argument
+        are optional
 
 21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
 
