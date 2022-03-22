@@ -340,11 +340,11 @@
 
         fun( a, b, *args,  **kargs)  or  fun(a,b,*c, d) and pass parameters as (1,2, 3,4,5, d=6).
 
-        Note diction values are assigned in arugment as   key=value while they are defined in two way.
+        Note diction values are assigned in argument as   key=value while they are defined in two way.
         1.   d ={(key1, value1),(key2, value2),(key3, value3)}
         2.   d ={key1: value1, key2: value2, key3:value3}
 
-20.  in python function argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be
+20.  in python function,  argument  values are first assigned by position,   then by key words.     this means  def  arg( a, b=2, *c, d).    the parameters can be
         assigned by position till to *c ,   after c the only way you can assign the parameters is by keyworks.      so arg function will be   arg(1,2,,3,4,5,  d=7)
         note d is a dictionary element which is being represented by d=7 outside the {} braces.  here b and c are optional parameters.  as default and variable argument
         are optional
@@ -352,7 +352,7 @@
 21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
 
 22.   in python ,  we can define inner function,   the technique is called closure.   a closure is a function which has a free variable.    so what is a free variable.   suppose you define a
-        function outer  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.
+        outer function  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.
         when you call the statement    fn = outer().    python assign inner function to fn.    however,  before assigning inner function to fn,   it creates outer function local scoppe ,  create
         x variable and this variable is being accessed in inner.   once outer function finishes it local scope dies and variable x does not dies as its been accessed from inner function.
         this x varaible is called free variable.
