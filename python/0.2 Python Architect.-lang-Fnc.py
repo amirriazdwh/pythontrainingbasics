@@ -38,32 +38,42 @@
         python.sh executable is not compiled.  each file in python is called module ,  the file or module passed to python.sh is called __main__ module as it
         has name __main__ in dunder variable __name__.  the importing module has file name in __name__ variable
 
+                **** main.globals *****
+                __name__ __main__                                   # in case the module imported  __name__ will be module1.   if file name is module1.py
+                __doc__ None
+                __package__ None
+                __loader__ <_frozen_importlib_external.SourceFileLoader object at 0x7f90c8f1c5e0>
+                __spec__ None
+                __annotations__ {}
+                __builtins__ <module 'builtins' (built-in)>
+                __file__ start.py
+                __cached__ None
+
  6 .  when the python program starts.  which is python command give like "python calc.py".   python runtime environment create a thread or process
-       (called interprter)   which has builtin in scope ( means all the builtin modules or packages are there and will be available to all programs as interpreter is
-       available to all programs)  this is called builtin namespace.    Python then create an object of type Global and passes builtin modules link to Global object.
-       both builtin and global processes creates builtin and global name space in memory.  builtin name space is available to all programs,  while the global name
-       space is available to modules in a program.  global name space is actually a file along which is being run through  python run command.
-       Python also creates the dunder method  __name__ =__main__ in file (module) which has been passed as an argument to python command
-       when the global object is being created it also import all the modules and packages defined into the file and save them in global name space as key value pair.
+       (called interprter).  python finder finds the file passed with python command,   create a module object from it and loads it in memory.  This is the
+       global scope of the program.  python automatically imports builtin modules as __builtins__ key.  this is the builtin scope.  all the types, class and
+       functions of builtin modules are loaded into memory.   in same way,   python creates namespace for classes and functions.   in python __main__
+       module is a tope level module.  while the imported module fall below it.   all modules contain dicttionary objects.   for example when the module type
+       is loaded,  its dictionary is created inside it.  which links with variable , classes , function in that module.  a class type in python contains a dictionary.
+       which is the dictionary of static variable and methods.    a function type is loaded ,   its methods are inhertied by subclass.   so the hierarchy is :
+       main module -> imported module -> classes and variable -> functions.   all the linked list by dictionary variable. in a tree like form and can be seen
+       by dir and __dict__.   dir function call __dict__.  but dir() also calls the base class __dict__ so dir give base class attributes also.
 
          #>>> globals()
             {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__':
             <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
 
-6a.   Python keywords like class,  var, def, if  defines different types object containing  dunder method in specific namespace according to their purpose.
-        for example ,   running the program creates a builtin namespace and global  name space.   class keywork loads a ClassType class.
-        and stores class method (which are dunder method) in its global dictionary as an attributes.   def loads a class of FunctionType in
-         local dictionary/namespace along with its attributes(dunder method).
+6a.   Python keywords like class,  var, def, if  which actually are types, defines different types classes containing  dunder method in specific
+         namespace according to their purpose. for example ,   running the program creates a builtin namespace and global  name space.
+          class keywork loads a ClassType class and stores class method (which are dunder method) in its global dictionary as an attributes.
+        def loads a class of FunctionType in local dictionary/namespace along with its attributes(dunder method).
 
          please note a function  creates its own local namespace.
 
-        A modules its own global namespace and an interpretor has its own name space
-        feach dictionary/name space contains different attributes or method as they are being created from different objects.
+        A modules has its own global namespace and a builtin package has it builtin name space
+        each dictionary/name space contains different attributes or method as they are being created from different objects.
         for example,   FunctionType create function when it finds keyword  def or lambda.  ClassType creates a class and a ModuleType creates a modules
-        when it find an import statement.
-
-
-        moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
+        when its been find an import statement.  moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
          attributes
 
 6b.   python objects can be associated with alias.   "as" keyword is used for that purposes.  "as" is translated as = in python.   for exampel
@@ -77,18 +87,24 @@
 
         as means  alias
 
-7 .   Note that everything is an object in python including the builtin module imported automatically and imported modules.
-        builtin module/package are  imported automatically to global scope,  you can view the builtin classes, functions,  constants and exception of
-        builtin in package by command   dir(__builtins__)  which gives all the functions, methods, variable defined in your current scope.  Note:  dir() gives
-        you builtin scope and with dir(__builtins__) you can view the available contents.   globals() function does not take any parameter and it return
-        you global namespace attributes list.  dir()  function works with modules,   so you can view the contents of module by using this function,
-        for example dir(math) will provide you all the function methods and constants of math class.  note dir uses global namespace to ensure
-        that math module is imported or not and if imported retruns its contents. To know the keywords of python type  help('keywords').
+7 .    you can view the builtin classes, functions,  constants and exception of builtin in package by command   dir(__builtins__)  which gives all the
+        functions, methods, variable defined in your current scope.  Note:  dir() gives you global scope and with dir(__builtins__) gives bultin scope
+         you can view the bultin contents by this command.   globals() function does not take any parameter and it return
+        you global namespace attributes list.  dir()  also function works with modules,   so you can view the contents of module by using,
+        dir(math) will provide you all the function methods and constants of math class in math global namespace.  to see which package are being
+        imported use dir() command in global name space. To know the keywords of python type  help('keywords').
 
 8 .   dir take an class, object, funciton or module and returns the attribute.    for example  dir(math) return all the math class function.
-        dir(math.exp) return the math funciton exp information
+        dir(math.exp) return the math function exp functions.  to see the function parameters type help(math).  for other use
+            help(Function)
+            help (str)
+            help(sys.argv)
+            help('modules')
+            help('keywords')
+            help('symbols')
+            help('topics')
 
-8a.  dir()  function gives the current attributes and all the attributes the funciton, class or object from which it has been inherited.  __dict__ only gives
+8a.  dir()  function gives the current attributes and all the attributes the functions, class or object from which it has been inherited.  __dict__ only gives
         current context and does considers the base class attributes.
 
 9 .   python also has local name space,  which exists when a function is being called.   a function creates it local name space which stores all the variable
