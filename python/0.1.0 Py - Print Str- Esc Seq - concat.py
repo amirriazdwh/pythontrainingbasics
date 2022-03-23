@@ -81,13 +81,15 @@ String formatting method in python.
 -------------------------------------------------
 1. Old style: "Hello %s" %name   - % means replace the latter after s with name variable.   in case of multiple variable
    you can use "Hello Mr %s with %s "%(Firstname, LastName).  s means string.  other formats are specified below.
+
 2. New Style:.   "Hello, {}".format(name)
    Hello {name},  there is a 0x{errorno:x} error!. format(name=name, errorno=errno)
    in case you decided to give position  like {0}, {1} it should always start from 0
+
 3. Literal String interpolation:   f'Hello {name}'.  this is actually a sugar coat version of 'Hello {name}'.format(name)
    here f is equivalent to format function and variable is inside {name}
 
-5. Template Strings:  "Hey, $name!"
+4. Template Strings:  "Hey, $name!"
      from string import Template
      t=Template('Hey, $name!')
      t.substitute(name=name)
@@ -120,7 +122,6 @@ s	String (converts any python object using str()).
 +	A sign character ("+" or "-") will precede the conversion (overrides a "space" flag).
 """
 """
-in case of print statement
 d means digits...   2d say digit will have 2 digits
 f means fraction... 5.3f says fraction will have 5 digits and 3 will be fraction part and 2 will be digits parts
 % means replace values by order.  if %2d and %3d and values are 23 and 25.  then they will be printed in order
