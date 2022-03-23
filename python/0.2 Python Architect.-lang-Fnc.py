@@ -1,5 +1,4 @@
 '''
-
 1.    Python language is designed on the pattern of  yaml.    its a collection of key value pairs.    the keys are on left side and values are on right side.
        the association between a key and value is established by :
 
@@ -271,6 +270,28 @@
          once return the outter function returns the inner function and its scope is terminated.  but the variable in outter function are still accessable by inner functions.
          these variable are called free variable and the inner function is call closure.   this is equivalent to object oriented programming encapsulation.
 
+15.     Note that once a parameter is assigned a default value, all parameters thereafter must be asigned a default value too!
+            def my_func(a, b=2, c=3):
+                print("a={0}, b={1}, c={2}".format(a, b, c))
+
+          For example, this will not work:
+          def fn(a, b=2, c):
+                print(a, b, c)
+
+              File "<ipython-input-4-2180ec769037>", line 1
+            def fn(a, b=2, c):
+            SyntaxError: non-default argument follows default argument
+
+15a    Note that once a keyword argument has been used, all arguments thereafter must also be named:
+           def my_func(a, b=2, c=3):
+                print("a={0}, b={1}, c={2}".format(a, b, c))
+
+          my_func(10, b=20, 30)
+
+           File "<ipython-input-13-ea05eeab2151>", line 1
+          my_func(10, b=20, 30)
+          SyntaxError: positional argument follows keyword argument
+
 16.  a function object or variable object  when assigned to a variable has reference to that object and its reference counter is incremented by 1.   when another
         variables accesses  the same object memory reference increases by 2.   when no variable is reference any object the object reference counter in memory
         become i0 and python virtual machine garbadage  collection system will remove that variable from memory.   This is called refrene counter.
@@ -349,7 +370,43 @@
         note d is a dictionary element which is being represented by d=7 outside the {} braces.  here b and c are optional parameters.  as default and variable argument
         are optional
 
-21.  to return a value python function must return a value.   if return statement is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
+20a.  * args mean no argument and many argument.   such function must be tested for both condition.   for example this function will fail for avg()
+            def avg(*args):
+                count = len(args)
+                total = sum(args)
+                return total/count
+
+            the problem can be fixed by:
+            def avg(*args):
+                count = len(args)
+                total = sum(args)
+                if count == 0:
+                    return 0
+                else:
+                    return total/count
+20b     Sometimes we want only keyword arguments, in which case we still have to exhaust the positional arguments first - but we can use the following syntax
+            if we do not want any positional parameters passed in:
+
+         def func1(*, d='hello'):
+            print(d)
+
+        func1(10, d='bye')
+
+        TypeError                                 Traceback (most recent call last)
+        Input In [3], in <cell line: 1>()
+        ----> 1 func1(10, d='bye')
+        TypeError: func1() takes 0 positional arguments but 1 positional argument (and 1 keyword-only argument) were given
+
+        correct syntax is:   func1(d='bye')
+
+20c   Unlike positional parameters, keyword arguments do not have to be defined with non-defaulted and then defaulted arguments:
+        def func1(a, *, b='hello', c):
+            print(a, b, c)
+
+        func1(5, c='bye')     # after * positional arguments cannot be given.  b is default so  c='bye'  is given as keyword argument.
+
+21.  to return a value python function must have a return statement. the return statement can be before the end or at end depending on logic.  if return statement
+       is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
 
 22.   in python ,  we can define inner function,   the technique is called closure.   a closure is a function which has a free variable.    so what is a free variable.   suppose you define a
         outer function  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.

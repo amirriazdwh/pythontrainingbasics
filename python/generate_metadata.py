@@ -16,7 +16,6 @@ if __name__ == "__main__" :
     mappers = 8
     split_by_key ='NULL'
     where_clause ='NULL'
-
     pre_run_script ='NULL'
     post_run_script ='NULL'
     load_priority = 1
