@@ -1,7 +1,59 @@
 # is comments in python
 
 """
+-----------------------------------------------
+concatenation  in Python using +
+-----------------------------------------------
+
+Method 1
+----------
+s = "String"  " Concatenation"
+print(s)
+
+s = 'String'  \
+' Concatenation'
+print(s)
+
+Method 2
+------------
+name ="Python"
+. Function Style:  "Hello" +name+  "!" .    + is the way concatenation is achieved in python
+
+Method 3
+------------
+s = 'String'
+s += ' Concatenation'
+print(s)
+
+Method 4
+------------
+s1 = 'String'
+s2 = 'Concatenation'
+
+s3 = ''.join([s1, s2])
+print(s3)
+
+Method 5.
+------------
+s1, s2, s3 = 'Python', 'String', 'Concatenation'
+s = ','.join([s1, s2, s3])
+print(s)
+
+Method 6.
+------------
+s1, s2, s3 = 'Python', 'String', 'Concatenation'
+s = '{} {} {}'.format(s1, s2, s3)
+print(s)
+
+Method 7.
+-----------
+s1, s2, s3 = 'Python', 'String', 'Concatenation'
+s = f'{s1} {s2} {s3}'
+print(s)
+
+-------------------------------------------------
 String formatting method in python.
+-------------------------------------------------
 1. Old style: "Hello %s" %name   - % means replace the latter after s with name variable.   in case of multiple variable
    you can use "Hello Mr %s with %s "%(Firstname, LastName).  s means string.  other formats are specified below.
 2. New Style:.   "Hello, {}".format(name)
@@ -9,7 +61,7 @@ String formatting method in python.
    in case you decided to give position  like {0}, {1} it should always start from 0
 3. Literal String interpolation:   f'Hello {name}'.  this is actually a sugar coat version of 'Hello {name}'.format(name)
    here f is equivalent to format function and variable is inside {name}
-4. Function Style:  "Hello"+name+"!"
+
 5. Template Strings:  "Hey, $name!"
      from string import Template
      t=Template('Hey, $name!')
