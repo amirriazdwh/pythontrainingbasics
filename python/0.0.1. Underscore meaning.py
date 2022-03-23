@@ -1,9 +1,17 @@
 """
-only _ means variable which is aynonmous
+only _ means variable which is aynonmous.  means variable is not named and should not be used in program.   if you assigned any value to
+          _,   you can access it by _ reference.  however,  if we use _ inplace of variable means we are planning to ignore that variable
 
-Remember:  in python there are not public, protected and private clauses.  these are being implemented as hints through
-           _.   var is a public variable,  _var is protected variable and __var is private variable.
-           __ double underscore is called dunder.
+Remember:
+in python there are not public, protected and private clauses.  these are being implemented as hints through  _.
+
+one time _ means variable or method cannot be imported into a module.   therefore its protected.  if in class it means
+two times __
+
+var is a public variable,
+_var is protected variable
+__var is private variable.
+ __ double underscore is called dunder.
 
 1, Single Leading Underscore _var:
  Naming convention indicating name is meant for internal use.
