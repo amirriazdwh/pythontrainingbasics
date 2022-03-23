@@ -360,6 +360,16 @@
         values assigned to them and they are optional.  * args are variable length arguments /parameters which are optional.  "*" means 0 or more values.in regular
         expression.   the same is true in python.  **kargs is key based option arguments.
 
+19.   in python function argument /  means end of position argument and * means start of keyword argument.   for example
+        def pos_only_arg(arg,/, *,c):
+            print(arg)
+        pos_only_arg("Amir", c="Riaz")    #  only arg is positional argument here.  * means keywords argument start from here
+
+        # this method only takes positional arguments
+        def pos_only_arg(arg, /):
+            print(arg)
+        pos_only_arg("Amir")
+
 19.   in python *args means slice values of args by position which can be determined from  sequence position(tuple or list).   the process is as under:
 
         a, *b, c  = (1,2,3,4,5,6).    here * is at index 1 from start and -1 from end.   so our slice is :

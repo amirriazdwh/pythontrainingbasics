@@ -1,8 +1,32 @@
-# is comments in python
-
 """
+---------------------------------------------------------
+Python uses single quote and double quote.
+---------------------------------------------------------
+A character in python is represented as
+
+char = 'A'   # or
+char="A"    # both are same
+
+message = 'This is a string in Python'
+message = "This is also a string"
+
+#If a string contains a single quote, you should place it in double-quotes like this:
+message = "It's a string"
+
+#And when a string contains double quotes, you can use the single quotes:
+message = '"Beautiful is better than ugly.". Said Tim Peters'
+
+#To escape the quotes, you use the backslash (\). For example:
+message = 'It\'s also a valid string'
+
+#mult-line text .   a multiline text will contain newline and tabs and print them as it is
+'''
+This is line of text
+    which contains tabs.
+        and new lines
+'''
 -----------------------------------------------
-concatenation  in Python using +
+concatenation  in Python
 -----------------------------------------------
 
 Method 1
@@ -10,21 +34,22 @@ Method 1
 s = "String"  " Concatenation"
 print(s)
 
+# for multiline.
 s = 'String'  \
 ' Concatenation'
 print(s)
-
+-----------
 Method 2
 ------------
 name ="Python"
-. Function Style:  "Hello" +name+  "!" .    + is the way concatenation is achieved in python
-
+. Function Style:  "Hello" +name+  "!" .    #+ is the way concatenation is achieved in python
+----------------
 Method 3
 ------------
 s = 'String'
 s += ' Concatenation'
 print(s)
-
+------------
 Method 4
 ------------
 s1 = 'String'
@@ -32,19 +57,19 @@ s2 = 'Concatenation'
 
 s3 = ''.join([s1, s2])
 print(s3)
-
+-------------
 Method 5.
 ------------
 s1, s2, s3 = 'Python', 'String', 'Concatenation'
 s = ','.join([s1, s2, s3])
 print(s)
-
+------------
 Method 6.
 ------------
 s1, s2, s3 = 'Python', 'String', 'Concatenation'
 s = '{} {} {}'.format(s1, s2, s3)
 print(s)
-
+-------------
 Method 7.
 -----------
 s1, s2, s3 = 'Python', 'String', 'Concatenation'
