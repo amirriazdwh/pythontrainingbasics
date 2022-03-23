@@ -1,9 +1,12 @@
 """
+only _ means variable which is aynonmous
+
 Remember:  in python there are not public, protected and private clauses.  these are being implemented as hints through
            _.   var is a public variable,  _var is protected variable and __var is private variable.
            __ double underscore is called dunder.
 
-1, Single Leading Underscore _var: Naming convention indicating name is meant for internal use.
+1, Single Leading Underscore _var:
+ Naming convention indicating name is meant for internal use.
 this means variable/method is protected. A hint for programmers and not enforced by programmers. _method name can be
 called without any problem
 

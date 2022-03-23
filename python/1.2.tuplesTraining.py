@@ -216,7 +216,7 @@ print("############# print expression ###############")
 #'__iter__' in dir(3)                   # returns False
 
 pow2 = (2 ** x for x in range(10))
-print(list(pow2))
+print("List are:",list(pow2))
 
 # expression are like foreach loop is scala
 pow2 = (2 ** _ for _ in range(10))
@@ -230,7 +230,7 @@ def create_tuple():
 # this creates an expression object which is iterables
 # sometuple + (someitem,)
 tip = (x for x in create_tuple())
-print(tuple(tip))
+print("Tuples are: ",tuple(tip))
 
 print("________how to add tuple element by for loop_______")
 a=tuple()
