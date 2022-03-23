@@ -75,16 +75,26 @@
         when its been find an import statement.  moduleType,  find the module file and loads it into memory and runs it.   all type have a bit of different
          attributes
 
-6b.   python objects can be associated with alias.   "as" keyword is used for that purposes.  "as" is translated as = in python.   for exampel
+6b.   python objects can be associated with alias.   "as" keyword is used for that purposes.  "as" is translated as = in python.   for example.
+        AS does not create any object.   infact it renames object with a different name.   for example,  in import math is object which is being renamed to m
+
         import math as m
         which means
 
         m = importer (math)
         m. exp   # calls the funciton.
 
-        or with (open()) as :    is same as   m=open().
+        or
+        with (open()) as m :    is same as   m=open().
 
-        as means  alias
+            try:
+                res = a / b
+            except ZeroDivisionError as err:                           # ZeroDivisionError is an object which has been rename to err.  since its a rename so () are not needed
+                print('{0}, {1} - division by 0'.format(a, b))
+                res = 0
+                continue
+            finally:
+                print('{0}, {1} - always executes'.format(a, b))
 
 7 .    you can view the builtin classes, functions,  constants and exception of builtin in package by command   dir(__builtins__)  which gives all the
         functions, methods, variable defined in your current scope.  Note:  dir() gives you global scope and with dir(__builtins__) gives bultin scope
@@ -406,7 +416,15 @@
         func1(5, c='bye')     # after * positional arguments cannot be given.  b is default so  c='bye'  is given as keyword argument.
 
 21.  to return a value python function must have a return statement. the return statement can be before the end or at end depending on logic.  if return statement
-       is not given or nothing is return it will be NONE,  which is equal to null pointer  in java.
+       is not given or nothing is return it will be NONE
+
+       def func_4():
+         # does something but does not return a value
+        a = 2
+
+        res = func_4()
+        print(res)
+        None.
 
 22.   in python ,  we can define inner function,   the technique is called closure.   a closure is a function which has a free variable.    so what is a free variable.   suppose you define a
         outer function  which contain one parameter x =5,   outer function also contains an inner function which accesses outer function.   the outer function returns inner funciton.

@@ -16,11 +16,15 @@ important points
 4.  function default variables are created in static scope
 5.  since a function is an object,  it can be passed to another function which is another object
 6.  since a function is an object   its object reference can be assigned to a variable.
-7.  a function when assigned to a variable has reference to function object and this function variable to function object
-    has a mapping is store in high scope dictionary.  since function is a object it can be delete as del function_variable
+7.  a function when assigned to a variable has reference to function object and this function variable to function
+object
+    has a mapping is store in high scope dictionary.  since function is a object it can be delete as del
+    function_variable
 8.  in python all the variable must be initialized before any operation like addition or subtraction should be done.
-    if the variable initialization is global scope and addition operation in function has local scope then function will not
-    able to mutate the global variable. for a variable to be modified in funcitons's local scope,  the function must be declared
+    if the variable initialization is global scope and addition operation in function has local scope then function
+    will not
+    able to mutate the global variable. for a variable to be modified in funcitons's local scope,  the function must
+    be declared
     in local scope,  for a variable to be modified in global scope the variable must be define global scope.
 9.  if we have a function lets say  fnc_sort.  it will only execute once we add () means fnc_sort().  doing so call the
     fnc_sort.__call__()  function behind the scenes
@@ -38,34 +42,40 @@ __default__ function is also static.  this means variables are bring shared acro
 therefore , default variable  in __defalut__ functions must be immutable. 
 """
 
-
 x = 10
-def increment():
-   # x=x+1  and x+=1 will not compile as x is in global scope and cannot be mutated in local scope. however we can read and print it
-   # for x to be modified,  it must be declared in scope where its been modified.
-    print(x)
 
-increment()
-# when we add () to increment object compiler will call it as increment.__call__().  it means all the logic of a function
+
+def increment ( ) :
+    # x=x+1  and x+=1 will not compile as x is in global scope and cannot be mutated in local scope. however we can
+    # read and print it
+    # for x to be modified,  it must be declared in scope where its been modified.
+    print ( x )
+
+
+increment ( )
+# when we add () to increment object compiler will call it as increment.__call__().  it means all the logic of a
+# function
 # written in __call__ function.
 
 """
 objects function behaviour can be describe in a better way with this example.
 """
-class Printer:
 
-    def __init__(self, s):
+
+class Printer :
+
+    def __init__ ( self , s ) :
         self.str01 = s
 
-    def __call__(self):
+    def __call__ ( self ) :
         # all the function logic will be in call function
-         return self.str01.upper()
+        return self.str01.upper ( )
 
 
-s1 = Printer('hello') # Defining object of class Printer
+s1 = Printer ( 'hello' )  # Defining object of class Printer
 # Calling object s1
-s2=s1()   # Hello
-print(s2)
+s2 = s1 ( )  # Hello
+print ( s2 )
 
 ## wrong implementations.
 """
@@ -76,17 +86,21 @@ __default__ function is also static.  this means variables are bring shared acro
 
 therefore , default variable  in __defalut__ functions must be immutable. 
 """
-def add_two_to_list(my_list=[]):
-    my_list.append(2)
+
+
+def add_two_to_list ( my_list = [ ] ) :
+    my_list.append ( 2 )
     return my_list
 
-print(add_two_to_list.__defaults__)    # ([],)
-add_two_to_list()
-print(add_two_to_list.__defaults__)    # ([2],)
-print(globals())
+
+print ( add_two_to_list.__defaults__ )  # ([],)
+add_two_to_list ( )
+print ( add_two_to_list.__defaults__ )  # ([2],)
+print ( globals ( ) )
 
 
-def default_fn ( a=2, b=3):
-    print(a,b)
+def default_fn ( a = 2 , b = 3 ) :
+    print ( a , b )
 
-print(default_fn.__defaults__)
+
+print ( default_fn.__defaults__ )
