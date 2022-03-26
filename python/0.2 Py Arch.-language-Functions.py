@@ -425,6 +425,17 @@
 
         func1(5, c='bye')     # after * positional arguments cannot be given.  b is default so  c='bye'  is given as keyword argument.
 
+20d.  in case of **kargs we have to specify keywords.  since **kargs cannot be calculated based on position,  **kargs should be last in argument list
+         means, you cannot specify parameters after **kwargs has been used:
+
+         def func(a, b, **kwargs, c):
+            pass
+
+              File "<ipython-input-12-ffdc3153243b>", line 1
+              def func(a, b, **kwargs, c):
+                             ^
+SyntaxError: invalid syntax
+
 21.  to return a value python function must have a return statement. the return statement can be before the end or at end depending on logic.  if return statement
        is not given or nothing is return it will be NONE
 
