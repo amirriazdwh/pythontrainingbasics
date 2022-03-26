@@ -425,8 +425,12 @@
 
         func1(5, c='bye')     # after * positional arguments cannot be given.  b is default so  c='bye'  is given as keyword argument.
 
-20d.  in case of **kargs we have to specify keywords.  since **kargs cannot be calculated based on position,  **kargs should be last in argument list
-         means, you cannot specify parameters after **kwargs has been used:
+20d.  in case of **kargs we have to specify keywords.  since **kargs cannot be calculated based on position,
+        **kargs should be last in argument list means, you cannot specify further parameters after **kwargs has been used,  reason is
+         in python / means end of positional arguments,   * means start of keyword arguments after this argument,   ** menas end of
+         keyword and positional arguments.   for example,   we cannot specify positional arguments after *args,  becasue * tells compiler
+         after this argument,  keyword argument will start and variable will be assigned iby position.   that is why after *args we
+         can only specify keyword arguments.   **kargs
 
          def func(a, b, **kwargs, c):
             pass
@@ -672,6 +676,10 @@ f(1)
 pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
 pairs.sort(key=lambda pair: pair[1])
 pairs
+
+"""
+33.  
+"""
 
 
 
