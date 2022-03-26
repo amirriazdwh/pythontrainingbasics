@@ -425,11 +425,14 @@
 
         func1(5, c='bye')     # after * positional arguments cannot be given.  b is default so  c='bye'  is given as keyword argument.
 
-20d.  in case of **kargs we have to specify keywords.  since **kargs cannot be calculated based on position,
-        **kargs should be last in argument list means, you cannot specify further parameters after **kwargs has been used,  reason is
-         in python / means end of positional arguments,   * means start of keyword arguments after this argument,   ** menas end of
-         keyword and positional arguments.   for example,   we cannot specify positional arguments after *args,  becasue * tells compiler
-         after this argument,  keyword argument will start and variable will be assigned iby position.   that is why after *args we
+20d.  in case of **kargs we have to specify keywords. **kargs should be last in argument list means, you cannot specify further
+         argument in functiion after **kwargs has been used,  reason is in python / means end of positional arguments,
+         * means start of keyword arguments after this argument,   for example,   we cannot specify positional arguments after *args,
+         because * tells compiler after this argument,  keyword argument will start  and *args tell compile to use position of parameters
+         to form a tuple.   ** end of all arugments in function and **kargs also tell compile that parameter will be group of keywords.
+         which form dictionary
+
+          .   that is why after *args we
          can only specify keyword arguments.   **kargs
 
          def func(a, b, **kwargs, c):
@@ -438,7 +441,7 @@
               File "<ipython-input-12-ffdc3153243b>", line 1
               def func(a, b, **kwargs, c):
                              ^
-SyntaxError: invalid syntax
+        SyntaxError: invalid syntax
 
 21.  to return a value python function must have a return statement. the return statement can be before the end or at end depending on logic.  if return statement
        is not given or nothing is return it will be NONE
