@@ -681,13 +681,54 @@ pairs.sort(key=lambda pair: pair[1])
 pairs
 
 """
-33.  
+33.  When we call help() on a class, function, module, etc, Python will typically display some information:
+
+help(print)
+Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+    
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+    
+    to add help into our function we use docstring  which store 
+    documentation of function in __doc__
+    
 """
 
 
+def fact ( n ) :
+    '''Calculates n! (factorial function)
+    Inputs:
+        n: non-negative integer
+    Returns:
+        the factorial of n
+    '''
+    if n < 0 :
+        '''Note that this is not part of the docstring!'''
+        return 1
+    else :
+        return n * fact ( n - 1 )
 
+"""
+Help on function fact in module __main__:
+fact(n)
+    Calculates n! (factorial function)
+    
+    Inputs:
+        n: non-negative integer
+    Returns:
+        the factorial of n
+Docstrings, when found, are simply attached to the function in the __doc__ property:
 
-
+which return  fact.__doc__
+'Calculates n! (factorial function)\n    \n    Inputs:\n        n: non-negative integer\n    Returns:\n        the factorial of n\n   
+"""
 
 
 
