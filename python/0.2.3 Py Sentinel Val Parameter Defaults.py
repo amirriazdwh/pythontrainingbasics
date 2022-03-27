@@ -15,6 +15,10 @@
 
 # Obviously, if we write our function this way, it will not work as intended:
 
+
+
+
+
 def validate ( a = None ) :
     if a is not None :
         print ( 'Argument was provided' )
