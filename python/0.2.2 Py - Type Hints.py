@@ -12,7 +12,7 @@ pycharm will only give pycharm  templates to write the code   no list function w
 avaiable in intellsense.
 """
 
-from typing import List , Tuple , Optional , Sequence , ClassVar
+from typing import List , Tuple , Optional , Sequence , ClassVar , Callable , Iterator , Union , cast
 
 Vector = List [ float ]
 
@@ -106,7 +106,7 @@ class Box :
 
 
 #############################
-from typing import List, Set, Dict, Tuple, Optional
+from typing import List , Set , Dict , Tuple , Optional
 
 # For simple built-in types, just use the name of the type
 x: int = 1
@@ -117,34 +117,65 @@ x: bytes = b"test"
 
 # For collections, the type of the collection item is in brackets
 # (Python 3.9+)
-x: list[int] = [1]
-x: set[int] = {6, 7}
+x: list [ int ] = [ 1 ]
+x: set [ int ] = { 6 , 7 }
 
 # In Python 3.8 and earlier, the name of the collection type is
 # capitalized, and the type is imported from the 'typing' module
-x: List[int] = [1]
-x: Set[int] = {6, 7}
+x: List [ int ] = [ 1 ]
+x: Set [ int ] = { 6 , 7 }
 
 # Same as above, but with type comment syntax (Python 3.5 and earlier)
-x = [1]  # type: List[int]
+x = [ 1 ]  # type: List[int]
 
 # For mappings, we need the types of both keys and values
-x: dict[str, float] = {"field": 2.0}  # Python 3.9+
-x: Dict[str, float] = {"field": 2.0}
+x: dict [ str , float ] = { "field" : 2.0 }  # Python 3.9+
+x: Dict [ str , float ] = { "field" : 2.0 }
 
 # For tuples of fixed size, we specify the types of all the elements
-x: tuple[int, str, float] = (3, "yes", 7.5)  # Python 3.9+
-x: Tuple[int, str, float] = (3, "yes", 7.5)
+x: tuple [ int , str , float ] = (3 , "yes" , 7.5)  # Python 3.9+
+x: Tuple [ int , str , float ] = (3 , "yes" , 7.5)
 
 # For tuples of variable size, we use one type and ellipsis
-x: tuple[int, ...] = (1, 2, 3)  # Python 3.9+
-x: Tuple[int, ...] = (1, 2, 3)
+x: tuple [ int , ... ] = (1 , 2 , 3)  # Python 3.9+
+x: Tuple [ int , ... ] = (1 , 2 , 3)
 
 # Use Optional[] for values that could be None
-x: Optional[str] = some_function()
+x: Optional [ str ] = some_function ( )
 # Mypy understands a value can't be None in an if-statement
-if x is not None:
-    print(x.upper())
+if x is not None :
+    print ( x.upper ( ) )
 # If a value can never be None due to some invariants, use an assert
 assert x is not None
-print(x.upper())
+print ( x.upper ( ) )
+
+
+##################################################################
+# Add default value for an argument after the type annotation
+def f ( num1: int , my_float: float = 3.5 ) -> float :
+    return num1 + my_float
+
+
+# This is how you annotate a callable (function) value
+#  function take two parameter in and float and returns float.
+x: Callable [ [ int , float ] , float ] = f
+
+
+# A generator function that yields ints is secretly just a function that
+# returns an iterator of ints, so that's how we annotate it
+def g ( n: int ) -> Iterator [ int ] :
+    i = 0
+    while i < n :
+        yield i
+        i += 1
+
+
+# Use Union when something could be one of a few types
+x: list[Union[int, str]] = [3, 5, "test", "fun"]
+
+
+a = [4]
+b = cast(List[int], a)  # Passes fine
+c = cast( List [str ] , a )  # Passes fine (no runtime check)
+reveal_type(c)  # -> Revealed type is "builtins.list[builtins.str]"
+print(c)  # -> [4]; the object is not cast
