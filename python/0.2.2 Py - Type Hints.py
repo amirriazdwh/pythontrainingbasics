@@ -12,7 +12,8 @@ pycharm will only give pycharm  templates to write the code   no list function w
 avaiable in intellsense.
 """
 import time
-from typing import List , Tuple , Optional , Sequence , ClassVar , Iterator , cast , Any
+from collections import namedtuple
+from typing import List , Tuple , Optional , Sequence , ClassVar , Iterator , cast , Any , NamedTuple
 
 """
 Every class is also a valid type. Any instance of a subclass is also compatible with all superclasses – it follows 
@@ -286,6 +287,38 @@ new_vector = scale ( 2.0 , [ 1.0 , -4.2 , 5.4 ] )
 """
 Named tuples
 Mypy recognizes named tuples and can type check code that defines or uses them. In this example, we can detect code trying to access a missing attribute:
+"""
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(x=1, y=2)
+# print(p.z)  # Error: Point has no attribute 'z'
+
+"""
+If you use namedtuple to define your named tuple, all the items are assumed to have Any types. That is, mypy doesn’t know anything about
+ item types. You can use NamedTuple to also define item types:
+"""
+
+Point1 = NamedTuple('Point', [('x', int),  ('y', int)])
+# p = Point(x=1, y='x')  # Argument has incompatible type "str"; expected "int"
+
+"""
+Python 3.6 introduced an alternative, class-based syntax for named tuples with types:
+"""
+
+class Point(NamedTuple):
+    x: int
+    y: int
+
+p = Point(x=1, y='x')  # Argument has incompatible type "str"; expected "int"
+
+print(p.y)
+
+"""The type of class objects¶ (Freely after PEP 484: The type of class objects.) Sometimes you want to talk about 
+class objects that inherit from a given class. This can be spelled as Type[C] where C is a class. In other words, 
+when C is the name of a class, using C to annotate an argument declares that the argument is an instance of C (or of 
+a subclass of C), but using Type[C] as an argument annotation declares that the argument is a class object deriving 
+from C (or C itself). 
+
+For example, assume the following classes:
 """
 
 # ------------------------------------------------
