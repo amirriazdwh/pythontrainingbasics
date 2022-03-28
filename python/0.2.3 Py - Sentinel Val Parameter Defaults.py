@@ -30,8 +30,6 @@ validate ( 100 )
 validate ( )
 
 # In[17]:
-
-
 validate ( None )
 
 # Instead, we need to use a different **sentinel** value. But which one?
