@@ -15,8 +15,7 @@
 
 # Obviously, if we write our function this way, it will not work as intended:
 
-
-
+import sentinel
 
 
 def validate ( a = None ) :
@@ -27,7 +26,6 @@ def validate ( a = None ) :
 
 
 validate ( 100 )
-
 
 validate ( )
 
@@ -62,23 +60,15 @@ def validate ( a = _sentinel ) :
 
 
 # In[52]:
-
-
 validate ( 100 )
 
 # In[53]:
-
-
 validate ( None )
 
 # In[54]:
-
-
 validate ( )
 
 # In[55]:
-
-
 validate ( object ( ) )
 
 
@@ -86,8 +76,6 @@ validate ( object ( ) )
 # to find out what the default sentinel value is:
 
 # In[61]:
-
-
 def validate ( a = object ( ) ) :
     default_a = validate.__defaults__ [ 0 ]
     if a is not default_a :
@@ -97,31 +85,21 @@ def validate ( a = object ( ) ) :
 
 
 # In[62]:
-
-
 validate ( 100 )
 
 # In[63]:
-
-
 validate ( None )
 
 # In[64]:
-
-
 validate ( )
 
 # In[65]:
-
-
 validate ( object ( ) )
 
 
 # We can expand this to several parameters as well if we need to, using either method:
 
 # In[66]:
-
-
 def validate ( a = object ( ) , b = object ( ) , * , kw = object ( ) ) :
     default_a = validate.__defaults__ [ 0 ]
     default_b = validate.__defaults__ [ 1 ]
@@ -144,27 +122,35 @@ def validate ( a = object ( ) , b = object ( ) , * , kw = object ( ) ) :
 
 
 # In[67]:
-
-
 validate ( 100 , 200 , kw = None )
 
 # In[68]:
-
-
 validate ( 100 , 200 )
 
 # In[69]:
-
-
 validate ( b = 100 )
 
 # In[70]:
-
-
 validate ( )
 
 # In[ ]:
 
+"""
+feature of sentinels package 
 
+sentinels are unique
+sentinels are singletons — the only instance of their own anonymous class
+sentinels can be used with is comparisons
+sentinels can be used with pickle
+sentinels can be used with copy.deepcopy
+you can add arbitrary attributes and methods to sentinels
+sentinels have a nice, self-documenting __repr__!
+"""
 
+d = { "a" : 1 , "b" : None }
 
+Missing = sentinel.create ( "Missing" )
+print(id(Missing))
+
+if d.get ( "c" , Missing ) is Missing :
+    print ( "Missing" )
