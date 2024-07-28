@@ -1,0 +1,64 @@
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder()
+  .appName("ReadCustomerData")
+  .config("spark.master", "k8s://https://your_aks_api_server:443")
+  .config("spark.kubernetes.namespace", "your_namespace")
+  .config("spark.kubernetes.container.image", "your_spark_image")
+  .getOrCreate()
+
+val jdbcUrl = "jdbc:mysql://your_database_host:3306/your_database_name"
+val tableName = "customer"
+val properties = new java.util.Properties()
+properties.setProperty("user", "your_username")
+properties.setProperty("password", "your_password")
+
+val customerDF = spark.read.jdbc(jdbcUrl, tableName, properties)
+
+customerDF.show()
+
+
+
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime
+from pyspark.sql import SparkSession
+
+# Define the Spark job function
+def run_spark_job():
+    spark = SparkSession.builder.appName("ReadCustomerData").getOrCreate()
+
+    jdbcUrl = "jdbc:mysql://your_database_host:3306/your_database_name"
+    tableName = "customer"
+    properties = {
+        "user": "your_username",
+        "password": "your_password"
+    }
+
+    customerDF = spark.read.jdbc(jdbcUrl, tableName, properties)
+
+    # Perform any necessary transformations
+
+    # Write data to target table
+    customerDF.write.jdbc("jdbc:mysql://your_database_host:3306/your_database_name", "dcustomer", properties)
+
+# Define the Airflow DAG
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2022, 1, 1),
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1
+}
+
+dag = DAG('spark_job_dag', default_args=default_args, schedule_interval='0 0 * * *')
+
+# Define the PythonOperator to run the Spark job
+run_spark_task = PythonOperator(
+    task_id='run_spark_job',
+    python_callable=run_spark_job,
+    dag=dag
+)
+
+run_spark_task

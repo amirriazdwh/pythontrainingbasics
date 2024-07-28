@@ -1,6 +1,6 @@
 """
 -----------------------------
-Note:  just like int, float,  string ,   iter is a data types.  infact any class defined in python is a data type.
+Note:  just like int, float,  string ,   iter is a data types.  infact any class defined in python is a data type. just like other language
           in same way, enumerate is a class. which returns the index with iterator
 ----------------------------
 
@@ -331,4 +331,48 @@ This works since there is no way (1,2,3,4) could be a generator. There is nothin
 In order for your generator to be a tuple, the expression (i for i in sample_list) would have to be a tuple comprehension. There is no way to have tuple comprehensions,
  since comprehensions require a mutable data type.
 Thus, the syntax for what should have been a tuple comprehension has been reused for generators.
+
+Iterator State Management
+In an iterator, you need to explicitly manage the state of the iteration. This means you have to keep track of the current position and any other
+ necessary variables manually. Here’s an example:
 """
+class CounterIterator:
+    def __init__(self, start, end):
+        self.current = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current >= self.end:
+            raise StopIteration
+        else:
+            self.current += 1
+            return self.current - 1
+
+# Using the iterator
+counter = CounterIterator(1, 5)
+for num in counter:
+    print(num)
+
+# ***
+# Generators, on the other hand, handle state management automatically. You don’t need to explicitly manage the state because the generator function
+# remembers the state of local variables between yield calls. Here’s an example:
+# ***
+def counter_generator(start, end):
+    current = start
+    while current < end:
+        yield current
+        current += 1
+
+# Using the generator
+counter = counter_generator(1, 5)
+for num in counter:
+    print(num)
+
+
+# Key Differences
+# Implementation: Iterators are implemented using classes, while generators are implemented using functions.
+# Syntax: Iterators require the __iter__() and __next__() methods, whereas generators use the yield statement.
+# State Management: Generators automatically handle the state of local variables, while iterators require explicit state management.
