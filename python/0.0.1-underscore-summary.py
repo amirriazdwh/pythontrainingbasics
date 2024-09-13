@@ -21,6 +21,7 @@ Underscores in Python- Single Leading Underscore (_var):
     - Example: for _ in range(10):
 - Single Underscore (_) in the Interactive Shell:
     - Purpose: Contains the result of the last evaluated expression.
+- non underscore means:  variable or method is public 
 
 - Example:
 >>> 1 + 2
@@ -30,7 +31,7 @@ Underscores in Python- Single Leading Underscore (_var):
 
 ExamplesUsing Underscores in Variables and Methods
 class Person:
-    def __init__(self):
+    def __init__(self):      #dunder methods
         self.name = 'Sarah'  # Public variable
         self._age = 26       # Protected variable
         self.__id = 30       # Private variable
