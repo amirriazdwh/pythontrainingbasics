@@ -21,10 +21,8 @@ Underscores in Python- Single Leading Underscore (_var):
     - Example: for _ in range(10):
 - Single Underscore (_) in the Interactive Shell:
     - Purpose: Contains the result of the last evaluated expression.
-   
-    
-- Example:
 
+- Example:
 >>> 1 + 2
 3
 >>> _ + 4
