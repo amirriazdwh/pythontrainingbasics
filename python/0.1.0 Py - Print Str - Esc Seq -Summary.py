@@ -17,8 +17,8 @@ s = "Part1" "Part2"   -- python automaticall adds join method.   "Part1".join"Pa
 
 + Operator:
 s = "Part1" + "Part2"
-+= Operator:
 
++= Operator:
 s = "Part1"
 s += " Part2"
 
@@ -31,6 +31,7 @@ s = ','.join([s1, s2, s3])
 format() Method:
 s = '{} {} {}'.format(var1, var2, var3)
 var1 is replaced with first {} and so on
+first {} is actually {0} so replaced with var1 in tuple
 
 
 f-strings:
