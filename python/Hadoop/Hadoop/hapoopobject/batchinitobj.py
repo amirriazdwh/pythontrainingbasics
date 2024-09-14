@@ -1,3 +1,10 @@
+"""
+created by : amir riaz
+batchid is the batch of jobs needs to be run.  each batch contains multiple jobs with jobid
+loads type can be LOAD and RERUN for full loads jobs. 
+you can omitprechecks yes or no
+"""
+
 import logging
 import argparse
 import sessionutils
