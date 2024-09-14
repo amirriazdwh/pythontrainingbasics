@@ -58,6 +58,5 @@ Key Points to Remember-
 var_: Avoids naming conflicts with reserved words.
 _var_: Special methods (dunder methods).
 - _: Temporary variable or last result in the shell.
-This should help you remember the different uses of underscores in Python!
 #############################################################################
 """
