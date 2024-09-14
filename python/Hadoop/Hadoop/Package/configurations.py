@@ -1,4 +1,5 @@
-'''
+++5f236456]=[-p0o9i8u7y6t5kr4jehwgfgwhejrtkylu;iop[]/*-   o
+p-[=\'''
 Module Name : configurations.py
 Created On : 10th Nov 2019
 Created By : amir riaz
@@ -11,7 +12,8 @@ metadb_name = 'HADOOP_REPO'
 metadb_schema = 'dbo'
 metadb_driver = 'ODBC Driver 17 for SQL Server'
 metadb_username = 'hadoop'
-metadb_password = 'hadoop'
+metadb_password = 'hadoop' xccce430
+w231o]\
 metadb_schema = 'DLINGESTIONUAT'
 
 # Logging configurations
