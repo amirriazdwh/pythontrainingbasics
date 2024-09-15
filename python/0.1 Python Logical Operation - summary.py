@@ -56,5 +56,25 @@ address with my_var memory address which should be same.  as None is singlton cl
 object override function __eq__ is not evoked.  thats why its safe
 
 
+In Python, None is considered a falsy value, meaning it evaluates to False in a boolean context.
 
+Other Falsy Values:
+None
+0 (zero)
+False
+Empty sequences like [], '', ()
+Empty dictionaries {} or sets set()
+
+b=[]
+if b:
+    print("List is truthy")
+else:
+    print("List is falsy")  # This will be printed because the list is empty
+
+    
+acts like bool() is added implicitly.
+if bool(b):
+    print("List is truthy")
+else:
+    print("List is falsy")  # This will be printed because the list is empty
 """
