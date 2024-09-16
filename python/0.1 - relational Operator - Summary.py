@@ -35,7 +35,8 @@ Example: 4 <= 5 → True
 Python operators for String
 ##################################
 
-Actually, relational operators in Python can be used for strings as well, not just for integers (int) and floating-point numbers (float). Here’s how they work with strings:
+Actually, relational operators in Python can be used for strings as well, not just for integers (int) and floating-point numbers (float).
+Here’s how they work with strings:
 
 For strings, comparison is based on the lexicographical order (like in a dictionary), meaning it compares the 
 strings character by character based on their ASCII/Unicode values.
@@ -75,7 +76,6 @@ How == Works for Strings in Python:
 When you write something like "apple" == "apple", Python sees this and translates it to:
 
 python
-Copy code
 "apple".__eq__("apple")
 This calls the __eq__() method from the string class, which is responsible for checking if the two strings are equal.
 
@@ -92,7 +92,6 @@ __le__(self, other): Called when <= is used to check if one string is less than 
 
 Example:
 python
-Copy code
 # When you do this:
 result = "apple" == "banana"
 

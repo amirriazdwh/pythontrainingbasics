@@ -1,4 +1,50 @@
 """
+
+###############
+IMPORTANT
+###############
+in python all the variable which are created in a program must be assigned a value.
+otherwise  # This will raise a NameError: name 'my_variable' is not defined.   means variable are not create.
+in python creation of variable requires assignment which determine its class type.  like int() class,  fload, String or None
+and a value
+---
+del my_var will delete object type as well as variable name from dictionary.  so it give error  NameError: name
+'my_variable' is not defined.  when you try to print('my_variable')
+--
+my_var=None just delete object but keeps the variable name in dictionary.  in this case my_var type is None.
+previous object type memory reference is released.  its been put to Garbadge collector for cleanup.
+
+to find a variable is None.   we use.
+my_var is None.   my_var==None is not prefered.
+
+Avoiding Ambiguity: Using == can be ambiguous if my_var is an object type that defines its own __eq__ method,
+potentially leading to unexpected behavior. if __eq__ method is not override.   my_var==None compare None class load memory
+address with my_var memory address which should be same.  as None is singlton class and my_var is None.  it ensure the
+object override function __eq__ is not evoked.  thats why its safe
+
+
+In Python, None is considered a falsy value, meaning it evaluates to False in a boolean context.
+
+Other Falsy Values:
+None
+0 (zero)
+False
+Empty sequences like [], '', ()
+Empty dictionaries {} or sets set()
+
+b=[]
+if b:
+    print("List is truthy")
+else:
+    print("List is falsy")  # This will be printed because the list is empty
+
+
+acts like bool() is added implicitly.
+if bool(b):
+    print("List is truthy")
+else:
+    print("List is falsy")  # This will be printed because the list is empty
+
 Summary:
 In Python, you can check variable equality in two ways:
 
@@ -35,46 +81,4 @@ testNoneis(): Tests for a None object and prints its length if it's not None.
 None and Option:
 A companion object of Option can handle None values by providing an apply method that converts a null to None or wraps it as Some(x) if it's not null.
 
-###############
-IMPORTANT
-###############
-in python all the variable which are created in a program must be assigned a value. 
-otherwise  # This will raise a NameError: name 'my_variable' is not defined.   means variable are not create.
-in python creation of variable requires assignment which determine its class.  like int() class,  fload, String or None
-
-del my_var will delete object type as well as variable name from dictionary.  so it give error  NameError: name 
-'my_variable' is not defined
-
-my_var=None just delete object but keeps the variable name in dictionary.  in this case my_var type is None. 
-my a object type all memory reference are released.  its been put to Garbadge collector for cleanup. 
-
-to find a variable is None.   we use.
-my_var is None.   my_var==None is not prefered.  
-Avoiding Ambiguity: Using == can be ambiguous if my_var is an object that defines its own __eq__ method, 
-potentially leading to unexpected behavior. if __eq__ method is not override.   my_var==None compare None class load memory
-address with my_var memory address which should be same.  as None is singlton class and my_var is None.  it ensure the 
-object override function __eq__ is not evoked.  thats why its safe
-
-
-In Python, None is considered a falsy value, meaning it evaluates to False in a boolean context.
-
-Other Falsy Values:
-None
-0 (zero)
-False
-Empty sequences like [], '', ()
-Empty dictionaries {} or sets set()
-
-b=[]
-if b:
-    print("List is truthy")
-else:
-    print("List is falsy")  # This will be printed because the list is empty
-
-    
-acts like bool() is added implicitly.
-if bool(b):
-    print("List is truthy")
-else:
-    print("List is falsy")  # This will be printed because the list is empty
 """
