@@ -1,17 +1,20 @@
 """
  Strings Pattern
 
-Quotes:
+1. String format:
+print (f"this is stirng with {value:2d}")
+
+2. Quotes:
 Single: 'Single quotes'
 Double: "Double quotes"
 Escape Quotes: \' or \"
 
-String Creation:
+3.String Creation:
 Single Line: 'Text' or "Text"
 Multi-line: '''Text''' or double qoute
 variable assess through $ will not work:  "this is variable $var"
 
-Concatenation Patterns
+4.Concatenation Patterns
 Adjacent Strings with single space:
 s = "Part1" "Part2"   --  automaticall adds join method.   "Part1".join"Part2"
 
@@ -28,7 +31,7 @@ s = ''.join([s1, s2])
 join() with Separator:
 s = ','.join([s1, s2, s3])
 
-format() Method:
+5. format() Method:
 s = '{} {} {}'.format(var1, var2, var3)
 var1 is replaced with first {} and so on
 first {} is actually {0} so replaced with var1 in tuple
@@ -38,18 +41,15 @@ f-strings:
 s = f'{var1} {var2} {var3}'
 its another way to represent format Method.
 
-Formatting Patterns
-Old Style (%):
-print("Text %s" % value)
-format() Method:
 
+6. format() Method:
 print("Text {}".format(value))
 {0} for position
 
-f-strings:
+7. f-strings:
 print(f"Text {value}")
 
-Template Strings:
+8.Template Strings:
 from string import Template
 t = Template('Text $variable')
 t.substitute(variable=value)
@@ -65,6 +65,8 @@ print("Next Line")
 """
 
 """
+9 digit, number, string space format
+
 1. Signed Integer Decimal (d)
 value = 5
 print(f"{value:2d}")  # Ensures the integer has at least 2 digits
@@ -130,6 +132,25 @@ Blank Space ( )
 value = 5
 print(f"{value: d}")  # A blank space is inserted before the value
 # Output: " 5"
+"""
 
+"""
+################
+for date time
+#################
+%A: Day of the week
+%D: Date 
+%T: Time
+%Y: Year with century (e.g., 2024)
+%m: Month as a zero-padded decimal number (e.g., 09)
+%d: Day of the month as a zero-padded decimal number (e.g., 17)
+%H: Hour (24-hour clock) as a zero-padded decimal number (e.g., 18)
+%M: Minute as a zero-padded decimal number (e.g., 40)
+%S: Second as a zero-padded decimal number (e.g., 13)
 
+from datetime import datetime as d
+
+now = d.now()
+print(now)
+formatted_date = f"{now:%T}"
 """
