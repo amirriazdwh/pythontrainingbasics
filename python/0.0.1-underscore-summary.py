@@ -55,7 +55,8 @@ for _ in range(len(x)):
 Key Points to Remember-
 python has 4 types of namespace.
 
-1. Built-in Namespace: Initialized when the Python interpreter starts.
+1. Built-in Namespace: Initialized when the Python interpreter starts. it loads the buildin module of python builtin.py and other moduel to
+   provide acess to print functions etc
 2. Global Namespace: Initialized when a module or python file is loaded.  all modules are first registered in sys.modules  then a global name space
    for that module is created which contains its variable, class and functions.  each module has its own namespace.
    When mymodule is imported, it creates its own global namespace containing global_var and greet. when you create a variable in function with
