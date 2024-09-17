@@ -60,4 +60,4 @@ if __name__ == "__main__":
     main()
 
 
-https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/run-command?view=rest-compute-2024-07-01&tabs=HTTP
+"""https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/run-command?view=rest-compute-2024-07-01&tabs=HTTP"""
