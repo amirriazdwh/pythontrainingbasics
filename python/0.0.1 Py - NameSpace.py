@@ -16,7 +16,6 @@ inside a function using the global keyword, it gets created in the module’s gl
 Using del mymodule deletes the reference to the module, effectively removing its global namespace and the global variables within the module.
 After deletion, attempting to access mymodule raises a NameError because the module is no longer defined.
 so a global variable has its global scope inside module only
-
 Note: Module functions and variables are defined in the module’s global namespace.
       Within a Module: Global variables are accessible only within the module they are defined in.
       Across Modules: You can share global variables across modules by defining them in a separate module and importing that module wherever needed.
