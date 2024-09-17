@@ -27,9 +27,6 @@ Classes in Python: Classes are loaded into memory as singleton classes (static).
 can be obtained using the id() function, and you can check the type of an object using type().
 
 For example:
-
-python
-Copy code
 type(listobject) is list  # Returns True
 
 Example Functions:
@@ -61,6 +58,8 @@ potentially leading to unexpected behavior. if __eq__ method is not override.   
 address with my_var memory address which should be same.  as None is singlton class and my_var is None.  it ensure the
 object override function __eq__ is not evoked.  thats why its safe
 
+The is operator compares the memory addresses of the two objects.  which should be same in case of my_var is none if my_var=None
+value assigned before comparison.
 
 In Python, None is considered a falsy value, meaning it evaluates to False in a boolean context.
 
