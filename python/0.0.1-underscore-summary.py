@@ -29,6 +29,7 @@ Creation and Destruction: Created when the function is called and destroyed when
 Scope: Variables in the local namespace are only accessible within the function.
 ##################################################################################
 Underscore in python and how underscore defines variable scope
+Note: _ only highlight variable protection by syntax.
 ##################################################################################
  _var: Protected (internal use in class, module or in any object).   it can be accessed as object._varS.
  __var: Private (name in class, module or in any object). it can object._mymodule_var
@@ -91,7 +92,4 @@ print(b, c)
 
 for _ in range(len(x)):
     print("looping")
-
-    
-
 """
