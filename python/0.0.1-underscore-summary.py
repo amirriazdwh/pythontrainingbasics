@@ -28,7 +28,7 @@ Local Namespace: Contains variables and inner functions defined within a functio
 Creation and Destruction: Created when the function is called and destroyed when the function returns.
 Scope: Variables in the local namespace are only accessible within the function.
 ##################################################################################
-Under score in python and how it defines its scope
+Underscore in python and how underscore defines variable scope
 ##################################################################################
  _var: Protected (internal use in class, module or in any object).   it can be accessed as object._varS.
  __var: Private (name in class, module or in any object). it can object._mymodule_var
