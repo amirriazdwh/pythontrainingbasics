@@ -53,8 +53,27 @@ for _ in range(len(x)):
     
 ############################################################################ 
 Key Points to Remember-
- _var: Protected (internal use in class).
- __var: Private (name in class).
+python has 4 types of namespace.
+
+1. Built-in Namespace: Initialized when the Python interpreter starts.
+2. Global Namespace: Initialized when a module or python file is loaded.  all modules are first registered in sys.modules  then a global name space
+   for that module is created which contains its variable, class and functions.  each module has its own namespace.
+   When mymodule is imported, it creates its own global namespace containing global_var and greet. when you create a variable in function with
+   keyword global var.  it gets created in mobule global_var area.
+   Using del mymodule deletes the reference to the module, effectively removing its global namespace and so is the global variable in module
+   Accessing After Deletion: Attempting to access mymodule after deletion raises a NameError because the module is no longer defined.
+
+
+3. Enclosing Namespace: Created dynamically when a nested function is called.
+4. Local Namespace: Created dynamically when a function is called
+
+ _var: Protected (internal use in class, module or in any object).   it can be accessed as object._varS.
+
+ __var: Private (name in class, module or in any object). it can object._mymodule_var
+ in a function, there can be private variable and global variables.  if a function has inner function
+ which wants to access the outter function variable it uses nonlocal keyword which appends the outter function
+ name and make it accessable in inner funciton.  any variable you want to declare as global are created by global keyword.
+ global variables are
 var_: Avoids naming conflicts with reserved words.
 _var_: Special methods (dunder methods).
 - _: Temporary variable or last result in the shell.
