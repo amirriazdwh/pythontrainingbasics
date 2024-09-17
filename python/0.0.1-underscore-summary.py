@@ -14,6 +14,8 @@ _var_: Special methods (dunder methods).
 - _: Temporary variable or last result in the shell.
 #############################################################################
 
+
+Example and Details
 Underscores in Python- Single Leading Underscore (_var):
     - Purpose: Indicates a name is meant for internal use.
     - Usage: Treated as a non-public part of the API. It’s a hint for programmers and not enforced by Python.
