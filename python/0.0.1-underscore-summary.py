@@ -1,4 +1,35 @@
 """
+#########################################
+python variables and assignments.
+########################################
+
+in python all the variable which are created in a program must be assigned a value.
+otherwise  # This will raise a NameError: name 'my_variable' is not defined.   means variable are not create.
+in python creation of variable requires assignment which determine its class type.  like int() class,  fload, String or None
+and a value
+---
+del my_var will delete object type as well as variable name from dictionary.  so it give error  NameError: name
+'my_variable' is not defined.  when you try to print('my_variable')
+--
+my_var=None just delete object but keeps the variable name in dictionary.  in this case my_var type is None.
+previous object type memory reference is released.  its been put to Garbadge collector for cleanup.
+
+to find a variable is None.   we use.
+my_var is None.   my_var==None is not prefered.
+
+Avoiding Ambiguity: Using == can be ambiguous if my_var is an object type that defines its own __eq__ method,
+potentially leading to unexpected behavior. if __eq__ method is not override.   my_var==None compare None class load memory
+address with my_var memory address which should be same.  as None is singlton class and my_var is None.  it ensure the
+object override function __eq__ is not evoked.  thats why its safe
+
+global x call in a function access the global variable in that module which is in global area of that module.
+nonlocal x access call in inner function access the outter function x variable.
+
+When you assign None to a variable in Python, the variable’s datatype is NoneType, None is a singleton object in python
+None is a special constant in Python that represents the absence of a value or a null value.
+It is an object of its own datatype, NoneType.
+
+
 ##################################################################################
 Underscore in python and how underscore defines variable scope
 Note: _ only highlight variable protection by syntax.
