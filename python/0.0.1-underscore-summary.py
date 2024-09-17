@@ -1,4 +1,46 @@
 """
+############################################################################
+Key Points to Remember- Namespace
+############################################################################
+python has 4 types of namespace.
+1. Built-in Namespace:
+Initialized when the Python interpreter starts. it loads the buildin module of python builtin.py and other moduel to provide acess to print functions etc
+
+2. Global Namespace:
+When a module or Python file is loaded, it is initialized and registered in sys.modules. This registration helps the program find modules that
+have already been loaded. A global namespace is created for each module that is loaded and registered in sys.modules. This global namespace
+contains the module’s variables, classes, and functions. Each module has its own namespace.
+When mymodule is imported, it creates its own global namespace containing global_var and greet. If you create a global variable
+inside a function using the global keyword, it gets created in the module’s global namespace.
+Using del mymodule deletes the reference to the module, effectively removing its global namespace and the global variables within the module.
+After deletion, attempting to access mymodule raises a NameError because the module is no longer defined.
+
+Note: Module functions and variables are defined in the module’s global namespace.
+
+3. Enclosing Namespace:
+Created dynamically when a nested function is called.
+a good way to think about enclosing namespace . The enclosing namespace can be seen as having a reference or name of the local namespace of the outer function.
+This reference allows the inner function to access and potentially modify variables from the outer function’s scope.
+
+4. Local Namespace:
+Created dynamically when a function is called
+Local Namespace: Contains variables and inner functions defined within a function.
+Creation and Destruction: Created when the function is called and destroyed when the function returns.
+Scope: Variables in the local namespace are only accessible within the function.
+##################################################################################
+Under score in python and how it defines its scope
+##################################################################################
+ _var: Protected (internal use in class, module or in any object).   it can be accessed as object._varS.
+ __var: Private (name in class, module or in any object). it can object._mymodule_var
+ in a function, there can be private variable and global variables.  if a function has inner function
+ which wants to access the outter function variable it uses nonlocal keyword which appends the outter function
+ name and make it accessable in inner funciton.  any variable you want to declare as global are created by global keyword.
+ global variables are
+var_: Avoids naming conflicts with reserved words.
+_var_: Special methods (dunder methods).
+- _: Temporary variable or last result in the shell.
+#############################################################################
+
 Underscores in Python- Single Leading Underscore (_var):
     - Purpose: Indicates a name is meant for internal use.
     - Usage: Treated as a non-public part of the API. It’s a hint for programmers and not enforced by Python.
@@ -51,32 +93,5 @@ for _ in range(len(x)):
     print("looping")
 
     
-############################################################################ 
-Key Points to Remember-
-python has 4 types of namespace.
 
-1. Built-in Namespace: Initialized when the Python interpreter starts. it loads the buildin module of python builtin.py and other moduel to
-   provide acess to print functions etc
-2. Global Namespace: Initialized when a module or python file is loaded.  all modules are first registered in sys.modules  then a global name space
-   for that module is created which contains its variable, class and functions.  each module has its own namespace.
-   When mymodule is imported, it creates its own global namespace containing global_var and greet. when you create a variable in function with
-   keyword global var.  it gets created in mobule global_var area.
-   Using del mymodule deletes the reference to the module, effectively removing its global namespace and so is the global variable in module
-   Accessing After Deletion: Attempting to access mymodule after deletion raises a NameError because the module is no longer defined.
-
-
-3. Enclosing Namespace: Created dynamically when a nested function is called.
-4. Local Namespace: Created dynamically when a function is called
-
- _var: Protected (internal use in class, module or in any object).   it can be accessed as object._varS.
-
- __var: Private (name in class, module or in any object). it can object._mymodule_var
- in a function, there can be private variable and global variables.  if a function has inner function
- which wants to access the outter function variable it uses nonlocal keyword which appends the outter function
- name and make it accessable in inner funciton.  any variable you want to declare as global are created by global keyword.
- global variables are
-var_: Avoids naming conflicts with reserved words.
-_var_: Special methods (dunder methods).
-- _: Temporary variable or last result in the shell.
-#############################################################################
 """
