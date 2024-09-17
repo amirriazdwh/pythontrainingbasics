@@ -61,3 +61,20 @@ if __name__ == "__main__":
 
 
 """https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/run-command?view=rest-compute-2024-07-01&tabs=HTTP"""
+
+{
+  "commandId": "RunShellScript",
+  "script": [
+    "echo $arg1 $arg2"
+  ],
+  "parameters": [
+    {
+      "name": "arg1",
+      "value": "hello"
+    },
+    {
+      "name": "arg2",
+      "value": "world"
+    }
+  ]
+}
