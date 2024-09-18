@@ -152,3 +152,10 @@ print(id(Missing))
 
 if d.get ( "c" , Missing ) is Missing :
     print ( "Missing" )
+
+
+Built-in Sentinels in Python
+None: Often used as a sentinel to represent the absence of a value.
+NotImplemented: Used to indicate that an operation is not implemented for a given type.
+Ellipsis (...): Used as a placeholder for code that is yet to be written or to indicate extended slicing.
+\
