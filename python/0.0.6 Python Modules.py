@@ -40,6 +40,24 @@ print(PI)          # Output: 3.14159
 print(add(2, 3))   # Output: 5
 # print(subtract(5, 2))  # This will raise an error
 
+
+Example with Filtering
+If you want to import specific functions or classes based on a condition, you can use a combination of from ... import and
+ conditional logic. However, the import itself doesn’t support filtering directly. Here’s an example:
+
+# Conditional import based on a condition
+if some_condition:
+    from math import sqrt
+else:
+    from math import pow
+
+# Use the imported function
+if some_condition:
+    print(sqrt(16))  # Output: 4.0
+else:
+    print(pow(2, 4))  # Output: 16.0
+
+
 """
 
 
