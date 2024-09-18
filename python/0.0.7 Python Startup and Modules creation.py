@@ -3,6 +3,7 @@ Note:  Python support the following import statement types.
 1.  import module   e.g    import math.    math is an object so you can access math object funcitons as math.sqrt.
 2.  from module import funciton.
 3.  from module import *
+4   import module as m
 
 for further understand see Python module advance.
 
