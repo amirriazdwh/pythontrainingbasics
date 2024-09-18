@@ -26,7 +26,7 @@ a good way to think about enclosing namespace . The enclosing namespace can be s
 This reference allows the inner function to access and potentially modify variables from the outer function’s scope.
 
 4. Local Namespace:
-Created dynamically when a function is called
+Created dynamically when a function is called. each function has its own local namespace
 Local Namespace: Contains variables and inner functions defined within a function.
 Creation and Destruction: Created when the function is called and destroyed when the function returns.
 Scope: Variables in the local namespace are only accessible within the function.
