@@ -13,7 +13,7 @@ This loading of module create a global namespace.  at the time of loading python
 __name__ variable.   since this module is passed to interpreter through python.exe,  pythin name this module __main__
 thats why we code if __name__=="__main__":  in python main module.  all the other modules were name by their file name
 for example math module is name as __name__=="__math__".  in python all modules have a global namespace.  here for example main has
-as global namespace as well as math.  when we specify import math.   we link main global namespace with math.  therefore the
+as global namespace as well as math.  when we specify import math.   we link main global namespace with math global namespace.  therefore the
 more imports we have in main module the more global namespace are attached with it.   this can be verified by running global()
 which show the main module namespace.  it will look like this if math is imported.
 
@@ -23,12 +23,25 @@ in case of multiple imports.
 Names in the global namespace:
 dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', 'math', 'os', 'sys'])
 
-note that import keyword takes the object type refrence and register it in main global namespace.
+note that import keyword takes the object type reference and register it in main global namespace.
 so
 form math import sqrt
 
-only registers the function reference with its name in global namespace.   therefore it can be accessed without any prefix in main.
+only registers the function object reference with main global namespace.   therefore it can be accessed without any prefix in main.
 while
+
+from math import sqrt
+
+# Now you can use sqrt directly
+result = sqrt(16)
+print(result)  # Output: 4.0
+
+{
+    '__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x7f8b8c0>,
+     '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'sqrt': <built-in function sqrt>,
+      'number': 16, 'result': 4.0, 'print': <built-in function print>
+}
+
 
 import math.   registers math module object in main global namespace.  so sqrt function has to be accessed as main.sqrt()
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -39,14 +52,14 @@ All the types, classes, and functions from the built-in modules are loaded into 
 
 so python program structure is as under:
 main module -> imported class module -> imported classes and function    this is in case of import math statement.
+
 in case of
 from math import sqrt
 main module -> sqrt
 
-dir(math) provides function, classes of math module not the math module global namespace.
+dir(math) provides function, classes of math module from module specification.  it does not provide this information from its own
+module namespace or main module namespace.
 
-__main__ module
-Imported modules
-Classes and variables Functions
+''
 
 """
