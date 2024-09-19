@@ -376,6 +376,11 @@ value too!
               File "<ipython-input-4-2180ec769037>", line 1
             def fn(a, b=2, c):
             SyntaxError: non-default argument follows default argument
+The reason for this rule is to avoid ambiguity. If Python allowed non-default arguments to follow default 
+arguments, it would be unclear how to match up the provided arguments with the parameters. For example,
+ if you called fn(1, 3), it would be ambiguous whether 3 should be assigned to b or c. another way of think is 
+ if 3 is assigned to b.  then c variable still cannot be created as python cannot create a variable without 
+ assignment. 
 
 15a    Note that once a keyword argument has been used, all arguments thereafter must also be named:
            def my_func(a, b=2, c=3):
@@ -386,13 +391,18 @@ value too!
            File "<ipython-input-13-ea05eeab2151>", line 1
           my_func(10, b=20, 30)
           SyntaxError: positional argument follows keyword argument
+Once you start using keyword arguments in a function call, you must continue to use keyword arguments for all 
+subsequent parameters. This rule is in place to avoid confusion and ensure that Python can correctly match each 
+argument to its corresponding parameter.
+When you mix positional and keyword arguments, Python needs to maintain a clear distinction between the two. 
+If you start with positional arguments and then switch to keyword arguments, Python can still resolve the positions
+ correctly. However, if you try to switch back to positional arguments after using a keyword argument, it becomes 
+ ambiguous.
 
-16.  a function object or variable object  when assigned to a variable has reference to that object and its reference
-counter is incremented by 1.   when another
-        variables accesses  the same object memory reference increases by 2.   when no variable is reference any
-        object the object reference counter in memory
-        become i0 and python virtual machine garbadage  collection system will remove that variable from memory.
-        This is called refrene counter.
+16.   When a function or variable is assigned to a variable, a reference to that object is created, and 
+its reference counter is incremented by 1. When another variable accesses the same object, the reference counter 
+is incremented again. If no variables reference the object, its reference counter becomes 0, and Python’s
+ garbage collection system will remove the object from memory. This mechanism is known as reference counting.
 
 16a.   another concept is "Share reference and Mutability "   in this concept ,   if immutable objects have same
 value they can share the same memory address.
