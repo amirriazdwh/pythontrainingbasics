@@ -504,4 +504,28 @@ Function: importlib.util.module_from_spec initializes a new module object but do
 Purpose: This line caches the newly created module object in the sys.modules dictionary.
 Function: sys.modules is a dictionary that keeps track of all loaded modules. By adding the module to sys.modules,
 you ensure that subsequent imports of the same module name will use this cached module instead of reloading it from the file.
+
+note: you can also compile the module code before dynamic loading.   compiled modules are converted
+into bytecode in a .pyc file.   
+
+import py_compile
+py_compile.compile('mody.py', cfile='mody.pyc')
+
+import importlib.util
+import sys
+
+def load_compiled_module(module_name, compiled_path):
+    spec = importlib.util.spec_from_file_location(module_name, compiled_path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+# Load the compiled module 'mody.pyc'
+mod = load_compiled_module('mody', 'mody.pyc')
+
+# Use a function from the loaded module
+mod.test_func()
+
+
 """
