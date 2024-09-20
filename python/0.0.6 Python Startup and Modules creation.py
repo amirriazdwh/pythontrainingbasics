@@ -53,13 +53,13 @@ All the types, classes, and functions from the built-in modules are loaded into 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 so python program structure is as under:
-main module -> imported class module -> imported classes and function    this is in case of import math statement.
+main module namespace -> imported module namespace-> imported classes and function    this is in case of import math statement.
 
 in case of
 from math import sqrt
 main module -> sqrt
 
-dir(math) provides function, classes of math module from module specification.  it does not provide this information from its own
+dir(math) provides function, classes of math module from module specification.  it does not provide this information from
 module namespace or main module namespace.
 
 ''
