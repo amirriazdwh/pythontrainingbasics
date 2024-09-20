@@ -13,7 +13,7 @@ This loading of module create a global namespace.  at the time of loading python
 __name__ variable.   since this module is passed to interpreter through python.exe,  pythin name this module __main__
 thats why we code if __name__=="__main__":  in python main module.  all the other modules were name by their file name
 for example math module is name as __name__=="__math__".  in python all modules have a global namespace.  here for example main has
-as global namespace as well as math.  when we specify import math.   we link main global namespace with math global namespace.  therefore the
+a global namespace as well as math.  when we specify import math.   we link main global namespace with math global namespace.  therefore the
 more imports we have in main module the more global namespace are attached with it.   this can be verified by running global()
 which show the main module namespace.  it will look like this if math is imported.
 
@@ -23,7 +23,9 @@ in case of multiple imports.
 Names in the global namespace:
 dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', 'math', 'os', 'sys'])
 
-note that import keyword takes the object type reference and register it in main global namespace.
+Note: that import keyword takes the module create a object type reference and register it in main global namespace with a name.
+it does the same thing when we only import function.  from module it takes the function,  creates function object refrence and
+store it in main module directory with function name.
 so
 form math import sqrt
 
