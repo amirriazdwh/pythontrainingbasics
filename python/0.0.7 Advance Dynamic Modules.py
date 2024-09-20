@@ -21,14 +21,15 @@ def _private_function():
     pass
 
 # from acts as source and import add variable/method of __all__ to global namespace of module in which import is called.
+
 # main.py module
 from math_utils import *
 
 print(PI)          # Output: 3.14159
 print(add(2, 3))   # Output: 5
 # print(subtract(5, 2))  # This will raise an error
-___________________________________________________________
-Example with Filtering.  module can be loaded anywhere in programming code.
+___________________________________________________________---------------------------
+2. Example with Filtering.  module can be loaded anywhere in programming code.
 they can imported with import or removed with del based on conditions.
 
 # Conditional import based on a condition
@@ -46,8 +47,11 @@ else:
 
 
 """
-in step conditional loading of module.  the name of module must be known at program runtime. 
-what if name of module are not known at runtime.  its just runtime you require addition of module. 
+in above steps, in conditional loading of module.  the name of module must be known at program runtime. 
+what if name of module are not known at runtime and we have to load the module at runtime.  
+to achieve this we can create a dynamic import module loading function. 
+which works as under:
+
 # when a package is found and loaded ,  
 it is loaded into sys.modules cache
 # and later an entry is being added to the global directory with key mod.
