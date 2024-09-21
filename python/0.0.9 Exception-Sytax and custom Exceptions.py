@@ -34,6 +34,16 @@ finally:
     print("This will always run")
 
 """
+"""
+NOTE:  as key word why except( e:type):  is not used. 
+this is to understand that python is not a type safe programming language.  therefore except(e:type) cannot be used
+as because this make e type safe.  however,  while handling exception is a requirement that e variable must have a type. 
+this is done by adding a exception into language with as KEYWORD.
+
+except ZeroDivisionError as e creates a variable of type ZeroDivisionError.  interpreter match the raised exception which
+is an object with ZerDivisonError  with condition ( e is ZerDisivionError) and if true assign the raised exception object
+to e.
+"""
 
 """
 Creating a custom exception in Python involves defining a new class that inherits from the built-in Exception class. T
