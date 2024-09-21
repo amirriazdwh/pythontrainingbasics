@@ -11,6 +11,28 @@ Eventually, it reaches the top level of the program, where the Python interprete
 -Interpreter Handling:
 When the interpreter catches the SystemExit exception, it performs cleanup operations and terminates the program.
 The exit status code provided to sys.exit() (or the default code 0 if none is provided) is returned to the operating system.
+
+ except Exception as e:
+        raise Exception(sys._getframe(0).f_code.co_name + ' : ' + __name__ + ' : Line ' + str(
+            sys.exc_info()[-1].tb_lineno) + ' : ' + str(e))
+
+
+import sys
+
+def faulty_function():
+    try:
+        1 / 0  # This will raise a ZeroDivisionError
+    except Exception as e:
+        raise Exception(sys._getframe(0).f_code.co_name + ' : ' + __name__ + ' : Line ' + str(
+            sys.exc_info()[-1].tb_lineno) + ' : ' + str(e))
+
+if __name__ == "__main__":
+    try:
+        faulty_function()
+    except Exception as e:
+        print(e)
+
+faulty_function : __main__ : Line 6 : division by zero
 """
 '''
 to see the exception heiracy see the following link
