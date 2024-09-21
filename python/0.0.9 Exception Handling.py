@@ -51,10 +51,16 @@ Eventually, it reaches the top level of the program, where the Python interprete
 -Interpreter Handling:
 When the interpreter catches the SystemExit exception, it performs cleanup operations and terminates the program.
 The exit status code provided to sys.exit() (or the default code 0 if none is provided) is returned to the operating system.
+"""
+
+"""
 
 ####################################
 Python Exception Handling code 
 ####################################
+
+Method #1
+-----------
  except Exception as e:
         raise Exception(sys._getframe(0).f_code.co_name + ' : ' + __name__ + ' : Line ' + str(
             sys.exc_info()[-1].tb_lineno) + ' : ' + str(e))
@@ -80,6 +86,8 @@ faulty_function : __main__ : Line 6 : division by zero
 """
 
 """
+Method #2.
+-----------
 import sys
 import traceback
 
@@ -105,6 +113,82 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+Result:
+Error Message: main : __main__ : Line 20 : An error occurred in functionC
+Stack Trace:
+Traceback (most recent call last):
+  File "example.py", line 18, in main
+    functionA()
+  File "example.py", line 12, in functionA
+    functionB()
+  File "example.py", line 9, in functionB
+    functionC()
+  File "example.py", line 6, in functionC
+    raise ValueError("An error occurred in functionC")
+ValueError: An error occurred in functionC
+"""
+
+"""
+Method 3
+-----------------
+import sys
+import traceback
+
+def functionC():
+    raise ValueError("An error occurred in functionC")
+
+def functionB():
+    functionC()
+
+def functionA():
+    functionB()
+
+def main():
+    try:
+        functionA()
+    except Exception as e:
+        # Capture the stack trace
+        stack_trace = traceback.format_exc()
+        
+        # Get the current function name
+        current_function = sys._getframe(0).f_code.co_name
+        
+        # Get the module name
+        module_name = __name__
+        
+        # Get the line number where the exception occurred
+        line_number = sys.exc_info()[-1].tb_lineno
+        
+        # Construct the error message
+        error_message = (
+            f"Exception occurred in function '{current_function}' "
+            f"in module '{module_name}' at line {line_number}:\n"
+            f"{str(e)}\n\n"
+            f"Stack Trace:\n{stack_trace}"
+        )
+        
+        # Print or log the error message
+        print(error_message)
+
+if __name__ == "__main__":
+    main()
+
+Resut:
+Exception occurred in function 'main' in module '__main__' at line 20:
+An error occurred in functionC
+
+Stack Trace:
+Traceback (most recent call last):
+  File "example.py", line 18, in main
+    functionA()
+  File "example.py", line 12, in functionA
+    functionB()
+  File "example.py", line 9, in functionB
+    functionC()
+  File "example.py", line 6, in functionC
+    raise ValueError("An error occurred in functionC")
+ValueError: An error occurred in functionC
 
 """
 
