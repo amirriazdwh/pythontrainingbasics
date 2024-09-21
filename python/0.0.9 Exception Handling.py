@@ -1,6 +1,7 @@
 """
+###############################################
 -Internal Exception Handling Mechanism
-----------------------------------------
+##############################################
 -Compilation and Bytecode:
 When you run a Python script, the interpreter compiles the source code into bytecode. This bytecode is a low-level
 representation of your code that the Python virtual machine (PVM) can execute.
@@ -35,8 +36,11 @@ If no matching except block is found, the interpreter continues unwinding the st
 If the exception remains unhandled, the interpreter prints a traceback and terminates the program.
 -----------------------------------------------------
 """
+
 """
+########################
 -Raising SystemExit:
+#########################
 When sys.exit() is called, it raises a SystemExit exception.
 This exception can be caught and handled like any other exception using a try-except block.
 +-
@@ -48,6 +52,9 @@ Eventually, it reaches the top level of the program, where the Python interprete
 When the interpreter catches the SystemExit exception, it performs cleanup operations and terminates the program.
 The exit status code provided to sys.exit() (or the default code 0 if none is provided) is returned to the operating system.
 
+####################################
+Python Exception Handling code 
+####################################
  except Exception as e:
         raise Exception(sys._getframe(0).f_code.co_name + ' : ' + __name__ + ' : Line ' + str(
             sys.exc_info()[-1].tb_lineno) + ' : ' + str(e))
