@@ -35,6 +35,37 @@ if __name__ == "__main__":
 result:
 faulty_function : __main__ : Line 6 : division by zero
 """
+
+"""
+import sys
+import traceback
+
+def functionC():
+    raise ValueError("An error occurred in functionC")
+
+def functionB():
+    functionC()
+
+def functionA():
+    functionB()
+
+def main():
+    try:
+        functionA()
+    except Exception as e:
+        stack_trace = traceback.format_exc()
+        current_function = sys._getframe(0).f_code.co_name
+        module_name = __name__
+        line_number = sys.exc_info()[-1].tb_lineno
+        error_message = f"{current_function} : {module_name} : Line {line_number} : {str(e)}"
+        print(f"Error Message: {error_message}\nStack Trace:\n{stack_trace}")
+
+if __name__ == "__main__":
+    main()
+
+"""
+
+
 '''
 to see the exception heiracy see the following link
 https://docs.python.org/3/library/exceptions.html#exception-hierarchy
