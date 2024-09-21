@@ -1,6 +1,7 @@
 
 """
-__name__ is a boilerplate code that protects users from accidentally invoking the script when they didn't intend to run in that name space
+__name__ is a boilerplate code that protects users from accidentally invoking the script
+when they didn't intend to run in that name space
 Here are some common problems when the guard is omitted from a script:
 
 1.  If you import the guardless script in another script (e.g. import my_script_without_a_name_eq_main_guard),
