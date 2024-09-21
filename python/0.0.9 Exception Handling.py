@@ -1,4 +1,40 @@
-''''''
+"""
+-Internal Exception Handling Mechanism
+----------------------------------------
+-Compilation and Bytecode:
+When you run a Python script, the interpreter compiles the source code into bytecode. This bytecode is a low-level
+representation of your code that the Python virtual machine (PVM) can execute.
+During this compilation phase, the interpreter also identifies try and except blocks and prepares to handle exceptions.
+
+-Execution and Exception Raising:
+As the bytecode executes, if an error occurs (e.g., division by zero), the interpreter raises an exception.
+This raising of an exception can be thought of as an “interrupt” that changes the normal flow of execution.
+it transfer control from program to python interpreter which is over python virtual machine.
+python interpreter maintains a list of exception it list at the compile time.
+the interpreter compare the exception with the list of exception and find its exception handling functions
+
+-Stack Unwinding:
+The interpreter starts unwinding the call stack, looking for an appropriate exception handler.
+Each function call is represented by a frame in the stack. The interpreter checks each frame for a try block that
+can handle the exception.  each block has a list of exception.  if intrepter unwind 3 black as it does find
+any exception handling list which matches with raised exception but find the exception in block 4.  after handling exception
+it will transfer control to block 4 and code start executing at block 4
+
+-Finding the Handler:
+The interpreter maintains a list of active exception handlers, which are essentially the except blocks defined in the code.
+It searches this list to find a matching handler for the raised exception.
+e.g except Exception as m:
+the raise exception type is compare with exception type in except block and exception handling function is discovered.
+
+-Executing the Handler:
+Once a matching except block is found, the interpreter transfers control to that block.
+The except block executes, handling the exception.
+
+-Uncaught Exceptions:
+If no matching except block is found, the interpreter continues unwinding the stack until it reaches the top level of the program.
+If the exception remains unhandled, the interpreter prints a traceback and terminates the program.
+-----------------------------------------------------
+"""
 """
 -Raising SystemExit:
 When sys.exit() is called, it raises a SystemExit exception.
