@@ -11,8 +11,7 @@ metadb_name = 'HADOOP_REPO'
 metadb_schema = 'dbo'
 metadb_driver = 'ODBC Driver 17 for SQL Server'
 metadb_username = 'hadoop'
-metadb_password = 'hadoop' xccce430
-w231o]\
+metadb_password = 'hadoop'
 metadb_schema = 'DLINGESTIONUAT'
 
 # Logging configurations
