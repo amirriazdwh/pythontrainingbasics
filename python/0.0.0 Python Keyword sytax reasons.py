@@ -1,20 +1,24 @@
 """"""
 """
-0.   Python has blocks, namespace ,context and context manager.
-     a context can has multiple scopes, especially when dealing with nested structures or multiple context managers.
+0.   Python has statement, blocks, context and context manager.
+     there can be multiple statements in one block.
+     there can be multiple blocks in one context. 
 
 1.  :    define the start of programming block.  in java this is done by { }
     in python : define the start of programming block.
     indentation level define the scope of the block
     end of indentation define end of this block.
 
-for example:
+    for example:
 
-if condition:
-    # This is the start of the block
-    print("Condition is true")
-    # This is still part of the block
-print("This is outside the block")  # Indentation level decreased, so this is outside the block
+    if condition:
+        # This is the start of the block
+        print("Condition is true")
+        # This is still part of the block
+    print("This is outside the block")  # Indentation level decreased, so this is outside the block. 
+    
+    Note: block can on next line or same line.   until if its not a single line expression like lambda function.
+          whose block cannot be on multiple lines.  lambda functions in python are single line expression.
 
 2.  in python empty block is represented by pass after colon.  the empty block starts with a : and then pass keyword
     if emptyp:
