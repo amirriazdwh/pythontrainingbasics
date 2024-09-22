@@ -1,3 +1,4 @@
+""""""
 """
 0.   Python has blocks, namespace ,context and context manager.
      a context can has multiple scopes, especially when dealing with nested structures or multiple context managers.

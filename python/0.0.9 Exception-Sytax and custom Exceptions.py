@@ -43,6 +43,14 @@ this is done by adding a exception into language with as KEYWORD.
 except ZeroDivisionError as e creates a variable of type ZeroDivisionError.  interpreter match the raised exception which
 is an object with ZerDivisonError  with condition ( e is ZerDisivionError) and if true assign the raised exception object
 to e.
+
+multiple exceptions can be enforced by following syntax. 
+try:
+    # some code that may raise an exception
+    pass
+except (TypeError, ValueError) as e:
+    print("Error:", e)
+
 """
 
 """
