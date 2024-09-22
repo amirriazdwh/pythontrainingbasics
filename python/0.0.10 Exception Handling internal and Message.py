@@ -190,6 +190,13 @@ Traceback (most recent call last):
     raise ValueError("An error occurred in functionC")
 ValueError: An error occurred in functionC
 
+
+import traceback
+
+try:
+    1 / 0
+except Exception:
+    print traceback.format_exc()
 """
 
 
