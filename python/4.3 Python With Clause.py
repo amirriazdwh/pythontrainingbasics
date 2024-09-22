@@ -121,6 +121,18 @@ def managed_context_file(name):
         
 with managed_context_file("D:\python_data\hello_file.txt") as f:
     f.write("writing via context tag")
+    
+
+connmgr =contextmanager( managed_context_file('D:\\python_data\\hello_file.txt', 'w') ) # Create the file object
+try:
+    file = connmgr.__enter__()
+    file.write("hello world")  
+except Exception as e:
+    suppress = fileobj.__exit__(type(e), e, e.__traceback__)
+    if not suppress:
+        raise
+else:
+    fileobj.__exit__(None, None, None)
 """
 
 
