@@ -25,19 +25,19 @@
        pass.
 
 3. Statement Separator
-Semicolon (;): In Python, you can use a semicolon to separate multiple statements on a single line. For example
-x = 10; y = 20; print(x + y)
+    Semicolon (;): In Python, you can use a semicolon to separate multiple statements on a single line. For example
+    x = 10; y = 20; print(x + y)
 
 4. Continuation Lines
-Backslash (\): If you have a long statement that you want to split across multiple lines, you can use a backslash at
-the end of a line to indicate that the statement continues on the next line. For example:
-total = 1 + 2 + 3 + \
+    Backslash (\): If you have a long statement that you want to split across multiple lines, you can use a backslash at
+    the end of a line to indicate that the statement continues on the next line. For example:
+    total = 1 + 2 + 3 + \
         4 + 5 + 6
 
-Implicit Continuation: If you’re inside parentheses (), square brackets [], or curly braces {}, you don’t need a
-backslash for continuation. For example:
-total = (1 + 2 + 3 +
-         4 + 5 + 6)
+5. Implicit Continuation: If you’re inside parentheses (), square brackets [], or curly braces {}, you don’t need a
+    backslash for continuation. For example:
+    total = (1 + 2 + 3 +
+            4 + 5 + 6)
 
 5. The as keyword in Python is used to create an alias or to bind a name to an object within a specific context,
    such as with modules, exceptions, and context managers. This is different from the = operator, which is used for
