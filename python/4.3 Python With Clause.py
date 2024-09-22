@@ -9,11 +9,17 @@ on context to release.  its called context manager.
 A good way to see this feature used effectively is looking at examples in the python standard library.  The build-in
 open() function provides us with an excellent use case:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Context manager allows specified actions to be performed at the beginning and end of with block. Two methods are responsible for context manager:
+Context manager allows specified actions to be performed at the beginning and end of with block. Two methods are responsible
+for context manager:
 
-__enter__(self) - indicates what should be done at the beginning of with block. Value that returns method is assigned to variable after as.
-__exit__(self, exc_type, exc_value, traceback) - indicates what should be done at the end of with block or when it is interrupted. If there is an exception
-within block, then exc_type, exc_value, traceback will contain exception information, if there is no exception they will be equal to None.
+__enter__(self) - indicates what should be done at the beginning of with block. Value that returns method is assigned
+to variable after as.
+
+__exit__(self, exc_type, exc_value, traceback) - indicates what should be done at the end of with block or when it
+is interrupted. If there is an exception
+
+within block, then exc_type, exc_value, traceback will contain exception information, if there is no exception
+they will be equal to None.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """
 # opens the file for write and writes hello world
@@ -21,78 +27,87 @@ with open('D:\python_data\hello_file.txt', 'w') as f:
     f.write("hello world")
 
 """
-with clause creates an With object and open function is passed to With object therefore creating a decorator 
-with clause has standard call to __enter__ and __exit__ and all the code after "as f :" comes inside the body of decorator
-to create a wraper or extended function "write"
+#################################
+What are Context Managers.
+#################################
+Any object that implements the __enter__ and __exit__ methods can be used as a context manager in Python. 
+This allows you to use the with statement to manage resources efficiently and ensure proper cleanup.
 
-def With (open('D:\python_data\hello_file.txt', 'w'): 
-    f = fnc.__enter()__
-    f.write ("hello world")
-    f.__exit__()
+Key Points:
+__enter__ Method: This method is called when the execution flow enters the context of the with statement. 
+It typically sets up the resource and returns it.
 
-"""
+__exit__ Method: This method is called when the execution flow exits the context of the with statement.
 
-"""
-opening the files using the with stateemnt is generally recommended because it ensure that open file descriptor is close
-automatically after program execution leaves the context of the with statement.  Internally ,  the above code sample 
-translate to:
-"""
+It handles cleanup actions and can also manage exceptions.
 
-f=open("D:\python_data\hello_file.txt","w")
-try:
-    f.write("hello world from exception loop")
-finally:
-    f.close()
+Example: Custom Context Manager
+#####################################
+Here’s a simple example of a custom context manager:
 
-
-"""
-without the try and finally clause the implementation dont gurantee that file will close.  therefore you have to either 
-use try and finally or with statement.   
-
-def get_all_songs():
-    with sqlite3.connect('db/songs.db') as connection:
-        cursor = connection.cursor()
-        cursor.execute("SELECT * FROM songs ORDER BY id desc")
-        all_songs = cursor.fetchall()
-        return all_songs
-
-"""
-
-"""
-you can use with clase with your own objects.  this is being implement by context manager.  its simple set of methods which
-take care of resource management.   all we need to all is __enter__ and __exist__
-"""
-
-class ManagedFile:
-    def __init__(self,name):
-        self.name=name
-
+class MyContextManager:
     def __enter__(self):
-        self.file= open(self.name, 'w')
-        return self.file                  # if you dont specify return the function returns none
+        print("Entering the context")
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if exc_type:
+            print(f"Exception caught: {exc_value}")
+        print("Exiting the context")
+        return True  # Suppress the exception
+
+with MyContextManager() as manager:
+    print("Inside the context")
+    raise ValueError("An error occurred")
+print("Program continues")
 
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.file:
-            self.file.close()
+Explanation
+__enter__ Method: Prints a message and returns the context manager object.
+__exit__ Method: Prints a message, handles any exceptions, and optionally suppresses them by returning True.
 
+########################################
+Using Built-in Context Managers
+########################################
+Python provides several built-in context managers, such as for file handling:
 
+with open('data.txt', 'r') as f:
+    data = f.read()
 
-with ManagedFile('D:\python_data\hello_file.txt') as f:
-    f.write("hello from objects")
+In this case, the file object returned by open has __enter__ and __exit__ methods, making it a context manager.
 
+Summary
+Any object that implements the __enter__ and __exit__ methods can be used as a context manager,
+ allowing you to use the with statement to manage resources efficiently and ensure proper cleanup.
+"""
 
-#here is how it execute with in With clause object.  With has standard calls to __enter()__ and __exit__ in decorator
-# def with ( f) :
-f =  ManagedFile('D:\python_data\hello_file.txt').__enter__()
-f.write("hello from object decoding")   # as a decorator extension,  this code is being add in decorator method.
-f.__exit__()                            # when all the extended functions are being executed __exit()__ is add
+"""
+when interpreter find with clause.   it generates the following code. 
 
+# Pseudocode for the with statement
+context_manager = ContextManager()  # Create the context manager object
+value = context_manager.__enter__()  # Call __enter__ and get the value to be used in the block
+
+try:
+    # Execute the block of code within the context
+    # If an exception occurs, it is caught and passed to __exit__
+    # If no exception occurs, the block executes normally
+    result = block_of_code(value)
+except Exception as e:
+    # If an exception occurs, __exit__ is called with exception details
+    suppress = context_manager.__exit__(type(e), e, e.__traceback__)
+    if not suppress:
+        # If __exit__ returns False, re-raise the exception
+        raise
+else:
+    # If no exception occurs, __exit__ is called with None
+    context_manager.__exit__(None, None, None)
+"""
 
 
 """
 writing class is not the only way to support context managers. python provides a buildin package to do it.
-"""
+this code is being implemented by decorator.
 
 from contextlib import contextmanager
 
@@ -103,12 +118,32 @@ def managed_context_file(name):
         yield f
     finally:
         f.close()
-
-
+        
 with managed_context_file("D:\python_data\hello_file.txt") as f:
     f.write("writing via context tag")
+"""
 
 
 """
- to udnerstand the above example a knowledge of decorator and generators is required. 
+with open('D:\\python_data\\hello_file.txt', 'w') as fild:
+    fild.write("hello world")
+
+The with statement ensures that the file is properly opened and closed, even if an exception occurs.
+ Here’s how the Python interpreter translates it:
+
+
+fileobj = open('D:\\python_data\\hello_file.txt', 'w')  # Create the file object
+try:
+    fild = fileobj.__enter__()  # Call the __enter__ method
+    fild.write("hello world")  # Execute the block of code
+except Exception as e:
+    # If an exception occurs, call the __exit__ method with exception details
+    suppress = fileobj.__exit__(type(e), e, e.__traceback__)
+    if not suppress:
+        raise  # Re-raise the exception if __exit__ returns False
+else:
+    # If no exception occurs, call the __exit__ method with None
+    fileobj.__exit__(None, None, None)
+
+
 """
