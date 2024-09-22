@@ -97,4 +97,32 @@ print(b, c)
 
 for _ in range(len(x)):
     print("looping")
+
+
+Identifiers variable rules.
+-------------
+. Allowed Characters
+Identifiers can include letters (a-z, A-Z), digits (0-9), and underscores (_).
+Identifiers must begin with a letter or an underscore.
+
+. Case Sensitivity
+Names and identifiers are case sensitive. For example, Variable and variable are different identifiers.
+
+.Length of Identifiers
+Identifiers can be of unlimited length.
+
+.Special Name Classes
+Single Leading Underscore (_variable): Suggests a “private” method or variable name.
+These are not imported when you use from module import *.
+Single Trailing Underscore (variable_): Used to avoid conflicts with Python keywords (e.g., class_).
+Double Leading Underscores (__variable): Used in class definitions to cause name mangling (weak hiding) private variable.
+This is not often used.
+
+. Naming Conventions
+Modules and Packages: Use all lower case (e.g., mymodule).
+Globals and Constants: Use upper case (e.g., CONSTANT_VALUE).
+Classes: Use CamelCase with an initial upper case letter (e.g., MyClass).
+Methods and Functions: Use all lower case with words separated by underscores (e.g., my_function).
+Local Variables: Use lower case with underscores between words (e.g., local_variable) or camelCase with an initial
+lower case letter (e.g., localVariable), depending on your preference.
 """
