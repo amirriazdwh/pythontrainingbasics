@@ -38,6 +38,10 @@
     backslash for continuation. For example:
     total = (1 + 2 + 3 +
             4 + 5 + 6)
+    The objective of using parentheses (), square brackets [], or curly braces {} for implicit continuation is to make
+     the code more readable and avoid the need for a backslash \ for line continuation.  in python lambda function is 
+     single line expression so  lambda (x, y): x+y  is not allow.  as presence of () make it multiline statement which
+     against the python lambda rule
 
 5. The as keyword in Python is used to create an alias or to bind a name to an object within a specific context,
    such as with modules, exceptions, and context managers. This is different from the = operator, which is used for
