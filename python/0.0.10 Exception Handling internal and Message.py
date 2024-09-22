@@ -222,7 +222,9 @@ example is for OS related activity is as under:
 |    +-- ProcessLookupError
 |    +-- TimeoutError
 '''
+#embeded format
 
+"""
 import traceback
 
 try:
@@ -235,3 +237,4 @@ except Exception as err:
         raise TypeError("Oups Second!")
     finally:
         traceback.print_exc()
+"""
