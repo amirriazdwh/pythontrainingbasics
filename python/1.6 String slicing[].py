@@ -27,6 +27,7 @@ Rules  -- Above definitiion sets the following rules for slice[Start(i): End(j) 
 7.    i<=k <j means step values must be between i and j otherwise not result will be shown
 
 
+start + n x step <= end.   where n=0,1,2,3,....
 the indexes are arranged as under:
 
 S[Start: End: Step] so for S
