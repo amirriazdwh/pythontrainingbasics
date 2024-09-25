@@ -1,6 +1,33 @@
 """
+decorate are the function also called high order function which takes a function as argument and return a function or object
+
+high order function has following properties
+Accepts Functions as Arguments:
+A higher-order function can take one or more functions as input. This allows for dynamic behavior,
+where the function’s behavior can be customized based on the functions passed to it.
+
+Returns Functions as Results:
+A higher-order function can return a function as its output. This enables the creation of new functions
+dynamically based on certain conditions or parameters.
+
+Enhances Code Reusability:
+By using higher-order functions, you can write more modular and reusable code.
+ Functions like map, filter, and reduce in Python are classic examples of higher-order functions that help in
+ processing collections of data efficiently.
+
+Supports Functional Programming Paradigms:
+Higher-order functions are a key feature of functional programming,
+promoting immutability and pure functions, which can lead to more predictable and maintainable code.
+
+Enables Function Composition:
+Higher-order functions allow for the composition of multiple functions to create more
+complex operations. This can simplify complex logic by breaking it down into smaller, reusable functions.
+
  a decorator can return an object. This is particularly useful when you want to enhance a function’s behavior
  by wrapping it in an object that provides additional methods or properties
+
+ A decorate needs a funciton inside decorate or an object inside the decorate function
+ which it will return
 """
 
 class Timer:
