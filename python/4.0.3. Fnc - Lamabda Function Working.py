@@ -90,7 +90,7 @@ raise_two = generate_power(2)
 print(raise_two(7))
 
 def generate_pow(exponent):
-    def decorator(f):
+  -  def decorator(f):
         def inner(*args):
             result = f(*args)
             return exponent**result
