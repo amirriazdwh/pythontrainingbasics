@@ -76,3 +76,31 @@ def say_hello(name):
     print(f"Hello, {name}!")
 
 say_hello("Alice")
+
+
+def print_finish(param):
+    # This function is called first with the parameter 'True'
+    print("print_finish called with param:", param)
+    def wrapper(func):
+        # This function is returned by print_finish and called with the original function
+        print("wrapper called with func:", func.__name__)
+        def inner_wrapper(*args, **kwargs):
+            # This function is returned by wrapper and replaces the original function
+            print("inner_wrapper called")
+            result = func(*args, **kwargs)  # Call the original function
+            if param:
+                print("Finish")
+            return result
+        return inner_wrapper
+    return wrapper
+
+
+# Example usage
+# @print_finish(True)
+def example_function():
+    print("Function is running")
+
+
+example_function = print_finish(True)(example_function)
+# This is where the decorated function is called
+example_function()
