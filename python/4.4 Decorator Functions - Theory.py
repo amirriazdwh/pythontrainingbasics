@@ -77,7 +77,11 @@ def say_hello(name):
 
 say_hello("Alice")
 
-
+"""
+Without Brackets: The decorator function itself is applied directly to the function.
+With Brackets: The outer function (decorator factory) is called first, which returns the actual decorator function.
+This decorator function is then applied to the function.
+"""
 def print_finish(param):
     # This function is called first with the parameter 'True'
     print("print_finish called with param:", param)
@@ -96,11 +100,11 @@ def print_finish(param):
 
 
 # Example usage
-# @print_finish(True)
+@print_finish(True)
 def example_function():
     print("Function is running")
 
 
-example_function = print_finish(True)(example_function)
+#example_function = print_finish(True)(example_function)
 # This is where the decorated function is called
-example_function()
+#example_function()
