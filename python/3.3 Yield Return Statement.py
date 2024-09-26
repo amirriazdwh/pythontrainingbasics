@@ -87,3 +87,28 @@ except RuntimeError as err:
     print("The value returned from the StopIteration statement is:",err)
 
 
+"""
+how generator function works under the hood
+
+Generator Object: 
+When you call a generator function, it returns a generator object. This object acts as an intermediary between the generator function and the caller.
+
+State Management: 
+The generator function’s state (local variables, execution point) is saved within the generator object. 
+This allows the function to pause and resume execution.
+
+Yielding Values: 
+When the generator function encounters a yield statement, it:
+Saves its current state.
+Yields the specified value to the caller.
+Pauses execution, transferring control back to the caller.
+
+Caller Interaction: 
+The caller interacts with the generator object using the next() function (or a loop). When next() is called:
+The generator function resumes execution from where it left off.
+It continues until it hits the next yield statement or completes execution.
+
+Control Transfer: This back-and-forth control transfer continues until the generator function either:
+Yields another value.
+Completes execution, raising a StopIteration exception to signal the end of the iteration.
+"""
