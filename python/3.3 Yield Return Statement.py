@@ -111,4 +111,11 @@ It continues until it hits the next yield statement or completes execution.
 Control Transfer: This back-and-forth control transfer continues until the generator function either:
 Yields another value.
 Completes execution, raising a StopIteration exception to signal the end of the iteration.
+
+Key Points
+yield: Produces a value and pauses the function, saving its state.
+return: Terminates the generator function and raises StopIteration. 
+If a value is provided, it becomes the value attribute of the StopIteration exception.
+Using yield allows the generator to produce a sequence of values lazily, while return can be used to signal 
+the end of the sequence explicitly
 """
