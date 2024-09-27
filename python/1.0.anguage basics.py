@@ -6,15 +6,33 @@ def max(a):
     return a
 
 here : links one construct with another. its connects function name with body
+
 a=(1,2,3,4)
 a=[1:2]   here : tell compile take index from 1 to 2 with step 1
 
 dic ={1:"one", 2:"two"}  dictionary items inside {} can be key:value or key=value but without {} items are represented by key=value
 here : associate key with value in dictionary
 ######################################################
-# difference between () and []
+# difference between (,) and [,]
 These () are Associative Arrays called Tuples. And these [] are dynamic arrays called Lists. List are used generally for temporarily
 storing data to be handled as mutable data-types(where they can be changed
+
+In Python, a tuple with a single element can be created by placing the element inside square brackets,
+which must be followed by a comma. The comma is not necessary for lists, but it is required for tuples to
+distinguish them from a single value in parentheses.
+
+single_element_tuple = (1,)
+print(single_element_tuple)  # Output: (1,)
+print(type(single_element_tuple))  # Output: <class 'tuple'>
+
+
+In Python, a list with a single element can be created by placing the element inside square brackets,
+optionally followed by a comma. The comma is not necessary for lists, but it is required for tuples to distinguish them from a single value in parentheses.
+
+
+a = [1,]
+print(a)  # Output: [1]
+print(type(a))  # Output: <class 'list'>
 
 Associated arrary as immutables.   where dynamic arrays are mutable.
 that is why () are passed to functions and procedures like
