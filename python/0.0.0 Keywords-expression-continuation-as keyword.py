@@ -2,7 +2,23 @@
 """
 Construction of Python Program.
 ---------------------------------------
+Compilation and Execution.
+-----------------------------
+0. Python interpreter how it works. 
+    Compilation to Bytecode: When you run a Python program, the interpreter first compiles the entire source code into 
+    bytecode. This bytecode is a lower-level, platform-independent representation of your code1.
+    Execution of Bytecode: The compiled bytecode is then executed by the Python Virtual Machine (PVM). This execution 
+    happens line by line, meaning the PVM interprets and runs each line of bytecode sequentially1.
+    
+    So, while the initial compilation step processes the whole program, the actual execution is done line by line. 
+    This hybrid approach allows Python to catch errors early during the compilation phase and still provide the 
+    flexibility of line-by-line execution during runtime
+    
+    \ and () help you write more readable code by allowing line continuation, they don’t directly affect the 
+    line-by-line execution of the bytecode by the PVM.
+
 A python program generally contains 3 constructs. 
+-------------------------------------------------
 1. Keywords: Reserved words that have special meaning in Python, such as if, else, for, while, def, class, etc.
 2. Expressions: Combinations of values, variables, operators, lambda function definition and function calls 
    that are evaluated to produce a value.
@@ -13,19 +29,25 @@ A python program generally contains 3 constructs.
    with implicit continuation.  for example
    
    add = (lambda x, y: 
-                    x + y)  #allowed. 
+                    x + y)  #implicit continuation
     
     add = lambda x, y: \
-                    x + y   #allowed. 
+                    x + y   #explicit continuation 
                     
-    add = lambda (x, y): x + y  is not allowed as syntax enforce it. 
+    add = lambda (x, y): x + y  is not allowed as syntax enforce it.  a lambda function is an expression which 
+    should on one line.  here (x,y) can be spread to multiple lines if syntax allows it.
     
-    if (x >0 and y>0): 
-        print("no negative value")  #allow as expression is inside bracket 
+    if (x >0 
+            and y>0): 
+        print("no negative value")  #allow as expression is inside bracket.
         
      if (x >0): 
-        print("no negative value") #allow however since x>0 is single line expression so bracketless sytax is good
-        
+        print("no negative value") 
+        #allow however since x>0 is single line expression so bracketless sytax is good.  if an express is on single
+        line continuation is not needed.   
+        Note:  in IF statement the relation expression x>0 was put in brakets due to continuation. this applies to 
+               python and other language.  in if statement  (x>0) is not an argument. 
+         
     try:
         # some code that may raise an exception
         pass
@@ -95,6 +117,8 @@ it multiline.  so to make it multiline we have to use \ or ().
 
    import numpy
    np = numpy  # This is not the same as using 'as' in the import statement
+   
+6.  
 
 
 """
