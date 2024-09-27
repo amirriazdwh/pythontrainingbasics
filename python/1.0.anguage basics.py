@@ -42,6 +42,18 @@ a = [1,]
 print(a)  # Output: [1]
 print(type(a))  # Output: <class 'list'>
 
+
+The tuple ll = (1, 2, 4, 5,) is a valid tuple with four elements. The trailing comma is
+optional and does not affect the tuple’s validity or its contents
+
+
+# List with a trailing comma
+my_list = [1, 2, 4, 5,]
+
+print(my_list)  # Output: [1, 2, 4, 5]
+print(len(my_list))  # Output: 4
+
+
 Associated arrary as immutables.   where dynamic arrays are mutable.
 that is why () are passed to functions and procedures like
 def maximum(a,b,c)  here function is being called as maximu(1,2,3) and the assiciated array passed is (1,2,3) in function
