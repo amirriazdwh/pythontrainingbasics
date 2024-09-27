@@ -25,6 +25,14 @@ single_element_tuple = (1,)
 print(single_element_tuple)  # Output: (1,)
 print(type(single_element_tuple))  # Output: <class 'tuple'>
 
+ The trailing comma is optional in Python and does not affect the function call.
+def tupetype2(a, b, c, d):
+    print(a, b, c, d)
+
+# Function call with a trailing comma
+tupetype2(1, 2, 3, 4,)  # Output: 1 2 3 4
+
+
 
 In Python, a list with a single element can be created by placing the element inside square brackets,
 optionally followed by a comma. The comma is not necessary for lists, but it is required for tuples to distinguish them from a single value in parentheses.
