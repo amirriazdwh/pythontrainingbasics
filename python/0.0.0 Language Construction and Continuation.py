@@ -118,7 +118,45 @@ it multiline.  so to make it multiline we have to use \ or ().
    import numpy
    np = numpy  # This is not the same as using 'as' in the import statement
    
-6.  
+6.  # difference between (,) and [,]
+These () are Associative Arrays called Tuples. And these [] are dynamic arrays called Lists. List are used generally for temporarily
+storing data to be handled as mutable data-types(where they can be changed
+
+In Python, a tuple with a single element can be created by placing the element inside square brackets,
+which must be followed by a comma. The comma is not necessary for lists, but it is required for tuples to
+distinguish them from a single value in parentheses.
+
+single_element_tuple = (1,)
+print(single_element_tuple)  # Output: (1,)
+print(type(single_element_tuple))  # Output: <class 'tuple'>
+
+ The trailing comma is optional in Python and does not affect the function call.
+def tupetype2(a, b, c, d):
+    print(a, b, c, d)
+
+# Function call with a trailing comma
+tupetype2(1, 2, 3, 4,)  # Output: 1 2 3 4
+
+
+
+In Python, a list with a single element can be created by placing the element inside square brackets,
+optionally followed by a comma. The comma is not necessary for lists, but it is required for tuples to distinguish them from a single value in parentheses.
+
+
+a = [1,]
+print(a)  # Output: [1]
+print(type(a))  # Output: <class 'list'>
+
+
+The tuple ll = (1, 2, 4, 5,) is a valid tuple with four elements. The trailing comma is
+optional and does not affect the tuple’s validity or its contents
+
+
+# List with a trailing comma
+my_list = [1, 2, 4, 5,]
+
+print(my_list)  # Output: [1, 2, 4, 5]
+print(len(my_list))  # Output: 4
 
 
 """
