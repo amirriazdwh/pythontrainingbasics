@@ -118,4 +118,11 @@ return: Terminates the generator function and raises StopIteration.
 If a value is provided, it becomes the value attribute of the StopIteration exception.
 Using yield allows the generator to produce a sequence of values lazily, while return can be used to signal 
 the end of the sequence explicitly
+
+def my_generator():
+    yield (1, 2, 3)
+
+gen = my_generator()
+print(next(gen))  # Output: (1, 2, 3)
+
 """
