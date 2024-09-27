@@ -4,17 +4,19 @@ in python all variables are objects and can be deleted by del function
 Type Conversion is the conversion of object from one data type to another data type.
 Implicit Type Conversion is automatically performed by the Python interpreter.
 Python avoids the loss of data in Implicit Type Conversion.
-Explicit Type Conversion is also called Type Casting, the data types of objects are converted using predefined functions by the user.
+Explicit Type Conversion is also called Type Casting, the data types of objects are converted using predefined
+functions by the user.
 In Type Casting, loss of data may occur as we enforce the object to a specific data type.
 """
 
 """
-collections are abstract class of  sequences which contains  __getitem__, __len__ methods for iteration.  sequences are further divided into ordered and unordered
-sequences
+collections are abstract class of  sequences which contains  __getitem__, __len__ methods for iteration.  
+sequences are further divided into ordered and unordered sequences
 -------------------------------------------------------------------------
 --1.  Numbers  types are Int, float, bool and complex
 -------------------------------------------------------------------------
-int              defines integer. its an object of type <class 'Int'> an integer has derived types String so integer can be converted to string
+int              defines integer. its an object of type <class 'Int'> an integer has derived types String so integer 
+                 can be converted to string
 float           defines  object of types <class 'float'>
 bool           a boolean data types contains three values,  None, True and False and its of type <class 'bool'>
 complex     number like 6+4j if of type <class 'complex'>
