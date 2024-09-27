@@ -156,5 +156,40 @@ my_list = [1, 2, 4, 5,]
 print(my_list)  # Output: [1, 2, 4, 5]
 print(len(my_list))  # Output: 4
 
+() usage in python
+Passing arguments to functions
+Implicit line continuation
+Defining tuples
+Grouping expressions
+Calling functions and methods
+Generator expressions
+Defining lambda functions
+Using in comprehensions with multiple conditions
+Defining function signatures
+Enclosing default parameter values in function definitions
+Using in assert statements
+Enclosing expressions in return statements
+Enclosing expressions in yield statements
+Enclosing expressions in raise statements
+Using in with statements for context managers
+Enclosing expressions in await statements
+Enclosing expressions in async function definitions
 
+
+[] usage in python
+Creating lists
+Indexing elements in lists, tuples, and strings
+Slicing lists, tuples, and strings
+List comprehensions
+Accessing dictionary values
+Defining empty lists
+Selecting rows and columns in pandas DataFrames
+Nested lists
+Modifying elements in lists
+Appending elements to lists
+Removing elements from lists
+Checking membership in lists
+Iterating over lists
+Using with enumerate for indexing
+Using with zip for pairing elements
 """
