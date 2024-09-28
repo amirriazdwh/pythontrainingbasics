@@ -247,7 +247,7 @@ Curly braces, square brackets, and parentheses are also used in regular expressi
 
    
 6.  # difference between (,) , [,], [] and ()
------------------------------------------------
+#################################################
     In Python, a tuple with a single element can be created by placing the element inside round brackets,
     which must be followed by a comma. The comma is not necessary for lists, but it is required for tuples to
     distinguish them from a single value in parentheses.
