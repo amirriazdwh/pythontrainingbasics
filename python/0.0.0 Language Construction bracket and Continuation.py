@@ -229,12 +229,28 @@ my_dict = dict(pairs)
 pairs = [('name', 'Amir'), ('age', 30), ('city', 'Abu Dhabi')]
 my_dict = dict(pairs)
 
+1.  Dictionaries: Curly braces are primarily used to define dictionaries, which are collections of key-value pairs.
+    my_dict = {"name": "Alice", "age": 30}
+2.  Sets: They are also used to define sets, which are unordered collections of unique elements.
+    my_set = {1, 2, 3, 4}
+3.  Dictionary Comprehensions: Curly braces can be used in dictionary comprehensions to create dictionaries in a concise way.
+    squares = {x: x*x for x in range(6)}
+4.  String Formatting: Curly braces are used in string formatting, especially with the str.format() method and f-strings.
+    # Using str.format()
+    message = "Hello, {}!".format("world")
 
-Curly Braces {}:
--------------------
-Dictionaries: 
-These are key-value pairs. Example: {}, {0: 10}, {i: i**2 for i in range(5)}.
-Sets: These are unordered collections of unique elements. Example: {0}, {i**2 for i in range(5)}.
+    # Using f-strings
+    name = "Alice"
+    greeting = f"Hello, {name}!"
+5. Escaping Braces in Strings: When you need to include literal curly braces in a formatted string, you can escape them by
+   doubling the braces.
+   # Using str.format()
+    message = "This is a curly brace: {{}}".format()
+
+    # Using f-strings
+    message = f"This is a curly brace: {{}}"
+
+Details on String formating
 
 String Formatting: 
 Curly braces are used to replace values inside strings in f-strings or .format() method. 
@@ -263,35 +279,27 @@ Curly braces, square brackets, and parentheses are also used in regular expressi
 # Function call with a trailing comma
 tupetype2(1, 2, 3, 4,)  # Output: 1 2 3 4
 
-
-
 In Python, a list with a single element can be created by placing the element inside square brackets,
-optionally followed by a comma. The comma is not necessary for lists, but it is required for tuples to distinguish them from a single value in parentheses.
-
+optionally followed by a comma. The comma is not necessary for lists, but it is required for tuples to 
+distinguish them from a single value in parentheses.
 
 a = [1,]
 print(a)  # Output: [1]
 print(type(a))  # Output: <class 'list'>
 
-
 The tuple ll = (1, 2, 4, 5,) is a valid tuple with four elements. The trailing comma is
 optional and does not affect the tuple’s validity or its contents
-
 
 # List with a trailing comma
 my_list = [1, 2, 4, 5,]
 
 print(my_list)  # Output: [1, 2, 4, 5]
 print(len(my_list))  # Output: 4
-
-
-
-
 """
 
 """
 Why () is used inherited class. 
---------------------------------
+##################################
 the child class is passed the type of parent class.  so that when child class is created. its parent class is created
 first and then the child class
 
@@ -320,7 +328,9 @@ child_instance = Child("Alice", 10)
 Behind the Scenes:
 Compilation: Both Parent and Child classes are compiled into class objects.
 Inheritance: Child inherits from Parent, so it has access to Parent’s attributes and methods.
-Instantiation: When child_instance is created, the __init__ method of Child is called, which in turn calls the __init__ method of Parent using super().
-So, when you create an object of the child class, Python indeed uses the compiled code of both the child and parent classes to set up the object correctly.
+Instantiation: When child_instance is created, the __init__ method of Child is called, which in turn calls the __init__ method
+ of Parent using super().
+So, when you create an object of the child class, Python indeed uses the compiled code of both the child and parent 
+classes to set up the object correctly.
 
 """
