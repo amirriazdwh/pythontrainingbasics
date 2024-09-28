@@ -193,3 +193,39 @@ Iterating over lists
 Using with enumerate for indexing
 Using with zip for pairing elements
 """
+
+"""
+Why () is used inherited class. 
+--------------------------------
+the child class is passed the type of parent class.  so that when child class is created. its parent class is created
+first and then the child class
+
+Class Definition: When you define a class, Python compiles the class definition into a class object. 
+This includes both the child class and any parent classes it inherits from.
+
+Inheritance: The child class inherits attributes and methods from the parent class. This means the child 
+class has access to the parent’s methods and properties.
+
+Instantiation: When you create an instance of the child class, Python:
+Calls the __init__ method of the child class.
+If the child class uses super(), it calls the __init__ method of the parent class to initialize inherited attributes.
+
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+
+# Creating an instance of Child
+child_instance = Child("Alice", 10)
+
+Behind the Scenes:
+Compilation: Both Parent and Child classes are compiled into class objects.
+Inheritance: Child inherits from Parent, so it has access to Parent’s attributes and methods.
+Instantiation: When child_instance is created, the __init__ method of Child is called, which in turn calls the __init__ method of Parent using super().
+So, when you create an object of the child class, Python indeed uses the compiled code of both the child and parent classes to set up the object correctly.
+
+"""
