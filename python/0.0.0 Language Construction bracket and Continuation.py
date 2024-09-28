@@ -118,6 +118,8 @@ it multiline.  so to make it multiline we have to use \ or ().
    import numpy
    np = numpy  # This is not the same as using 'as' in the import statement
    
+
+   
 6.  # difference between (,) , [,], [] and ()
 -----------------------------------------------
     In Python, a tuple with a single element can be created by placing the element inside square brackets,
