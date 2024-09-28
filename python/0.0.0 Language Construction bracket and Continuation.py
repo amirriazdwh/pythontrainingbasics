@@ -119,6 +119,63 @@ it multiline.  so to make it multiline we have to use \ or ().
    np = numpy  # This is not the same as using 'as' in the import statement
    
 
+################################################
+Brackets and their Uses in Python: (), [] and {}
+################################################
+
+Square Brackets []:
+--------------------
+
+Summary
+--------
+used for 3 purpose. 
+1.  create list
+2.  indexing of all data types
+3.  type Hint of all data types
+
+Lists: 
+These are mutable, ordered collections. Example: [], [1, 2, 3], [i**2 for i in range(5)]. list indexes are immutable 
+while there values mutable
+
+Indexing: 
+Accessing a specific element in a sequence. Example: 'abc'[0] → 'a'. indexes are immutable.
+used in tuples, list , dictionary for accessing values 
+
+Lookup: ( same as indexing)
+Retrieving values from a dictionary by key. Example: {0: 10}[0] → 10.   0 is key here
+used in tuple, list, dictionary for accessing values. 
+
+Slicing: (same as indexing)
+Getting a part of a sequence. Example: 'abc'[:2] → 'ab'.   only used in list
+
+Type Hints. 
+used in list, tuple, dictionaries type hinting.
+from typing import List
+v_list: List[str] = ["one", "two", "three"]
+
+List comprehension.
+x = [x for x in list]
+
+
+[] complete usage list in python
+-----------------------------------
+Creating lists                                          # a=[1,2,3]
+Indexing elements in lists, tuples, and strings.        # list[0]   
+Slicing lists, tuples, and strings                      #  list[2:]
+List comprehensions                                     #  x = [x for x in list]
+Accessing dictionary values                             #  dict['name']
+Defining empty lists                                     # lis=[]
+Selecting rows and columns in pandas DataFrames          # panda['row']['column']
+Nested lists                                             #
+Modifying elements in lists
+Appending elements to lists
+Removing elements from lists
+Checking membership in lists                             
+Iterating over lists
+Using with enumerate for indexing
+Using with zip for pairing elements
+
+
    
 6.  # difference between (,) , [,], [] and ()
 -----------------------------------------------
@@ -178,22 +235,7 @@ Enclosing expressions in await statements
 Enclosing expressions in async function definitions
 
 
-[] usage in python
-Creating lists
-Indexing elements in lists, tuples, and strings
-Slicing lists, tuples, and strings
-List comprehensions
-Accessing dictionary values
-Defining empty lists
-Selecting rows and columns in pandas DataFrames
-Nested lists
-Modifying elements in lists
-Appending elements to lists
-Removing elements from lists
-Checking membership in lists
-Iterating over lists
-Using with enumerate for indexing
-Using with zip for pairing elements
+
 """
 
 """
