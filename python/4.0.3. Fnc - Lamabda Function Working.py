@@ -90,12 +90,12 @@ raise_two = generate_power(2)
 print(raise_two(7))
 
 def generate_pow(exponent):
-  -  def decorator(f):
+  def decorator(f):
         def inner(*args):
             result = f(*args)
             return exponent**result
         return inner
-    return decorator
+  return decorator
 
 aa=[1,2,3,4,5]
 bb=[4,5]
