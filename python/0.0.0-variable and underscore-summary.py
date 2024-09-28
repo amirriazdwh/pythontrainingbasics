@@ -96,7 +96,12 @@ _, _, _, c = x
 print(b, c)
 
 for _ in range(len(x)):
-    print("looping")
+    print(_)
+
+When used as a variable, _ is indeed part of the namespace.  means that value of _ is stored in namespace
+and can be accessed like any other variable.
+However, its special uses, especially in the interactive interpreter and as a convention for ignoring values,
+make it unique.
 
 
 Identifiers variable rules.
