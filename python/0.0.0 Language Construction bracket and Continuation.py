@@ -122,9 +122,56 @@ it multiline.  so to make it multiline we have to use \ or ().
 ################################################
 Brackets and their Uses in Python: (), [] and {}
 ################################################
+Parentheses ():
+-------------------
+usage summary
+1. tuple creation.
+2. function calling.
+3. creating generator throught comprehesion.  ( x for x in list)
+4. continuation
+
+Tuples: 
+These are immutable, ordered collections. Example: (), (1, 2, 3). You can also create a tuple without
+parentheses like this: t = 1, 2 results in (1, 2).
+
+Order of Operations:
+Used to clarify the precedence of mathematical operations. Example: (n-1)**2.
+
+Generator Expressions: A concise way to create iterators. Example: (i**2 for i in range(5)).
+
+Function Calls: Used to call functions or methods. Example: print(), int(), range(5). You can also use
+generator expressions within function calls: sum(i**2 for i in range(5)).
+
+continuation:  if expression are multiline or contain more the one varaible or keyword. 
+                return (x if x>0 else -1)
+                assert (x>0 and y>0) "variable presents"       syntax :assert condition, message
+                yield (1,2,3)                                  with single value yield 10
+
+() complete usage in python
+Passing arguments to functions
+Implicit line continuation
+Defining tuples
+Grouping expressions
+Calling functions and methods
+Generator expressions
+Defining lambda functions
+Using in comprehensions with multiple conditions
+Defining function signatures
+Enclosing default parameter values in function definitions
+Using in assert statements
+Enclosing expressions in return statements
+Enclosing expressions in yield statements
+Enclosing expressions in raise statements
+Using in with statements for context managers
+Enclosing expressions in await statements
+Enclosing expressions in async function definitions
+
+
+
+
 
 Square Brackets []:
---------------------
+#######################
 
 Summary
 --------
@@ -179,7 +226,7 @@ Using with zip for pairing elements
    
 6.  # difference between (,) , [,], [] and ()
 -----------------------------------------------
-    In Python, a tuple with a single element can be created by placing the element inside square brackets,
+    In Python, a tuple with a single element can be created by placing the element inside round brackets,
     which must be followed by a comma. The comma is not necessary for lists, but it is required for tuples to
     distinguish them from a single value in parentheses.
 
@@ -215,24 +262,6 @@ my_list = [1, 2, 4, 5,]
 print(my_list)  # Output: [1, 2, 4, 5]
 print(len(my_list))  # Output: 4
 
-() usage in python
-Passing arguments to functions
-Implicit line continuation
-Defining tuples
-Grouping expressions
-Calling functions and methods
-Generator expressions
-Defining lambda functions
-Using in comprehensions with multiple conditions
-Defining function signatures
-Enclosing default parameter values in function definitions
-Using in assert statements
-Enclosing expressions in return statements
-Enclosing expressions in yield statements
-Enclosing expressions in raise statements
-Using in with statements for context managers
-Enclosing expressions in await statements
-Enclosing expressions in async function definitions
 
 
 
