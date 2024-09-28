@@ -134,14 +134,10 @@ Tuples:
 These are immutable, ordered collections. Example: (), (1, 2, 3). You can also create a tuple without
 parentheses like this: t = 1, 2 results in (1, 2).
 
-Order of Operations:
-Used to clarify the precedence of mathematical operations. Example: (n-1)**2.
-
+Order of Operations:Used to clarify the precedence of mathematical operations. Example: (n-1)**2.
 Generator Expressions: A concise way to create iterators. Example: (i**2 for i in range(5)).
-
 Function Calls: Used to call functions or methods. Example: print(), int(), range(5). You can also use
 generator expressions within function calls: sum(i**2 for i in range(5)).
-
 continuation:  if expression are multiline or contain more the one varaible or keyword. 
                 return (x if x>0 else -1)
                 assert (x>0 and y>0) "variable presents"       syntax :assert condition, message
@@ -154,20 +150,17 @@ Defining tuples
 Grouping expressions
 Calling functions and methods
 Generator expressions
-Defining lambda functions
+Defining lambda functions   # a =(lambda x, y : x+y)           #this is continuation usage of ()
 Using in comprehensions with multiple conditions
 Defining function signatures
 Enclosing default parameter values in function definitions
 Using in assert statements
 Enclosing expressions in return statements
 Enclosing expressions in yield statements
-Enclosing expressions in raise statements
+Enclosing expressions in raise statements                     #  raise ErrorValue("error message")
 Using in with statements for context managers
 Enclosing expressions in await statements
 Enclosing expressions in async function definitions
-
-
-
 
 
 Square Brackets []:
@@ -222,6 +215,35 @@ Iterating over lists
 Using with enumerate for indexing
 Using with zip for pairing elements
 
+Keyobject (dictionary)
+##########################
+Python dictionary is a collection of key: value pairs.  therefore a python directory can be created by ways
+
+my_dict = {'name': 'Amir', 'age': 30, 'city': 'Abu Dhabi'}    # normal creation.
+my_dict = dict(name='Amir', age=30, city='Abu Dhabi')         # creation through dictionary constructor function. 
+                                                              # passed values by name method 
+                                                              
+pairs = [('name', 'Amir'), ('age', 30), ('city', 'Abu Dhabi')]
+my_dict = dict(pairs)
+
+pairs = [('name', 'Amir'), ('age', 30), ('city', 'Abu Dhabi')]
+my_dict = dict(pairs)
+
+
+Curly Braces {}:
+-------------------
+Dictionaries: 
+These are key-value pairs. Example: {}, {0: 10}, {i: i**2 for i in range(5)}.
+Sets: These are unordered collections of unique elements. Example: {0}, {i**2 for i in range(5)}.
+
+String Formatting: 
+Curly braces are used to replace values inside strings in f-strings or .format() method. 
+Example: f'{foobar}', '{0}'.format(foobar).
+Curly braces, square brackets, and parentheses are also used in regular expressions:
+
+[]: Defines character classes.
+(): Groups expressions.
+{}: Specifies repetition.
 
    
 6.  # difference between (,) , [,], [] and ()
