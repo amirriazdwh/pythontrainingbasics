@@ -103,7 +103,6 @@ and can be accessed like any other variable.
 However, its special uses, especially in the interactive interpreter and as a convention for ignoring values,
 make it unique.
 
-
 Identifiers variable rules.
 -------------
 . Allowed Characters
