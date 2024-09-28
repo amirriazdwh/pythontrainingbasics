@@ -53,10 +53,6 @@ Curly braces, square brackets, and parentheses are also used in regular expressi
 {}: Specifies repetition.
 
 -
-Special Methods in Python:
-__call__(self[, args...]): This is a special method for making an instance of a class callable like a function.
-__getitem__(self, key): This special method is used to make objects indexable, just like lists or dictionaries.
-Finally, typing help('modules') in the Python interpreter will list all the available modules in your environment.
 """
 
 

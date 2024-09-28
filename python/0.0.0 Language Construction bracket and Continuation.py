@@ -333,4 +333,10 @@ Instantiation: When child_instance is created, the __init__ method of Child is c
 So, when you create an object of the child class, Python indeed uses the compiled code of both the child and parent 
 classes to set up the object correctly.
 
+
+Special Methods in Python:
+__call__(self[, args...]): This is a special method for making an instance of a class callable like a function.
+__getitem__(self, key): This special method is used to make objects indexable, just like lists or dictionaries.
+Finally, typing help('modules') in the Python interpreter will list all the available modules in your environment.
+
 """
