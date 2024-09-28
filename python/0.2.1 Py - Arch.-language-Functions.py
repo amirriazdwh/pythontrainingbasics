@@ -868,7 +868,7 @@ def fact ( n ) :
     '''Calculates n! (factorial function)
     Inputs:
         n: non-negative integer
-    Returns:
+    Returns:*-
         the factorial of n
     '''
     if n < 0 :
