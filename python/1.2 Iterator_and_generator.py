@@ -60,7 +60,15 @@ st = iter(lst)
 print(next(st))
 print(next(st))
 
+"""
+list comprehension syntax.
+new_list = [expression for item in iterable if condition]
 
+Expression: This is the value or operation that will be applied to each item in the iterable.
+Item: The variable that takes the value of the current element from the iterable.
+Iterable: Any Python object that can be iterated over (e.g., list, tuple, string, range).
+Condition (optional): A filter that only includes items for which the condition is True.
+"""
 
 nums = [x * x for x in [1, 2, 3, 4, 5, 6, 7, 8]]
 print(nums)
