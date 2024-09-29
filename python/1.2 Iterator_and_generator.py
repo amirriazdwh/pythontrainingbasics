@@ -71,6 +71,7 @@ Condition (optional): A filter that only includes items for which the condition 
 
 when a sequence or mapping is iterable we can get its iterator which contain __next__ method 
 this method give you the current value by index and increment index to next current value
+only iterable objects can be used in for looping or in iteration
 """
 
 nums = [x * x for x in [1, 2, 3, 4, 5, 6, 7, 8]]
