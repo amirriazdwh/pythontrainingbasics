@@ -324,15 +324,39 @@ if __name__ == "__main__":
     _test()
 
 """
+Note: A sequence is order collection of element ordered by an index
+In Python, a container is an abstract base class defined in the collections.abc module. It represents objects that 
+can contain other objects and defines the __contains__ method, which checks for membership. Containers are 
+fundamental to Python’s data structures, providing a way to group and manage collections of items.
+
+Purpose of Containers
+----------------------
+Containers serve several key purposes:
+
+Grouping Data: 
+Containers allow you to group multiple items together, making it easier to manage and manipulate collections of data.
+
+Membership Testing:
+ Containers support membership testing using the in and not in operators, enabling you to check
+if an item exists within the container.
+
+Iteration: 
+Containers can be iterated over, allowing you to process each item in the collection.
+
+Flexibility: 
+Containers can hold heterogeneous data types, meaning you can store different types of objects
+within the same container.
+
+
 object
 ├── int
 ├── float
 ├── complex
-├── collections.abc.Container
+├── collections.abc.Container                    # Defines the __contains__ method.
 │   ├── collections.abc.Iterable                 # Defines the __iter__ method.
 │   │   ├── collections.abc.Iterator             # Inherits from Iterable and defines the __next__ method.      
 │   │   │   └── collections.abc.Generator        # Inherits from Iterator and extends it with the generator protocol.
-│   │   ├── collections.abc.Sequence             #Inherits from Sized, Iterable, and Container. Defines methods like __getitem__ and __len__
+│   │   ├── collections.abc.Sequence             # Inherits from Sized, Iterable, and Container. Defines methods like __getitem__ and __len__.  
 │   │   │   ├── str
 │   │   │   ├── list
 │   │   │   ├── tuple
