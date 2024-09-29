@@ -388,3 +388,40 @@ object
 └── NoneType
 
 """
+
+from collections.abc import Iterable
+
+class MyIterable(Iterable):
+    def __init__(self, data):
+        self.data = data
+
+    def __iter__(self):
+        return MyIterator(self.data)  # Returns an instance of MyIterator
+
+class MyIterator:
+    def __init__(self, data):
+        self.data = data
+        self.index = 0  # Start index
+
+    def __iter__(self):
+        return self  # Returns itself as an iterator
+
+    def __next__(self):
+        if self.index < len(self.data):
+            result = self.data[self.index]
+            self.index += 1  # Move to the next index
+            return result
+        else:
+            raise StopIteration  # No more items to return
+
+# Using the custom iterable
+my_iterable = MyIterable([1, 2, 3])
+for item in my_iterable:
+    print(item)
+"""
+Explanation:
+MyIterable Class: This class is designed to be an iterable. It implements the __iter__ method, which returns an 
+instance of MyIterator.
+MyIterator Class: This class is the actual iterator. It keeps track of the current position in the data 
+(self.index) and provides the __next__ method to return the next item in the sequence.
+"""
