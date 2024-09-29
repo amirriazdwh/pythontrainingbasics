@@ -238,3 +238,13 @@ except Exception as err:
     finally:
         traceback.print_exc()
 """
+while True:
+   try:
+   # Iterate by calling next
+      item = next(iterable_obj1)
+      print(item)
+   except StopIteration as err:
+      print('Stop Iteration occured', err)
+      break
+   except RuntimeError as err:
+      print("The value returned from the StopIteration statement is:", err)
