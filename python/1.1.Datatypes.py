@@ -329,10 +329,10 @@ object
 ├── float
 ├── complex
 ├── collections.abc.Container
-│   ├── collections.abc.Iterable
-│   │   ├── collections.abc.Iterator
-│   │   │   └── collections.abc.Generator
-│   │   ├── collections.abc.Sequence
+│   ├── collections.abc.Iterable                 # Defines the __iter__ method.
+│   │   ├── collections.abc.Iterator             # Inherits from Iterable and defines the __next__ method.      
+│   │   │   └── collections.abc.Generator        # Inherits from Iterator and extends it with the generator protocol.
+│   │   ├── collections.abc.Sequence             #Inherits from Sized, Iterable, and Container. Defines methods like __getitem__ and __len__
 │   │   │   ├── str
 │   │   │   ├── list
 │   │   │   ├── tuple
