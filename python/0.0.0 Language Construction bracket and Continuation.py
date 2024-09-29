@@ -21,7 +21,9 @@ A python program generally contains 3 constructs.
 -------------------------------------------------
 1. Keywords: Reserved words that have special meaning in Python, such as if, else, for, while, def, class, etc.
 2. Expressions: Combinations of values, variables, operators, lambda function definition and function calls 
-   that are evaluated to produce a value.
+   that are evaluated to produce a value.  this means that a expression will be on one line and will return a 
+   value which will be assigned to a variable
+   e.g ternary if statement,   comprehension for loops etc. 
 3. Statements: Instructions that the Python interpreter can execute. Examples include assignment statements, control flow  
    statements (like if, for, while), and function calls.
    
