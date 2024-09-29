@@ -387,4 +387,21 @@ for num in counter:
 # Key Differences
 # Implementation: Iterators are implemented using classes, while generators are implemented using functions.
 # Syntax: Iterators require the __iter__() and __next__() methods, whereas generators use the yield statement.
-# State Management: Generators automatically handle the state of local variables, while iterators require explicit state management.
+# State Management: Generators automatically handle the state of local variables, while iterators require explicit
+# state management.
+
+"""
+the enumerate() function is a built-in function that adds a counter to an iterable and returns it as an 
+enumerate object. This object can then be used to iterate over the iterable, providing both the index and the 
+value of each item. This is particularly useful when you need to keep track of the index while iterating 
+through a list, tuple, or any other iterable.
+
+enumerate(iterable, start=0)
+"""
+
+# Example list
+fruits = ['apple', 'banana', 'cherry']
+
+# Using enumerate to get index and value
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
