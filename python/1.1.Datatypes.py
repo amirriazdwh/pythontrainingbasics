@@ -328,20 +328,39 @@ object
 ├── int
 ├── float
 ├── complex
-├── collections.abc.Sequence
-│   ├── str
-│   ├── list
-│   ├── tuple
-│   └── range
-├── collections.abc.Mapping
-│   └── collections.abc.MutableMapping
-│       └── dict
-├── collections.abc.Set
-│   ├── set
-│   └── frozenset
+├── collections.abc.Container
+│   ├── collections.abc.Iterable
+│   │   ├── collections.abc.Iterator
+│   │   │   └── collections.abc.Generator
+│   │   ├── collections.abc.Sequence
+│   │   │   ├── str
+│   │   │   ├── list
+│   │   │   ├── tuple
+│   │   │   └── range
+│   │   ├── collections.abc.Set
+│   │   │   ├── set
+│   │   │   └── frozenset
+│   │   ├── collections.abc.Mapping
+│   │   │   └── collections.abc.MutableMapping
+│   │   │       └── dict
+│   │   └── collections.abc.AsyncIterable
+│   │       └── collections.abc.AsyncIterator
+│   ├── collections.abc.Sized
+│   │   ├── collections.abc.Sequence
+│   │   ├── collections.abc.Set
+│   │   ├── collections.abc.Mapping
+│   │   └── collections.abc.MappingView
+│   │       ├── collections.abc.ItemsView
+│   │       ├── collections.abc.KeysView
+│   │       └── collections.abc.ValuesView
+│   ├── collections.abc.Callable
+│   ├── collections.abc.Hashable
+│   └── collections.abc.Awaitable
+│       └── collections.abc.Coroutine
 ├── bool
 ├── bytes
 ├── bytearray
 ├── memoryview
 └── NoneType
+
 """
