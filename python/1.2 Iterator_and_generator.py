@@ -68,6 +68,9 @@ Expression: This is the value or operation that will be applied to each item in 
 Item: The variable that takes the value of the current element from the iterable.
 Iterable: Any Python object that can be iterated over (e.g., list, tuple, string, range).
 Condition (optional): A filter that only includes items for which the condition is True.
+
+when a sequence or mapping is iterable we can get its iterator which contain __next__ method 
+this method give you the current value by index and increment index to next current value
 """
 
 nums = [x * x for x in [1, 2, 3, 4, 5, 6, 7, 8]]
