@@ -15,6 +15,26 @@ sequences are further divided into ordered and unordered sequences
 -------------------------------------------------------------------------
 --1.  Numbers  types are Int, float, bool and complex
 -------------------------------------------------------------------------
+1. Integer (int)
+Default Value: 0
+Maximum Value: Python’s int type can handle arbitrarily large values, limited only by the available memory. 
+There is no fixed maximum value.
+<class 'int'>
+
+2. Floating-point (float)
+Default Value: 0.0
+Maximum Value: The maximum value for a float is approximately 1.8 x 10^308. This is defined by the IEEE 754 double-precision
+floating-point standard.
+<class 'float'>
+
+3. Complex (complex)
+Default Value: 0j (which is equivalent to 0 + 0j)
+Maximum Value: Complex numbers in Python do not have a maximum value for their real or imaginary parts,
+similar to integers. They are limited by the available memory.
+<class 'complex'>
+
+
+
 int              defines integer. its an object of type <class 'Int'> an integer has derived types String so integer 
                  can be converted to string
 float           defines  object of types <class 'float'>
@@ -302,3 +322,26 @@ def _test():
 
 if __name__ == "__main__":
     _test()
+
+"""
+object
+├── int
+├── float
+├── complex
+├── collections.abc.Sequence
+│   ├── str
+│   ├── list
+│   ├── tuple
+│   └── range
+├── collections.abc.Mapping
+│   └── collections.abc.MutableMapping
+│       └── dict
+├── collections.abc.Set
+│   ├── set
+│   └── frozenset
+├── bool
+├── bytes
+├── bytearray
+├── memoryview
+└── NoneType
+"""
