@@ -1,3 +1,30 @@
+""""""
+"""
+Duck Typing
+Concept: Duck typing is a type system where the type or class of an object is determined by its behavior 
+(methods and properties) rather than its explicit inheritance.
+
+Principle: “If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.”
+Usage: In Python, if an object implements the necessary methods and properties, it can be used in place of another object,
+regardless of its actual type.
+
+Dynamic Typing
+Concept: Python is dynamically typed, meaning variable types are determined at runtime, not in advance.
+Behavior: You can assign any type of value to a variable, and it can change type as the program executes.
+Example:
+Python
+
+x = 10      # x is an integer
+x = "hello" # now x is a string
+AI-generated code. Review and use carefully. More info on FAQ.
+Both concepts contribute to Python’s flexibility and ease of use, allowing for more adaptable and less rigid code structures123.
+"""
+
+
+
+
+
+
 In Python, the concept of abstract base classes (ABCs) and interfaces is a bit different from some other object-oriented languages like Java or C#. In Python, you can implement methods that conform to an interface without explicitly inheriting from an abstract base class. This is possible due to Python’s dynamic and duck-typed nature, where an object’s suitability is determined by the presence of certain methods and properties, rather than the object’s inheritance hierarchy.
 
 Example: Implementing Methods Without Extending an ABC
