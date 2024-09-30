@@ -1,5 +1,5 @@
 """
-in python all variables are objects and can be deleted by del function
+in python all variables are objects of their respective classes. variable can be deleted by del function
 
 Type Conversion is the conversion of object from one data type to another data type.
 Implicit Type Conversion is automatically performed by the Python interpreter.
