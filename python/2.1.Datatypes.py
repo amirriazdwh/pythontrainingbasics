@@ -424,4 +424,45 @@ MyIterable Class: This class is designed to be an iterable. It implements the __
 instance of MyIterator.
 MyIterator Class: This class is the actual iterator. It keeps track of the current position in the data 
 (self.index) and provides the __next__ method to return the next item in the sequence.
+
+
+object
+├── int
+├── float
+├── complex
+├── collections.abc.Container                    # Defines the __contains__ method.
+│   ├── collections.abc.Iterable                 # Defines the __iter__ method.
+│   │   ├── collections.abc.Iterator             # Inherits from Iterable and defines the __next__ method.      
+│   │   │   └── collections.abc.Generator        # Inherits from Iterator and extends it with the generator protocol.
+│   │   ├── collections.abc.Sequence             # Inherits from Sized, Iterable, and Container. Defines methods like __getitem__ and __len__.  
+│   │   │   ├── str                              
+│   │   │   ├── list                             # Implements Sequence methods
+│   │   │   ├── tuple                            # Implements Sequence methods
+│   │   │   └── range                            # Implements Sequence methods
+│   │   ├── collections.abc.Set                  # Defines set operations like __contains__, __iter__, etc.
+│   │   │   ├── set                              # Implements Set methods
+│   │   │   └── frozenset                        # Implements Set methods
+│   │   ├── collections.abc.Mapping              # Inherits from Sized, Iterable, and Container. Defines the read-only API used by dict.
+│   │   │   └── collections.abc.MutableMapping   # Adds methods for modifying the mapping, like __setitem__, __delitem__, etc.
+│   │   │       └── dict                         # Implements MutableMapping methods
+│   │   └── collections.abc.AsyncIterable        # Defines the API for iterables compatible with async for.
+│   │       └── collections.abc.AsyncIterator    # Defines the API for asynchronous iterators.
+│   ├── collections.abc.Sized                    # Defines the __len__ method.
+│   │   ├── collections.abc.Sequence
+│   │   ├── collections.abc.Set
+│   │   ├── collections.abc.Mapping
+│   │   └── collections.abc.MappingView
+│   │       ├── collections.abc.ItemsView
+│   │       ├── collections.abc.KeysView
+│   │       └── collections.abc.ValuesView
+│   ├── collections.abc.Callable                 # Defines the __call__ method.
+│   ├── collections.abc.Hashable                 # Defines the __hash__ method.
+│   └── collections.abc.Awaitable                # Defines the API for objects that can be used in await expressions.
+│       └── collections.abc.Coroutine            # Inherits from Awaitable and defines the coroutine protocol.
+├── bool
+├── bytes
+├── bytearray
+├── memoryview
+└── NoneType
+
 """
