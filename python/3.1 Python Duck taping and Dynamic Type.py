@@ -16,17 +16,19 @@ Python
 
 x = 10      # x is an integer
 x = "hello" # now x is a string
-AI-generated code. Review and use carefully. More info on FAQ.
-Both concepts contribute to Python’s flexibility and ease of use, allowing for more adaptable and less rigid code structures123.
+
+Both concepts contribute to Python’s flexibility and ease of use, allowing for more adaptable and less rigid code structures.
 """
 
 
 """
 In Python, the concept of abstract base classes (ABCs) and interfaces is a bit different from some other object-oriented 
-languages like Java or C#. In Python, you can implement methods that conform to an interface without explicitly 
-# inheriting from an abstract base class. This is possible due to Python’s dynamic and duck-typed nature,
-# where an object’s suitability is determined by the presence of certain methods and properties, rather than 
-# the object’s inheritance hierarchy.
+languages like Java or C#. 
+
+In Python, you can implement methods that conform to an interface without explicitly 
+inheriting from an abstract base class. This is possible due to Python’s dynamic and duck-typed nature,
+where an object’s suitability is determined by the presence of certain methods and properties, rather than 
+the object’s inheritance hierarchy.
 
 Example: Implementing Methods Without Extending an ABC
 Let’s create a custom class that behaves like a sequence by implementing the necessary methods (__getitem__, __len__, 
@@ -76,3 +78,35 @@ This example demonstrates how you can create a class that behaves like a sequenc
 methods, without explicitly inheriting from the Sequence ABC. If you have any more questions or need further clarification, 
 feel free to ask!
 """
+
+"""
+The methods like __eq__ (equality) and __ge__ (greater than or equal to) are special methods (also known as “dunder” methods) 
+that belong to the base object class in Python. These methods can be overridden in any class to customize the behavior of
+comparison operators.
+
+"""
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def __eq__(self, other):
+        if isinstance(other, MyClass):
+            return self.value == other.value
+        return False
+
+    def __ge__(self, other):
+        if isinstance(other, MyClass):
+            return self.value >= other.value
+        return False
+
+# Create instances
+a = MyClass(10)
+b = MyClass(20)
+
+# Comparison
+print(a == b)  # Output: False
+print(a >= b)  # Output: False
+print(a <= b)  # Output: True
+
+print(isinstance(a, MyClass))  # Output: True
+print(isinstance(a, object))   # Output: True
