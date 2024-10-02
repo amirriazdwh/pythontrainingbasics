@@ -129,7 +129,7 @@ Instead of creating a complex inheritance structure, you can use duck typing to 
 
 class FileWriter:
     def write(self, text):
-        print(f"Writing to a file: {text}")
+        print(f"Writing to a file: {text}{self}")   # pycharm is suggesting that write may be static method as self was used in body
 
 class NetworkWriter:
     def write(self, text):
@@ -143,3 +143,19 @@ network_writer = NetworkWriter()
 
 process(file_writer)  # Writing to a file: Hello, World!
 process(network_writer)  # Sending over network: Hello, World!
+
+
+
+class FileWriter:
+    @staticmethod
+    def write(text):
+        print(f"Writing to a file: {text}")
+
+class NetworkWriter:
+    @staticmethod
+    def write(text):
+        print(f"Sending over network: {text}")
+
+# Usage
+FileWriter.write("Hello, World!")  # Writing to a file: Hello, World!
+NetworkWriter.write("Hello, World!")  # Sending over network: Hello, World!
