@@ -110,3 +110,36 @@ print(a <= b)  # Output: True
 
 print(isinstance(a, MyClass))  # Output: True
 print(isinstance(a, object))   # Output: True
+
+"""
+Benefits Over Multiple Inheritance
+Simplifies Code: Duck typing allows you to focus on what an object can do (its behavior) rather than its place in
+a class hierarchy. This reduces the need for complex inheritance structures.
+
+Reduces Coupling: By relying on behavior rather than inheritance, duck typing reduces the coupling between classes. 
+This makes your code more modular and easier to maintain.
+
+Avoids Diamond Problem: Multiple inheritance can lead to the “diamond problem,” where a class inherits from two 
+classes that both inherit from a common superclass. Duck typing sidesteps this issue by not relying on inheritance chains.
+
+Example
+Instead of creating a complex inheritance structure, you can use duck typing to ensure that objects can be used
+ interchangeably based on their behavior:
+"""
+
+class FileWriter:
+    def write(self, text):
+        print(f"Writing to a file: {text}")
+
+class NetworkWriter:
+    def write(self, text):
+        print(f"Sending over network: {text}")
+
+def process(writer):
+    writer.write("Hello, World!")
+
+file_writer = FileWriter()
+network_writer = NetworkWriter()
+
+process(file_writer)  # Writing to a file: Hello, World!
+process(network_writer)  # Sending over network: Hello, World!
