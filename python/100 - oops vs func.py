@@ -73,4 +73,9 @@ achieve the desired behavior.
 
 Higher-Order Functions: Functions that take other functions as arguments or return them as results, allowing 
 for flexible and reusable code.
+
+Streaming Analogy:
+Just like a stream processes data in stages, functional programming processes data through a series of function calls, 
+each transforming the data and passing it along. This approach minimizes the need for intermediate state and makes the 
+code more maintainable and easier to reason about.
 """
