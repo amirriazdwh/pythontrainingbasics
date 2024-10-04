@@ -26,25 +26,10 @@ cat = Cat()
 make_animal_speak(dog)  # Output: Bark
 make_animal_speak(cat)  # Output: Meow
 #
-# Composition in Functional
-# Programming In functional programming, instead of
-# creating
-# a
+# Composition in Functional Programming In functional programming, instead of creating a class hierarchy, you create small,
+# reusable functions and compose them to achieve the desired behavior.
 #
-#
-# class hierarchy, you create small, reusable functions and compose them to achieve the desired behavior.
-#
-#
-# Let’s
-# say
-# we
-# want
-# to
-# achieve
-# similar
-# functionality
-# using
-# composition in JavaScript:
+#Let’s say we want to achieve similar functionality using composition in JavaScript:
 #
 # JavaScript
 
@@ -59,6 +44,7 @@ def make_animal_speak(speak_function):
 
 make_animal_speak(dog_speak)  # Output: Bark
 make_animal_speak(cat_speak)  # Output: Meow
+
 
 #
 # Higher - Order
