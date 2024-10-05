@@ -85,4 +85,29 @@ The instance dictionary (__dict__) will contain all attributes from both the bas
 Conclusion:  this means that variable and methods of both base class and subclass are created in same dictionary.  
              there does not exists a separate dictionary for base and subclass.  that is why object.method() is from
              one dictionary level namespace.  
+             
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def check_memory_address(self):
+        # Print the memory address of the instance (self)
+        print("Memory address of self:", id(self))
+
+# Create an instance of MyClass
+instance = MyClass(42)
+
+# Print the memory address of the instance
+print("Memory address of instance:", id(instance))
+
+# Call the method to check the memory address of self
+instance.check_memory_address()
+
+
+Memory address of instance: 140234866534752
+Memory address of self: 140234866534752
+
+
+This output confirms that both instance and self refer to the same object in memory. The id() function shows 
+that they have the same memory address, proving that self is indeed a reference to the instance of the class
 """
