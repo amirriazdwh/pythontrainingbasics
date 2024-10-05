@@ -33,3 +33,52 @@ Creation and Destruction: Created when the function is called and destroyed when
 Scope: Variables in the local namespace are only accessible within the function.
 
 """
+
+"""
+When a subclass is instantiated in Python, the base class’s __init__ method is called first, initializing the base 
+class part of the instance. This means that the attributes and methods defined in the base class are available in the
+ subclass instance.
+
+However, the attributes and methods are not stored in separate dictionaries for the base class and subclass. Instead, 
+they are all part of the same instance dictionary (__dict__). The subclass instance will have access to all attributes 
+and methods from both the base class and the subclass.
+
+class BaseClass:
+    def __init__(self):
+        self.base_attribute = "I am from the base class"
+    
+    def base_method(self):
+        return "This is a method from the base class"
+
+class SubClass(BaseClass):
+    def __init__(self):
+        super().__init__()  # Call the base class constructor
+        self.sub_attribute = "I am from the subclass"
+    
+    def sub_method(self):
+        return "This is a method from the subclass"
+
+# Instantiate the subclass
+sub_instance = SubClass()
+
+# Access attributes and methods
+print(sub_instance.base_attribute)  # Output: I am from the base class
+print(sub_instance.sub_attribute)   # Output: I am from the subclass
+print(sub_instance.base_method())   # Output: This is a method from the base class
+print(sub_instance.sub_method())    # Output: This is a method from the subclass
+
+# Check the instance dictionary
+print(sub_instance.__dict__)
+
+In this example:
+
+The BaseClass has an attribute base_attribute and a method base_method.
+The SubClass inherits from BaseClass and adds its own attribute sub_attribute and method sub_method.
+When SubClass is instantiated, the BaseClass constructor is called first (using super().__init__()), initializing base_attribute.
+The sub_instance has access to both base_attribute and sub_attribute, as well as base_method and sub_method.
+The instance dictionary (__dict__) will contain all attributes from both the base class and the subclass:
+
+
+{'base_attribute': 'I am from the base class', 'sub_attribute': 'I am from the subclass'}
+
+"""

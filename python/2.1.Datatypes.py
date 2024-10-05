@@ -338,7 +338,7 @@ Containers allow you to group multiple items together, making it easier to manag
 
 Membership Testing:
  Containers support membership testing using the in and not in operators, enabling you to check
-if an item exists within the container.
+if an item exists within the container.  this is being ensured by __contains__ dunder fuction
 
 Iteration: 
 Containers can be iterated over, allowing you to process each item in the collection.
