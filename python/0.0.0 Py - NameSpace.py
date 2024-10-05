@@ -81,4 +81,7 @@ The instance dictionary (__dict__) will contain all attributes from both the bas
 
 {'base_attribute': 'I am from the base class', 'sub_attribute': 'I am from the subclass'}
 
+
+Conclusion:  this means that variable and methods of both base class and subclass are created in same dictionary.  
+             there does not exists a separate dictionary for base and subclass.   
 """
