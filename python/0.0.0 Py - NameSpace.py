@@ -83,5 +83,6 @@ The instance dictionary (__dict__) will contain all attributes from both the bas
 
 
 Conclusion:  this means that variable and methods of both base class and subclass are created in same dictionary.  
-             there does not exists a separate dictionary for base and subclass.   
+             there does not exists a separate dictionary for base and subclass.  that is why object.method() is from
+             one dictionary level namespace.  
 """
