@@ -110,6 +110,4 @@ Memory address of self: 140234866534752
 
 This output confirms that both instance and self refer to the same object in memory. The id() function shows 
 that they have the same memory address, proving that self is indeed a reference to the instance of the class
-
-this is a test
 """
