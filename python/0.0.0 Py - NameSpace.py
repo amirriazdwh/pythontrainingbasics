@@ -110,4 +110,40 @@ Memory address of self: 140234866534752
 
 This output confirms that both instance and self refer to the same object in memory. The id() function shows 
 that they have the same memory address, proving that self is indeed a reference to the instance of the class
+
+
+Python translates this to MyClass.display_value(instance) under the hood. This is how Python passes the instance 
+(instance) as the first argument (self) to the method.
+
+Here’s a more detailed breakdown:
+
+Method Call: When you call instance.display_value(), Python looks up the display_value method in the class 
+of instance (which is MyClass).
+Implicit self: Python implicitly passes the instance (instance) as the first argument to the method.
+So, instance.display_value() is equivalent to MyClass.display_value(instance).
+Let’s see this in action with an example:
+
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def display_value(self):
+        return f"The value is {self.value}"
+
+# Create an instance of MyClass
+instance = MyClass(42)
+
+# Call the method using the instance
+print(instance.display_value())  # Output: The value is 42
+
+# Call the method explicitly using the class and passing the instance
+print(MyClass.display_value(instance))  # Output: The value is 42
+
+In this example:
+
+instance.display_value() implicitly passes instance as the first argument to display_value.
+MyClass.display_value(instance) explicitly passes instance as the first argument.
+Both calls produce the same result, demonstrating that instance.display_value() is indeed equivalent to 
+MyClass.display_value(instance) under the hood. This mechanism allows instance methods to access and
+ modify the instance’s attributes using self.
 """
