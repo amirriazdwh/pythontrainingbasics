@@ -2,13 +2,12 @@
 
 shell script plugin in pycharm
 
-case $x in
-pattern)
+case $x in pattern)
 
   ;;
 esac
 
-while [  ]; do
++while [  ]; do
 
 doneS
 
