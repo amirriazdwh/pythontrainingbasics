@@ -161,3 +161,38 @@ Joblib: Useful for parallelizing loops and machine learning tasks.
 Each technique has its own strengths and is suited to different types of tasks. Choosing the right one depends on the 
 specific requirements of your application. If you have any more questions or need further clarification, feel free to ask
 """
+
+"""
+The purpose of lock = threading.Lock() in Python is to create a lock object that helps manage access to shared resources 
+in a multi-threaded environment. This is crucial for preventing race conditions, which occur when multiple threads try to 
+modify shared data simultaneously, leading to unpredictable results.
+
+Here’s a simple example to illustrate:
+"""
+
+import threading
+
+# Shared resource
+counter = 0
+lock = threading.Lock()
+
+def increase(by):
+    global counter
+    with lock:  # Acquire the lock before modifying the shared resource
+        local_counter = counter
+        local_counter += by
+        counter = local_counter
+
+# Create threads
+t1 = threading.Thread(target=increase, args=(10,))
+t2 = threading.Thread(target=increase, args=(20,))
+
+# Start threads
+t1.start()
+t2.start()
+
+# Wait for threads to complete
+t1.join()
+t2.join()
+
+print(f'The final counter is {counter}')
