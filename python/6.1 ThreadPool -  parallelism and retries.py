@@ -207,3 +207,81 @@ For tasks still running (like Task 3 in your case), as_completed() will only yie
 It doesn't differentiate between success and failure directly; that's handled in the logic where you call future.result() 
 and catch exceptions.
 """
+
+"""
+as_completed(futures)
+concurrent.futures.as_completed(futures) is an iterator that yields futures as they complete—whether they succeed or fail. This means the loop will process each task in the order in which they finish (not necessarily in the order they were submitted).
+
+It doesn't wait for all tasks to complete before starting to process each result.
+As soon as any task (submitted as a future) finishes, as_completed() yields it, and your code can handle the result or failure.
+The Retry Loop Explained
+Now, let’s go over the retry logic:
+
+Initial Setup:
+
+The futures dictionary is set up by submitting each task to the ThreadPoolExecutor.
+Each task is a function paired with a duration argument, and the future (a placeholder for the result) is mapped to the task and its duration.
+python
+Copy code
+futures = {executor.submit(task, duration): (task, duration) for task, duration in tasks}
+Processing Completed Futures: Inside the for loop, each future that finishes (either successfully or with an error) is processed as yielded by as_completed(futures).
+
+The Retry Loop:
+
+python
+Copy code
+attempt = 0
+success = False
+while attempt < max_retries:
+attempt = 0 initializes the number of attempts.
+The while loop ensures that the task will be retried until it either succeeds or the maximum number of retries (max_retries) is reached.
+Future Handling (try block):
+
+python
+Copy code
+result = future.result()  # Try getting the result of the future
+logging.info(f"{task.__name__} - Status: Success, Result: {result}")
+task_status[task.__name__] = 'Success'
+success = True
+break  # Exit loop if successful
+result = future.result(): Attempts to get the result of the completed task. If the task ran successfully, it will return the result, and the status is logged as "Success".
+task_status[task.__name__] = 'Success': The task's status is updated to "Success" in the task_status dictionary.
+break: The loop breaks because the task succeeded on this attempt.
+Error Handling (except block): If the future raised an exception (i.e., the task failed), it enters the except block:
+
+python
+Copy code
+attempt += 1
+logging.error(f"{task.__name__} - Attempt {attempt} failed with error: {exc}")
+The attempt counter is incremented, and the failure is logged.
+Retry Mechanism:
+
+python
+Copy code
+if attempt < max_retries:
+    logging.info(f"Retrying {task.__name__} (Attempt {attempt + 1}/{max_retries})")
+    future = executor.submit(task, duration)  # Resubmit the task
+else:
+    logging.error(f"{task.__name__} - Status: Failed after {max_retries} attempts")
+    task_status[task.__name__] = 'Failed'
+If the number of attempts is still less than max_retries, the task is resubmitted for another attempt using executor.
+submit(task, duration). This creates a new future.
+If attempt reaches max_retries, the loop stops retrying, and the task is marked as "Failed" in task_status.
+Post-Retry Check:
+
+python
+Copy code
+if not success:
+    task_status[task.__name__] = 'Failed'
+If, after exhausting all retries, the task has still not succeeded (success remains False), it ensures the task is marked 
+as "Failed".
+
+How as_completed() Works with This Loop:
+When as_completed(futures) yields a future, the code immediately checks whether that particular future has completed 
+successfully or failed.
+If the future raises an exception, the task will be retried up to max_retries times.
+If all retries fail, it moves on to the next task yielded by as_completed().
+This setup ensures that as soon as a task finishes (whether successful or not), the code attempts to handle the result 
+and retry it if needed—without waiting for all tasks to complete first. This is efficient and takes advantage of
+ parallel execution.
+"""
