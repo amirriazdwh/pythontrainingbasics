@@ -9,6 +9,8 @@ Best For: I/O-bound tasks (e.g., file I/O, network operations).
 Limitations: Limited by the Global Interpreter Lock (GIL) in CPython, which prevents true parallelism for CPU-bound tasks.
 
 Example:
+"""
+
 import threading
 
 def print_numbers():
@@ -19,12 +21,15 @@ thread = threading.Thread(target=print_numbers)
 thread.start()
 thread.join()
 
+"""
 2. Multiprocessing
 Description: Uses separate processes, each with its own Python interpreter and memory space, to achieve true parallelism.
 Best For: CPU-bound tasks (e.g., heavy computations).
 Limitations: Higher memory usage and more complex inter-process communication (IPC).
 
 Example:
+"""
+
 import multiprocessing
 
 def print_numbers():
@@ -35,11 +40,13 @@ process = multiprocessing.Process(target=print_numbers)
 process.start()
 process.join()
 
+"""
 3. concurrent.futures.ThreadPoolExecutor
 Description: Provides a high-level interface for asynchronously executing callables using a pool of threads.
 Best For: Simplifying thread management for I/O-bound tasks.
 
 Example:
+"""
 
 import concurrent.futures
 
@@ -51,12 +58,13 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     futures = [executor.submit(example_function, i) for i in range(5)]
     for future in concurrent.futures.as_completed(futures):
         print(future.result())
-
+"""
 4. concurrent.futures.ProcessPoolExecutor
 Description: Provides a high-level interface for asynchronously executing callables using a pool of processes.
 Best For: Simplifying process management for CPU-bound tasks.
 
 Example:
+"""
 
 import concurrent.futures
 
@@ -68,13 +76,14 @@ with concurrent.futures.ProcessPoolExecutor(max_workers=5) as executor:
     futures = [executor.submit(example_function, i) for i in range(5)]
     for future in concurrent.futures.as_completed(futures):
         print(future.result())
-
+"""
 5. Asyncio
 Description: Uses an event loop to manage and execute asynchronous tasks, allowing for non-blocking I/O operations.
 Best For: I/O-bound tasks that involve waiting (e.g., network requests).
 Limitations: Not suitable for CPU-bound tasks as it runs on a single thread.
 Example:
 Python
+"""
 
 import asyncio
 
@@ -90,21 +99,26 @@ async def main():
 
 asyncio.run(main())
 
+"""
 6. Dask
 Description: A parallel computing library that scales Python code from multi-core machines to large distributed clusters.
 Best For: Handling large datasets and complex computations.
 
 Example:
+"""
+
 import dask.array as da
 
 x = da.random.random((10000, 10000), chunks=(1000, 1000))
 result = x.mean().compute()
 print(result)
 
+"""
 7. Ray
 Description: A framework for building and running distributed applications, providing simple primitives for parallel and distributed computing.
 Best For: Large-scale distributed applications.
 Example:
+"""
 
 import ray
 
@@ -120,11 +134,12 @@ results = ray.get(futures)
 for result in results:
     print(result)
 
+"""
 8. Joblib
 Description: A library for running Python functions as parallel jobs, often used for machine learning tasks.
 Best For: Parallelizing loops and machine learning tasks.
 Example:
-Python
+"""
 
 from joblib import Parallel, delayed
 
@@ -134,6 +149,7 @@ def example_function(i):
 results = Parallel(n_jobs=4)(delayed(example_function)(i) for i in range(10))
 print(results)
 
+"""
 Summary
 Threading: Best for I/O-bound tasks with shared memory.
 Multiprocessing: Best for CPU-bound tasks with separate memory spaces.
@@ -143,5 +159,5 @@ Dask: Scales computations from multi-core to distributed clusters.
 Ray: Ideal for large-scale distributed applications.
 Joblib: Useful for parallelizing loops and machine learning tasks.
 Each technique has its own strengths and is suited to different types of tasks. Choosing the right one depends on the 
-specific requirements of your application. If you have any more questions or need further clarification, feel free to ask!
+specific requirements of your application. If you have any more questions or need further clarification, feel free to ask
 """
