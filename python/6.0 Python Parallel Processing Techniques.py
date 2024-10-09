@@ -196,3 +196,46 @@ t1.join()
 t2.join()
 
 print(f'The final counter is {counter}')
+
+
+"""
+"""
+import queue
+import threading
+import time
+
+# Function to simulate a worker that processes items from the queue
+def worker(q):
+    while True:
+        item = q.get()  # Get an item from the queue
+        if item is None:
+            break  # Exit if None is received
+        print(f'Processing item: {item}')
+        time.sleep(1)  # Simulate work by sleeping for 1 second
+        q.task_done()  # Indicate that the task is done
+
+# Create a queue
+q = queue.Queue()
+
+# Create and start worker threads
+num_worker_threads = 3
+threads = []
+for i in range(num_worker_threads):
+    t = threading.Thread(target=worker, args=(q,))
+    t.start()
+    threads.append(t)
+
+# Put items into the queue
+for item in range(10):
+    q.put(item)
+
+# Block until all tasks are done
+q.join()
+
+# Stop workers
+for i in range(num_worker_threads):
+    q.put(None)
+for t in threads:
+    t.join()
+
+print('All tasks are completed.')
