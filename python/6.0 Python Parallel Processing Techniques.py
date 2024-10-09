@@ -115,7 +115,9 @@ print(result)
 
 """
 7. Ray
-Description: A framework for building and running distributed applications, providing simple primitives for parallel and distributed computing.
+Description: A framework for building and running distributed applications, providing simple primitives for parallel 
+and distributed computing.
+
 Best For: Large-scale distributed applications.
 Example:
 """
