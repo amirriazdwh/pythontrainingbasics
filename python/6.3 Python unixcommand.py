@@ -12,6 +12,9 @@ def run_unix_cmd(args_list, output_file='output.txt', error_file='error.txt'):
 
     return proc.returncode
 
+"""
+
+"""
 
 import subprocess
 
@@ -33,6 +36,37 @@ run_command(["ls", "/path/to/directory"])
 
 # Example: Run a command that will fail
 run_command(["invalid_command"])
+
+"""
+Running Commands in Background and Checking Status
+If you want to run commands in the background and check their status later, you can use subprocess.Popen:
+"""
+import subprocess
+import time
+
+def run_command_in_background(command):
+    process = subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return process
+
+# Example: Start a background command
+process = run_command_in_background(["sleep", "5"])  # Simulating a long-running command
+
+# Do other tasks while the command is running
+print("Command is running in the background...")
+
+# Wait for the process to complete
+stdout, stderr = process.communicate()
+exit_code = process.returncode
+
+if exit_code == 0:
+    print("Command succeeded:", stdout)
+else:
+    print("Command failed with exit code", exit_code)
+    print("Error output:", stderr)
+
+"""
+
+"""
 
 
 
