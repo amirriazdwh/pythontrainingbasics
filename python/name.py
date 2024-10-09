@@ -18,22 +18,22 @@ def f(x, **kwa):
 f(1, f=2)
 
 
-
-object
-Main
-{
-def main(args: Array[String]): Unit = {
-def add(x: Int)(y:Int): Int = x + y
-def multiply(x: Int)(y:Int) = x * y
-
-
-val
-add10multiply10compose = add(10)
-_
-andThen
-multiply(10)
-println(add10multiply10compose(5))
-println("Goodbye, World!")
-}
-}
+#
+# object
+# Main
+# {
+# def main(args: Array[String]): Unit = {
+# def add(x: Int)(y:Int): Int = x + y
+# def multiply(x: Int)(y:Int) = x * y
+#
+#
+# val
+# add10multiply10compose = add(10)
+# _
+# andThen
+# multiply(10)
+# println(add10multiply10compose(5))
+# println("Goodbye, World!")
+# }
+# }
 
