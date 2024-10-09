@@ -285,3 +285,47 @@ This setup ensures that as soon as a task finishes (whether successful or not), 
 and retry it if needed—without waiting for all tasks to complete first. This is efficient and takes advantage of
  parallel execution.
 """
+
+"""
+as_completed() itself does not raise exceptions. It simply yields futures as they complete, regardless of whether the task succeeded or failed. However, when you try to retrieve the result of a future with future.result(), that is when the exception is raised if the task failed.
+
+Here’s the detailed breakdown:
+
+How as_completed() Works:
+as_completed() yields futures in the order they finish.
+It doesn't matter whether the task succeeded or failed; it just hands over the future.
+You can then inspect the future to get the result or handle any exceptions.
+When Exceptions are Raised:
+When you call future.result(), it attempts to retrieve the result of the task:
+If the task succeeded, it returns the result.
+If the task raised an exception (failed), future.result() raises that exception.
+Here’s how the flow works:
+
+Future is yielded by as_completed(futures):
+The task corresponding to the future has completed (whether it succeeded or failed).
+You try to get the result with future.result():
+python
+Copy code
+result = future.result()
+If the task completed successfully, future.result() will return the result of the task.
+If the task raised an exception, future.result() will raise that same exception, allowing you to catch it in the except block.
+Example of Exception Handling:
+Let’s say a task raises an exception (like a ValueError or TimeoutError). This is how the code handles it:
+
+python
+Copy code
+try:
+    result = future.result()  # Try getting the result of the future
+    logging.info(f"{task.__name__} - Status: Success, Result: {result}")
+    task_status[task.__name__] = 'Success'
+except Exception as exc:
+    logging.error(f"{task.__name__} - Attempt {attempt} failed with error: {exc}")
+future.result() tries to retrieve the result of the task.
+If the task failed, an exception will be raised (e.g., ValueError, TimeoutError), and the code will move to the except block, 
+where the failure is logged, and the retry logic can kick in.
+Important Points:
+as_completed() does not raise exceptions. It just yields futures.
+future.result() raises exceptions when trying to get the result of a failed task.
+You handle the exceptions inside the try-except block, which is where you decide whether to retry the task or mark it as failed.
+So, the exception handling is linked to future.result(), not as_completed().
+"""
