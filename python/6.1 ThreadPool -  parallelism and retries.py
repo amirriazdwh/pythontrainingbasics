@@ -124,7 +124,9 @@ So, future.result() is responsible for:
 Returning the result (in case of success).
 Raising the exception (in case of failure).
 How Exceptions Are Handled:
-When a task raises an exception, it’s caught and stored in the future object. Once you try to access the result via future.result(), it raises the exception that was thrown inside the task function. The exception isn’t raised immediately when the task fails—it's deferred until you ask for the result.
+When a task raises an exception, it’s caught and stored in the future object. Once you try to access the result via 
+future.result(), it raises the exception that was thrown inside the task function. The exception isn’t raised
+ immediately when the task fails—it's deferred until you ask for the result.
 
 Example Scenario:
 Let’s say task4() raises an exception (like a ValueError):
@@ -151,3 +153,57 @@ future.result() is where the exception is raised, allowing you to handle it in a
 If a task succeeded, future.result() returns the result. If it failed, it raises the stored exception
 """
 
+
+
+
+"""
+as_completed() will only provide the status of completed (whether successful or failed) tasks, and it doesn't immediately 
+handle tasks that are still running.
+
+Key Behavior of as_completed():
+Completed tasks (whether successful or failed) are immediately yielded by as_completed().
+Running tasks are not yielded until they either complete successfully or fail.
+Failed tasks are also considered "completed" from as_completed()'s perspective, as the task has finished its execution, 
+albeit unsuccessfully.
+
+Scenario Breakdown:
+Given the situation you mentioned (5 tasks: 2 completed, 1 running, 2 failed), here’s what happens:
+
+Tasks 1 and 2:
+These tasks are completed (successfully).
+They will be yielded first by as_completed() when their execution ends.
+Task 3:
+Still running.
+as_completed() will not yield this task until it finishes running (either successfully or with failure).
+Tasks 4 and 5:
+Failed during their execution.
+as_completed() treats failed tasks as completed because they are no longer running.
+When you call future.result() for these failed tasks, an exception is raised, which is caught in the try-except block.
+How the Code Handles the Tasks:
+Tasks 1 and 2 (Successful Completion):
+
+as_completed() yields the future for these tasks.
+Inside the try block, you successfully retrieve the result using future.result():
+python
+Copy code
+result = future.result()  # Success
+The status for these tasks will be marked as "Success".
+Tasks 4 and 5 (Failure):
+
+as_completed() yields the future for these tasks, even though they failed.
+When you attempt future.result(), an exception is raised, and the code enters the except block:
+python
+Copy code
+except Exception as exc:
+    logging.error(f"{task.__name__} failed with error: {exc}")
+The status for these tasks will be marked as "Failed", and retries will be attempted (if enabled).
+Task 3 (Still Running):
+
+as_completed() will not yield Task 3's future until it finishes (either successfully or with failure).
+When Task 3 finishes, as_completed() will yield it, and the result or failure will be handled accordingly.
+Conclusion:
+as_completed() only deals with tasks that have completed, whether they succeeded or failed.
+For tasks still running (like Task 3 in your case), as_completed() will only yield their future after they finish execution.
+It doesn't differentiate between success and failure directly; that's handled in the logic where you call future.result() 
+and catch exceptions.
+"""
