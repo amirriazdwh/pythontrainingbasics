@@ -239,3 +239,99 @@ for t in threads:
     t.join()
 
 print('All tasks are completed.')
+
+
+"""
+The purpose of this code block:
+
+python
+Copy code
+# Optionally join the threads (to ensure all worker threads have finished)
+for thread in threads:
+    thread.join()
+is to ensure that all worker threads have fully finished their execution before the main program proceeds.
+
+Detailed Explanation:
+Thread Management:
+
+When you start a thread with thread.start(), the thread runs concurrently (in parallel with the main thread and other threads). 
+The main program doesn't wait for the worker threads to finish unless you explicitly tell it to.
+Purpose of thread.join():
+
+The thread.join() method is used to block the main thread (or the thread that calls join()) until the specific worker thread 
+has finished executing.
+By calling join() on each thread, you ensure that the main program will wait for all worker threads to complete their tasks 
+before continuing further execution.
+Why is this Important?
+
+Synchronization: If you do not call thread.join(), the main thread might finish its execution (and potentially terminate 
+the entire program) while the worker threads are still running. This can lead to incomplete task processing or program 
+termination before the background threads complete their work.
+Resource Management: Joining the threads ensures that all resources used by those threads (e.g., memory, open files, etc.) 
+are properly cleaned up before the program exits.
+Clean Program Exit: By using join(), you guarantee that all threads have finished their work and there are no lingering 
+background threads when the program exits.
+Example Without thread.join():
+python
+Copy code
+import threading
+import time
+
+def worker():
+    print("Worker started")
+    time.sleep(2)
+    print("Worker finished")
+
+threads = []
+for i in range(3):
+    thread = threading.Thread(target=worker)
+    thread.start()
+    threads.append(thread)
+
+# Without thread.join(), the main thread won't wait for the worker threads
+print("Main thread finished")
+In this example:
+
+The main thread will print "Main thread finished" before the worker threads have finished.
+If the program terminates after the main thread finishes, the worker threads may get terminated abruptly before completing 
+their tasks.
+Example With thread.join():
+python
+Copy code
+import threading
+import time
+
+def worker():
+    print("Worker started")
+    time.sleep(2)
+    print("Worker finished")
+
+threads = []
+for i in range(3):
+    thread = threading.Thread(target=worker)
+    thread.start()
+    threads.append(thread)
+
+# Now we join the threads, waiting for them to finish
+for thread in threads:
+    thread.join()
+
+print("Main thread finished after all worker threads")
+In this example:
+
+The thread.join() ensures that the main thread waits for all worker threads to finish before printing "Main thread finished."
+This guarantees that all worker threads have completed their tasks, and the program exits cleanly.
+In the Context of Your Code:
+In your queue-based multi-threaded program:
+
+The main thread waits for all tasks in the queue to be processed using task_queue.join(). This ensures all tasks are done.
+
+The for thread in threads: thread.join() ensures that all worker threads (not just the queue) have finished executing completely 
+before the program ends. This includes any cleanup or final tasks that threads may be performing after marking their tasks as 
+complete in the queue.
+
+Summary:
+thread.join() is used to ensure that the main thread (or any calling thread) waits for each worker thread to finish its work.
+It's important for ensuring clean, synchronized execution, where all background threads have completed their tasks before the 
+main program proceeds to exit or move to the next steps.
+"""
