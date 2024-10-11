@@ -4,6 +4,7 @@ Note:  Python support the following import statement types.
 2.  from module import funciton.
 3.  from module import *
 4   import module as m
+5.  python __
 
 for further understand see Python module advance.
 
@@ -64,4 +65,24 @@ module namespace or main module namespace.
 
 ''
 
+"""
+
+"""
+The __init__.py file in a Python package serves several important purposes:
+
+Package Initialization: It indicates to Python that the directory should be treated as a package. This is essential for the 
+package to be importable.
+
+Initialization Code: You can include code in __init__.py that runs when the package is imported. This can be useful for 
+setting up package-level variables or performing other initialization tasks.
+
+Namespace Definition: It helps define the package’s namespace. You can use it to import specific modules or functions into 
+the package’s namespace, making them easier to access.
+
+Subpackage Inclusion: If your package contains subpackages, each subpackage should also have its own __init__.py file 
+to be recognized as a package.
+
+Control Imports: By setting the __all__ variable, you can control what is imported when someone uses from package import *.
+In Python versions 3.3 and later, the __init__.py file is not strictly required to define a package, but it is still 
+commonly used for the reasons mentioned above
 """
