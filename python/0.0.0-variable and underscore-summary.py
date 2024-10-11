@@ -115,7 +115,9 @@ Names and identifiers are case sensitive. For example, Variable and variable are
 .Length of Identifiers
 Identifiers can be of unlimited length.
 
+#########################
 .Special Name Classes
+#########################
 Single Leading Underscore (_variable): Suggests a “private” method or variable name.
 These are not imported when you use from module import *.
 Single Trailing Underscore (variable_): Used to avoid conflicts with Python keywords (e.g., class_).
@@ -124,7 +126,9 @@ dunder method               __Init__  special methods. they are operators,  over
                                        or abstract class.
 This is not often used.
 
+##########################
 . Naming Conventions
+##########################
 Modules and Packages: Use all lower case (e.g., mymodule).
 Globals and Constants: Use upper case (e.g., CONSTANT_VALUE).
 Classes: Use CamelCase with an initial upper case letter (e.g., MyClass).
