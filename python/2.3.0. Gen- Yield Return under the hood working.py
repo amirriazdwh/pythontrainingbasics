@@ -75,7 +75,10 @@ except StopIteration as e:
     values_summary = e.value
     print("The value returned from the return statement is:",values_summary)
 
-
+#################################################################################
+# A Generator is composed on iterator.   Generator contains iterator.  so an __iter__ return the address of iterator
+# which is used to call iterator __next__ method.
+##############################################################################
 def my_generator1(n):
     for i in range(n):
         yield i
@@ -92,6 +95,28 @@ except StopIteration as e:
     print("The value returned from the StopIteration statement is:",values_summary)
 except RuntimeError as err:
     print("The value returned from the StopIteration statement is:",err)
+
+
+class MyIterator:
+    def __init__(self, start, end):
+        self.current = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current >= self.end:
+            raise StopIteration
+        else:
+            self.current += 1
+            return self.current - 1
+
+# Using the iterator
+it = MyIterator(0, 3)
+for num in it:
+    print(num)
+
 
 
 """
