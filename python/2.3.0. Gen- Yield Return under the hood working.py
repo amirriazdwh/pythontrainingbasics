@@ -1,6 +1,8 @@
 
 """
+##########################################
 The return statement in a generator
+##########################################
 In Python 2:
 
 In a generator function, the return statement is not allowed to include an expression_list. In that context, a bare
@@ -29,7 +31,7 @@ yield was originally introduced as a statement, meaning that it could only appea
  some times you notice that by end of generator method there is no return statement given.  why?
  this is because python add return statement at the end of method implicitly if return is not given.
  however,  adding return statement at the end of a generator method gives you control to pass a values which you
- can read from excep
+ can read from Exception
 """
 
 # Yield will not raise StopIteration exception.  i will just create a generator object and pass it to outer system.
