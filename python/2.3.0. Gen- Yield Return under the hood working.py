@@ -1,3 +1,9 @@
+"""
+Iterables must implement the __iter__() method.
+Iterators must implement both the __iter__() and __next__() methods
+
+"""
+
 
 """
 ##########################################
