@@ -32,6 +32,17 @@ yield was originally introduced as a statement, meaning that it could only appea
  can read from Exception
 """
 
+"""
+A Generator is an Iterator
+Specifically, generator is a subtype of iterator.
+"""
+
+import collections, types
+
+issubclass(types.GeneratorType, collections.Iterator)
+# True
+
+
 # Yield will not raise StopIteration exception.  i will just create a generator object and pass it to outer system.
 #  in generators method return will generate stopiteration exception.
 
