@@ -122,11 +122,35 @@ it = MyIterator(0, 3)
 for num in it:
     print(num)
 
+##########################################################################################################
+#  A generator contains __iter__ methods which returns the address of iterator object to call function
+###########################################################################################################
+
+def my_generator(start, end):
+    current = start
+    while current < end:
+        yield current
+        current += 1
+
+# Using the generator
+gen = my_generator(0, 3)
+for num in gen:
+    print(num)
+
+"""
+Value Retrieval:
+The for loop then repeatedly calls gen.__next__() to get the next value from the generator.
+Each call to __next__() resumes the generator function from where it last left off, executes until it hits a
+yield statement, and returns the yielded value.
+When the generator function completes (i.e., there are no more yield statements to execute), it raises a
+StopIteration exception, signaling the end of the iteration.
+"""
 
 
 """
+###################################################
 how generator function works under the hood
-
+###################################################
 Generator Object: 
 When you call a generator function, it returns a generator object. This object acts as an intermediary between the generator function and the caller.
 
