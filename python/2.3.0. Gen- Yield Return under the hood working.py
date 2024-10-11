@@ -21,8 +21,6 @@ In an asynchronous generator function, an empty return statement indicates that 
 will cause StopAsyncIteration to be raised. A non-empty return statement is a syntax error in an asynchronous
 generator function.
 
-
-
 yield was originally introduced as a statement, meaning that it could only appear at the beginning of a line in a code
  block. Now yield creates a yield expression. https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt
  This change was proposed to allow a user to send data into the generator just as one might receive it. To send data,
@@ -99,7 +97,11 @@ except StopIteration as e:
 except RuntimeError as err:
     print("The value returned from the StopIteration statement is:",err)
 
-
+################################################################################################
+#  here iterator object is composed into MyIterator using dunk typing.
+#  so iterator is compose into Myiterator and __iter__ returns the address to iterator object
+#  once iterator object is retrieved.  next method is being used to fetch data
+################################################################################################
 class MyIterator:
     def __init__(self, start, end):
         self.current = start
