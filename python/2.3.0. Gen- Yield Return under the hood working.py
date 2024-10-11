@@ -46,7 +46,7 @@ for x in str_gen():
     print(x)
 
 ################################
-# How the yield actually works
+# How the yield actually works manually rasing StopIteration Exception
 ###############################
 values_iter =str_gen()
 try:
@@ -57,7 +57,9 @@ except StopIteration as e:
     values_summary = e.value
     print("The value returned from the return statement is:",values_summary)
 
-
+####################################
+# with Return Rising stopiteration
+#####################################
 def my_generator0(n):
     for i in range(n):
         yield i
