@@ -120,6 +120,8 @@ Single Leading Underscore (_variable): Suggests a “private” method or variab
 These are not imported when you use from module import *.
 Single Trailing Underscore (variable_): Used to avoid conflicts with Python keywords (e.g., class_).
 Double Leading Underscores (__variable): Used in class definitions to cause name mangling (weak hiding) private variable.
+dunder method               __Init__  special methods. they are operators,  override methods which are part of based class
+                                       or abstract class.
 This is not often used.
 
 . Naming Conventions
