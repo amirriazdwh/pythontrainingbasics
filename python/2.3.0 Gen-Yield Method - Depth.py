@@ -5,9 +5,11 @@ A generator can also be sent information, making it conceptually a coroutine.
 In Python 3, you can delegate from one generator to another in both directions with yield from.
 (Appendix critiques a couple of answers, including the top one, and discusses the use of return in a generator.)
 Generators:
-yield is only legal inside of a function definition, and the inclusion of yield in a function definition makes it return a generator.
+yield is only legal inside of a function definition, and the inclusion of yield in a function definition makes
+it return a generator.
 
-The idea for generators comes from other languages (see footnote 1) with varying implementations. In Python's Generators, the execution
+The idea for generators comes from other languages (see footnote 1) with varying implementations. In Python's Generators,
+the execution
 of the code is frozen at the point of the yield. When the generator is called (methods are discussed below) execution resumes and
  then freezes at the next yield.
 
