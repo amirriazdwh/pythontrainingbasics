@@ -85,6 +85,9 @@ def my_generator1(n):
         if i >= 5:
             raise StopIteration
 
+# function return generator while __iter__ returns the iterator object generator contains.
+# which used to call the __next__ method
+
 values_iter =my_generator1(6).__iter__()
 try:
     while True:
