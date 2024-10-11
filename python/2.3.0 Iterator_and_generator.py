@@ -405,3 +405,7 @@ fruits = ['apple', 'banana', 'cherry']
 # Using enumerate to get index and value
 for index, fruit in enumerate(fruits):
     print(index, fruit)
+
+#Memory Usage: Generators are more memory-efficient because they generate items one at a time and only when needed.
+#State Management: Generators maintain their state between calls, which allows them to resume where they left off.
+#Syntax: Generators use the yield keyword, while enumerators use the enumerate() function.
