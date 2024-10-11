@@ -136,7 +136,7 @@ Tuples:
 These are immutable, ordered collections. Example: (), (1, 2, 3). You can also create a tuple without
 parentheses like this: t = 1, 2 results in (1, 2).
 
-Order of Operations:Used to clarify the precedence of mathematical operations. Example: (n-1)**2.
+Order of Operations:   Used to clarify the precedence of mathematical operations. Example: (n-1)**2.
 Generator Expressions: A concise way to create iterators. Example: (i**2 for i in range(5)).
 Function Calls: Used to call functions or methods. Example: print(), int(), range(5). You can also use
 generator expressions within function calls: sum(i**2 for i in range(5)).
