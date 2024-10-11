@@ -45,6 +45,9 @@ def str_gen():
 for x in str_gen():
     print(x)
 
+################################
+# How the yield actually works
+###############################
 values_iter =str_gen()
 try:
     while True:
