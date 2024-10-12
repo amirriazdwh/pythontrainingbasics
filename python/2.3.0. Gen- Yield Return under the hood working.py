@@ -1,7 +1,9 @@
 """
 Iterables must implement the __iter__() method.
 Iterators must implement both the __iter__() and __next__() methods
-
+when an object implements __iter__() and __next__() methods by dunk typing. that object 's is iterator where
+__iter__() provides the address of iterator object and from iterator object __next__() methods gets the data
+on each call.
 """
 
 
