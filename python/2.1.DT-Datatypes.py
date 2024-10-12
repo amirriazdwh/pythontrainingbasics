@@ -88,16 +88,18 @@ where x = i + n*k, n >= 0 and i <= x < j.
 -------------------------------------------------------------
 -   4.   Set and Dictionary  are unordered collection
 -------------------------------------------------------------
-A set object is an unordered collection of distinct hashable objects. Common uses include membership testing, removing duplicates from a sequence,
-and computing mathematical operations such as intersection, union, difference, and symmetric difference. (For other containers see the built in dict, list,
-and tuple classes, and the collections module.).   sets are immutable and have a iterator for iteration.
-set     defined as {}.  since sets are unorders they dont have an index. we use set() function to convert all sequence to set
+A set object is an unordered collection of distinct hashable objects. Common uses include membership testing, removing 
+duplicates from a sequence,and computing mathematical operations such as intersection, union, difference, and symmetric 
+difference. (For other containers see the built in dict, list,and tuple classes, and the collections module.).   sets are 
+immutable and have a iterator for iteration.set defined as {}.  since sets are unorders they dont have an index. we use set() 
+function to convert all sequence to set
 
-Dictionary   defined by {} with items as key:value  used dict() for covnersion.
-These represent finite sets of objects indexed by nearly arbitrary values. The only types of values not acceptable as keys are values containing lists
-or dictionaries or other mutable types that are compared by value rather than by object identity, the reason being that the efficient implementation of
- dictionaries requires a key’s hash value to remain constant. Numeric types used for keys obey the normal rules for numeric comparison: if two numbers
-  compare equal (e.g., 1 and 1.0) then they can be used interchangeably to index the same dictionary entry.
+Dictionary   defined by {} with items as key:value  used dict() for conversion.
+These represent finite sets of objects indexed by nearly arbitrary values. The only types of values not acceptable as keys
+are values containing lists or dictionaries or other mutable types that are compared by value rather than by object identity,
+the reason being that the efficient implementation of dictionaries requires a key’s hash value to remain constant. Numeric 
+types used for keys obey the normal rules for numeric comparison: if two numbers compare equal (e.g., 1 and 1.0) then they 
+can be used interchangeably to index the same dictionary entry.
 
 note: that item inside {} are written as key:value or key=value but without {} its been represented as key=value
 dic ={i:f"item{i}" for i in range(1,10)}.  with f you can using {}
