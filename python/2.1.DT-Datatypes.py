@@ -67,11 +67,14 @@ In Python programming, sequences are a generic term for an ordered set which mea
 will be the same when we access them. Python supports six different types of sequences. These are strings, lists, tuples, 
 byte sequences, byte arrays, and range objects.
 
- () tuple is immutable.   so it can be used in place where variable should not change like  function parameters.   tuples..
- tuple are order sequence, immutable and since they are a sequence they contain an iterator
- List    defined by [],  used List() for conversion to list all sequence.  List are order sequence , mutable and contain iterators, so they have index
+() tuple is immutable.   so it can be used in place where variable should not change like  function parameters.   tuples..
+tuple are order sequence, immutable and since they are a sequence they contain an iterator
 
-all sequence create iterator if the values are hardcoded.   however,  once these values pass through some rules a generator is  created.
+List defined by [],  used List() for conversion to list all sequence.  List are order sequence , mutable and contain iterators, 
+so they have index
+
+all sequence create iterator if the values are hardcoded.   however,  once these values pass through some rules a generator 
+is  created.
 
 Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression,
 a slice is a sequence of the same type. This implies that the index set is renumbered so that it starts at 0.
