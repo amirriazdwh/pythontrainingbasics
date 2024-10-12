@@ -46,14 +46,16 @@ complex     number like 6+4j if of type <class 'complex'>
 -------------------------------------------------------------------------
 --2.  String types are string
 -------------------------------------------------------------------------
-character  define by a single character and convert from digit to character by chr  function and from chr to ASCI digital by ord.  each character has
-an ordinal number associated with it.  to convert a ord to character use chr(num) and a character can be convert to ord by ord() func
-a sequence of characters list or tuples can be converted to string by "".join(sequence). we can represent string by ' or ".  we dont
-have chr  datatype in python,  we have string.  character is of type String of class <class String>
+character  define by a single character and convert from digit to character by chr  function and from chr to ASCI digital by ord. 
+each character has an ordinal number associated with it.  to convert a ord to character use chr(num) and a character can be 
+convert to ord by ord() func
+a sequence of characters list or tuples can be converted to string by "".join(sequence). we can represent string by ' or ".  
+we dont have chr  datatype in python,  we have string.  character is of type String of class <class String>
 
-String  defined by ""  double qoutte or ''  single quote.  The char is defined by ''. single or ""  double quote.  Multi-line strings can be denoted using triple quotes, a
-string is a sequence so they can be accessed by index.  a string is basic data types of integer so string can be converted to int
-using int. function.  a string can be converted to list and tuples by list() and tuples()
+String  defined by ""  double qoutte or ''  single quote.  The char is defined by ''. single or ""  double quote.  Multi-line
+strings can be denoted using triple quotes, a string is a sequence so they can be accessed by index.  a string is basic data 
+types of integer so string can be converted to int using int. function.  a string can be converted to list and tuples by list() 
+and tuples()
 """
 
 """
