@@ -60,11 +60,12 @@ and tuples()
 
 """
 --------------------------------------------------------------------------
---3.  There are seven sequence types: strings, Unicode strings, lists, tuples, bytearrays, buffers, and xrange objects.  sequences also called ordered collection
+--3.  There are seven sequence types: strings, Unicode strings, lists, tuples, bytearrays, buffers, and xrange objects.  
+      sequences also called ordered collection
 --------------------------------------------------------------------------
 In Python programming, sequences are a generic term for an ordered set which means that the order in which we input the items
- will be the same when we access them. Python supports six different types of sequences. These are strings, lists, tuples, byte sequences
- , byte arrays, and range objects.
+will be the same when we access them. Python supports six different types of sequences. These are strings, lists, tuples, 
+byte sequences, byte arrays, and range objects.
 
  () tuple is immutable.   so it can be used in place where variable should not change like  function parameters.   tuples..
  tuple are order sequence, immutable and since they are a sequence they contain an iterator
