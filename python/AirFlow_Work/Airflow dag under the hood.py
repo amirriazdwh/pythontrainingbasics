@@ -1,7 +1,9 @@
 """
 DAG as a Higher-Order Function:
-In functional programming, a higher-order function is a function that takes other functions as arguments or returns them as results.
-In Airflow, a DAG (Directed Acyclic Graph) can be seen as a higher-order function in the sense that it organizes and manages tasks
+In functional programming, a higher-order function is a function that takes other functions as arguments or returns them as
+results.
+In Airflow, a DAG (Directed Acyclic Graph) can be seen as a higher-order function in the sense that it organizes and manages
+ tasks
  (which can be thought of as functions) and their dependencies. The DAG itself doesn’t perform any operations but defines the
  structure and order in which tasks should be executed.
 
@@ -48,7 +50,8 @@ which aligns with some functional programming principles1
 """
 
 """
-Certainly! When you define a DAG using the with statement in Apache Airflow, it acts as a context manager. This means that any tasks created within this block are automatically added to the DAG. Here’s a breakdown of what happens under the hood:
+Certainly! When you define a DAG using the with statement in Apache Airflow, it acts as a context manager. This means that any 
+tasks created within this block are automatically added to the DAG. Here’s a breakdown of what happens under the hood:
 
 Context Manager:
 The with DAG(...) as dag: statement sets up a context where any tasks defined inside it are automatically associated 
