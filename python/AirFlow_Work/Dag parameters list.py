@@ -55,4 +55,17 @@ on_retry_callback:
 render_template_as_native_obj: 
 If set to True, templates are rendered as their native types (e.g., integers, lists) instead of strings.
 
+
+The presence of the start_date parameter alone doesn’t guarantee that a DAG will run immediately upon deployment. Here are the key factors that influence whether a DAG runs immediately:
+
+start_date:
+The start_date should be set to a past date. This ensures that the scheduler recognizes the DAG as ready to run.
+However, the DAG will not run immediately if the start_date is set to a future date.
+schedule_interval:
+The schedule_interval determines how often the DAG runs. If set to None, the DAG will not run on a schedule and must be triggered manually.
+If set to a specific interval (e.g., @daily), the DAG will run according to that schedule.
+catchup:
+By default, Airflow will try to “catch up” on all missed runs since the start_date. Setting catchup=False ensures that only the latest run is triggered, avoiding a backlog of runs.
+Manual Trigger:
+You can manually trigger the DAG using the Airflow UI or CLI to ensure it runs immediately after deployment.
 """
