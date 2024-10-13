@@ -93,4 +93,71 @@ When you define dependencies using start >> task >> end, it sets the upstream an
 This is done using the set_downstream and set_upstream methods of the BaseOperator class.
 By using the context manager, you simplify the process of associating tasks with a DAG and managing their dependencies. 
 This approach makes the code cleaner and more readable
+
+The methods set_downstream and set_upstream are actually part of the BaseOperator class in Apache Airflow, 
+but they might not be immediately visible if you’re looking at a simplified or partial view of the class. 
+Let’s take a closer look at how these methods work:
+
+set_downstream Method:
+This method sets the downstream dependencies for a task. It means that the current task must be completed before the 
+downstream task can start.
+Here’s a simplified version of how it might look
+"""
+
+from airflow.models.baseoperator import BaseOperator
+
+class BaseOperator:
+    # Other methods and attributes
+
+    def set_downstream(self, task_or_task_list):
+        if isinstance(task_or_task_list, list):
+            for task in task_or_task_list:
+                self._set_relatives(task, upstream=False)
+        else:
+            self._set_relatives(task_or_task_list, upstream=False)
+
+    def _set_relatives(self, task_or_task_list, upstream=True):
+        if isinstance(task_or_task_list, list):
+            for task in task_or_task_list:
+                self._set_relative(task, upstream)
+        else:
+            self._set_relative(task_or_task_list, upstream)
+
+    def _set_relative(self, task, upstream=True):
+        if upstream:
+            task.set_downstream(self)
+        else:
+            self.set_upstream(task)
+"""
+set_upstream Method:
+This method sets the upstream dependencies for a task. It means that the current task cannot start until the 
+upstream task is completed.
+Here’s a simplified version of how it might look:
+"""
+from airflow.models.baseoperator import BaseOperator
+
+class BaseOperator:
+    # Other methods and attributes
+
+    def set_upstream(self, task_or_task_list):
+        if isinstance(task_or_task_list, list):
+            for task in task_or_task_list:
+                self._set_relatives(task, upstream=True)
+        else:
+            self._set_relatives(task_or_task_list, upstream=True)
+
+"""
+Usage in DAGs:
+When you use the >> and << operators to set dependencies, these operators internally call the set_downstream and 
+set_upstream methods.
+Example
+"""
+start >> task >> end
+# This is equivalent to:
+start.set_downstream(task)
+task.set_downstream(end)
+
+"""
+These methods are crucial for defining the execution order of tasks within a DAG. They ensure that tasks are executed in the 
+correct sequence based on their dependencies.
 """
