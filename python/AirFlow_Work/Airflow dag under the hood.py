@@ -60,4 +60,37 @@ When you create a task like start = DummyOperator(task_id='start'), the task is 
 Internally, the DummyOperator (or any other operator) calls the dag.add_task(self) method to add itself to the DAG.
 Adding Tasks to DAG:
 The add_task method of the DAG class is responsible for adding the task to the DAG’s internal task dictionary.
+
+Here’s a simplified version of what happens
+"""
+
+class DAG:
+    def __enter__(self):
+        # Set the current DAG to this instance
+        self._previous_dag = _CURRENT_DAG
+        _CURRENT_DAG = self
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # Restore the previous DAG
+        _CURRENT_DAG = self._previous_dag
+
+    def add_task(self, task):
+        # Add the task to the DAG's task dictionary
+        self.task_dict[task.task_id] = task
+        task.dag = self
+
+class BaseOperator:
+    def __init__(self, task_id, dag=None):
+        self.task_id = task_id
+        if dag is None:
+            dag = _CURRENT_DAG
+        dag.add_task(self)
+
+"""
+Task Dependencies:
+When you define dependencies using start >> task >> end, it sets the upstream and downstream relationships between tasks.
+This is done using the set_downstream and set_upstream methods of the BaseOperator class.
+By using the context manager, you simplify the process of associating tasks with a DAG and managing their dependencies. 
+This approach makes the code cleaner and more readable
 """
