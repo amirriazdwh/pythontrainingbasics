@@ -1,4 +1,10 @@
 """
+Note:
+    1. in python all variable types are objects.
+    2. variable types are store in object not in variable
+    3. variable are assigned by reference and passed to function by reference. passing mutable object to functions create
+       side effects
+    4.
 ---------------------------
 python variables.
 -------------------------
@@ -171,5 +177,103 @@ lvar = 1, [1,2,3,4,5]
 #in older version this works with exception
 #lvar[1] += [11, 12]
 print(lvar)
+
+"""
+In Python, when variables are passed into functions, they are passed by reference—more specifically, by "object reference." This means that the function receives a reference to the object the variable points to, not a copy of the object itself. However, the behavior differs depending on whether the object is mutable or immutable.
+
+Behavior with Immutable Objects (like integers, strings, tuples):
+When an immutable object is passed to a function, since the object itself cannot be changed (it’s immutable), any operation that might seem to "modify" the object will actually create a new object. This means that the original variable outside the function remains unchanged.
+Example:
+python
+Copy code
+def modify_immutable(x):
+    print("Original x:", x)
+    x += 10  # This creates a new integer object
+    print("Modified x inside function:", x)
+
+a = 5
+modify_immutable(a)
+print("Value of a after function call:", a)  # a remains unchanged
+Output:
+
+r
+Copy code
+Original x: 5
+Modified x inside function: 15
+Value of a after function call: 5
+Here, x refers to an immutable object (an integer), and when we do x += 10, Python creates a new integer object 15 and x now points to this new object inside the function. But outside the function, a still refers to 5, as the function's modification does not affect it.
+
+Potential Problems with Immutable Objects:
+The key issue arises when you expect the function to "modify" the original object (as happens with mutable objects), but that doesn’t happen with immutables. For example:
+
+You might expect a function to modify a string or number directly, but it won’t work because they are immutable.
+The result can be confusion if you're unaware of the distinction between mutable and immutable objects in Python.
+Example of this problem:
+python
+Copy code
+def modify_string(s):
+    s += " world"  # Creates a new string object
+    print("Inside function:", s)
+
+original_string = "Hello"
+modify_string(original_string)
+print("Outside function:", original_string)  # The string remains unchanged
+Output:
+
+bash
+Copy code
+Inside function: Hello world
+Outside function: Hello
+This could be a problem if you expected original_string to be "Hello world" after the function call, but because strings are immutable, the function's changes did not affect the original variable.
+
+How to Fix It:
+If you want a function to "modify" the original variable, there are a few approaches depending on what you want to achieve.
+
+1. Return the modified value from the function:
+A common way to handle immutables is to return the new value from the function and explicitly reassign it to the original variable.
+
+python
+Copy code
+def modify_immutable(x):
+    return x + 10  # Return the modified value
+
+a = 5
+a = modify_immutable(a)  # Explicitly reassign the result to 'a'
+print("Value of a after function call:", a)  # Now a is 15
+2. Use mutable objects instead:
+If you need to modify the contents of an object inside the function, you can use mutable objects like lists, dictionaries, or custom objects. Since mutable objects are passed by reference, any changes made inside the function will be reflected outside the function.
+
+python
+Copy code
+def modify_list(lst):
+    lst.append(4)  # This modifies the original list
+
+my_list = [1, 2, 3]
+modify_list(my_list)
+print(my_list)  # Output: [1, 2, 3, 4]
+3. Use a Wrapper Class:
+Another approach is to use a class or a mutable container that wraps the immutable object, allowing the object to be modified indirectly. This is useful if you still want to work with "immutable-like" values but require a way to change them through a reference.
+
+python
+Copy code
+class Wrapper:
+    def __init__(self, value):
+        self.value = value
+
+def modify_wrapper(wrap):
+    wrap.value += 10  # Modify the wrapped value
+
+a = Wrapper(5)
+modify_wrapper(a)
+print(a.value)  # Output: 15
+Key Takeaways:
+Immutable objects (like integers, strings, and tuples) cannot be changed in-place. Any operation that seems to modify them will result in the creation of a new object, and the original object remains unchanged.
+When passing an immutable object to a function, modifications inside the function do not affect the original variable.
+To address this:
+Return the modified value and reassign it outside the function.
+Use mutable objects if in-place modifications are needed.
+Use a wrapper class or a container if you want to modify the immutable-like value inside a function.
+By understanding how Python handles immutable objects and how references work, you can choose the most appropriate approach for your use case.
+"""
 
 
