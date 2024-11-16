@@ -86,17 +86,19 @@ Note: Module functions and variables are defined in the module’s global namesp
       Across Modules: You can share global variables across modules by defining them in a separate module and importing
       that module wherever needed.
 
-3. Enclosing Namespace:
+3. Local Namespace:
+Created dynamically when a function is called. each function has its own local namespace
+Local Namespace: Contains variables and inner functions defined within a function.
+Creation and Destruction: Created when the function is called and destroyed when the function returns.
+Scope: Variables in the local namespace are only accessible within the function.
+
+4. Enclosing Namespace:
 Created dynamically when a nested function is called.
 a good way to think about enclosing namespace . The enclosing namespace can be seen as having a reference or name of the
 local namespace of the outer function.
 This reference allows the inner function to access and potentially modify variables from the outer function’s scope.
 
-4. Local Namespace:
-Created dynamically when a function is called. each function has its own local namespace
-Local Namespace: Contains variables and inner functions defined within a function.
-Creation and Destruction: Created when the function is called and destroyed when the function returns.
-Scope: Variables in the local namespace are only accessible within the function.
+
 
 """
 
