@@ -150,8 +150,6 @@ outer_function()
 Initially, x = 5
 Inside inner_function: x = 10
 After inner_function call, x = 5   # x=10 is discarded.
-
-
 ##################################################################################
 Underscore in python and how underscore defines variable scope
 Note: _ only highlight variable protection by syntax.
