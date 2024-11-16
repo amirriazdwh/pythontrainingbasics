@@ -19,20 +19,52 @@ del my_var will delete object type as well as variable name from dictionary.  so
 my_var=None just delete object but keeps the variable name in dictionary.  in this case my_var type is None.
 previous object type memory reference is released.  its been put to Garbadge collector for cleanup.
 
+##################################
+Find weather a variable is None
+##################################
 to find a variable is None.   we use.
 my_var is None.   my_var==None is not prefered.
 
-Avoiding Ambiguity: Using == can be ambiguous if my_var is an object type that defines its own __eq__ method,
-potentially leading to unexpected behavior. if __eq__ method is not override.   my_var==None compare None class load memory
-address with my_var memory address which should be same.  as None is singlton class and my_var is None.  it ensure the
-object override function __eq__ is not evoked.  thats why its safe
-
-global x call in a function access the global variable in that module which is in global area of that module.
-nonlocal x access call in inner function access the outter function x variable.
+The use of == for comparisons can be ambiguous, especially if my_var is an instance of a custom object that has its own __eq__ method
+defined. When you use ==, Python will call the __eq__ method of that object, which could lead to unexpected behavior if it’s not
+implemented properly. However, when checking if a variable is None, it’s much safer to use the is operator (e.g., if my_var is None:).
+This is because None is a singleton in Python, meaning there’s only one instance of None in memory. The is operator checks whether
+my_var and None refer to the exact same object in memory, bypassing any custom __eq__ methods that might be defined. This ensures
+that the comparison is reliable and not affected by any overridden behavior. Therefore, for clarity and correctness, it’s best to
+use is rather than == when checking for None.:
 
 When you assign None to a variable in Python, the variable’s datatype is NoneType, None is a singleton object in python
 None is a special constant in Python that represents the absence of a value or a null value.
 It is an object of its own datatype, NoneType.
+
+################
+Global X calls
+################
+in python a global variable in module is accessable to all the functions and classes in that module. however,  function
+and classes cannot reassign the value of global variable.  this does not mean what global variable is immutable.  global
+variable can be immutable or mutable based on variable types.  however, it cannot be resigned a value without a global call.
+
+
+x = 10  # Global variable, let's say it's at memory address 0x1000
+
+def modify_variable():
+    global x       # Tell Python to use the global 'x' (memory address 0x1000)
+    print(f"Before modification, x = {x}, address = {id(x)}")
+    x = 20         # This modifies the value at the same address (0x1000)
+    print(f"After modification, x = {x}, address = {id(x)}")
+
+print(f"Initially, x = {x}, address = {id(x)}")
+modify_variable()
+print(f"After function call, x = {x}, address = {id(x)}")
+
+
+Initially, x = 10, address = 140179207636544
+Before modification, x = 10, address = 140179207636544
+After modification, x = 20, address = 140179207636864
+After function call, x = 20, address = 140179207636864
+
+
+
 
 
 ##################################################################################
