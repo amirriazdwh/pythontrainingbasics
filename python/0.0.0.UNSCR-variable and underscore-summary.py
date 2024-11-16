@@ -10,8 +10,8 @@ and a value.  at runtime python find the variable class type.  create the variab
 then create an object of that class type.  registers object's memory refrence to my_varable in dictionary and then the variable
 is created.  without assigning the variable value all this process cannot occur
 ---
-del my_var will delete object type as well as variable name from dictionary.  so it give error  NameError: name
-'my_variable' is not defined.  when you try to print('my_variable')
+del my_var will delete object type as well as variable name from dictionary.  so if the variable is printed again after deletion
+ it will give error  NameError: name 'my_variable' is not defined.  when you try to print('my_variable')
 --
 my_var=None just delete object but keeps the variable name in dictionary.  in this case my_var type is None.
 previous object type memory reference is released.  its been put to Garbadge collector for cleanup.
