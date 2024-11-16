@@ -4,10 +4,10 @@ python variables and assignments.
 ########################################
 
 in python all the variable which are created in a program must be assigned a value.
-otherwise  # This will raise a NameError: name 'my_variable' is not defined.   means variable are not create.
+otherwise  # This will raise a NameError: name 'my_variable' is not defined.  error  means variable are not create but why?.
 in python creation of variable requires assignment which determine its class type.  like int() class,  fload, String or None
 and a value.  at runtime python find the variable class type.  create the variable name "my_variable" in namespace of module
-and create an object of that class type.  registers object memory refrence to my_varable in dictionary and then the variable
+then create an object of that class type.  registers object's memory refrence to my_varable in dictionary and then the variable
 is created.  without assigning the variable value all this process cannot occur
 ---
 del my_var will delete object type as well as variable name from dictionary.  so it give error  NameError: name
