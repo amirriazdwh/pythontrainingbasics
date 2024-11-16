@@ -334,9 +334,9 @@ copy_list = original_list.copy()  # Shallow copy
 copy_list.append(4)
 print(original_list)  # Output: [1, 2, 3]
 print(copy_list)      # Output: [1, 2, 3, 4]
+
+
 Using the copy.deepcopy() function (for deep copies, which is needed if your object contains other nested mutable objects):
-
-
 import copy
 
 original_list = [[1, 2], [3, 4]]
