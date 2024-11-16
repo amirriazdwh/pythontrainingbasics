@@ -70,6 +70,7 @@ Registering the Module in sys.modules:
 Once the module is successfully loaded and its code executed, Python registers it in the sys.modules dictionary.
 sys.modules is a cache that stores references to all modules that have been imported. This prevents Python from reloading
  the same module multiple times within a single program.
+
 If you import the same module again, Python will simply retrieve it from sys.modules instead of reloading and re-executing it.
 
 Note: Module functions and variables are defined in the module’s global namespace.
