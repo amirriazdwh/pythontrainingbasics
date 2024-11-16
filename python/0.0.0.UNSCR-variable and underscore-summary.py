@@ -19,6 +19,14 @@ del my_var will delete object type as well as variable name from dictionary.  so
 my_var=None just delete object but keeps the variable name in dictionary.  in this case my_var type is None.
 previous object type memory reference is released.  its been put to Garbadge collector for cleanup.
 
+if you just only want to delete the object memory refrence without deleting the variable defined in dictionary.  you simply
+assign None to variable
+
+x=None.
+
+this decrement the variable reference count in variable x's object and assign it static object NoneType memory reference.
+the python virtual machine memory manager will clear old object as its reerence count is 0
+
 ##################################
 Find weather a variable is None
 ##################################
@@ -155,28 +163,26 @@ After inner_function call, x = 5   # x=10 is discarded.
 Underscore in python and how underscore defines variable scope
 Note: _ only highlight variable protection by syntax.
 ##################################################################################
- _var: Protected (internal use in class, module or in any object).   it can be accessed as object._varS.
- __var: Private (name in class, module or in any object). it can object._mymodule_var
- in a function, there can be private variable and global variables.  if a function has inner function
- which wants to access the outter function variable it uses nonlocal keyword which appends the outter function
- name and make it accessable in inner funciton.  any variable you want to declare as global are created by global keyword.
- global variables are
+ _var: Protected (internal use in class, module or in any function).   it can be accessed as object._varS.
+ __var: Private (name in class, module or in any object). it can be accessed as object._mymodule_var
 var_: Avoids naming conflicts with reserved words.
-_var_: Special methods (dunder methods).
+_var_: Special methods (dunder methods).   these are the system function defined in python language.  which can be
+constructor, destructor,  special function call trasparent to programmer like in memory management context
 - _: Temporary variable or last result in the shell.
 #############################################################################
 
-
+#####################
 Example and Details
+#####################
 Underscores in Python- Single Leading Underscore (_var):
     - Purpose: Indicates a name is meant for internal use.
     - Usage: Treated as a non-public part of the API. It’s a hint for programmers and not enforced by Python.
-    - Example: _internal_function()
+    - Example: _function().  _x etc.
     - Import Behavior: Not imported with from module import *.
 - Double Leading Underscore (__var):
     - Purpose: Triggers name mangling to avoid name conflicts in subclasses.
     - Usage: Makes a variable or method private within a class.
-    - Example: __private_method()
+    - Example: __private_method().  here private is a class and __method is a function defined inside it
     - Name Mangling: __var in class Test becomes _Test__var.
 - Single Trailing Underscore (var_):
     - Purpose: Used to avoid naming conflicts with Python keywords.
@@ -185,7 +191,7 @@ Underscores in Python- Single Leading Underscore (_var):
     - Purpose: Indicates special methods defined by Python (dunder methods).
     - Usage: Used for object initialization, operator overloading, etc.
     - Example: __init__, __add__, __iter__
-- Single Underscore (_) as a Variable:
+- Single Underscore (_) as a Variable.  anonymous varaible
     - Purpose: Used for temporary or insignificant variables.
     - Example: for _ in range(10):
 - Single Underscore (_) in the Interactive Shell:
@@ -197,6 +203,9 @@ Underscores in Python- Single Leading Underscore (_var):
 3
 >>> _ + 4
 7
+#####################################
+Example use of underscore function
+#####################################
 
 ExamplesUsing Underscores in Variables and Methods
 class Person:
@@ -224,20 +233,22 @@ and can be accessed like any other variable.
 However, its special uses, especially in the interactive interpreter and as a convention for ignoring values,
 make it unique.
 
-Identifiers variable rules.
--------------
-. Allowed Characters
+############################
+Identifiers variable rules(Allowed Characters)
+############################
 Identifiers can include letters (a-z, A-Z), digits (0-9), and underscores (_).
 Identifiers must begin with a letter or an underscore.
 
-. Case Sensitivity
+Case Sensitivity
+-----------------
 Names and identifiers are case sensitive. For example, Variable and variable are different identifiers.
 
-.Length of Identifiers
+Length of Identifiers
+-------------------------
 Identifiers can be of unlimited length.
 
 #########################
-.Special Name Classes
+underscore variable summary
 #########################
 Single Leading Underscore (_variable): Suggests a “private” method or variable name.
 These are not imported when you use from module import *.
@@ -246,10 +257,9 @@ Double Leading Underscores (__variable): Used in class definitions to cause name
 dunder method               __Init__  special methods. they are operators,  override methods which are part of based class
                                        or abstract class.  the methods like __init__ , __iter__ are called by compiler
                                        implicitly
-This is not often used.
 
 ##########################
-. Naming Conventions
+Naming Conventions
 ##########################
 Modules and Packages: Use all lower case (e.g., mymodule).
 Globals and Constants: Use upper case (e.g., CONSTANT_VALUE).
