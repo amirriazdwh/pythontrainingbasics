@@ -103,6 +103,53 @@ Before modification, my_list = [1, 2, 3], address = 140517279715072
 After modification, my_list = [1, 2, 3, 4], address = 140517279715072
 After function call, my_list = [1, 2, 3, 4], address = 140517279715072
 
+################
+nonlocal x
+################
+The nonlocal keyword is used to modify variables in the enclosing function’s scope.
+It is useful for nested functions where you want to modify the state of a variable defined in an outer function.
+nonlocal is needed because without it, Python treats variables in a nested function as local to that function,
+unless they are declared as global.
+
+def outer_function():
+    x = 5  # Variable in the enclosing scope
+
+    def inner_function():
+        nonlocal x  # Refer to the 'x' in the outer function
+        print(f"Before modification: x = {x}")
+        x = 10  # Modify the variable from the enclosing scope
+        print(f"After modification: x = {x}")
+
+    print(f"Initially, x = {x}")
+    inner_function()
+    print(f"After inner_function call, x = {x}")
+
+outer_function()
+
+Initially, x = 5
+Before modification: x = 5
+After modification: x = 10
+After inner_function call, x = 10   # nonlocal x let you modify the outfunction x=5 to x=10
+
+however,  without nonloca x declaration. in inner_funciton a new x variable is created with value 10 and discarded
+when the function call is over
+
+def outer_function():
+    x = 5  # Variable in the enclosing scope
+
+    def inner_function():
+        x = 10  # This creates a new local variable 'x'
+        print(f"Inside inner_function: x = {x}")
+
+    print(f"Initially, x = {x}")
+    inner_function()
+    print(f"After inner_function call, x = {x}")
+
+outer_function()
+
+Initially, x = 5
+Inside inner_function: x = 10
+After inner_function call, x = 5   # x=10 is discarded.
 
 
 ##################################################################################
