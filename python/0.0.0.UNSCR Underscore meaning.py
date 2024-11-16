@@ -11,7 +11,7 @@ two times __
 var is a public variable,
 _var is protected variable
 __var is private variable.
- __ double underscore is called dunder.
+ __ double__ underscore is called dunder.
 
 1, Single Leading Underscore _var:
  Naming convention indicating name is meant for internal use.
