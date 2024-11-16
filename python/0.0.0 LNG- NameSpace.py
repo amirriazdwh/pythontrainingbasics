@@ -2,24 +2,80 @@
 ############################################################################
 Key Points to Remember- Namespace
 ############################################################################
-python has 4 types of namespace.
-1. Built-in Namespace:
-Initialized when the Python interpreter starts. it loads the buildin module of python builtin.py and other modules to provide access
-to builtin function for example print functions etc
+Modules are objects that Python uses to group related code together (like variables, functions, and classes).
+Internally, Python represents the contents of a module using a dictionary (__dict__). This dictionary serves as the module’s namespace.
+The __dict__ attribute of a module provides direct access to all its attributes in the form of key-value pairs.
+The sys.modules dictionary acts as a registry of all imported modules, mapping module names to module objects.
+when you issue python statement.   python start.py.   interpreter assign name of module as __main__.  this module build global namespace
+for other module.  the module name is file name.
 
+python has 4 types of namespace.
+
+##########################
+1. Built-in Namespace:
+#########################
+When the Python interpreter starts, it initializes its built-in environment, which includes loading a special module called builtins.py
+along with other essential modules. This process is what provides access to built-in functions like print(), len(), input(), and many
+others. These built-in functions are available globally in Python programs without the need for importing any module.
+
+The builtins module includes not only functions but also built-in types (like int, str, list, etc.) and exceptions
+(like TypeError, ValueError, etc.). This is why you can use these features directly in your code without needing to
+explicitly import them. Essentially, when the Python interpreter is launched, it sets up this built-in environment to ensure
+that commonly used functionality is readily available throughout your program.
+
+########################
 2. Global Namespace:
-When a module or Python file is loaded, it is initialized into module and registered in sys.modules. This registration helps the program find modules that
-have already been loaded. A global namespace is created for each module that is loaded and registered in sys.modules. This global namespace
-contains the module’s variables, classes, and functions. Each module has its own namespace.
-When mymodule is imported, it creates its own global namespace containing global_var and greet. If you create a global variable
-inside a function using the global keyword, it gets created in the module’s global namespace.
+######################
+This is the namespace of the main program that is executed.
+It includes all the variables, functions, and classes defined at the top level of your script.
+When you run a script or start an interactive Python session, the global namespace is the primary namespace where your code executes.
+The global namespace is specific to the main module (i.e., the script you run directly).
+
+When you run a script directly, Python treats it as the main module and assigns it the special name __main__.
+This is why the global namespace of the script you run is often referred to as the global namespace.
+
+Note that all the variable created during the load process are global variables and they are global to main module only or
+to module in which they are defined.  to access the variables in another module.  the module needs to be imported
+
 Using del mymodule deletes the reference to the module, effectively removing its global namespace and the global variables within the module.
 After deletion, attempting to access mymodule raises a NameError because the module is no longer defined.
 so a global variable has its global scope inside module only
 
+#############################
+How import module is loaded.
+#############################
+
+When you import a module in Python, the interpreter goes through a series of steps to load and initialize the module. Here's how it works:
+
+Finding the Module:
+When you use import my_module, Python looks for my_module.py in the directories listed in sys.path.
+The search order includes the current directory, installed packages, and standard library locations.
+
+Compiling the Module:
+If the module is written in Python, the source code (my_module.py) is compiled into bytecode (my_module.pyc) if it
+ hasn't been compiled already or if the source code has changed.
+This compilation step transforms Python code into bytecode, which the Python Virtual Machine (PVM) can execute.
+
+Creating a Module Object:
+Once the code is compiled, Python creates a module object of type module. This object is essentially a namespace that
+ contains all the functions, variables, and classes defined in the module.
+The module object is an instance of Python's built-in types.ModuleType.
+
+Executing the Module Code:
+Python then executes the compiled bytecode in the context of the newly created module object. This means that any top-level
+statements (like variable assignments, function definitions, etc.) in the module are executed at this point.
+The result is that all variables, functions, and classes defined in the module become attributes of the module object.
+Registering the Module in sys.modules:
+
+Once the module is successfully loaded and its code executed, Python registers it in the sys.modules dictionary.
+sys.modules is a cache that stores references to all modules that have been imported. This prevents Python from reloading
+ the same module multiple times within a single program.
+If you import the same module again, Python will simply retrieve it from sys.modules instead of reloading and re-executing it.
+
 Note: Module functions and variables are defined in the module’s global namespace.
       Within a Module: Global variables are accessible only within the module they are defined in.
-      Across Modules: You can share global variables across modules by defining them in a separate module and importing that module wherever needed.
+      Across Modules: You can share global variables across modules by defining them in a separate module and importing
+      that module wherever needed.
 
 3. Enclosing Namespace:
 Created dynamically when a nested function is called.
