@@ -281,9 +281,14 @@ When you assign a variable in Python, you're not copying the value itself but ra
 object in memory. The variable is essentially a label that refers to an object, not the object itself. Here's how it works:
 
 Mutable vs. Immutable objects:
-Immutable objects (e.g., integers, strings, tuples): If you assign one variable to another, both variables will refer to the same 
-object. However, since the object cannot be changed (it's immutable), if you perform an operation that modifies the value, Python 
-will create a new object and the new reference will point to that.
+Immutable objects (e.g., integers, strings, tuples): If you assign one variable to another like
+
+x=10
+y=x 
+
+both variables will refer to the same object. However, since the object cannot be changed (it's immutable), 
+if you perform an operation that modifies the value, Python will create a new object and the new reference will point to that.
+
 Mutable objects (e.g., lists, dictionaries, sets): If you assign one variable to another, both variables will point to the same 
 object in memory. If you modify the object using one variable, the changes will be visible through the other variable because 
 they share the same reference.
@@ -302,6 +307,7 @@ b = a
 b.append(4)
 print(a)  # a is [1, 2, 3, 4] because lists are mutable and b modified the shared reference
 print(b)  # b is [1, 2, 3, 4]
+
 Why is this approach used?
 Efficiency: Passing references rather than copying entire objects is more memory-efficient and faster, especially for large or 
 complex objects like lists and dictionaries. It avoids the overhead of creating duplicates.
