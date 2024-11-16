@@ -2,12 +2,17 @@
 ############################################################################
 Key Points to Remember- Namespace
 ############################################################################
-Modules are objects that Python uses to group related code together (like variables, functions, and classes).
-Internally, Python represents the contents of a module using a dictionary (__dict__). This dictionary serves as the module’s namespace.
-The __dict__ attribute of a module provides direct access to all its attributes in the form of key-value pairs.
-The sys.modules dictionary acts as a registry of all imported modules, mapping module names to module objects.
-when you issue python statement.   python start.py.   interpreter assign name of module as __main__.  this module build global namespace
-for other module.  the module name is file name.
+1. Modules are objects that Python uses to group related code together (like variables, functions, and classes).
+2. Internally, Python represents the contents of a module using a dictionary (__dict__). This dictionary serves as the module’s namespace.
+3. The __dict__ attribute of a module provides direct access to all its attributes in the form of key-value pairs.  in short,
+Every Python module has an attribute called __dict__ that contains a dictionary of all the functions, global variables and their values defined
+in that module
+4. a dictionary is a key value pair,   which stores,  variable and its object references. so a module contains dictionary,  which
+stores variable and function objects in key value form.
+5. The sys.modules dictionary acts as a registry of all imported modules, mapping module names to module objects.
+6. when you issue python statement.   python start.py.   interpreter assign start.py module as __main__.  this module build global namespace
+for other module.  file name is module name.
+7.  global variables of main modules can be viewed with globals() function.  for imported modules use module.__dict__
 
 python has 4 types of namespace.
 
@@ -37,9 +42,12 @@ This is why the global namespace of the script you run is often referred to as t
 Note that all the variable created during the load process are global variables and they are global to main module only or
 to module in which they are defined.  to access the variables in another module.  the module needs to be imported
 
-Using del mymodule deletes the reference to the module, effectively removing its global namespace and the global variables within the module.
-After deletion, attempting to access mymodule raises a NameError because the module is no longer defined.
-so a global variable has its global scope inside module only
+ If you import a module in your script and then use the del statement to delete it, you can remove the reference to
+ that module from the global namespace. However, deleting the module reference does not unload the module from Python’s
+ memory if it has already been loaded.
+
+you cannot delete the __main__ module.  however,  you are delete the variables from __main__ module.  this variables are
+called global variables.
 
 #############################
 How import module is loaded.
@@ -80,7 +88,8 @@ Note: Module functions and variables are defined in the module’s global namesp
 
 3. Enclosing Namespace:
 Created dynamically when a nested function is called.
-a good way to think about enclosing namespace . The enclosing namespace can be seen as having a reference or name of the local namespace of the outer function.
+a good way to think about enclosing namespace . The enclosing namespace can be seen as having a reference or name of the
+local namespace of the outer function.
 This reference allows the inner function to access and potentially modify variables from the outer function’s scope.
 
 4. Local Namespace:
