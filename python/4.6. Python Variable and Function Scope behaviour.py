@@ -208,9 +208,9 @@ The key issue arises when you expect the function to "modify" the original objec
 
 You might expect a function to modify a string or number directly, but it won’t work because they are immutable.
 The result can be confusion if you're unaware of the distinction between mutable and immutable objects in Python.
+
 Example of this problem:
-python
-Copy code
+
 def modify_string(s):
     s += " world"  # Creates a new string object
     print("Inside function:", s)
@@ -218,13 +218,13 @@ def modify_string(s):
 original_string = "Hello"
 modify_string(original_string)
 print("Outside function:", original_string)  # The string remains unchanged
-Output:
 
-bash
-Copy code
+Output:
 Inside function: Hello world
 Outside function: Hello
-This could be a problem if you expected original_string to be "Hello world" after the function call, but because strings are immutable, the function's changes did not affect the original variable.
+
+This could be a problem if you expected original_string to be "Hello world" after the function call,
+but because strings are immutable, the function's changes did not affect the original variable.
 
 How to Fix It:
 If you want a function to "modify" the original variable, there are a few approaches depending on what you want to achieve.

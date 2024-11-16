@@ -1,14 +1,14 @@
 """"""
 """
 Construction of Python Program.
----------------------------------------
+################################
 Compilation and Execution.
------------------------------
+################################
 0. Python interpreter how it works. 
     Compilation to Bytecode: When you run a Python program, the interpreter first compiles the entire source code into 
-    bytecode. This bytecode is a lower-level, platform-independent representation of your code1.
+    bytecode. This bytecode is a lower-level, platform-independent representation of your code.
     Execution of Bytecode: The compiled bytecode is then executed by the Python Virtual Machine (PVM). This execution 
-    happens line by line, meaning the PVM interprets and runs each line of bytecode sequentially1.
+    happens line by line, meaning the PVM interprets and runs each line of bytecode sequentially.
     
     So, while the initial compilation step processes the whole program, the actual execution is done line by line. 
     This hybrid approach allows Python to catch errors early during the compilation phase and still provide the 
@@ -16,9 +16,10 @@ Compilation and Execution.
     
     \ and () help you write more readable code by allowing line continuation, they don’t directly affect the 
     line-by-line execution of the bytecode by the PVM.
-
+    
+########################################################
 A python program generally contains 3 constructs. 
--------------------------------------------------
+#########################################################
 1. Keywords: Reserved words that have special meaning in Python, such as if, else, for, while, def, class, etc.
 2. Expressions: Combinations of values, variables, operators, lambda function definition and function calls 
    that are evaluated to produce a value.  this means that a expression will be on one line and will return a 
@@ -37,8 +38,9 @@ A python program generally contains 3 constructs.
                     x + y   #explicit continuation 
                     
     add = lambda (x, y): x + y  is not allowed as syntax enforce it.  a lambda function is an expression which 
-    should on one line.  here (x,y) can be spread to multiple lines if syntax allows it.
+    must be on one line.  here (x,y) can be spread to multiple lines as we can do it in case of implicit continuation.
     
+    in some place, both implicit and explicit continuation is allowed. as show below
     if (x >0 
             and y>0): 
         print("no negative value")  #allow as expression is inside bracket.
@@ -62,12 +64,19 @@ A python program generally contains 3 constructs.
     except (TypeError) as e:
         print("Error:", e)      #allow.   however since TypeError is a single expression express bracketless syntax prefer. 
 
-0.   Python has statement, blocks, context and context manager.
-     there can be multiple statements in one block.
-     there can be multiple blocks in one context. 
+###################################
+ :  , block scope and empty block
+###################################
+in python,  every block starts with : and the next statement with indentation.  the identation defines the scope of the 
+block.  the general structure of the python language is as under:
+
+Statements: Individual lines of code that perform an action.
+Blocks: Groups of statements that are indented at the same level. Multiple statements can belong to one block.
+Contexts: Environments in which blocks of code are executed, often managed by context managers. e.g with statement
+Context Managers: Objects that handle the setup and teardown of contexts using the __enter__ and __exit__ methods.
 
 1.  : define the start of programming block. 
-    in python : define the start of programming block.
+    in python ":" defines the start of programming block.
     indentation level define the scope of the block
     end of indentation define end of this block.
 
@@ -86,11 +95,13 @@ A python program generally contains 3 constructs.
     Semicolon (;): In Python, you can use a semicolon to separate multiple statements on a single line. For example
     x = 10; y = 20; print(x + y)
 
+################
 continuation. 
--------------
-A python statement will on single line.  The only two ways to put statement on multiple lines is using \
-and parentheses.  this is to note that.
-
+################
+A python statement will be on single line.  The only two ways to put a python statement on multiple lines is to use \
+and parentheses ().  similarly [], {} support continuation.
+ 
+this is to note that.
 lambda function are expression and single line statement. so lambda (x,y): x+y is not allowed as it makes 
 it multiline.  so to make it multiline we have to use \ or (). 
 
@@ -110,7 +121,7 @@ it multiline.  so to make it multiline we have to use \ or ().
      single line expression so  lambda (x, y): x+y  is not allow.  as presence of () make it multiline statement which
      against the python lambda rule
 
-5. The as keyword in Python is used to create an alias or to bind a name to an object within a specific context,
+5. The "as" keyword in Python is used to create an alias or to bind a name to an object within a specific context,
    such as with modules, exceptions, and context managers. This is different from the = operator, which is used for
    general assignment.
 
