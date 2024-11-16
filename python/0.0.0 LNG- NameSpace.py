@@ -108,7 +108,7 @@ class part of the instance. This means that the attributes and methods defined i
  subclass instance.
 
 However, the attributes and methods are not stored in separate dictionaries for the base class and subclass. Instead, 
-they are all part of the same instance dictionary (__dict__). The subclass instance will have access to all attributes 
+they are all part of the same module instance dictionary (__dict__). The subclass instance will have access to all attributes 
 and methods from both the base class and the subclass.
 
 class BaseClass:
