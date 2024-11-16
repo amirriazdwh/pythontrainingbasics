@@ -57,14 +57,51 @@ print(f"Initially, x = {x}, address = {id(x)}")
 modify_variable()
 print(f"After function call, x = {x}, address = {id(x)}")
 
-output
--------
+output with immutable variable
+----------------------------------------------------------------
 Initially, x = 10, address = 140179207636544
 Before modification, x = 10, address = 140179207636544
 After modification, x = 20, address = 140179207636864
 After function call, x = 20, address = 140179207636864
+-------------------------------------------------------------------
+my_list = [1, 2, 3]  # Global variable (a list)
 
+def modify_list():
+    global my_list  # Required to reassign a new list to the global variable
+    print(f"Before reassignment, my_list = {my_list}, address = {id(my_list)}")
+    # Assigning a new list to 'my_list'
+    my_list = [4, 5, 6]  # This creates a new list and reassigns 'my_list'
+    print(f"After reassignment, my_list = {my_list}, address = {id(my_list)}")
 
+print(f"Initially, my_list = {my_list}, address = {id(my_list)}")
+modify_list()
+print(f"After function call, my_list = {my_list}, address = {id(my_list)}")
+
+output with mutable variable -------------------------------------------
+Initially, my_list = [1, 2, 3], address = 140517279715072
+Before reassignment, my_list = [1, 2, 3], address = 140517279715072
+After reassignment, my_list = [4, 5, 6], address = 140517279717184
+After function call, my_list = [4, 5, 6], address = 140517279717184
+-------------------------------------------------------------------------
+so when a new assigned is conducted through global x declaring in that funciton.  a new object refrence is assigned
+to that the variable. however,  the variable like list items is updated. global x is not needed.
+
+my_list = [1, 2, 3]  # Global variable (a list)
+
+def modify_list():
+    # No need to use 'global' here because we're modifying the list in place
+    print(f"Before modification, my_list = {my_list}, address = {id(my_list)}")
+    my_list.append(4)  # Modify the list in place
+    print(f"After modification, my_list = {my_list}, address = {id(my_list)}")
+
+print(f"Initially, my_list = {my_list}, address = {id(my_list)}")
+modify_list()
+print(f"After function call, my_list = {my_list}, address = {id(my_list)}")
+
+Initially, my_list = [1, 2, 3], address = 140517279715072
+Before modification, my_list = [1, 2, 3], address = 140517279715072
+After modification, my_list = [1, 2, 3, 4], address = 140517279715072
+After function call, my_list = [1, 2, 3, 4], address = 140517279715072
 
 
 
