@@ -1,0 +1,55 @@
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from airflow.utils.dates import days_ago
+from datetime import timedelta
+import time
+
+# Define the task metadata
+tasks = {
+    'task1': {'level': 1, 'duration': 2},
+    'task2': {'level': 1, 'duration': 3},
+    'task3': {'level': 2, 'duration': 1, 'depends_on': ['task1', 'task2']},
+    'task4': {'level': 2, 'duration': 2, 'depends_on': ['task1']},
+    'task5': {'level': 3, 'duration': 2, 'depends_on': ['task3']},
+    'task6': {'level': 3, 'duration': 1, 'depends_on': ['task4']},
+}
+
+# Define a function to simulate task execution
+def execute_task(duration, **kwargs):
+    print(f"Starting task {kwargs['task_id']}")
+    time.sleep(duration)
+    print(f"Completed task {kwargs['task_id']}")
+
+# Define the DAG
+default_args = {
+    'owner': 'airflow',
+    'start_date': days_ago(1),
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG(
+    'dynamic_task_dependencies',
+    default_args=default_args,
+    description='A DAG with dynamic task creation and dependencies',
+    schedule_interval=None,
+    catchup=False,
+)
+
+# Create a dictionary to hold task objects
+task_objects = {}
+
+# Dynamically create tasks
+for task_id, task_config in tasks.items():
+    task_objects[task_id] = PythonOperator(
+        task_id=task_id,
+        python_callable=execute_task,
+        op_kwargs={'duration': task_config['duration']},
+        dag=dag,
+    )
+
+# Dynamically set task dependencies
+for task_id, task_config in tasks.items():
+    if 'depends_on' in task_config:
+        for dep_task_id in task_config['depends_on']:
+            task_objects[dep_task_id] >> task_objects[task_id]

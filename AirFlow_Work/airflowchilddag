@@ -1,0 +1,40 @@
+from datetime import datetime
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from airflow.utils.trigger_rule import TriggerRule
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def do_something_child(**context):
+    """
+    Main logic for the child DAG.
+    """
+    logger.info("Child DAG: Starting main task...")
+    # Simulate work
+    logger.info("Child DAG: Doing something...")
+
+# Default arguments for the child DAG
+default_args_child = {
+    'start_date': datetime(2023, 1, 1),
+    'trigger_rule': TriggerRule.ALL_DONE,  # Trigger regardless of master DAG success/failure
+    'retries': 0,  # No retries for simplicity
+}
+
+# Define the child DAG
+with DAG(
+    dag_id='child_dag_1',  # Replace with your child DAG ID
+    default_args=default_args_child,
+    schedule_interval=None,  # Child DAGs are triggered by the master DAG
+    catchup=False,
+    tags=['child']
+) as child_dag:
+
+    # Main task in the child DAG
+    child_main_task = PythonOperator(
+        task_id='child_main_task',
+        python_callable=do_something_child,
+        provide_context=True
+    )

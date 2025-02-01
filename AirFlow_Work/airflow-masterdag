@@ -1,0 +1,74 @@
+from datetime import datetime
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from airflow.models import DagRun
+from airflow.exceptions import AirflowException
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Configuration (can be moved to a separate config file or environment variables)
+CHILD_DAG_IDS = ['child_dag_1', 'child_dag_2']  # List of child DAG IDs
+
+def do_something_master(**context):
+    """
+    Main logic for the master DAG.
+    """
+    logger.info("Master DAG: Starting main task...")
+    # Simulate work
+    logger.info("Master DAG: Doing something...")
+    # Uncomment to simulate failure
+    # raise ValueError("Master DAG forced failure for testing.")
+
+def kill_child_dags(**context):
+    """
+    Callback function to kill child DAGs when the master DAG fails or is killed.
+    """
+    logger.info("Master DAG: Attempting to kill child DAGs...")
+    dag_run = context['dag_run']
+
+    for child_dag_id in CHILD_DAG_IDS:
+        try:
+            # Find running instances of the child DAG
+            child_dag_runs = DagRun.find(dag_id=child_dag_id, state='running')
+            if not child_dag_runs:
+                logger.info(f"No running instances found for child DAG: {child_dag_id}")
+                continue
+
+            for child_dag_run in child_dag_runs:
+                try:
+                    # Mark the child DAG as failed
+                    child_dag_run.set_state('failed')
+                    logger.info(f"Child DAG {child_dag_id} (run_id: {child_dag_run.run_id}) marked as failed.")
+                except Exception as e:
+                    logger.error(f"Failed to mark child DAG {child_dag_id} as failed: {e}")
+        except Exception as e:
+            logger.error(f"Error while processing child DAG {child_dag_id}: {e}")
+
+# Default arguments for the master DAG
+default_args_master = {
+    'start_date': datetime(2023, 1, 1),
+    'on_failure_callback': kill_child_dags,  # Callback to kill child DAGs on failure
+    'retries': 0,  # No retries for simplicity
+}
+
+# Define the master DAG
+with DAG(
+    dag_id='master_dag',
+    default_args=default_args_master,
+    schedule_interval='@daily',
+    catchup=False,
+    tags=['master']
+) as master_dag:
+
+    # Main task in the master DAG
+    master_main_task = PythonOperator(
+        task_id='master_main_task',
+        python_callable=do_something_master,
+        provide_context=True
+    )
+
+    # Add more tasks if needed
+    # master_main_task >> other_task
