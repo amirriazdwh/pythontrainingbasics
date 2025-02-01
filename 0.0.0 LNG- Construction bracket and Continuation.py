@@ -37,7 +37,7 @@ A python program generally contains 3 constructs.
     add = lambda x, y: \
                     x + y   #explicit continuation 
                     
-    add = lambda (x, y): x + y  is not allowed as syntax enforce it.  a lambda function is an expression which 
+    add = lambda (x, y): x + y with bracket is not allowed as syntax enforce it.  a lambda function is an expression which 
     must be on one line.  here (x,y) can be spread to multiple lines as we can do it in case of implicit continuation.
     
     in some place, both implicit and explicit continuation is allowed. as show below
