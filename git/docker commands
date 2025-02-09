@@ -80,7 +80,7 @@ docker container ls -f 'status=exited' -f 'status=dead' -f 'status=created'
 docker container rm $(docker container ls -q -f 'status=exited' -f 'exited=0')
 
 #start a container
-9
+docker container start ORCLCBD
 
 #container stats
 docker container stats ORCLCBD
