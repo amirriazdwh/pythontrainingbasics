@@ -137,3 +137,19 @@ git status.
 git commit -m "type the message here"
 # push to remote repo.
 git push.
+
+# thod 1: Using git rev-parse
+# n the following command inside the Git repository:
+
+git rev-parse --show-toplevel
+# is will return the absolute path of the root directory of your Git repository. outputD:/Python/pythontraining where .git meta is
+
+# git path of remote repos
+git config --get remote.origin.url
+#https://github.com/amirriazdwh/pythontraining.git
+
+# initialize git local repo. this will creat a .git fold in folder you are executing this command. 
+git init
+
+git count-objects -v
+git gc --auto
