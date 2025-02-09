@@ -126,3 +126,14 @@ git diff --staged
 
 Would you like to explore this further in your own repository? 🚀
 
+
+## 12 if git does not work. 
+git fsck 
+## this will provide dangling blobs.   use
+git prune 
+## remove the dangling check file pending to be added to stage.
+git status. 
+## commit 
+git commit -m "type the message here"
+# push to remote repo.
+git push.
