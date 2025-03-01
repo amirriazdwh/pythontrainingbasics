@@ -39,8 +39,9 @@ A python program generally contains 3 constructs.
                     
     add = lambda (x, y): x + y with bracket is not allowed as syntax enforce it.  a lambda function is an expression which 
     must be on one line.  here (x,y) can be spread to multiple lines as we can do it in case of implicit continuation.
+    the is why lambda(x,y): x+y is not allowed as lambda statement is an expression which must be on single line
     
-    in some place, both implicit and explicit continuation is allowed. as show below
+    in some place(especially in statements), both implicit and explicit continuation is allowed. as show below
     if (x >0 
             and y>0): 
         print("no negative value")  #allow as expression is inside bracket.
