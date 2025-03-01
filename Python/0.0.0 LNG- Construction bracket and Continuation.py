@@ -242,7 +242,8 @@ my_dict = {'name': 'Amir', 'age': 30, 'city': 'Abu Dhabi'}    # normal creation 
 
 
 my_dict = dict(name='Amir', age=30, city='Abu Dhabi')         # creation through dictionary constructor function. 
-                                                              # passed values by name method 
+                                                              # passed values by name method which means = sign notation
+                                                              # can only be passed through () brackets
                                                               
 pairs = [('name', 'Amir'), ('age', 30), ('city', 'Abu Dhabi')]
 my_dict = dict(pairs)
