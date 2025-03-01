@@ -328,7 +328,7 @@ change, making their hash value unreliable.
 String 
 ##########
 A string in Python is a sequence of characters enclosed within single quotes ('...'), double quotes ("..."), or
-triple quotes ('''...''' or """..."""). Strings are used to represent text data in Python and are one of
+triple quotes ('''  ''' or """   """). Strings are used to represent text data in Python and are one of
 the most commonly used data types.
 
 Key Characteristics of Strings:
